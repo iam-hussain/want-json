@@ -1,0 +1,30 @@
+{
+  "name": "getjson",
+  "version": "1.0.0",
+  "description": "getJSON is a free online REST API that you can use whenever you need some fake data.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": "git+https://github.com/ZaHuPro/getJSON.git",
+  "keywords": [
+    "JSON",
+    "API",
+    "EndPoint",
+    "Free",
+    "RestAPI"
+  ],
+  "author": "ZaHuPro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZaHuPro/getJSON/issues"
+  },
+  "homepage": "https://github.com/ZaHuPro/getJSON#readme",
+  "dependencies": {
+    "next": "^9.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
