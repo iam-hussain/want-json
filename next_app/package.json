@@ -23,8 +23,13 @@
   },
   "homepage": "https://github.com/ZaHuPro/getJSON#readme",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "bootstrap": "^4.4.1",
+    "less": "^3.11.1",
     "next": "^9.3.4",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1"
   }
 }
