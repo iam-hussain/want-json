@@ -7,7 +7,7 @@ module.exports = function authModel(sequelize, DataTypes) {
             primaryKey: true,
             field: 'id',
         },
-        hashkey: {
+        hash: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -39,7 +39,7 @@ module.exports = function authModel(sequelize, DataTypes) {
     });
 
     Auth.associate = function authAssociate(db) {
-        db.Auth.belongsTo(db.User, { foreignKey: 'logger', sourceKey: 'id' });
+        db.Auth.belongsTo(db.User, { foreignKey: 'user_id', sourceKey: 'id', as: 'logger' });
     };
     return Auth;
 };

@@ -30,7 +30,7 @@ class Log {
     // Adds ERROR prefix string to the log string
     error(_string) {
     // Line break and show the first line
-        console.log('\x1b[31m%s\x1b[0m', `[ERROR] :: ${_string.split(/r?\n/)[0]}`);
+        console.log('\x1b[31m%s\x1b[0m', `[ERROR] :: ${_string}`);
         return this.addLog('ERROR', _string);
     }
 

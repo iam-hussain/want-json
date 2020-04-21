@@ -11,11 +11,15 @@ export default class hashingModule {
         };
     }
 
-    static async verifyPasswordHash(password, salt, hash) {
-        return await MD5(MD5(password) + salt) === hash;
+    static async verifyPasswordHash(userPrivateData, password) {
+        return await MD5(MD5(password) + userPrivateData.salt) === userPrivateData.password;
     }
 
     static async authHashGenerator() {
-        return MD5(Locals.config().name + MD5(new Date().getTime()) + Locals.config().appSecret);
+        return `auth_${MD5(Locals.config().name + MD5(new Date().getTime()) + Locals.config().appSecret)}`;
+    }
+
+    static async storeHashGenerator(title) {
+        return `${title}_${MD5(Locals.config().name + MD5(new Date().getTime()) + Locals.config().appSecret)}`;
     }
 }

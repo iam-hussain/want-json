@@ -23,14 +23,6 @@ module.exports = function userModel(sequelize, DataTypes) {
                 notEmpty: true,
             },
         },
-        userName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                notEmpty: true,
-            },
-        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -53,18 +45,6 @@ module.exports = function userModel(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        avatarName: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        avatarTitle: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        avatarPath: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         status: {
             type: DataTypes.ENUM,
             values: [
@@ -80,7 +60,8 @@ module.exports = function userModel(sequelize, DataTypes) {
     });
 
     User.associate = function userAssociate(db) {
-        db.User.hasMany(db.Auth, { foreignKey: 'logger', sourceKey: 'id' });
+        db.User.hasMany(db.Auth, { foreignKey: 'user_id', sourceKey: 'id', as: 'logger' });
+        db.User.hasMany(db.Store, { foreignKey: 'user_id', sourceKey: 'id', as: 'owner' });
     };
     return User;
 };

@@ -6,8 +6,8 @@ import compress from 'compression';
 import express from 'express';
 import userAgent from 'express-useragent';
 import ipware from 'ipware';
-import Log from './Log';
 import Locals from '@providers/Locals';
+import Log from './Log';
 
 class Http {
     static mount(_express) {

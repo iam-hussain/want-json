@@ -2,7 +2,7 @@
 import DB from '@providers/Database';
 import hashingUtil from '@utils/hashing';
 
-class UserModule {
+export default class UserModule {
     static async existCheck(where) {
         return (
             (await DB.models.User.count({
@@ -36,8 +36,6 @@ class UserModule {
         const hashed = await hashingUtil.createPasswordHash(payLoad.password);
         const returnData = await DB.models.User.create({
             email: payLoad.email,
-            firstName: payLoad.firstName,
-            lastName: payLoad.lastName,
             userName: payLoad.userName,
             password: hashed.password,
             salt: hashed.salt,
@@ -45,6 +43,11 @@ class UserModule {
         });
         return returnData;
     }
-}
 
-export default UserModule;
+    static async update(where, payLoad) {
+        const returnData = await DB.models.User.update(payLoad, {
+            where,
+        });
+        return returnData;
+    }
+}
