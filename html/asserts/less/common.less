@@ -2,8 +2,9 @@
 
 .navbar {
     background-color: #fff;
-    border-radius: 0 0 5px 5px;
-
+    justify-content: space-between;
+    -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.2);
+    box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .2);
     .navButton {
         button {
             margin-right: 10px;
@@ -16,6 +17,17 @@
                 background-color: #colors[primary];
             }
         }
+
+        @media @sm,
+        @xs {
+            display: none;
+        }
+    }
+
+    @media @sm,
+    @xs {
+        //background-color: #efefef;
+        justify-content: center;
     }
 }
 
@@ -25,30 +37,53 @@ footer {
     margin-top: 50px;
     padding: 20px;
 
+
     .footer-right {
         text-align: right;
+
+        @media @sm,
+        @xs {
+            text-align: center;
+        }
     }
 
     .footer-left {
         text-align: left;
+
+        @media @sm,
+        @xs {
+            text-align: center;
+        }
     }
 
     .social {
         display: flex;
-    }
 
-    .igroup {
-        i {
+        button {
+            background-color: #fff;
             padding: 10px;
+        }
+
+        @media @sm,
+        @xs,
+        @md {
+            display: block;
         }
     }
 
+
     p {
         padding: 10px;
+        margin: 0px;
     }
 
     i {
         font-size: 20px;
         color: #f20574;
+    }
+
+    @media @sm,
+    @xs {
+        margin-top: 20px;
     }
 }

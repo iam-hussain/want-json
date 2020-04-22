@@ -25,7 +25,7 @@
 </head>
 
 <body class="container">
-    <nav class="navbar justify-content-between">
+    <nav class="navbar fixed-top">
         <div class="brand hover-animate">getJSON</div>
         <div class="navButton">
             <button class="button hover-animate"><i class="fa fa-sticky-note"></i> Doc</button>
@@ -58,11 +58,11 @@
     <div class="content">
         <div class="home-sampleview row align-items-center justify-content-center">
             <div class="col">
-                <h1>Fake Data API</h1>
+                <h2>Fake Data API</h2>
                 <p>free online REST API that you can use whenever you need some fake data.</p>
                 <button class="button secondary hover-animate">See all</button>
                 <div class="row">
-                    <div class="col-auto home-sample-table">
+                    <div class="col-md-6 home-sample-table">
                         <table class="resources">
                             <thead>
                                 <th>URL</th>
@@ -115,7 +115,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col browserBox">
+                    <div class="col-md-6 browserBox">
                         <div class="browser">
                             <div class="browser-button"></div>
                             <div class="browser-button"></div>
@@ -136,12 +136,12 @@
     <div class="content">
 
         <div class="home-sampleview row align-items-center justify-content-center">
-            <div class="col-auto">
-                <h1>Own Data API</h1>
+            <div class="col-12">
+                <h2>Own Data API</h2>
                 <p>free online REST API that you can use whenever you need some fake data.</p>
                 <button class="button secondary hover-animate">Create</button>
                 <div class="row">
-                    <div class="col-auto first">
+                    <div class="col-md-6 first">
                         <div class="browser">
                             <div class="browser-button"></div>
                             <div class="browser-button"></div>
@@ -163,7 +163,7 @@
                                 </code></pre>
                         </div>
                     </div>
-                    <div class="col second">
+                    <div class="col-md-6 second">
                         <div class="browser">
                             <div class="browser-button"></div>
                             <div class="browser-button"></div>
@@ -184,22 +184,24 @@
 
     </div>
 
-    <footer class="sampleview row align-items-end justify-content-center">
-        <div class="col footer-left">
+    <footer class="row align-items-end justify-content-center">
+        <div class="col-md footer-left">
             <div class="social">
-                <p class="igroup">
-                    <i class="fa fa-home fa-lg hover-animate"></i>
+                <button class="button hover-animate">
+                    <i class="fa fa-home fa-lg "></i>
+                </button>
+                <button class="button hover-animate">
                     <i class="fa fa-sticky-note fa-lg hover-animate"></i>
+                </button>
+                <button class="button hover-animate">
                     <i class="fa fa-github fa-lg hover-animate"></i>
+                </button>
+                <button class="button hover-animate">
                     <i class="fa fa-phone fa-lg hover-animate"></i>
-                </p>
-                
+                </button>
             </div>
         </div>
-        <div class="col">
-            
-        </div>
-        <div class="col footer-right">
+        <div class="col-md footer-right">
             <p><i class="fa fa-code hover-animate"></i> with <i class="fa fa-heart hover-animate"></i> by ZaHu</p>
         </div>
 

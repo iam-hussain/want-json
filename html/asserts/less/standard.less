@@ -4,17 +4,17 @@
 
 @font-face {
     font-family: 'FredokaOne';
-    src:url('../fonts/FredokaOne-Regular.ttf');
+    src: url('../fonts/FredokaOne-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Josefin_Sans';
-    src:url('../fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');
+    src: url('../fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');
 }
 
 @font-face {
     font-family: 'Raleway';
-    src:url('../fonts/Raleway-Bold.ttf');
+    src: url('../fonts/Raleway-Bold.ttf');
 }
 
 
@@ -30,9 +30,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.brand{
+.brand {
     font-family: "FredokaOne";
-    font-size: 30px;
+    font-size: 25px;
     color: #F20574;
     padding: 5px 15px;
 }
@@ -114,7 +114,7 @@ h6 {
 
 }
 
-.hover-animate{
+.hover-animate {
     &:hover {
         -webkit-animation-name: button-push;
         animation-name: button-push;
@@ -131,7 +131,7 @@ h6 {
             -webkit-transform: scale(0.8);
             transform: scale(0.8);
         }
-    
+
         100% {
             -webkit-transform: scale(1);
             transform: scale(1);
@@ -139,27 +139,29 @@ h6 {
     }
 }
 
-.primary{
+.primary {
     -webkit-box-shadow: 0 10px 10px 0 rgba(242, 5, 116, 0.2);
-    box-shadow: 0 5px 30px 0 rgba(242, 5, 116,.2);
+    box-shadow: 0 5px 30px 0 rgba(242, 5, 116, .2);
     color: #FFF;
     background-color: #F20574;
 }
 
-.secondary{
+.secondary {
     -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.3);
-    box-shadow: 0 5px 30px 0 rgba(6, 9, 64,.3);
+    box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .3);
     color: #FFF;
     background-color: #060940;
 }
 
-.small{
+.small {
     min-width: 100px;
 }
-.medium{
+
+.medium {
     min-width: 180px;
 }
-.large{
+
+.large {
     min-width: 280px;
 }
 
@@ -209,8 +211,8 @@ h6 {
         outline: none;
     }
 
-    input:focus + label,
-    input:valid + label {
+    input:focus+label,
+    input:valid+label {
         background-color: #fff;
         padding: 0 6px;
         font-size: .75rem;
@@ -220,13 +222,14 @@ h6 {
 
 }
 
-.disabled{
-    label{
+.disabled {
+    label {
         color: #aaa;
     }
 }
 
-.has-error{
+.has-error {
+
     button,
     input[type=password],
     input[type=text],
@@ -241,7 +244,9 @@ h6 {
         }
     }
 }
-.has-success{
+
+.has-success {
+
     button,
     input[type=password],
     input[type=text],
@@ -254,14 +259,14 @@ h6 {
         &:focus {
             border-color: #809E82;
         }
-    } 
+    }
 }
 
 .form-row+.form-row {
     margin-top: 28px;
 
     @media @sm,
-    @xs{
+    @xs {
         margin-top: 15px;
     }
 
@@ -341,12 +346,14 @@ textarea {
     &:focus {
         border-color: #3e3f5e;
     }
-    &:disabled{
+
+    &:disabled {
         color: #efefef;
         background-color: #efefef;
     }
-    &:disabled + label {
-        color:#ccc;
+
+    &:disabled+label {
+        color: #ccc;
     }
 }
 
