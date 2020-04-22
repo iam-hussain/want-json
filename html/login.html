@@ -1,71 +1,223 @@
 <!doctype html>
 <html lang="en">
 
-<!-- https://pxltheme.com/html/bolby/demo/index-2.html -->
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="asserts/vendor//bootstrap//css//bootstrap.min.css">
 
-    <link rel="stylesheet" href="asserts/vendor/bootstrap//css/bootstrap.css">
-    <link rel="stylesheet" href="asserts/vendor/animate.css">
     <!-- Custom Style -->
     <link rel="stylesheet/less" type="text/css" href="asserts/less/standard.less" />
-    <link rel="stylesheet/less" type="text/css" href="asserts/less/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="asserts/less/full-page.less" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
-
-    <title>Zakir Hussain</title>
+    <title>getJSON.io</title>
 </head>
 
 <body class="container">
-    <nav class="navbar justify-content-between">
-        <div class="brand hover-animate">getJSON</div>
-        <div class="navButton">
-            <button class="button hover-animate"><i class="fa fa-sticky-note"></i> Doc</button>
-            <button class="button hover-animate"><i class="fa fa-exchange"></i> API</button>
-            <button class="button hover-animate"><i class="fa fa-superpowers"></i> Store</button>
-            <button class="button primary hover-animate"><i class="fa fa-user "></i></button>
-        </div>
-    </nav>
-    <div class="left-half-decoration"></div>
-    <div class="content">
+    <div class="landing-decoration"></div>
+    <div class="landing row align-items-center justify-content-center">
 
-        <div class="authBox row align-items-end justify-content-center">
-            <div class="box col-4">
-                </div>
-                </div>
-
-
-    </div>
-
-    <footer class="sampleview row align-items-end justify-content-center">
-        <div class="col footer-left">
-            <div class="social">
-                <p class="igroup">
-                    <i class="fa fa-home fa-lg hover-animate"></i>
-                    <i class="fa fa-sticky-note fa-lg hover-animate"></i>
-                    <i class="fa fa-github fa-lg hover-animate"></i>
-                    <i class="fa fa-phone fa-lg hover-animate"></i>
-                </p>
-                
+        <div class="landing-info col-md">
+            <h2 class="landing-info-pretitle">Welcome to</h2>
+            <h1 class="landing-info-title brand">getJSON</h1>
+            <p class="landing-info-text">The next generation social network &amp; community! Connect with your friends
+                and play
+                with our quests and badges gamification system!</p>
+            <div class="tab-switch">
+                <p id="loginBtn" class="tab-switch-button active">Login</p>
+                <p id="registerBtn" class="tab-switch-button">Register</p>
             </div>
         </div>
-        <div class="col">
-            
+
+        <div class="landing-form col-md ">
+
+            <div class="form-box hide">
+                <h2 class="form-box-title">Email Verification</h2>
+                <form class="form" novalidate>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <label for="login-username">Enter Verification Code</label>
+                                <input type="text" id="login-username" name="login_username">
+                                <span class="error-block">Please correct the error</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row space-between">
+                        <div class="form-item">
+                            <button class="button form-link">Resend Email...</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button class="button large hover-animate primary">Verify</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box show">
+                <h2 class="form-box-title">Reset Password</h2>
+                <form class="form" novalidate>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input has-error">
+                                <input type="password" id="login-username" name="login_username" required>
+                                <label>New Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input has-success">
+                                <input type="password" id="login-password" name="login_password" required>
+                                <label>Repeat Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button class="button large hover-animate primary">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box hide">
+                <h2 class="form-box-title">Forgot Password</h2>
+                <form class="form" novalidate>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="text" id="login-username" name="login_username" required>
+                                <label for="login-username">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input disabled">
+                                <input type="password" id="login-password" name="login_password" disabled required>
+                                <label for="login-password">Enter Verification Code</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button class="button large hover-animate primary">Send Email</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="loginElement" class="form-box hide">
+                <h2 class="form-box-title">Account Login</h2>
+                <form class="form" novalidate>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="text" id="login-username" name="login_username" required>
+                                <label for="login-username">Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="password" id="login-password" name="login_password" required>
+                                <label for="login-password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row space-between">
+                        <div class="form-item">
+                            <button class="button form-link">Forgot Password ?</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button class="button large hover-animate primary">Login to your Account!</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="lined-text">Login with your Social Account</p>
+
+                <div class="social-links">
+                    <button class="social-link button hover-animate ">
+                        <i class="fa fa-github fa-2x hover-animate"></i>
+                    </button>
+                    <button class="social-link button hover-animate ">
+                        <i class="fa fa-google fa-2x hover-animate"></i>
+                    </button>
+                    <button class="social-link button hover-animate ">
+                        <i class="fa fa-facebook fa-2x hover-animate"></i>
+                    </button>
+
+                </div>
+            </div>
+
+            <div id="registerElement" class="form-box hide">
+                <h2 class="form-box-title">Create your Account!</h2>
+                <form class="form" novalidate>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="text" id="register-email" name="register_email" required>
+                                <label>Your Email</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="password" id="register-password" name="register_password" required>
+                                <label>Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <div class="form-input">
+                                <input type="password" id="register-password-repeat" name="register_password_repeat" required>
+                                <label>Repeat Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button type="button" class="button large hover-animate primary">Register Now!</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="form-text">You'll receive a confirmation email in your inbox with a link to activate your
+                    account. If you have any problems, <a href="#">contact us</a>!</p>
+            </div>
         </div>
-        <div class="col footer-right">
-            <p><i class="fa fa-code hover-animate"></i> with <i class="fa fa-heart hover-animate"></i> by ZaHu</p>
-        </div>
 
-    </footer>
-
-
+    </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="asserts/vendor/jquery/jquery-3.4.1.min.js">
     </script>
@@ -73,6 +225,24 @@
     </script>
     <script src="asserts/vendor/bootstrap/js/bootstrap.min.js">
     </script>
+
+    <script>
+        $("#loginBtn").on("click", function () {
+            $(".form-box").addClass("hide");
+            $(".form-box").removeClass("show");
+            $("#loginElement").addClass("show");
+            $("#loginElement").removeClass("hide");
+        });
+
+        $("#registerBtn").on("click", function () {
+            $(".form-box").addClass("hide");
+            $(".form-box").removeClass("show");
+            $("#registerElement").addClass("show");
+            $("#registerElement").removeClass("hide");
+        });
+    </script>
+
+
 </body>
 
 </html>

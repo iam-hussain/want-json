@@ -1,80 +1,77 @@
-@import './theme.less';
-.navButton {
-    button {
-        margin-right: 10px;
+@import "./theme.less";
 
-        &:last-child {
-            margin: 0px 10px;
+
+.navbar {
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+
+    .navButton {
+        button {
+            margin-right: 10px;
+            min-width: 80px;
+            background-color: #fff;
+
+            &:last-child {
+                min-width: auto;
+                margin: 0px 10px;
+                background-color: #colors[primary];
+            }
         }
     }
-
 }
 
-.landing {
-    min-height: 100vh;
+.home-decoration {
+    position: absolute;
+    width: 35vw;
+    height: 100vh;
+    background-color: #colors[primary];
+    top: 0%;
+    right: 0%;
+    pointer-events: none;
+    z-index: -1;
+    
+    @media @sm,
+    @xs,
+    @md,
+    @lg,
+    @xl {
+        display: none;
+    }
+}
 
-    .intro {
+.home-hero {
+    margin: 5rem 0;
 
+    .home-intro {
         padding: 80px 0px;
         text-align: center;
 
         .hero-image {
             img {
-                max-height: 220px;
+                max-height: 320px;
             }
         }
 
-        div {
-            h1 {
-                font-size: 3.75rem;
-            }
-
-            p {
-                font-size: 1.25rem;
-            }
-
-            button {
-                min-width: 200px;
-                margin-top: 10px;
-            }
+        h1 {
+            font-size: 3.75rem;
         }
 
-        .boxGroup {
-            margin-top: 70px;
+        p {
+            font-size: 1.25rem;
+        }
 
-            h4 {
-                margin-top: 0px;
-                // color: #fff;
-            }
-
-            .box {
-                padding: 40px 20px;
-                width: 400px;
-                border-radius: 5px;
-                // color: #fff;
-                -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .1);
-                box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .1);
-            }
-
-            .left {
-                margin-right: 50px;
-                background-color: #fff;
-            }
-
-            .right {
-                margin-left: 50px;
-                background-color: #fff;
-            }
+        button {
+            min-width: 200px;
+            margin-top: 10px;
+            margin: 20px;
         }
     }
-
 }
 
 .content {
-    padding: 20px 5px;
+    padding: 50px 5px;
     text-align: center;
 }
-
 
 .sampleview {
     div {
@@ -91,7 +88,7 @@
             font-weight: 100;
             margin: 0px;
             padding: 5px 20px;
-            color: #5E5C7F;
+            color: #5e5c7f;
         }
     }
 
@@ -100,8 +97,8 @@
         padding: 10px 0px;
         width: 96%;
         height: 400px;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
-        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
         border-radius: 5px;
 
         tr {
@@ -119,7 +116,6 @@
         }
     }
 
-
     .first,
     .second {
         .browser {
@@ -128,8 +124,8 @@
             margin: 10px;
             padding: 10px;
             border-radius: 5px;
-            -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
+            -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
             background: #fff;
 
             .browser-button {
@@ -151,15 +147,14 @@
                 &:nth-child(3) {
                     background: #29c941;
                 }
-
             }
 
             .address {
                 margin-top: 5px;
                 padding: 5px 10px;
                 background: #f7f7f7;
-                letter-spacing: .32px;
-                letter-spacing: .02rem;
+                letter-spacing: 0.32px;
+                letter-spacing: 0.02rem;
 
                 .host {
                     color: #595286;
@@ -174,40 +169,32 @@
                 background: 0 0;
             }
         }
-
     }
 }
 
-
-.authBox{
-    .box{
+.authBox {
+    .box {
         height: 600px;
         background-color: #fff;
         border-radius: 5px;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
-        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+
+        .buttonGroup {
+            button {
+                width: 50%;
+                background-color: #efefefe;
+
+                &:first-child {
+                    border-radius: 5px 0 0 0;
+                }
+
+                &:last-child {
+                    border-radius: 0 5px 0 0;
+                }
+            }
+        }
     }
-}
-
-
-
-
-.left-half-decoration {
-    position: absolute;
-    width: 100vw;
-    height: 70vh;
-    background-color: #colors[tertiary];
-    top: 0%;
-    left: 0%;
-    pointer-events: none;
-    z-index: -1;
-
-    @media @sm,
-    @xs,
-    @md {
-        display: none;
-    }
-
 }
 
 footer {
@@ -225,7 +212,6 @@ footer {
 
     .social {
         display: flex;
-
     }
 
     .igroup {
@@ -240,6 +226,6 @@ footer {
 
     i {
         font-size: 20px;
-        color: #F20574;
+        color: #f20574;
     }
 }
