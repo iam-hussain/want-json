@@ -1,35 +1,15 @@
 @import "./theme.less";
 
-
-.navbar {
-    background-color: #fff;
-    border-radius: 0 0 5px 5px;
-
-    .navButton {
-        button {
-            margin-right: 10px;
-            min-width: 80px;
-            background-color: #fff;
-
-            &:last-child {
-                min-width: auto;
-                margin: 0px 10px;
-                background-color: #colors[primary];
-            }
-        }
-    }
-}
-
 .home-decoration {
     position: absolute;
     width: 35vw;
     height: 100vh;
     background-color: #colors[primary];
     top: 0%;
-    right: 0%;
+    left: 0%;
     pointer-events: none;
     z-index: -1;
-    
+
     @media @sm,
     @xs,
     @md,
@@ -68,12 +48,8 @@
     }
 }
 
-.content {
-    padding: 50px 5px;
-    text-align: center;
-}
 
-.sampleview {
+.home-sampleview {
     div {
         button {
             margin-bottom: 15px;
@@ -169,63 +145,5 @@
                 background: 0 0;
             }
         }
-    }
-}
-
-.authBox {
-    .box {
-        height: 600px;
-        background-color: #fff;
-        border-radius: 5px;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
-        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
-
-        .buttonGroup {
-            button {
-                width: 50%;
-                background-color: #efefefe;
-
-                &:first-child {
-                    border-radius: 5px 0 0 0;
-                }
-
-                &:last-child {
-                    border-radius: 0 5px 0 0;
-                }
-            }
-        }
-    }
-}
-
-footer {
-    border-top: 1px solid #efefef;
-    margin-top: 50px;
-    padding: 20px;
-
-    .footer-right {
-        text-align: right;
-    }
-
-    .footer-left {
-        text-align: left;
-    }
-
-    .social {
-        display: flex;
-    }
-
-    .igroup {
-        i {
-            padding: 10px;
-        }
-    }
-
-    p {
-        padding: 10px;
-    }
-
-    i {
-        font-size: 20px;
-        color: #f20574;
     }
 }

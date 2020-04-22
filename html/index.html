@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="asserts/vendor/animate.css">
     <!-- Custom Style -->
     <link rel="stylesheet/less" type="text/css" href="asserts/less/standard.less" />
-    <link rel="stylesheet/less" type="text/css" href="asserts/less/styles.less" />
+    <link rel="stylesheet/less" type="text/css" href="asserts/less/home.less" />
+    <link rel="stylesheet/less" type="text/css" href="asserts/less/common.less" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
 
@@ -40,7 +41,10 @@
 
         <div class="home-intro row align-items-center justify-content-center">
             
-            <div class="col">
+            <div class="col-auto">
+                <p class="hero-image"><img src="asserts/img/landing.svg" alt="Hero"></p>
+            </div>
+            <div class="col hero-text-group">
                 <h1>How can we help you?</h1>
                 <p>Search or browse in depth articles and videos on everything on Docs Jekyll theme, from basic theme
                     setup to customisation and development</p>
@@ -49,19 +53,16 @@
                         <button class="button primary hover-animate">Own API</button>
                     </div>
             </div>
-            <div class="col-auto">
-                <p class="hero-image"><img src="asserts/img/landing.svg" alt="Hero"></p>
-            </div>
         </div>
     </div>
     <div class="content">
-        <div class="sampleview row align-items-center justify-content-center">
+        <div class="home-sampleview row align-items-center justify-content-center">
             <div class="col">
                 <h1>Fake Data API</h1>
                 <p>free online REST API that you can use whenever you need some fake data.</p>
-                <button class="button primary hover-animate">See all</button>
+                <button class="button secondary hover-animate">See all</button>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-auto home-sample-table">
                         <table class="resources">
                             <thead>
                                 <th>URL</th>
@@ -114,7 +115,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col second">
+                    <div class="col browserBox">
                         <div class="browser">
                             <div class="browser-button"></div>
                             <div class="browser-button"></div>
@@ -134,13 +135,13 @@
 
     <div class="content">
 
-        <div class="sampleview row align-items-center justify-content-center">
-            <div class="col">
+        <div class="home-sampleview row align-items-center justify-content-center">
+            <div class="col-auto">
                 <h1>Own Data API</h1>
                 <p>free online REST API that you can use whenever you need some fake data.</p>
-                <button class="button primary hover-animate">Create</button>
+                <button class="button secondary hover-animate">Create</button>
                 <div class="row">
-                    <div class="col first">
+                    <div class="col-auto first">
                         <div class="browser">
                             <div class="browser-button"></div>
                             <div class="browser-button"></div>
