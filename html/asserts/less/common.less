@@ -1,10 +1,34 @@
 @import "./theme.less";
 
+
+.container{
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    @media @sm,
+    @xs {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+    }
+}
+
+
 .navbar {
     background-color: #fff;
     justify-content: space-between;
     -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.2);
     box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .2);
+    transition: all 0.6s ease-in-out 0s;
+}
+
+.nav-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.2);
+    box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .2);
+
     .navButton {
         button {
             margin-right: 10px;
@@ -26,8 +50,33 @@
 
     @media @sm,
     @xs {
-        //background-color: #efefef;
+        -webkit-box-shadow:none;
+        box-shadow:none;
         justify-content: center;
+        position: static;
+    }
+}
+
+
+.nav-bottom {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    padding:0.5rem 3rem;
+    justify-content: space-between;
+    button {
+        margin-right: 5px;
+        background-color: #fff;
+    }
+    .active{
+        color: #F20574;
+    }
+    @media @sm,
+    @xs {
+        display: flex;
     }
 }
 
@@ -36,7 +85,7 @@ footer {
     border-top: 1px solid #efefef;
     margin-top: 50px;
     padding: 20px;
-
+    transition: all 0.6s ease-in-out 0s;
 
     .footer-right {
         text-align: right;
@@ -85,5 +134,7 @@ footer {
     @media @sm,
     @xs {
         margin-top: 20px;
+        display: none;
     }
+    
 }
