@@ -44,9 +44,8 @@
                     <div class="form-row">
                         <div class="form-item">
                             <div class="form-input">
-                                <label for="login-username">Enter Verification Code</label>
                                 <input type="text" id="login-username" name="login_username">
-                                <span class="error-block">Please correct the error</span>
+                                <label for="login-username">Enter Verification Code</label>
                             </div>
                         </div>
                     </div>
@@ -73,6 +72,7 @@
                             <div class="form-input has-error">
                                 <input type="password" id="login-username" name="login_username" required>
                                 <label>New Password</label>
+                                <span class="error-block">Please correct the error</span>
                             </div>
                         </div>
                     </div>
@@ -221,17 +221,14 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="asserts/vendor/jquery/jquery-3.4.1.min.js">
     </script>
-    <script src="asserts/vendor/popper.min.js">
-    </script>
-    <script src="asserts/vendor/bootstrap/js/bootstrap.min.js">
-    </script>
-
     <script>
         $("#loginBtn").on("click", function () {
             $(".form-box").addClass("hide");
             $(".form-box").removeClass("show");
             $("#loginElement").addClass("show");
             $("#loginElement").removeClass("hide");
+            $('.tab-switch-button').removeClass("active");
+            $('#loginBtn').addClass("active");
         });
 
         $("#registerBtn").on("click", function () {
@@ -239,6 +236,8 @@
             $(".form-box").removeClass("show");
             $("#registerElement").addClass("show");
             $("#registerElement").removeClass("hide");
+            $('.tab-switch-button').removeClass("active");
+            $('#registerBtn').addClass("active");
         });
     </script>
 

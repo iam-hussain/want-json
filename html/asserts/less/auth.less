@@ -27,6 +27,7 @@
 .landing-info {
     width: 584px;
     text-align: center;
+
     .landing-info-pretitle {
         text-transform: uppercase;
         margin-top: 36px;
@@ -67,7 +68,7 @@
             width: auto;
         }
     }
-    
+
     @media @sm,
     @xs,
     @md,
@@ -84,17 +85,21 @@
     display: flex;
     -ms-flex-pack: center;
     justify-content: center;
+    font-family: "Rajdhani";
 
     .tab-switch-button {
+        background-color: #fff;
         width: 180px;
-        height: 54px;
-        border: 1px solid #5E5C7F;
+        border: 1px solid #colors[secondary];
         font-size: 1rem;
         font-weight: 700;
-        line-height: 54px;
+        border-radius: 0px;
         text-align: center;
         cursor: pointer;
         transition: background-color .3s ease-in-out, color .3s ease-in-out;
+        overflow: hidden;
+        line-height: 1;
+        padding: 12px 14px;
 
         &:first-child {
             border-top-left-radius: 50px;
@@ -119,7 +124,9 @@
 
     .active {
         color: #fff;
-        background-color: #060940;
+        background-color: #colors[secondary];
+        // -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.3);
+        // box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .3);
         cursor: auto;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -128,12 +135,12 @@
     }
 
     @media @sm,
-        @xs,
-        @md,
-        @lg,
-        @xl {
-            margin-top: 30px;
-        }
+    @xs,
+    @md,
+    @lg,
+    @xl {
+        margin-top: 30px;
+    }
 
 }
 
@@ -157,17 +164,19 @@
         width: 484px;
         min-width: 300px;
         padding: 45px 64px;
-        border-radius: 15px;
         background-color: #fff;
+        border-radius: 10px;
         box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
-      
+        -webkit-box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+
 
         .form-text,
         .social-links {
             text-align: center;
-            .social-link{
+
+            .social-link {
                 background-color: #fff;
-                color:  #060940;
+                color: #colors[secondary];
             }
         }
 
@@ -264,9 +273,14 @@
             content: "";
             width: 70px;
             height: 2px;
-            background-color: #F20574;
+            background-color: #colors[primary];
             position: absolute;
             top: 10px;
+
+            @media @sm,
+            @xs {
+                content: none;
+            }
         }
 
         &:after {

@@ -1,23 +1,5 @@
 @import './theme.less';
 
-
-
-@font-face {
-    font-family: 'FredokaOne';
-    src: url('../fonts/FredokaOne-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Josefin_Sans';
-    src: url('../fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');
-}
-
-@font-face {
-    font-family: 'Raleway';
-    src: url('../fonts/Raleway-Bold.ttf');
-}
-
-
 body {
     color: #5E5C7F;
     background: #fff;
@@ -33,7 +15,7 @@ body {
 .brand {
     font-family: "FredokaOne";
     font-size: 25px;
-    color: #F20574;
+    color: #colors[primary];
     padding: 5px 15px;
     
     @media @sm,
@@ -41,7 +23,6 @@ body {
         font-size: 30px;
     }
 }
-
 
 .content {
     padding: 30px 5px;
@@ -54,7 +35,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #454360;
+    color: #3e3f5e;
     font-family: "Raleway", sans-serif;
     font-weight: 700;
     margin: 20px 0;
@@ -63,11 +44,12 @@ h6 {
 .button {
     width: auto;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     overflow: hidden;
     line-height: 1;
     padding: 12px 14px;
+    font-family: "Rajdhani";
     display: inline-block;
     cursor: pointer;
     transition: background-color .2s ease-in-out,
@@ -111,7 +93,6 @@ h6 {
     }
 
     &:focus {
-        // box-shadow: 0 0 0 0rem rgba(38, 143, 255, .2);
         outline: 0px dotted;
         outline: 0px auto -webkit-focus-ring-color;
         border-color: transparent;
@@ -131,6 +112,18 @@ h6 {
         animation-iteration-count: 1;
     }
 
+    @keyframes button-push{
+        50% {
+            -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+        }
+
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+    
     @-webkit-keyframes button-push {
         50% {
             -webkit-transform: scale(0.8);
@@ -148,14 +141,14 @@ h6 {
     -webkit-box-shadow: 0 10px 10px 0 rgba(242, 5, 116, 0.2);
     box-shadow: 0 5px 30px 0 rgba(242, 5, 116, .2);
     color: #FFF;
-    background-color: #F20574;
+    background-color: #colors[primary];
 }
 
 .secondary {
     -webkit-box-shadow: 0 10px 10px 0 rgba(6, 9, 64, 0.3);
     box-shadow: 0 5px 30px 0 rgba(6, 9, 64, .3);
     color: #FFF;
-    background-color: #060940;
+    background-color: #colors[secondary];
 }
 
 .small {
@@ -195,6 +188,7 @@ h6 {
 }
 
 .form-input {
+    text-align: left;
     position: relative;
 
     label {
@@ -267,6 +261,13 @@ h6 {
     }
 }
 
+.error-block{
+    padding-left: 15px;
+    font-size: 0.75rem;
+    color: #EF89A1;
+    font-family: "Rajdhani";
+}
+
 .form-row+.form-row {
     margin-top: 28px;
 
@@ -309,7 +310,7 @@ input[type=text],
 label,
 select,
 textarea {
-    font-family: Rajdhani, sans-serif;
+    font-family: "Rajdhani";
 }
 
 input[type=password],
@@ -345,7 +346,7 @@ input[type=text],
 label,
 select,
 textarea {
-    font-family: Rajdhani, sans-serif;
+    font-family: "Rajdhani";
     border-color: #e3dfdf;
 
     &:focus {
