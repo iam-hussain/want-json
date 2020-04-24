@@ -3,11 +3,13 @@
 
 .docs-decoration {
     position: absolute;
-    width: 60vw;
-    height: 18vh;
+    width: 100px;
+    height: 100px;
     background-color: #colors[primary];
-    top: 0%;
-    left: 0%;
+    border-radius: 50%;
+    //opacity: .5;
+    top: 55%;
+    right: 1%;
     pointer-events: none;
     z-index: -1;
     transition: all 0.6s ease-in-out 0s;
@@ -21,80 +23,123 @@
 }
 
 
-.docs-header {
-    text-align: center;
-    padding-left: 2rem;
-    pointer-events: none;
+.sidebar-cover {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: -10000;
+    transition: all 0.6s ease-in-out 0s;
+    overflow: hidden;
+}
+
+
+.menu-sidebar {
+    background-color: transparent;
+    width: calc(@width * 23);
+    left: calc((@width * 20) - 100px);
+    top: 80px;
+    bottom: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 2.5rem 0;
+    position: fixed;
+    z-index: 1030;
     transition: all 0.6s ease-in-out 0s;
 
-    h1 {
-        font-size: 2rem;
-        color: #fff;
+    h5 {
+        font-size: 1.25rem;
+        line-height: 1.4;
     }
-}
-.docs-sidebar {
-    .menu-sidebar {
-        background-color: transparent;
-        width: 320px;
-        top: 112px;
-        bottom: 70px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding-top: 2.5rem;
-        position: fixed;
-        z-index: 1030;
 
-        h5 {
-            font-size: 1.25rem;
-            line-height: 1.4;
-        }
+    .doc-nav {
+        font-size: 1rem;
+        padding-left: 30px;
+        list-style: none;
+        color: #8f919e;
 
-        .doc-nav {
-            font-size: 1rem;
-            padding-left: 30px;
-            list-style: none;
+        a {
             color: #8f919e;
 
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .active {
+            position: relative;
+
             a {
-                color: #8f919e;
+                color: #colors[primary];
 
-                &:hover {
-                    text-decoration: none;
-                }
-            }
-
-            .active {
-                position: relative;
-
-                a {
-                    color: #colors[primary];
-
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        top: 10px;
-                        left: -14px;
-                        width: 7px;
-                        border-top: 3px solid #colors[primary];
-                    }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 10px;
+                    left: -14px;
+                    width: 7px;
+                    border-top: 3px solid #colors[primary];
                 }
             }
         }
+    }
 
-        h5 {
-            padding-left: 10px;
-        }
+    h5 {
+        padding-left: 10px;
+    }
 
-        @media @sm,
-        @xs {
-            display: none;
-        }
+    @media @sm,
+    @xs {
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        bottom: 0;
+        padding: 20px 25px;
+        width: auto;
+        z-index: -100;
+        background-color: #fff;
+    }
+}
+
+.showCover {
+    z-index: 80;
+    opacity: 1;
+}
+
+.showMenu {
+    background-color: #fff;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 100;
+    opacity: 1;
+
+}
+
+.menu-close {
+    position: absolute;
+    right: 10px;
+    background-color: #fff;
+    top: 10px;
+    display: none;
+
+    @media @sm,
+    @xs {
+        display: block;
     }
 }
 
 .docs-content {
 
+    transition: all 0.6s ease-in-out 0s;
     padding-top: 3rem;
+
     @media @sm,
     @xs {
         padding-top: .5rem;
@@ -104,6 +149,8 @@
 
 
 .docs-article {
+
+    transition: all 0.6s ease-in-out 0s;
 
     h2 {
         font-size: 2.5rem;
@@ -116,9 +163,9 @@
     p {
         font-size: 1rem;
     }
-    .box{
+
+    .box {
         padding: 20px;
-        box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
-        -webkit-box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+        .shadow();
     }
 }
