@@ -1,0 +1,204 @@
+@import "./theme.less";
+
+.explore-decoration {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    background-color: #colors[primary];
+    top: 0px;
+    left: 0vh;
+    pointer-events: none;
+    z-index: -1;
+    transition: all 0.6s ease-in-out 0s;
+    @media @sm,
+    @xs,
+    @md{
+        display: none;
+    }
+}
+
+.explore-search-row {
+    padding: 1rem;
+    transition: all 0.6s ease-in-out 0s;
+
+    .explore-search-form {
+
+        @media @sm,
+        @xs {
+            text-align: center;
+        }
+    }
+
+    @media @sm,
+    @xs {
+        padding: 0px;
+    }
+}
+
+.explore-box {
+    padding: 10px;
+
+    .explore-content {
+        padding: 10px;
+
+        @media @sm,
+        @xs {
+            padding: 10px 0;
+        }
+    }
+
+    @media @sm,
+    @xs {
+        padding: 0px;
+    }
+}
+
+
+.explore-list {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    text-align: center;
+    transition: all 0.6s ease-in-out 0s;
+
+    .explore-item {
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-between;
+        margin: 5px;
+        padding: 10px;
+        align-items: center;
+        transition: all 0.6s ease-in-out 0s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        .shadow();
+
+        .header {
+            display: -ms-flexbox;
+            display: flex;
+
+            .certificate {
+                align-self: center;
+                min-width: 20px;
+            }
+
+            .active {
+                color: #colors[primary];
+            }
+
+            .explore-text {
+                text-align: left;
+                margin-left: 10px;
+
+                h6 {
+                    margin: 0px;
+
+                    @media @sm,
+                    @xs {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                p {
+                    margin: 0px;
+
+                    @media @sm,
+                    @xs {
+                        display: none;
+                    }
+                }
+
+                .keyword-list {
+                    margin: 0;
+                    font-size: 12px;
+
+                    .keyword-item {
+                        color: #colors[bg];
+                        background-color: #colors[text3];
+                        padding: 2px 10px;
+                        margin: 2px 2px;
+                        display: flex;
+                        border-radius: 2px;
+                        .shadow();
+                    }
+                }
+
+            }
+        }
+
+        .action {
+            button {
+                padding: 0 2px;
+                background-color: transparent;
+                color: #colors[text2];
+
+                &:hover {
+                    color: #colors[primary];
+                }
+
+
+                @media @sm,
+                @xs {
+                    padding: 5px;
+                    min-width: 20px;
+                }
+            }
+
+            .active {
+                color: #colors[primary];
+            }
+            @media @sm,
+            @xs {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center
+            }
+        }
+    }
+}
+
+.tags-container {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    min-height: 25px;
+    border-radius: 10px;
+    .shadow();
+
+    .tags-box {
+        font-family: "Rajdhani";
+        display: flex;
+        background-color: #colors[secondary];
+        color: #colors[bg];
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        position: relative;
+
+        .tags {
+            padding: 0px 5px;
+            padding-right: 15px;
+            border-radius: 2px;
+            margin-right: 5px;
+            white-space: pre;
+        }
+
+        .tags-close {
+            cursor: pointer;
+            position: absolute;
+            top: 1px;
+            right: 5px;
+            transition: all 0.6s ease-in-out 0s;
+
+            &:hover {
+                color: #colors[primary];
+            }
+        }
+    }
+}

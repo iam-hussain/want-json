@@ -11,8 +11,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap//css/bootstrap.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
     <!-- Custom Style -->
     <link rel="stylesheet/less" type="text/css" href="assets/less/standard.less" />
     <link rel="stylesheet/less" type="text/css" href="assets/less/docs.less" />
@@ -23,32 +24,32 @@
 </head>
 
 <body>
-    <nav class="navbar nav-top">
-        <div class="brand hover-animate">getJSON</div>
-        <div class="pageTitle">Documentation</div>
-        <div class="navButton">
-            <button class="button hover-animate"><i class="fas fa-home"></i> Home</button>
-            <button class="button hover-animate"><i class="fas fa-book"></i> Doc</button>
-            <button class="button hover-animate"><i class="fas fa-laptop-code"></i> API</button>
-            <button class="button hover-animate"><i class="fas fa-store"></i> Store</button>
-            <button class="button primary hover-animate"><i class="fas fa-user"></i></button>
+    <nav class="navBar nav-top">
+        <div class="container">
+            <div class="title">
+                <div class="brand hover-animate">getJSON</div>
+                <div class="pageTitle">Docs</div>
+            </div>
+            <div class="navButton">
+                <button class="button hover-animate maxOnly"><i class="fas fa-book"></i> Doc</button>
+                <button class="button hover-animate maxOnly"><i class="fas fa-laptop-code"></i> API</button>
+                <button class="button hover-animate maxOnly"><i class="fas fa-store"></i> Store</button>
+                <button class="button hover-animate"><i class="fas fa-ellipsis-v"></i></button>
+            </div>
         </div>
     </nav>
 
     <nav class="navbar nav-bottom">
-        <button class="button"><i class="fas fa-home"></i></button>
-        <button class="button active open-docs-menu"><i class="fas fa-book"></i></button>
+        <button class="button open-docs-menu"><i class="fas fa-book"></i></button>
         <button class="button"><i class="fas fa-laptop-code"></i></button>
         <button class="button"><i class="fas fa-store"></i></button>
-        <button class="button"><i class="fas fa-user "></i></button>
     </nav>
 
 
     <div class="sidebar-cover close-docs-menu"></div>
     <div class="menu-sidebar" id="menuitem">
         <button class="button hover-animate menu-close close-docs-menu" type="button" data-uk-close="">
-            <svg width="14" height="14"
-                viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" data-svg="close-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" data-svg="close-icon">
                 <line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
                 <line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line>
             </svg>
@@ -79,57 +80,90 @@
             <li><a href="/docs/support/">Contacting support</a></li>
         </ul>
     </div>
-    <div class="container">
-        <div class="row docs-content">
-            <div class="col-md offset-md-4 docs-article">
-                <article class="article">
-                    <h2 class="article-title">Getting Started</h2>
-                    <p class="text-muted">This document covers the setup and options of theme feature
-                        described in the doc title</p>
-                    <div class="article-content">
-                        <h3 class="uk-article-title">How it works</h3>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row docs-content">
+                <div class="col-md offset-md-4 docs-article">
+                    <article class="article">
+                        <h2 class="article-title">Getting Started</h2>
                         <p class="text-muted">This document covers the setup and options of theme feature
                             described in the doc title</p>
-                        <article class="sub-article">
-                            <div class="box">
-                                // npm run start
-                            </div>
-                        </article>
-                    </div>
-                    <div class="article-content">
-                        <h3 class="uk-article-title">How it works</h3>
-                        <p class="text-muted">This document covers the setup and options of theme feature
-                            described in the doc title</p>
-                        <article class="sub-article">
-                            <div class="box">
-                                // npm run start
-                            </div>
-                        </article>
-                    </div>
-                    <div class="article-content">
-                        <h3 class="uk-article-title">How it works</h3>
-                        <p class="text-muted">This document covers the setup and options of theme feature
-                            described in the doc title</p>
-                        <article class="sub-article">
-                            <div class="box">
-                                // npm run start
-                            </div>
-                        </article>
-                    </div>
-                    <div class="article-content">
-                        <h3 class="uk-article-title">How it works</h3>
-                        <p class="text-muted">This document covers the setup and options of theme feature
-                            described in the doc title</p>
-                        <article class="sub-article">
-                            <div class="box">
-                                // npm run start
-                            </div>
-                        </article>
-                    </div>
-                </article>
+                        <div class="article-content">
+                            <h3 class="uk-article-title">How it works</h3>
+                            <p class="text-muted">This document covers the setup and options of theme feature
+                                described in the doc title</p>
+                            <article class="sub-article">
+                                <div class="box">
+                                    // npm run start
+                                </div>
+                            </article>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="uk-article-title">How it works</h3>
+                            <p class="text-muted">This document covers the setup and options of theme feature
+                                described in the doc title</p>
+                            <article class="sub-article">
+                                <div class="box">
+                                    // npm run start
+                                </div>
+                            </article>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="uk-article-title">How it works</h3>
+                            <p class="text-muted">This document covers the setup and options of theme feature
+                                described in the doc title</p>
+                            <article class="sub-article">
+                                <div class="box">
+                                    // npm run start
+                                </div>
+                            </article>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="uk-article-title">How it works</h3>
+                            <p class="text-muted">This document covers the setup and options of theme feature
+                                described in the doc title</p>
+                            <article class="sub-article">
+                                <div class="box">
+                                    // npm run start
+                                </div>
+                            </article>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="row align-items-end justify-content-center">
+                <div class="col-md footer-left">
+                    <div class="social">
+                        <button class="button hover-animate">
+                            <i class="fas fa-home"></i>
+                        </button>
+                        <button class="button hover-animate">
+                            <i class="fas fa-laptop-code"></i>
+                        </button>
+                        <button class="button hover-animate">
+                            <i class="fas fa-book"></i>
+                        </button>
+                        <button class="button hover-animate">
+                            <i class="fab fa-github"></i>
+                        </button>
+                        <button class="button hover-animate">
+                            <i class="fas fa-address-card"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md footer-right">
+                    <p><i class="fa fa-code hover-animate primary-text"></i> with <i
+                            class="fa fa-heart hover-animate primary-text"></i> by ZaHu</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/vendor/jquery/jquery-3.4.1.min.js">

@@ -2,8 +2,8 @@
 
 .home-decoration {
     position: absolute;
-    width: 30vw;
-    height: 100vh;
+    width: 50vw;
+    height: 50vh;
     background-color: #colors[primary];
     top: 0%;
     left: 0%;
@@ -13,72 +13,84 @@
 
     @media @sm,
     @xs,
-    @md,
-    @lg {
+    @md {
         display: none;
     }
 }
 
-.home-hero {
-    margin: 8rem 0;
-    transition: all 0.6s ease-in-out 0s;
 
-    .home-intro {
-        padding: 80px 0px;
-        margin-bottom: 30px;
-        text-align: center;
 
-        .hero-image {
-            img {
-                max-height: 320px;
+.content {
+    padding: 30px 5px;
+    text-align: center;
+    @media @sm,
+    @xs,
+    @md {
+        padding: 15px 0;;
+    }
+}
+
+.home-intro {
+    text-align: center;
+    min-height: 80vh;
+    margin-bottom: 15px;
+
+    .hero-image {
+        img {
+            max-height: 320px;
+
+            @media @sm,
+            @xs,
+            @md,
+            @lg {
+                min-height: auto;
+                width: 60%;
+            }
+        }
+    }
+
+    .hero-text-group {
+        .intro-group {
+            button {
+                min-width: 200px;
+                margin-top: 10px;
+                margin: 20px;
 
                 @media @sm,
                 @xs,
                 @md,
                 @lg {
-                    min-height: auto;
-                    width: 60%;
+                    margin: 5px 0;
                 }
             }
         }
 
-        .hero-text-group {
-            .intro-group {
-                button {
-                    min-width: 200px;
-                    margin-top: 10px;
-                    margin: 20px;
+        @media @md,
+        @lg {
+            min-width: 100%;
+        }
+    }
 
-                    @media @sm,
-                    @xs,
-                    @md,
-                    @lg {
-                        margin: 5px 0;
-                    }
-                }
-            }
-            @media @md,
-            @lg {
-                min-width: 100%;
-            }
-        }
-        h1 {
-            font-size: 3.75rem;
+    h1 {
+        font-size: 3.75rem;
 
-            @media @sm,
-            @xs,
-            @md {
-                font-size: 2.75rem;
-            }
+        @media @md {
+            font-size: 2.5rem;
         }
-        p {
-            font-size: 1.25rem;
+
+        @media @sm,
+        @xs {
+            font-size: 1.75rem;
         }
+    }
+
+    p {
+        font-size: 1.25rem;
+
         @media @sm,
         @xs,
-        @md,
-        @lg {
-            padding: 0px;
+        @md {
+            font-size: 1rem;
         }
     }
 
@@ -86,13 +98,7 @@
     @xs,
     @md,
     @lg {
-        margin: 1rem;
-        margin-top: 7rem;
-    }
-
-    @media @sm,
-    @xs {
-        margin: 10px;
+        padding: 0px;
     }
 }
 
@@ -112,7 +118,7 @@
 
         td {
             button {
-                background-color: #fff;
+                background-color: #colors[bg];
                 min-width: auto;
                 font-weight: 100;
                 margin: 0px;
@@ -122,7 +128,7 @@
         }
 
         table {
-            background-color: #fff;
+            background-color: #colors[bg];
             margin: 2%;
             padding: 10px 0px;
             width: 96%;
@@ -151,6 +157,12 @@
                     }
                 }
             }
+
+            @media @sm,
+            @xs{
+                width: 100%;
+                margin: 10px auto;
+            }
         }
 
 
@@ -174,7 +186,7 @@
             padding: 10px;
             border-radius: 10px;
             .shadow();
-            background: #fff;
+            background: #colors[bg];
 
             .browser-button {
                 display: inline-block;
@@ -217,6 +229,11 @@
                 border-left: none;
                 background: 0 0;
             }
+
+            @media @sm,
+    @xs {
+        margin: 10px 0;
+    }
 
         }
 

@@ -33,6 +33,11 @@
         margin-top: 36px;
         font-size: 1.5rem;
         font-weight: 500;
+
+        @media @sm,
+        @xs {
+            margin-top: 10px;
+        }
     }
 
     .landing-info-title {
@@ -67,6 +72,11 @@
         @xl {
             width: auto;
         }
+
+        @media @sm,
+        @xs {
+            margin: 0px;
+        }
     }
 
     @media @sm,
@@ -88,7 +98,7 @@
     font-family: "Rajdhani";
 
     .tab-switch-button {
-        background-color: #fff;
+        background-color:  #colors[bg];
         width: 180px;
         border: 1px solid #colors[secondary];
         font-size: 1rem;
@@ -114,16 +124,21 @@
         @media @sm,
         @xs,
         @md,
-        @lg,
-        @xl {
+        @lg {
             width: 150px;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        @media @sm,
+        @xs,
+        @md{
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
     }
 
     .active {
-        color: #fff;
+        color:  #colors[bg];
         background-color: #colors[secondary];
         cursor: auto;
         -webkit-user-select: none;
@@ -149,12 +164,12 @@
     opacity: 1;
     visibility: visible;
     z-index: 1;
-    
+
     .form-box {
         width: 484px;
         min-width: 300px;
         padding: 45px 64px;
-        background-color: #fff;
+        background-color:  #colors[bg];
         border-radius: 10px;
         .shadow();
 
@@ -163,7 +178,7 @@
             text-align: center;
 
             .social-link {
-                background-color: #fff;
+                background-color:  #colors[bg];
                 color: #colors[secondary];
             }
         }

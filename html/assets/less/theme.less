@@ -2,10 +2,11 @@
     primary: #F20574;
     secondary: #060940;
     tertiary: #efefef;
-    textDark: #3e3f5e;
-    textMain: #5E5C7F;
-    textLight: #8f919e;
+    text1: #3e3f5e;
+    text2: #5E5C7F;
+    text3: #8f919e;
     bg: #fff;
+    paper: #efefef;
     error: #EF89A1;
     success: #809E82;
 }
@@ -17,6 +18,20 @@
 .shadow {
     box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
     -webkit-box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+}
+
+.scroll{
+    &::-webkit-scrollbar-track {
+        background-color:  #colors[paper];
+    }
+
+    &::-webkit-scrollbar {
+        background-color:  #colors[paper];
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #colors[primary];
+    }
 }
 
 @font-face {

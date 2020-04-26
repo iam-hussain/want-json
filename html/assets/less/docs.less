@@ -7,7 +7,6 @@
     height: 100px;
     background-color: #colors[primary];
     border-radius: 50%;
-    //opacity: .5;
     top: 55%;
     right: 1%;
     pointer-events: none;
@@ -21,7 +20,6 @@
         display: none;
     }
 }
-
 
 .sidebar-cover {
     position: fixed;
@@ -43,30 +41,17 @@
 .menu-sidebar {
     background-color: transparent;
     width: calc(@width * 23);
-    left: calc((@width * 20) - 100px);
-    top: 80px;
-    bottom: 10px;
+    padding: 0 5px;
+    padding-right: 15px;
+    left: calc(@width * 10);
+    top: 50px;
+    bottom: 50px;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 2.5rem 0;
     position: fixed;
     z-index: 1030;
     transition: all 0.6s ease-in-out 0s;
-
-    &::-webkit-scrollbar-track {
-        background-color: #efefef;
-    }
-
-    &::-webkit-scrollbar {
-        width: 10px;
-        background-color: #efefef;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color:#colors[primary];
-    }
-
-
+    .scroll();
     h5 {
         font-size: 1.25rem;
         line-height: 1.4;
@@ -114,10 +99,10 @@
         top: 0;
         left: -100vw;
         bottom: 0;
-        padding: 20px 25px;
+        padding: 10px 25px;
         width: auto;
         z-index: -100;
-        background-color: #fff;
+        background-color:  #colors[bg];
     }
 }
 
@@ -127,7 +112,7 @@
 }
 
 .showMenu {
-    background-color: #fff;
+    background-color:  #colors[bg];
     left: 0px;
     top: 0px;
     bottom: 0px;
@@ -139,7 +124,7 @@
 .menu-close {
     position: absolute;
     right: 10px;
-    background-color: #fff;
+    background-color:  #colors[bg];
     top: 10px;
     display: none;
 
@@ -150,36 +135,24 @@
 }
 
 .docs-content {
-
     transition: all 0.6s ease-in-out 0s;
-    padding: 3rem 1rem;
-
-    @media @sm,
-    @xs {
-        padding-top: .5rem;
-        padding-bottom: 3rem;
-    }
 }
 
 
 .docs-article {
-
+    padding-bottom: 10px;
     transition: all 0.6s ease-in-out 0s;
-
-    h2 {
-        font-size: 2.5rem;
+    article{
+        margin: 20px 0;
     }
-
-    h3 {
-        font-size: 1.5rem;
-    }
-
     p {
-        font-size: 1rem;
+        margin: 0px;
     }
 
     .box {
         padding: 20px;
+        margin: 20px 0;
         .shadow();
     }
+    
 }

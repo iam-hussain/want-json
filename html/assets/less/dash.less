@@ -19,53 +19,12 @@
     }
 }
 
-.tags-container {
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    min-height: 25px;
-    border-radius: 10px;
-    .shadow();
-
-    .tags-box {
-        font-family: "Rajdhani";
-        display: flex;
-        background-color: #colors[secondary];
-        color: #fff;
-        border-radius: 5px;
-        padding: 5px;
-        margin: 5px;
-        position: relative;
-
-        .tags {
-            padding: 0px 5px;
-            padding-right: 15px;
-            border-radius: 2px;
-            margin-right: 5px;
-            white-space: pre;
-        }
-
-        .tags-close {
-            cursor: pointer;
-            position: absolute;
-            top: 1px;
-            right: 5px;
-            transition: all 0.6s ease-in-out 0s;
-
-            &:hover {
-                color: #colors[primary];
-            }
-        }
-    }
-}
-
 .dash-content {
-    margin: 1rem 0;
-    margin-top: 5.5rem;
-    padding: 20px;
+    padding: 15px 0;
     transition: all 0.6s ease-in-out 0s;
-    min-height: 85vh;
-    .shadow();
+    //min-height: 85vh;
+    align-items: center;
+    justify-content: center;
 
     .dash-menu {
         min-width: 250px;
@@ -92,11 +51,12 @@
 
                 &:hover {
                     background-color: #colors[secondary];
-                    color: #fff;
+                    color: #colors[bg];
                 }
 
                 @media @sm,
                 @xs {
+                    margin: 0px;
                     height: 50px;
                     width: 50px;
                     justify-content: center;
@@ -105,7 +65,7 @@
             }
 
             .active {
-                color: #fff;
+                color: #colors[bg];
                 background-color: #colors[primary];
             }
 
@@ -123,11 +83,13 @@
     }
 
     .dash-box-content {
+        margin: 20px 0;
         transition: all 0.6s ease-in-out 0s;
 
         .dash-box-title {
             h2 {
                 padding-bottom: 10px;
+                margin-bottom: 20px;
                 border-bottom: 2px solid #colors[primary];
                 -webkit-user-select: none;
                 -moz-user-select: none;
@@ -136,6 +98,13 @@
             }
         }
     }
+
+
+    @media @sm,
+            @xs {
+    align-items: start;
+    justify-content: start;
+            }
 
 }
 
@@ -179,7 +148,7 @@
             button {
                 padding: 0 2px;
                 background-color: transparent;
-                color: #colors[textMain];
+                color: #colors[text2];
 
                 &:hover {
                     color: #colors[primary];
@@ -232,7 +201,7 @@
             button {
                 padding: 0 2px;
                 background-color: transparent;
-                color: #colors[textMain];
+                color: #colors[text2];
 
                 &:hover {
                     color: #colors[primary];
@@ -245,8 +214,49 @@
             .header {
                 .flag {
                     color: #colors[primary];
-                
+
                 }
+            }
+        }
+    }
+}
+
+
+.tags-container {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    min-height: 25px;
+    border-radius: 10px;
+    .shadow();
+
+    .tags-box {
+        font-family: "Rajdhani";
+        display: flex;
+        background-color: #colors[secondary];
+        color: #colors[bg];
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        position: relative;
+
+        .tags {
+            padding: 0px 5px;
+            padding-right: 15px;
+            border-radius: 2px;
+            margin-right: 5px;
+            white-space: pre;
+        }
+
+        .tags-close {
+            cursor: pointer;
+            position: absolute;
+            top: 1px;
+            right: 5px;
+            transition: all 0.6s ease-in-out 0s;
+
+            &:hover {
+                color: #colors[primary];
             }
         }
     }
