@@ -30,12 +30,21 @@
                 <div class="brand hover-animate">getJSON</div>
                 <div class="pageTitle">Docs</div>
             </div>
-            <div class="navButton">
-                <button class="button hover-animate maxOnly"><i class="fas fa-book"></i> Doc</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-laptop-code"></i> API</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-store"></i> Store</button>
-                <button class="button hover-animate"><i class="fas fa-ellipsis-v"></i></button>
-            </div>
+            <ul>
+                <li><a class="button maxOnly"><i class="fas fa-book"></i> Doc</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-laptop-code"></i> API</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-store"></i> Store</a></li>
+                <li><a class="button dropper"><i class="fas fa-ellipsis-v"></i></a>
+                    <ul class="dropdown">
+                        <li><a class="button">New Store</a></li>
+                        <li><a class="button">My Store</a></li>
+                        <li><a class="button">Profile</a></li>
+                        <li><a class="button">Bookmark</a></li>
+                        <li class="separate"><a class="button">Login</a></li>
+                        <li><a class="button">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -46,8 +55,8 @@
     </nav>
 
 
-    <div class="sidebar-cover close-docs-menu"></div>
-    <div class="menu-sidebar" id="menuitem">
+    <div class="docs-cover close-docs-menu"></div>
+    <div class="docs-sidebar" id="menuitem">
         <button class="button hover-animate menu-close close-docs-menu" type="button" data-uk-close="">
             <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" data-svg="close-icon">
                 <line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
@@ -171,13 +180,13 @@
     <script>
         $(".open-docs-menu").on("click", function () {
             console.log("====")
-            $(".sidebar-cover").addClass("showCover");
-            $(".menu-sidebar").addClass("showMenu");
+            $(".docs-cover").addClass("show-docs-cover");
+            $(".docs-sidebar").addClass("show-docs-menu");
         });
 
         $(".close-docs-menu").on("click", function () {
-            $(".sidebar-cover").removeClass("showCover");
-            $(".menu-sidebar").removeClass("showMenu");
+            $(".docs-cover").removeClass("show-docs-cover");
+            $(".docs-sidebar").removeClass("show-docs-menu");
         });
     </script>
 </body>

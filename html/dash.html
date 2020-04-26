@@ -33,12 +33,21 @@
                 <div class="pageTitle">Dashboard</div>
             </div>
             <div class="pageTitle"></div>
-            <div class="navButton">
-                <button class="button hover-animate maxOnly"><i class="fas fa-book"></i> Doc</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-laptop-code"></i> API</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-store"></i> Store</button>
-                <button class="button hover-animate"><i class="fas fa-ellipsis-v"></i></button>
-            </div>
+            <ul>
+                <li><a class="button maxOnly"><i class="fas fa-book"></i> Doc</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-laptop-code"></i> API</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-store"></i> Store</a></li>
+                <li><a class="button dropper"><i class="fas fa-ellipsis-v"></i></a>
+                    <ul class="dropdown">
+                        <li><a class="button">New Store</a></li>
+                        <li><a class="button">My Store</a></li>
+                        <li><a class="button">Profile</a></li>
+                        <li><a class="button">Bookmark</a></li>
+                        <li class="separate"><a class="button">Login</a></li>
+                        <li><a class="button">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -48,24 +57,106 @@
         <button class="button"><i class="fas fa-store"></i></button>
     </nav>
 
+    <div class="model-cover model-close">
+        <div class="model-box">
+            <div class=" model-content">
+                <div class="model-text">
+                    <h2>Delete</h2>
+                    <p>Are you sure u want to delete this store ?</p>
+                </div>
+                <div class="model-button">
+                    <button class="button secondary model-close"><i class="fas fa-laptop-code"></i> Cancel</button>
+                    <button class="button primary model-close"><i class="fas fa-trash-alt"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="dash-decoration"></div>
     <div class="wrapper">
         <div class="container">
             <div class="row dash-content">
                 <div class="col-md-4 dash-menu">
                     <ul class="menu-list">
-                        <li class="button menu-item active" data="newStore"><i class="fa fa-plus"></i><span
-                                class="menu-name"> New Store</span></li>
-                        <li class="button menu-item" data="myStore"><i class="fa fa-store"></i><span class="menu-name">
+                        <li class="button menu-item active" data="newStore">
+                            <i class="fa fa-plus"></i>
+                            <span class="menu-name"> New Store</span>
+                        </li>
+                        <li class="button menu-item" data="myStore">
+                            <i class="fa fa-store"></i>
+                            <span class="menu-name">
                                 My Stores</span></li>
-                        <li class="button menu-item" data="myProfile"><i class="fas fa-id-card-alt"></i><span
-                                class="menu-name"> My Profile</span></li>
-                        <li class="button menu-item" data="myBookmark"><i class="fas fa-bookmark"></i><span
-                                class="menu-name"> My Bookmark</span></li>
+                        <li class="button menu-item" data="myProfile">
+                            <i class="fas fa-id-card-alt"></i>
+                            <span class="menu-name"> My Profile</span>
+                        </li>
+                        <li class="button menu-item" data="myBookmark">
+                            <i class="fas fa-bookmark"></i>
+                            <span class="menu-name"> My Bookmark</span>
+                        </li>
+                        <li class="button menu-item model-open">
+                            <i class="fas fa-american-sign-language-interpreting"></i>
+                            <span class="menu-name">Open Model</span>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="col dash-box">
-                    <div id="newStore" class="dash-box-content show">
+                    <div id="editStore" class="dash-box-content show">
+                        <div class="dash-box-title">
+                            <h2>Edit Store</h2>
+                            <button class="button"><i class="fas fa-chevron-left"></i><span>Back</span></button>
+                        </div>
+                        <form class="form" novalidate>
+                            <div class="form-row">
+                                <div class="form-item">
+                                    <div class="form-input">
+                                        <input type="text" name="title" required>
+                                        <label>Title</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item">
+                                    <div class="form-input">
+                                        <input type="text" id="discribe" name="discribe" required>
+                                        <label>Short discribe</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item">
+                                    <div class="form-input">
+                                        <input type="checkbox" required>
+                                        <label>Private Store</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item">
+                                    <div class="form-input">
+                                        <input type="text" id="keywords" name="keywords" required>
+                                        <label>Keywords</label>
+                                    </div>
+                                    <div class="tags-container row">
+                                        <div class="tags-box col-auto">
+                                            <div class="tags">Sweet Street</div>
+                                            <div class="tags-close">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-item">
+                                    <button class="button large hover-animate primary">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="newStore" class="dash-box-content hide">
                         <div class="dash-box-title">
                             <h2>New Store</h2>
                         </div>
@@ -383,13 +474,22 @@
     </script>
     <script>
         $(".menu-item").on("click", function () {
-            $('.menu-item').removeClass('active');
-            $(this).addClass('active');
-            $('.dash-box-content').removeClass('show');
-            $('.dash-box-content').removeClass('hide');
-            $('.dash-box-content').addClass('hide');
-            $("#" + $(this).attr('data')).addClass('show');
-            $("#" + $(this).attr('data')).removeClass('hide');
+            if ($(this).attr('data')) {
+                $('.menu-item').removeClass('active');
+                $(this).addClass('active');
+                $('.dash-box-content').removeClass('show');
+                $('.dash-box-content').removeClass('hide');
+                $('.dash-box-content').addClass('hide');
+                $("#" + $(this).attr('data')).addClass('show');
+                $("#" + $(this).attr('data')).removeClass('hide');
+            }
+        });
+
+        $(".model-open").on("click", function () {
+            $('.model-cover').addClass('model-show');
+        });
+        $(".model-close").on("click", function () {
+            $('.model-cover').removeClass('model-show');
         });
     </script>
 

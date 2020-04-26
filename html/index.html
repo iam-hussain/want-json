@@ -27,28 +27,29 @@
 <body>
     <nav class="navBar nav-top">
         <div class="container">
-           
+
             <div class="title">
                 <div class="brand hover-animate">getJSON</div>
                 <div class="pageTitle"></div>
             </div>
             <div class="pageTitle"></div>
-            <div class="navButton">
-                <button class="button hover-animate maxOnly"><i class="fas fa-book"></i> Doc</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-laptop-code"></i> API</button>
-                <button class="button hover-animate maxOnly"><i class="fas fa-store"></i> Store</button>
-                <button class="button hover-animate menu-drop-down-toggle"><i class="fas fa-ellipsis-v"></i></button>
-            </div>
-            <div class="menu-drop-down">
-                <ul class="list-group">
-                    <li class="list-group-item">New Store</li>
-                    <li class="list-group-item">My Store</li>
-                    <li class="list-group-item">My Profile</li>
-                    <li class="list-group-item">My Bookmark</li>
-                    <li class="list-group-item">Login</li>
-                    <li class="list-group-item">Register</li>
-                </ul>
-            </div>
+
+            <ul>
+                <li><a class="button maxOnly"><i class="fas fa-book"></i> Doc</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-laptop-code"></i> API</a></li>
+                <li><a class="button maxOnly"><i class="fas fa-store"></i> Store</a></li>
+                <li><a class="button dropper"><i class="fas fa-ellipsis-v"></i></a>
+                    <ul class="dropdown">
+                        <li><a class="button">New Store</a></li>
+                        <li><a class="button">My Store</a></li>
+                        <li><a class="button">Profile</a></li>
+                        <li><a class="button">Bookmark</a></li>
+                        <li class="separate"><a class="button">Login</a></li>
+                        <li><a class="button">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
     </nav>
 
@@ -63,21 +64,21 @@
 
     <div class="wrapper">
         <div class="container">
-                <div class="home-intro row align-items-center justify-content-center">
-                    <div class="col-auto">
-                        <p class="hero-image"><img src="assets/img/landing.svg" alt="Hero"></p>
-                    </div>
-                    <div class="col hero-text-group">
-                        <h1>How can we help you?</h1>
-                        <p>Search or browse in depth articles and videos on everything on Docs Jekyll theme, from basic
-                            theme
-                            setup to customisation and development</p>
-                        <div class="intro-group">
-                            <button class="button primary hover-animate">Fake API</button>
-                            <button class="button primary hover-animate">Own API</button>
-                        </div>
+            <div class="home-intro row align-items-center justify-content-center">
+                <div class="col-auto">
+                    <p class="hero-image"><img src="assets/img/landing.svg" alt="Hero"></p>
+                </div>
+                <div class="col hero-text-group">
+                    <h1>How can we help you?</h1>
+                    <p>Search or browse in depth articles and videos on everything on Docs Jekyll theme, from basic
+                        theme
+                        setup to customisation and development</p>
+                    <div class="intro-group">
+                        <button class="button primary hover-animate">Fake API</button>
+                        <button class="button primary hover-animate">Own API</button>
                     </div>
                 </div>
+            </div>
             <div class="content">
                 <div class="home-sampleview row align-items-center justify-content-center">
                     <div class="col">
@@ -248,11 +249,13 @@
     <script src="assets/vendor/jquery/jquery-3.4.1.min.js">
     </script>
     <script>
-        $(".menu-drop-down-toggle").on("click", function () {
-            if($(".menu-drop-down").hasClass("show-menu-drop-down")){
-                $(".menu-drop-down").removeClass("show-menu-drop-down")
-            }else{
-                $(".menu-drop-down").addClass("show-menu-drop-down")
+        $(".dropper").on("click", function () {
+            if ($(".dropdown").hasClass("visible")) {
+                $(".dropdown").removeClass("active")
+                $(".dropdown").removeClass("visible")
+            } else {
+                $(".dropdown").addClass("active")
+                $(".dropdown").addClass("visible")
             }
         });
     </script>
