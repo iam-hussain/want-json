@@ -1,7 +1,5 @@
 @import "./theme.less";
 
-
-
 .model-cover {
     position: fixed;
     top: 0vh;
@@ -17,7 +15,6 @@
     width: 100vw;
     overflow: hidden;
     transition: all 0.3s ease-in-out 0s;
-    //visibility: hidden;
     z-index: -1;
     opacity: 0;
 
@@ -40,9 +37,7 @@
                     margin: 10px;
                 }
             }
-
         }
-
 
         @media @sm,
         @xs {
@@ -58,7 +53,6 @@
 .model-show {
     opacity: 1;
     z-index: 100;
-    //visibility: visible;
 }
 
 .menu-drop-down {
@@ -345,7 +339,6 @@ footer {
 
     .social {
         display: flex;
-
         button {
             color: #colors[text2];
             background-color: #colors[bg];
@@ -358,27 +351,21 @@ footer {
                 }
             }
         }
-
         @media @sm,
         @xs,
         @md {
             display: block;
         }
     }
-
-
     p {
         padding: 0px;
         margin: 0px;
     }
-
     @media @sm,
     @xs {
         display: none;
     }
-
 }
-
 
 .pagination {
     display: block;

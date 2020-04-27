@@ -6,7 +6,7 @@ html {
 
 body {
     height: 100%;
-    color: #5E5C7F;
+    color: #colors[text2];
     background: #colors[bg];
     font-family: "Josefin_Sans";
     font-size: 16px;
@@ -30,7 +30,6 @@ body {
 .container {
     margin: auto;
     background-color: #colors[bg];
-    ;
 
     @media @sm,
     @xs {
@@ -81,7 +80,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #3e3f5e;
+    color: #colors[text1];
     font-family: "Raleway", sans-serif;
     font-weight: 700;
     margin: 20px 0;
@@ -272,7 +271,6 @@ h3 {
     min-width: 280px;
 }
 
-
 .show {
     transition: all 0.6s ease-in-out 0s;
     opacity: 1;
@@ -284,8 +282,6 @@ h3 {
     display: none;
     opacity: 0;
 }
-
-
 
 :after,
 :before {
@@ -325,7 +321,7 @@ h3 {
         pointer-events: none;
         display: block;
         margin: 0;
-        color: #3e3f5e;
+        color: #colors[text2];
         background-color: transparent;
         line-height: 1em;
     }
@@ -362,55 +358,6 @@ h3 {
         left: 12px;
     }
 
-}
-
-.disabled {
-    label {
-        background-color: transparent;
-    }
-}
-
-.has-error {
-
-    button,
-    input[type=password],
-    input[type=text],
-    input[type=email],
-    label,
-    select,
-    textarea {
-        color: #EF89A1;
-        border-color: #EF89A1;
-
-        &:focus {
-            border-color: #EF89A1;
-        }
-    }
-}
-
-.has-success {
-
-    button,
-    input[type=password],
-    input[type=text],
-    input[type=email],
-    label,
-    select,
-    textarea {
-        color: #809E82;
-        border-color: #809E82;
-
-        &:focus {
-            border-color: #809E82;
-        }
-    }
-}
-
-.error-block {
-    padding-left: 15px;
-    font-size: 0.75rem;
-    color: #EF89A1;
-    font-family: "Rajdhani";
 }
 
 .form-row+.form-row {
@@ -476,8 +423,8 @@ input[type=email],
 select,
 textarea {
     background-color: #colors[bg];
-    border: 1px solid #dedeea;
-    color: #3e3f5e;
+    border: 1px solid #colors[text3];
+    color: #colors[text1];
     transition: border-color .2s ease-in-out;
 }
 
@@ -501,7 +448,7 @@ label,
 select,
 textarea {
     font-family: "Rajdhani";
-    border-color: #e3dfdf;
+    border-color: #colors[text3];
 
     &:focus {
         border-color: #colors[secondary];
@@ -555,7 +502,6 @@ input[type=checkbox] {
     }
 
     // Box hover
-
     @media @hover {
         &:hover+label:before {
             background: #colors[secondary];
@@ -602,4 +548,52 @@ input[type=checkbox] {
             4px -8px 0 white;
         transform: rotate(45deg);
     }
+}
+
+
+
+.has-error {
+    button,
+    input[type=password],
+    input[type=text],
+    input[type=email],
+    label,
+    select,
+    textarea {
+        color: #colors[error];
+        border-color: #colors[error];
+
+        &:focus {
+            border-color: #colors[error];
+        }
+    }
+    input[type=checkbox] {
+        &+label:before {
+            background: #colors[error];
+        }
+    }
+}
+
+.has-success {
+    button,
+    input[type=password],
+    input[type=text],
+    input[type=email],
+    label,
+    select,
+    textarea {
+        color: #colors[success];
+        border-color: #colors[success];
+
+        &:focus {
+            border-color: #colors[success];
+        }
+    }
+}
+
+.error-block {
+    padding-left: 15px;
+    font-size: 0.75rem;
+    color: #colors[error];
+    font-family: "Rajdhani";
 }
