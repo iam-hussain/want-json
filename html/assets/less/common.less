@@ -32,8 +32,8 @@
             .model-button {
                 display: flex;
                 justify-content: center;
-
                 button {
+                    min-width: 130px;
                     margin: 10px;
                 }
             }
@@ -163,7 +163,7 @@
             ul {
                 padding: 10px 0px;
                 border-radius: 5px;
-                background: #colors[bg];
+                background: #colors[paper];
                 visibility: hidden;
                 opacity: 0;
                 min-width: 5rem;
@@ -187,9 +187,9 @@
                 }
 
                 .separate {
-                    margin-top: 10px;
-                    padding-top: 10px;
-                    border-top: 1px solid #colors[paper];
+                    margin-top: 5px;
+                    padding-top: 5px;
+                    border-top: 2px solid #colors[primary];
                 }
 
                 @media @hover {
@@ -202,9 +202,11 @@
             }
 
             .visible {
+                @media @nothover {
                 visibility: visible;
                 opacity: 1;
                 display: block;
+                }
             }
 
             @media @hover {
@@ -217,7 +219,6 @@
         }
 
         .maxOnly {
-
             @media @sm,
             @xs {
                 display: none;
@@ -370,7 +371,8 @@ footer {
 .pagination {
     display: block;
     margin: 20px 0px;
-    background-color: #colors[bg];
+    border-radius: 5px;
+    background-color: #colors[paper];
     .shadow();
     width: 100%;
     transition: all 0.6s ease-in-out 0s;
@@ -394,7 +396,7 @@ footer {
             margin: .3rem;
             font-size: 15px;
             font-weight: 700;
-            border-radius: 2px;
+            border-radius: 5px;
             justify-content: center;
             align-items: center;
             transition: all 0.6s ease-in-out 0s;
@@ -404,6 +406,9 @@ footer {
                     color: #colors[bg];
                     background-color: #colors[secondary];
                 }
+            }
+            &:after {
+                background-image: radial-gradient(circle, #colors[bg]; 10%, transparent 10.01%);
             }
         }
 

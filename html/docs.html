@@ -48,14 +48,42 @@
         </div>
     </nav>
     
-    <div class="docs-cover close-docs-menu"></div>
-    <div class="docs-sidebar" id="menuitem">
-        <button class="button hover-animate menu-close close-docs-menu" type="button" data-uk-close="">
-            <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" data-svg="close-icon">
-                <line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
-                <line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line>
-            </svg>
-        </button>
+    <div class="docs-mobile-cover close-docs-mobile-menu">
+        <div class="docs-mobile-sidebar" id="menuitem">
+            <button class="button hover-animate docs-x-close close-docs-mobile-menu" type="button" data-uk-close="">
+                <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" data-svg="close-icon">
+                    <line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line>
+                    <line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line>
+                </svg>
+            </button>
+            <h5>Getting Started</h5>
+            <ul class="doc-nav">
+                <li><a href="/docs/installation/">How it works</a></li>
+                <li><a href="/docs/setup/">Basic API Call</a></li>
+            </ul>
+            <h5>Fake Data API</h5>
+            <ul class="doc-nav">
+                <li><a href="/docs/hero/">How to use</a></li>
+                <li class="active"><a href="/docs/boxes/">Why fake data</a></li>
+                <li><a href="/docs/featured/">All fake data API</a></li>
+                <li><a href="/docs/featured/">Fake data API example</a></li>
+            </ul>
+            <h5>Own Data API</h5>
+            <ul class="doc-nav">
+                <li><a href="/docs/translation/">What is store</a></li>
+                <li><a href="/docs/customize/">How to create store</a></li>
+                <li><a href="/docs/development/">What is key in store</a></li>
+                <li><a href="/docs/sources/">How to create key</a></li>
+                <li><a href="/docs/sources/">API for each store</a></li>
+                <li><a href="/docs/featured/">Own data API example </a></li>
+            </ul>
+            <h5>Help</h5>
+            <ul class="doc-nav">
+                <li><a href="/docs/support/">Contacting support</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="docs-sidebar">
         <h5>Getting Started</h5>
         <ul class="doc-nav">
             <li><a href="/docs/installation/">How it works</a></li>
@@ -95,41 +123,53 @@
                             <h3 class="uk-article-title">How it works</h3>
                             <p>This document covers the setup and options of theme feature
                                 described in the doc title</p>
-                            <article class="sub-article">
                                 <div class="box">
                                     // npm run start
                                 </div>
-                            </article>
                         </div>
                         <div class="article-content">
                             <h3 class="uk-article-title">How it works</h3>
                             <p>This document covers the setup and options of theme feature
                                 described in the doc title</p>
-                            <article class="sub-article">
-                                <div class="box">
-                                    // npm run start
-                                </div>
-                            </article>
                         </div>
+                    </article>
+                    <article class="article">
+                        <h2 class="article-title">Getting Started</h2>
+                        <p>This document covers the setup and options of theme feature
+                            described in the doc title</p>
                         <div class="article-content">
                             <h3 class="uk-article-title">How it works</h3>
                             <p>This document covers the setup and options of theme feature
                                 described in the doc title</p>
-                            <article class="sub-article">
                                 <div class="box">
                                     // npm run start
                                 </div>
-                            </article>
                         </div>
+                    </article>
+                    <article class="article">
+                        <h2 class="article-title">Getting Started</h2>
+                        <p>This document covers the setup and options of theme feature
+                            described in the doc title</p>
                         <div class="article-content">
                             <h3 class="uk-article-title">How it works</h3>
                             <p>This document covers the setup and options of theme feature
                                 described in the doc title</p>
-                            <article class="sub-article">
                                 <div class="box">
                                     // npm run start
                                 </div>
-                            </article>
+                        </div>
+                    </article>
+                    <article class="article">
+                        <h2 class="article-title">Getting Started</h2>
+                        <p>This document covers the setup and options of theme feature
+                            described in the doc title</p>
+                        <div class="article-content">
+                            <h3 class="uk-article-title">How it works</h3>
+                            <p>This document covers the setup and options of theme feature
+                                described in the doc title</p>
+                                <div class="box">
+                                    // npm run start
+                                </div>
                         </div>
                     </article>
                 </div>
@@ -139,7 +179,7 @@
 
     
     <nav class="navbar nav-bottom">
-        <a class="button open-docs-menu"><i class="fas fa-book"></i></a>
+        <a class="button open-docs-mobile-menu"><i class="fas fa-book"></i></a>
         <a href="/explore.html" class="button"><i class="fas fa-laptop-code"></i></a>
         <a href="/dash.html" class="button"><i class="fas fa-store"></i></a>
     </nav>
@@ -178,14 +218,14 @@
     <script src="assets/vendor/jquery/jquery-3.4.1.min.js">
     </script>
     <script>
-        $(".open-docs-menu").on("click", function () {
-            $(".docs-cover").addClass("show-docs-cover");
-            $(".docs-sidebar").addClass("show-docs-menu");
+        $(".open-docs-mobile-menu").on("click", function () {
+            $(".docs-mobile-cover").addClass("show-docs-mobile-cover");
+            $(".docs-mobile-sidebar").addClass("show-docs-mobile-sidebar");
         });
 
-        $(".close-docs-menu").on("click", function () {
-            $(".docs-cover").removeClass("show-docs-cover");
-            $(".docs-sidebar").removeClass("show-docs-menu");
+        $(".close-docs-mobile-menu").on("click", function () {
+            $(".docs-mobile-cover").removeClass("show-docs-mobile-cover");
+            $(".docs-mobile-sidebar").removeClass("show-docs-mobile-sidebar");
         });
     </script>
 </body>

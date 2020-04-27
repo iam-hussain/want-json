@@ -40,10 +40,11 @@
                 display: -ms-flexbox;
                 display: flex;
                 justify-content: space-between;
-                border-radius: 50px;
+                border-radius: 5px;
                 margin: 10px;
                 padding: 0.75rem 1.25rem;
                 transition: all 0.3s ease-in-out 0s;
+                background-color: #colors[paper];
                 .shadow();
 
                 @media @hover {
@@ -86,6 +87,7 @@
         transition: all 0.6s ease-in-out 0s;
 
         .dash-box-title {
+            color: #colors[text1];
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -104,6 +106,7 @@
                 display: flex;
                 justify-content: center;
                 background-color: #colors[bg];
+                color: #colors[text2];
                 max-width: 100px;
 
                 span {
@@ -131,6 +134,8 @@
     transition: all 0.6s ease-in-out 0s;
 
     .store-item {
+        background-color: #colors[paper];
+        border-radius: 5px;
         display: -ms-flexbox;
         display: flex;
         justify-content: space-between;
@@ -186,6 +191,8 @@
     transition: all 0.6s ease-in-out 0s;
 
     .bookmark-item {
+        background-color: #colors[paper];
+        border-radius: 5px;
         display: -ms-flexbox;
         display: flex;
         justify-content: space-between;
@@ -245,7 +252,8 @@
     margin: 10px;
     display: flex;
     min-height: 25px;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color:  #colors[paper];
     .shadow();
 
     .tags-box {
@@ -261,7 +269,7 @@
         .tags {
             padding: 0px 5px;
             padding-right: 15px;
-            border-radius: 2px;
+            border-radius: 5px;
             margin-right: 5px;
             white-space: pre;
         }
