@@ -4,7 +4,7 @@
     position: absolute;
     width: 50vw;
     height: 100vh;
-    background-color: #colors[primary];
+    background-color: #colors[paper];
     top: 0%;
     left: 0%;
     pointer-events: none;
@@ -12,7 +12,7 @@
     transition: all 0.6s ease-in-out 0s;
 
     @media @sm,
-    @xs{
+    @xs {
         display: none;
     }
 }
@@ -20,10 +20,12 @@
 .content {
     padding: 30px 5px;
     text-align: center;
+
     @media @sm,
     @xs,
     @md {
-        padding: 15px 0;;
+        padding: 15px 0;
+        ;
     }
 }
 
@@ -47,6 +49,12 @@
     }
 
     .hero-text-group {
+        h1{
+            color: #colors[text1];
+        }
+        p{
+            color: #colors[text2];
+        }
         .intro-group {
             button {
                 min-width: 200px;
@@ -115,17 +123,17 @@
 
         td {
             button {
-                background-color: #colors[bg];
+                background-color: #colors[paper];
                 min-width: auto;
                 font-weight: 100;
                 margin: 0px;
                 padding: 5px 20px;
-                color: #5e5c7f;
+                color: #colors[text1];
             }
         }
 
         table {
-            background-color: #colors[bg];
+            background-color: #colors[paper];
             margin: 2%;
             padding: 10px 0px;
             width: 96%;
@@ -134,21 +142,29 @@
             .shadow();
 
             tr {
-                border-top: 1px solid #colors[paper];
+                border-top: 1px solid #colors[bg];
             }
 
             th {
                 padding: 10px 0px;
                 padding-top: 20px;
                 font-weight: 800;
+                color: #colors[text1];
             }
 
             td {
+                color: #colors[text2];
                 min-width: 100px;
+                a {
+                    color: #colors[text2];
+                }
+                button {
+                    color: #colors[text2];
+                }
             }
 
             @media @sm,
-            @xs{
+            @xs {
                 width: 100%;
                 margin: 10px auto;
             }
@@ -175,7 +191,7 @@
             padding: 10px;
             border-radius: 10px;
             .shadow();
-            background: #colors[bg];
+            background: #colors[paper];
 
             .browser-button {
                 display: inline-block;
@@ -200,7 +216,7 @@
             .address {
                 margin-top: 5px;
                 padding: 5px 10px;
-                background: #colors[paper];
+                background: #colors[tertiary];
                 letter-spacing: 0.32px;
                 letter-spacing: 0.02rem;
                 word-break: break-all;
@@ -213,6 +229,7 @@
             }
 
             pre {
+                color: #colors[text2];
                 margin-bottom: auto;
                 overflow-y: hidden;
                 border-left: none;
@@ -220,9 +237,9 @@
             }
 
             @media @sm,
-    @xs {
-        margin: 10px 0;
-    }
+            @xs {
+                margin: 10px 0;
+            }
 
         }
 

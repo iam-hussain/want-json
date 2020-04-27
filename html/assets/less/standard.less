@@ -67,10 +67,8 @@ body {
 a {
     color: #colors[text1];
 
-    @media @hover {
-        &:hover {
-            color: #colors[primary];
-        }
+    &:hover {
+        color: #colors[primary];
     }
 }
 
@@ -553,6 +551,7 @@ input[type=checkbox] {
 
 
 .has-error {
+
     button,
     input[type=password],
     input[type=text],
@@ -567,6 +566,7 @@ input[type=checkbox] {
             border-color: #colors[error];
         }
     }
+
     input[type=checkbox] {
         &+label:before {
             background: #colors[error];
@@ -575,6 +575,7 @@ input[type=checkbox] {
 }
 
 .has-success {
+
     button,
     input[type=password],
     input[type=text],
