@@ -1,7 +1,9 @@
 @import './theme.less';
-html{
+
+html {
     height: 100%;
 }
+
 body {
     height: 100%;
     color: #5E5C7F;
@@ -18,7 +20,7 @@ body {
     .scroll();
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     flex: 1;
     overflow: auto;
@@ -27,7 +29,9 @@ body {
 
 .container {
     margin: auto;
-    background-color:  #colors[bg];;
+    background-color: #colors[bg];
+    ;
+
     @media @sm,
     @xs {
         margin-top: 1rem;
@@ -43,20 +47,32 @@ body {
     cursor: pointer;
 }
 
-.maxOnly{
+.maxOnly {
+
     @media @sm,
     @xs {
         display: none;
     }
 }
 
-.minOnly{
+.minOnly {
     display: none;
+
     @media @sm,
     @xs {
         display: block;
     }
- 
+
+}
+
+a {
+    color: #colors[text1];
+
+    @media @hover {
+        &:hover {
+            color: #colors[primary];
+        }
+    }
 }
 
 h1,
@@ -73,8 +89,10 @@ h6 {
 }
 
 
-.h2, h2{
+.h2,
+h2 {
     font-size: 2rem;
+
     @media @md {
         font-size: 1.85rem;
         margin: 10px 0;
@@ -87,12 +105,15 @@ h6 {
     }
 }
 
-.h3, h3{
+.h3,
+h3 {
     font-size: 1.75rem;
+
     @media @md {
         font-size: 1.5rem;
         margin: 10px 0;
     }
+
     @media @sm,
     @xs {
         font-size: 1.25rem;
@@ -102,8 +123,9 @@ h6 {
 
 
 
-.p{
+.p {
     font-size: 1rem;
+
     @media @sm,
     @xs {
         font-size: .75rem;
@@ -181,15 +203,18 @@ h6 {
 }
 
 .hover-animate {
-    &:hover {
-        -webkit-animation-name: button-push;
-        animation-name: button-push;
-        -webkit-animation-duration: 0.3s;
-        animation-duration: 0.3s;
-        -webkit-animation-timing-function: linear;
-        animation-timing-function: linear;
-        -webkit-animation-iteration-count: 1;
-        animation-iteration-count: 1;
+
+    @media @hover {
+        &:hover {
+            -webkit-animation-name: button-push;
+            animation-name: button-push;
+            -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+        }
     }
 
     @keyframes button-push {
@@ -316,7 +341,7 @@ h6 {
     input[type=password],
     input[type=text],
     input[type=email] {
-        
+
         &:focus+label,
         &:valid+label,
         &:disabled+label {
@@ -528,10 +553,15 @@ input[type=checkbox] {
         background: #colors[text1];
         border-radius: 2px;
     }
+
     // Box hover
-    &:hover+label:before {
-        background: #colors[secondary];
+
+    @media @hover {
+        &:hover+label:before {
+            background: #colors[secondary];
+        }
     }
+
     // Box focus
     // &:focus+label:before {
     //     box-shadow: 0 0 0 3px #colors[text3];

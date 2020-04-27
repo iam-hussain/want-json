@@ -17,7 +17,7 @@
 
     @media @sm,
     @xs,
-    @md{
+    @md {
         display: none;
     }
 }
@@ -44,12 +44,14 @@
         position: relative;
         top: -10px;
 
-        a{
+        a {
             color: #colors[primary];
-            &:hover {
-                color: #colors[primary];
-                cursor: pointer;
-                text-decoration: none;
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                    cursor: pointer;
+                    text-decoration: none;
+                }
             }
         }
 
@@ -105,7 +107,7 @@
     font-family: "Rajdhani";
 
     .tab-switch-button {
-        background-color:  #colors[bg];
+        background-color: #colors[bg];
         width: 180px;
         border: 1px solid #colors[secondary];
         font-size: 1rem;
@@ -136,16 +138,17 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+
         @media @sm,
         @xs,
-        @md{
+        @md {
             margin-top: 0px;
             margin-bottom: 0px;
         }
     }
 
     .active {
-        color:  #colors[bg];
+        color: #colors[bg];
         background-color: #colors[secondary];
         cursor: auto;
         -webkit-user-select: none;
@@ -176,7 +179,7 @@
         width: 484px;
         min-width: 300px;
         padding: 45px 64px;
-        background-color:  #colors[bg];
+        background-color: #colors[bg];
         border-radius: 10px;
         .shadow();
 
@@ -185,7 +188,7 @@
             text-align: center;
 
             .social-link {
-                background-color:  #colors[bg];
+                background-color: #colors[bg];
                 color: #colors[secondary];
             }
         }

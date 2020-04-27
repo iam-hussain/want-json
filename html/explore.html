@@ -48,24 +48,22 @@
         </div>
     </nav>
 
-    <nav class="navbar nav-bottom">
-        <button class="button"><i class="fas fa-book"></i></button>
-        <button class="button"><i class="fas fa-laptop-code"></i></button>
-        <button class="button"><i class="fas fa-store"></i></button>
-    </nav>
-
     <div class="explore-decoration"></div>
     <div class="wrapper">
         <div class="container">
             <div class="row explore-search-row">
                 <div class="col-md explore-search-form">
-                    <h2>Search API</h2>
+                    <h3>Search API</h3>
                     <form class="form" novalidate>
-                        <div class="form-row">
-                            <div class="form-item">
+                        <div class="form-row search-form">
+                            <div class="form-item search-form-input">
                                 <div class="form-input">
-                                    <input type="text" placeholder="Search here..." name="title" required>
+                                    <input type="text" name="title" required>
+                                    <label>Search</label>
                                 </div>
+                            </div>
+                            <div class="form-item search-form-button">
+                                <button class="button hover-animate primary"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -230,6 +228,13 @@
         </div>
 
     </div>
+
+    
+    <nav class="navbar nav-bottom">
+        <a href="/docs.html" class="button"><i class="fas fa-book"></i></a>
+        <a href="/explore.html" class="button"><i class="fas fa-laptop-code"></i></a>
+        <a href="/dash.html" class="button"><i class="fas fa-store"></i></a>
+    </nav>
 
     <footer>
         <div class="container">

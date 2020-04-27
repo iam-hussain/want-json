@@ -10,8 +10,9 @@
     pointer-events: none;
     z-index: -1;
     transition: all 0.6s ease-in-out 0s;
+
     @media @sm,
-    @xs{
+    @xs {
         display: none;
     }
 }
@@ -21,6 +22,37 @@
     transition: all 0.6s ease-in-out 0s;
 
     .explore-search-form {
+        text-align: center;
+
+        .search-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 0;
+
+            .search-form-input {
+                flex: 1;
+
+                input {
+                    border-radius: 20px 0 0 20px;
+                }
+
+            }
+
+            .search-form-button {
+                width: auto;
+
+                button {
+                    border-radius: 0 20px 20px 0;
+                    padding: 12px 20px;
+                    font-size: 25px;
+                    color: #colors[bg];
+                    background-color: #colors[primary];
+                }
+            }
+
+        }
 
         @media @sm,
         @xs {
@@ -34,23 +66,6 @@
     }
 }
 
-.explore-box {
-    padding: 10px;
-
-    .explore-content {
-        padding: 10px;
-
-        @media @sm,
-        @xs {
-            padding: 10px 0;
-        }
-    }
-
-    @media @sm,
-    @xs {
-        padding: 0px;
-    }
-}
 
 
 .explore-list {
@@ -136,8 +151,10 @@
                 background-color: transparent;
                 color: #colors[text2];
 
-                &:hover {
-                    color: #colors[primary];
+                @media @hover {
+                    &:hover {
+                        color: #colors[primary];
+                    }
                 }
 
 
@@ -151,6 +168,7 @@
             .active {
                 color: #colors[primary];
             }
+
             @media @sm,
             @xs {
                 display: flex;
@@ -195,8 +213,10 @@
             right: 5px;
             transition: all 0.6s ease-in-out 0s;
 
-            &:hover {
-                color: #colors[primary];
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                }
             }
         }
     }

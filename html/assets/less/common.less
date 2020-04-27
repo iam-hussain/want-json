@@ -26,6 +26,7 @@
         background-color: #colors[bg];
         margin: 2%;
         padding: 2rem;
+
         .model-content {
             .model-text {
                 text-align: center;
@@ -54,7 +55,7 @@
 }
 
 
-.model-show{
+.model-show {
     opacity: 1;
     z-index: 100;
     //visibility: visible;
@@ -103,12 +104,16 @@
     .title {
         display: flex;
         flex-direction: row;
-        a{
+
+        a {
             color: #colors[primary];
-            &:hover {
-                color: #colors[primary];
-                cursor: pointer;
-                text-decoration: none;
+
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                    cursor: pointer;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -132,7 +137,7 @@
         transition: all 0.6s ease-in-out 0s;
         line-height: 40px;
 
-        a { 
+        a {
             color: #colors[text1];
             padding: 8px 10px;
             font-size: 16px;
@@ -140,10 +145,12 @@
             min-width: 50px;
             text-decoration: none;
 
-            &:hover {
-                color: #colors[primary];
-                cursor: pointer;
-                text-decoration: none;
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                    cursor: pointer;
+                    text-decoration: none;
+                }
             }
         }
 
@@ -179,15 +186,9 @@
                     text-align: center;
 
                     a {
-                        color: #colors[text1];
                         width: 100%;
                         border-radius: 0px;
                         margin: auto;
-                        &:hover {
-                            color: #colors[primary];
-                            cursor: pointer;
-                            text-decoration: none;
-                        }
                     }
                 }
 
@@ -197,10 +198,12 @@
                     border-top: 1px solid #colors[paper];
                 }
 
-                &:hover {
-                    visibility: visible;
-                    opacity: 1;
-                    display: block;
+                @media @hover {
+                    &:hover {
+                        visibility: visible;
+                        opacity: 1;
+                        display: block;
+                    }
                 }
             }
 
@@ -210,10 +213,12 @@
                 display: block;
             }
 
-            &:hover>ul {
-                visibility: visible;
-                opacity: 1;
-                display: block;
+            @media @hover {
+                &:hover>ul {
+                    visibility: visible;
+                    opacity: 1;
+                    display: block;
+                }
             }
         }
 
@@ -237,8 +242,10 @@
             background-color: #colors[bg];
             transition: all 0.6s ease-in-out 0s;
 
-            &:hover {
-                color: #colors[primary];
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                }
             }
 
             @media @sm,
@@ -269,16 +276,16 @@
 
 .nav-bottom {
     display: none;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    flex-direction: row;
+    margin-top: auto;
+    transition: all 0.6s ease-in-out 0s;
+
     z-index: 10;
     padding: 0rem 3rem;
     justify-content: space-between;
     background-color: #colors[bg];
 
-    button {
+    a {
         margin-right: 5px;
         background-color: #colors[bg];
     }
@@ -302,9 +309,9 @@ footer {
     font-family: "Raleway";
     margin-top: auto;
     color: #colors[text2];
+    transition: all 0.6s ease-in-out 0s;
 
     .container {
-
         padding: 10px 30px;
         border-top: 1px solid #colors[paper];
     }
@@ -345,8 +352,10 @@ footer {
             padding: 5px;
             transition: all 0.6s ease-in-out 0s;
 
-            &:hover {
-                color: #colors[primary];
+            @media @hover {
+                &:hover {
+                    color: #colors[primary];
+                }
             }
         }
 
@@ -403,9 +412,11 @@ footer {
             align-items: center;
             transition: all 0.6s ease-in-out 0s;
 
-            &:hover {
-                color: #colors[bg];
-                background-color: #colors[secondary];
+            @media @hover {
+                &:hover {
+                    color: #colors[bg];
+                    background-color: #colors[secondary];
+                }
             }
         }
 
@@ -415,8 +426,4 @@ footer {
         }
     }
 
-    @media @sm,
-    @xs {
-        margin: 5px;
-    }
 }
