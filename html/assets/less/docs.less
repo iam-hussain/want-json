@@ -52,6 +52,7 @@
     z-index: 10;
     transition: all 0.6s ease-in-out 0s;
     .scroll();
+
     h5 {
         padding-left: 10px;
         font-size: 1.25rem;
@@ -96,6 +97,7 @@
     max-width: 90vw;
     opacity: 0;
     transition: all 0.6s ease-in-out 0s;
+
     .docs-x-close {
         position: absolute;
         right: 10px;
@@ -116,6 +118,7 @@
     top: 57px;
     bottom: 48px;
     z-index: 10;
+
     @media @sm,
     @xs {
         z-index: -10;
@@ -133,43 +136,54 @@
     padding-bottom: 10px;
     transition: all 0.6s ease-in-out 0s;
 
-    
     article {
-        padding: 15px 5px;
+        padding: 25px 5px;
+        border-top: 2px solid #colors[primary];
 
-        &:first-child{
+        &:first-child {
             border-top: none;
         }
 
-        h2{
+        h2 {
             margin: 10px 0;
-            padding-top: 30px;
-            border-top: 2px solid  #colors[primary];
+            padding-top: 10px;
+
+            @media @sm,
+            @xs {
+                margin:10px 0px;
+                padding: 0px;
+            }
         }
 
-        .article-content{
+        .article-content {
             padding: 20px 0;
             padding-left: 20px;
             padding-bottom: 0px;
         }
 
-        h3{
+        h3 {
             margin: 10px 0;
             margin-top: 0px;
         }
-    
+
         p {
             margin: 0px;
         }
-    
+
         .box {
             padding: 20px;
             margin: 10px 0;
             background-color: #colors[paper];
             border-radius: 5px;
         }
+
+        @media @sm,
+        @xs {
+
+            padding: 10px 0px;
+        }
     }
 
-    
+
 
 }

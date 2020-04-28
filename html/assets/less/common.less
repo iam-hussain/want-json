@@ -163,7 +163,7 @@
             ul {
                 padding: 10px 0px;
                 border-radius: 5px;
-                background: #colors[paper];
+                background: #colors[bg];
                 visibility: hidden;
                 opacity: 0;
                 min-width: 5rem;
@@ -274,7 +274,6 @@
     flex-direction: row;
     margin-top: auto;
     transition: all 0.6s ease-in-out 0s;
-
     z-index: 10;
     padding: 0rem 3rem;
     justify-content: space-between;
@@ -283,6 +282,11 @@
     a {
         margin-right: 5px;
         background-color: #colors[bg];
+        @media @hover {
+            &:hover {
+                color: #colors[primary];
+            }
+        }
     }
 
     .active {
@@ -373,7 +377,6 @@ footer {
     margin: 20px 0px;
     border-radius: 5px;
     background-color: #colors[paper];
-    .shadow();
     width: 100%;
     transition: all 0.6s ease-in-out 0s;
 
@@ -406,9 +409,10 @@ footer {
                     color: #colors[bg];
                     background-color: #colors[secondary];
                 }
-            }
-            &:after {
-                background-image: radial-gradient(circle, #colors[bg]; 10%, transparent 10.01%);
+                
+                &:after {
+                    background-image: radial-gradient(circle, #colors[bg]; 10%, transparent 10.01%);
+                }
             }
         }
 
