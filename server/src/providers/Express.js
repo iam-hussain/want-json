@@ -27,7 +27,7 @@ class Express {
     }
 
     init() {
-        const { port } = Locals.config();
+        const { port } = Locals;
 
         // Registering Exception / Error Handlers
         this.express.use(ExceptionHandler.logErrors);

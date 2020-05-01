@@ -20,7 +20,7 @@ export default class UserModule {
     static async getWithPublicData(where) {
         const returnData = await DB.models.User.findOne({
             where,
-            attributes: ['id', 'email'],
+            attributes: ['id', 'firstName', 'lastName', 'email', 'emailVerified', 'passwordSet'],
         }).then((userIs) => (userIs.id ? userIs.dataValues : {}));
         return returnData;
     }
@@ -33,6 +33,7 @@ export default class UserModule {
     }
 
     static async create(payLoad, requestIp) {
+        const authData = await UserModule.createAuthData('email_verify', {});
         const hashed = await hashingUtil.createPasswordHash(payLoad.password);
         const returnData = await DB.models.User.create({
             email: payLoad.email,
@@ -40,6 +41,7 @@ export default class UserModule {
             password: hashed.password,
             salt: hashed.salt,
             joinedIP: requestIp.clientIp,
+            authData,
         });
         return returnData;
     }
@@ -49,5 +51,35 @@ export default class UserModule {
             where,
         });
         return returnData;
+    }
+
+    static async createAuthData(type, existingData) {
+        const OTP = await hashingUtil.emailOTP();
+        // eslint-disable-next-line no-console
+        console.log(type, 'OTP is  ==', OTP);
+        if (type === 'email_verify') {
+            return {
+                ...existingData,
+                email_verify: {
+                    otp: OTP,
+                    date: new Date(),
+                },
+            };
+        } if (type === 'reset_password') {
+            return {
+                ...existingData,
+                reset_password: {
+                    otp: OTP,
+                    date: new Date(),
+                },
+            };
+        }
+        return {
+            ...existingData,
+            general: {
+                otp: OTP,
+                date: new Date(),
+            },
+        };
     }
 }

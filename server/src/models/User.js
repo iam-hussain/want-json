@@ -41,6 +41,14 @@ module.exports = function userModel(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
+        passwordSet: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+        },
+        authData: {
+            type: DataTypes.JSON,
+            defaultValue: {},
+        },
         joinedIP: {
             type: DataTypes.STRING,
             allowNull: true,

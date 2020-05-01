@@ -23,5 +23,22 @@ const isEmailExist = body('email').custom(async (value, { req }) => {
     return true;
 });
 
+const isOTP = check('otp')
+    .notEmpty()
+    .withMessage('Provied a valid OTP!');
+
+const isCurrentPassword = check('current_password')
+    .isLength({ min: 8 })
+    .withMessage('Provide a valid Password with min 8 letters');
+
+const isAuthType = check('type')
+    .isIn(['email_verify', 'reset_password'])
+    .withMessage('Provide a valid OTP type');
+
+
 export const registerRules = [isEmail, isPassword, isEmailTaken];
 export const loginRules = [isEmail, isPassword, isEmailExist];
+export const sendOTPRules = [isEmail, isEmailExist, isAuthType];
+export const emailVerifyRules = [isEmail, isEmailExist, isOTP];
+export const resetPasswordRules = [isEmail, isEmailExist, isOTP, isPassword];
+export const changePasswordRules = [isOTP, isCurrentPassword, isPassword];

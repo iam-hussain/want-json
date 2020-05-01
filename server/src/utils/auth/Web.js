@@ -43,12 +43,16 @@ export async function shouldBeLoggedIn(req, res, next) {
         return errorResponce(req, res, authorizationData.msg, 300);
     }
     req.userData = authorizationData.userData;
+    req.userID = authorizationData.userData.id;
     return next();
 }
 
 export async function mightBeLoggedIn(req, res, next) {
-    const authorizationData = validateAuth(req);
-    if (authorizationData.success) req.userData = authorizationData.userData;
+    const authorizationData = await validateAuth(req);
+    if (authorizationData.success) {
+        req.userData = authorizationData.userData;
+        req.userID = authorizationData.userData.id;
+    }
     return next();
 }
 

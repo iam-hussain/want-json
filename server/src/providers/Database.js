@@ -39,8 +39,8 @@ export class Database {
 
     syncModels() {
         const db = {};
-        const modelDirectory = path.join(Locals.config().root, '/src/models/');
-        const sequelize = new Sequelize(Locals.config().db);
+        const modelDirectory = path.join(Locals.root, '/src/models/');
+        const sequelize = new Sequelize(Locals.db);
         fs.readdirSync(modelDirectory)
             .filter((file) => (
                 file.indexOf('.') !== 0

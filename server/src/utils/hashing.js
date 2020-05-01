@@ -16,10 +16,19 @@ export default class hashingModule {
     }
 
     static async authHashGenerator() {
-        return `auth_${MD5(Locals.config().name + MD5(new Date().getTime()) + Locals.config().appSecret)}`;
+        return `auth_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
     }
 
     static async storeHashGenerator(title) {
-        return `${title}_${MD5(Locals.config().name + MD5(new Date().getTime()) + Locals.config().appSecret)}`;
+        return `${title}_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
+    }
+
+    static async publicIDGenerator() {
+        return `id_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
+    }
+
+    static async emailOTP() {
+        const otpIs = await commonUtil.randomGenerator(6);
+        return otpIs;
     }
 }

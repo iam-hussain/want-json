@@ -1,0 +1,104 @@
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
+import { useForm, ErrorMessage } from "react-hook-form";
+import {
+  required_input_msg,
+  email_invalid_msg,
+} from "../../msg";
+import axios from '../../lib/axios';
+
+export default function EmailVerify(props) {
+  const [componentLoading, setComponentLoading] = useState(true);
+  const {
+    register,
+    handleSubmit,
+    errors,
+    watch,
+    setError,
+    reset,
+    formState,
+    setValue,
+    triggerValidation
+  } = useForm({ mode: "onChange" });
+  const router = useRouter();
+
+  useEffect(() => {
+    setComponentLoading(false);
+    setValue("email", localStorage.getItem('email_verify'));
+    triggerValidation("email")
+  }, []);
+  
+  let emailWatch = watch("email");
+  useEffect(() => {
+    props.setEmail(emailWatch);
+  }, [emailWatch]);
+
+  useEffect(() => {
+    props.responseError.map((m) => {
+      setError(m.param, "invalid", m.msg);
+    });
+  }, [props.responseError]);
+  
+
+  const onSubmit = async (data) => {
+    let response = await axios('email_verify', 'post', data);
+    if(response.success){
+      localStorage.removeItem('email_verify');
+      localStorage.setItem('token', response.payload.token);
+      reset();
+      router.push('/')
+    }else{
+      response.message.map((m) => {
+        setError(m.param, "invalid", m.msg);
+      });
+    }
+  };
+
+  return (
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <div className="form-row">
+        <div className="form-item">
+          <div className={`form-input${errors.email ? ' has-error' : ''}`}>
+            <input
+              type="text"
+              ref={register({
+                required: required_input_msg,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: email_invalid_msg,
+                },
+              })}
+              name="email"
+              required
+            />
+            <label>Registered Email</label>
+            <span className="error-block">
+              <ErrorMessage errors={errors} name="email" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-item">
+          <div className={`form-input${errors.otp ? ' has-error' : ''}`}>
+            <input type="text" name="otp" ref={register({
+                required: required_input_msg
+              })} required />
+            <label>Enter Verification OTP</label>
+            <span className="error-block">
+              <ErrorMessage errors={errors} name="otp" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-item">
+          <button type="submit"
+            className="button large primary"
+            formNoValidate
+            disabled={!formState.isValid || formState.isSubmitting || componentLoading}>Verify</button>
+        </div>
+      </div>
+    </form>
+  );
+}

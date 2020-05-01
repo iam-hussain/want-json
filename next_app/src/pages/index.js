@@ -1,23 +1,20 @@
-import React from "react";
+import React, { Component, Fragment } from 'react'
 
-class Home extends React.Component {
+import Page from "../components/Page";
+import Hero from "../components/Home/Hero";
+import Dummy from "../components/Home/Dummy";
+import Own from "../components/Home/Own";
+
+export default class Index extends Component {
   render() {
     return (
-      <div class="container">
-      <div class="row">
-        <div class="col-sm">
-          One of three columns
-        </div>
-        <div class="col-sm">
-          One of three columns
-        </div>
-        <div class="col-sm">
-          One of three columns
-        </div>
-      </div>
-    </div>
-    );
+      <Fragment>
+        <Page>
+          <Hero />
+          <Dummy />
+          <Own />
+        </Page>
+      </Fragment>
+    )
   }
 }
-
-export default Home;

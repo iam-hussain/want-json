@@ -1,0 +1,74 @@
+#colors() {
+    primary: #F20574;
+    secondary: #060940;
+    tertiary: #f5f5f5;
+    text1: #3e3f5e;
+    text2: #5E5C7F;
+    text3: #8f919e;
+    bg: #fff;
+    paper: #efefef;
+    error: #EF89A1;
+    success: #809E82;
+    transparency: rgba(0, 0, 0, 0.2);
+}
+
+@height: 100vh/100;
+@width: 100vw/100;
+
+
+.shadow {
+    box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+    -webkit-box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+}
+
+.scroll{
+    &::-webkit-scrollbar-track {
+        background-color:  #colors[paper];
+    }
+
+    &::-webkit-scrollbar {
+        background-color:  #colors[paper];
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #colors[primary];
+    }
+}
+
+@font-face {
+    font-family: 'FredokaOne';
+    src: url('../fonts/FredokaOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Josefin_Sans';
+    src: url('../fonts/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../fonts/Rajdhani-Bold.ttf');
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@xs: ~"(max-width: 575.98px)";
+// Small devices (landscape phones, 576px and up)
+@sm: ~"(min-width: 576px) and (max-width: 767.98px)";
+// Medium devices (tablets, 768px and up)
+@md: ~"(min-width: 768px) and (max-width: 991.98px)";
+// Large devices (desktops, 992px and up)
+@lg: ~"(min-width: 992px) and (max-width: 1199.98px)";
+// Extra large devices (large desktops, 1200px and up)
+@xl: ~"(min-width: 1200px) and (max-width: 1440px)";
+// Double Extra large devices (High res, 1200px and up)
+@xxl: ~"(min-width: 1440px)";
+
+// behaviour for touch browsers
+@nothover: ~"(hover: none)";
+
+@hover: ~"not all and (hover: none)";

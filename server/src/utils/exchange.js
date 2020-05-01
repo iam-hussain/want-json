@@ -1,24 +1,39 @@
 const { validationResult } = require('express-validator');
 
-export async function successResponce(req, res, message, successCode, payload) {
+export async function successResponce(req, res, message, status, payload) {
     return res
-        .status(successCode)
+        .status(200)
         .json({
             success: true,
+            status,
             message,
-            data: payload,
+            payload,
         })
         .end();
 }
 
-export async function errorResponce(req, res, message, errorCode) {
+export async function errorResponce(req, res, message, status) {
     return res
-        .status(errorCode)
+        .status(200)
         .json({
-            success: true,
+            success: false,
+            status,
             message,
-            errorCode,
-            data: {},
+            payload: {},
+        })
+        .end();
+}
+
+
+
+export async function errorHandleResponce(res, message, status) {
+    return res
+        .status(status)
+        .json({
+            success: false,
+            status,
+            message,
+            payload: {},
         })
         .end();
 }
@@ -32,7 +47,7 @@ export async function validateRequest(req, res, next) {
             .json({
                 success: false,
                 message: errors.array(),
-                error_code: 403,
+                status: 403,
                 data: {},
             })
             .end();
