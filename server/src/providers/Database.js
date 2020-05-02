@@ -57,6 +57,7 @@ export class Database {
         });
         db.Sequelize = Sequelize;
         db.sequelize = sequelize;
+        db.Op = sequelize.Op;
         this.models = db;
         Log.info('Models sync completed');
         return db;

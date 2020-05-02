@@ -22,7 +22,7 @@ module.exports = function authModel(sequelize, DataTypes) {
             },
         },
         useragent: {
-            type: DataTypes.JSON,
+            type: DataTypes.JSONB,
             defaultValue: {},
         },
         status: {

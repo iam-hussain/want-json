@@ -12,25 +12,13 @@ export async function successResponce(req, res, message, status, payload) {
         .end();
 }
 
-export async function errorResponce(req, res, message, status) {
-    return res
-        .status(200)
-        .json({
-            success: false,
-            status,
-            message,
-            payload: {},
-        })
-        .end();
-}
 
-
-
-export async function errorHandleResponce(res, message, status) {
+export async function errorResponce(req, res, message, status, errorType = 'validation') {
     return res
         .status(status)
         .json({
             success: false,
+            errorType,
             status,
             message,
             payload: {},
@@ -46,6 +34,7 @@ export async function validateRequest(req, res, next) {
             .status(200)
             .json({
                 success: false,
+                errorType: 'validation',
                 message: errors.array(),
                 status: 403,
                 data: {},

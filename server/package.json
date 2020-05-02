@@ -30,7 +30,6 @@
           "alias": {
             "@src": "./src",
             "@controllers": "./src/controllers",
-            "@exception": "./src/exception",
             "@helper": "./src/helper",
             "@middlewares": "./src/middlewares",
             "@providers": "./src/providers",
@@ -69,6 +68,7 @@
     "mysql2": "^2.1.0",
     "pg": "^8.0.2",
     "sequelize": "^5.21.6",
+    "validator": "^13.0.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {

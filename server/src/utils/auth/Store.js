@@ -15,7 +15,6 @@ export default async function storeAuthorization(req, res, next) {
             const hash = authorization.split(' ')[1];
             const authyData = await authModule.getAuthData(hash);
             if (authyData.id) {
-                console.log(authyData);
                 return {
                     success: true,
                     msg: 'User found',

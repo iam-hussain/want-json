@@ -8,6 +8,7 @@ import { userLogin } from "../redux/actions/userActions";
 import Wrapper from "../components/Wrapper";
 
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import '../../node_modules/react-vis/dist/style.css';
 import "../assets/vendor/font-awesome.min";
 import "../assets/less/standard.less";
 import "../assets/less/common.less";

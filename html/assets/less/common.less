@@ -32,6 +32,7 @@
             .model-button {
                 display: flex;
                 justify-content: center;
+
                 button {
                     min-width: 130px;
                     margin: 10px;
@@ -193,33 +194,34 @@
                     border-top: 2px solid #colors[primary];
                 }
 
-                @media @hover {
-                    &:hover {
-                        visibility: visible;
-                        opacity: 1;
-                        display: block;
-                    }
-                }
+                // @media @hover {
+                //     &:hover {
+                //         visibility: visible;
+                //         opacity: 1;
+                //         display: block;
+                //     }
+                // }
             }
 
             .visible {
-                @media @nothover {
-                visibility: visible;
-                opacity: 1;
-                display: block;
-                }
-            }
-
-            @media @hover {
-                &:hover>ul {
+                // @media @nothover {
                     visibility: visible;
                     opacity: 1;
                     display: block;
-                }
+                // }
             }
+
+            // @media @hover {
+            //     &:hover>ul {
+            //         visibility: visible;
+            //         opacity: 1;
+            //         display: block;
+            //     }
+            // }
         }
 
         .maxOnly {
+
             @media @sm,
             @xs {
                 display: none;
@@ -283,6 +285,7 @@
     a {
         margin-right: 5px;
         background-color: #colors[bg];
+
         @media @hover {
             &:hover {
                 color: #colors[primary];
@@ -345,6 +348,7 @@ footer {
 
     .social {
         display: flex;
+
         button {
             color: #colors[text2];
             background-color: #colors[bg];
@@ -357,16 +361,19 @@ footer {
                 }
             }
         }
+
         @media @sm,
         @xs,
         @md {
             display: block;
         }
     }
+
     p {
         padding: 0px;
         margin: 0px;
     }
+
     @media @sm,
     @xs {
         display: none;
@@ -410,7 +417,7 @@ footer {
                     color: #colors[bg];
                     background-color: #colors[secondary];
                 }
-                
+
                 &:after {
                     background-image: radial-gradient(circle, #colors[bg]; 10%, transparent 10.01%);
                 }
@@ -423,4 +430,101 @@ footer {
         }
     }
 
+}
+
+.loader-wrapp {
+    position: fixed;
+    top: 0vh;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #colors[bg];
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out 0s;
+     z-index: -10;
+    opacity: 0;
+   
+    .loader {
+        .spinner {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            margin-top: 10px;
+             animation: rotate360 2s linear infinite;
+
+            .bubble-1,
+            .bubble-2,
+            .bubble-3,
+            .bubble-4 {
+               animation: bounce 2s ease-in-out infinite;
+            }
+
+            .bubble-2 {
+                animation-delay: -0.5s;
+            }
+            .bubble-3 {
+                animation-delay: -1.0s;
+            }
+            .bubble-4 {
+                animation-delay: -1.5s;
+            }
+
+            .bubble-1,
+            .bubble-2,
+            .bubble-3, .bubble-4  {
+                position: absolute;
+                top: 0;
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                background-color: #colors[primary];
+                //animation: bounce 2s ease-in-out infinite;
+            }
+
+            .bubble-2 {
+                right: 0px;
+            }
+            .bubble-3 {
+                top: auto;
+                bottom: 0px;
+            }
+            .bubble-4 {
+                right: 0px;
+                top: auto;
+                bottom: 0px;
+            }
+        }
+
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: scale(0.0);
+        }
+
+        50% {
+            transform: scale(1.0);
+        }
+    }
+
+
+    @keyframes rotate360 {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.loader-show{
+    z-index: 100;
+    opacity: 1;
 }

@@ -1,10 +1,9 @@
 import { USER_LOGIN, USER_LOGOUT } from "../actions/userActions";
 
 const initializeState = {
-  id: "",
   token: "",
-  email: "",
   logged: false,
+  userData : {},
 };
 
 const counterReducer = (state = initializeState, action) => {
@@ -12,14 +11,12 @@ const counterReducer = (state = initializeState, action) => {
     case USER_LOGIN:
       return {
         ...state,
-        id: action.id,
         token: action.token,
-        email: action.email,
         logged: true,
       };
 
     case USER_LOGOUT:
-      return { ...state, id: "", token: "", email: "", logged: false };
+      return { ...initializeState };
 
     default:
       return { ...state };

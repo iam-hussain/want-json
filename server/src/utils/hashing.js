@@ -19,7 +19,7 @@ export default class hashingModule {
         return `auth_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
     }
 
-    static async storeHashGenerator(title) {
+    static async payloadHashGenerator(title) {
         return `${title}_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
     }
 

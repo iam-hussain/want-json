@@ -1,4 +1,3 @@
-
 module.exports = function userModel(sequelize, DataTypes) {
     const User = sequelize.define('user', {
         id: {
@@ -46,7 +45,7 @@ module.exports = function userModel(sequelize, DataTypes) {
             defaultValue: true,
         },
         authData: {
-            type: DataTypes.JSON,
+            type: DataTypes.JSONB,
             defaultValue: {},
         },
         joinedIP: {
@@ -69,7 +68,7 @@ module.exports = function userModel(sequelize, DataTypes) {
 
     User.associate = function userAssociate(db) {
         db.User.hasMany(db.Auth, { foreignKey: 'user_id', sourceKey: 'id', as: 'logger' });
-        db.User.hasMany(db.Store, { foreignKey: 'user_id', sourceKey: 'id', as: 'owner' });
+        db.User.hasMany(db.Payload, { foreignKey: 'user_id', sourceKey: 'id', as: 'owner' });
     };
     return User;
 };
