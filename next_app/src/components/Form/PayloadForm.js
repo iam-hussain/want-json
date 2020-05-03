@@ -59,51 +59,6 @@ export default function EmailVerify(props) {
       <div className="form-row">
         <div className="form-item">
           <div className="form-input">
-            <input type="checkbox" required />
-            <label>Private Store</label>
-          </div>
-        </div>
-      </div>
-      <div className="form-row">
-        <div className="form-item">
-          <div className="form-input">
-            <input
-              type="text"
-              value="Istanbul, Adana, Adiyaman, Afyon, Agri, Aksaray, Ankara"
-              data-role="tagsinput"
-            />
-            <label>Tag</label>
-          </div>
-        </div>
-      </div>
-      <div className="form-row">
-        <div className="form-item">
-          <div className="form-input">
-            <input
-              type="radio"
-              name="options"
-              id="option1"
-              autocomplete="off"
-              checked
-            />
-            <label>Tag</label>
-          </div>
-
-          <div className="form-input">
-            <input
-              type="radio"
-              name="options"
-              id="option1"
-              autocomplete="off"
-              checked
-            />
-            <label>Tag</label>
-          </div>
-        </div>
-      </div>
-      <div className="form-row">
-        <div className="form-item">
-          <div className="form-input">
             <input type="text" id="keywords" name="keywords" required />
             <label>Keywords</label>
           </div>
@@ -117,14 +72,63 @@ export default function EmailVerify(props) {
           </div>
         </div>
       </div>
-      
+      <div className="form-row">
+        <div className="form-item">
+          <div className="input-group">
+            <span className="input-text">Visibility</span>
+            <div className="form-input">
+              <input
+                type="radio"
+                name="visibility"
+                autocomplete="off"
+                checked
+              />
+              <label>Public</label>
+            </div>
+
+            <div className="form-input">
+              <input
+                type="radio"
+                name="visibility"
+                autocomplete="off"
+              />
+              <label>Private</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-item">
+          <div className="input-group">
+            <span className="input-text">Type</span>
+            <div className="form-input">
+              <input
+                type="radio"
+                name="type"
+                autocomplete="off"
+              />
+              <label>Dynamic</label>
+            </div>
+
+            <div className="form-input">
+              <input
+                type="radio"
+                name="type"
+                autocomplete="off"
+              />
+              <label>Static</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="form-row">
         <div className="form-item">
           <div className="form-input code-input">
-            
-      <Editor />
+            <Editor />
           </div>
-          </div> </div>
+        </div>{" "}
+      </div>
       <div className="form-row">
         <div className="form-item">
           <button

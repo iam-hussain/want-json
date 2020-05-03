@@ -40,7 +40,6 @@ export default class EditorApp extends React.Component {
         style={{
             height: '300px',
             margin: '10px',
-            'margin-bottom': '20px',
             overflow: 'auto',
             background: '#060940',
             fontFamily: 'monospace',

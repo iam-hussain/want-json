@@ -43,8 +43,8 @@
                         <li><a class="button">My Store</a></li>
                         <li><a class="button">Profile</a></li>
                         <li><a class="button">Bookmark</a></li>
-                        <li class="separate"><a  href="/login.html"  class="button">Login</a></li>
-                        <li><a  href="/login.html"  class="button">Register</a></li>
+                        <li class="separate"><a href="/login.html" class="button">Login</a></li>
+                        <li><a href="/login.html" class="button">Register</a></li>
                     </ul>
                 </li>
             </ul>
@@ -71,7 +71,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="row dash-content">
-                <div class="col-md-4 dash-menu">
+                <div class="col dash-menu">
                     <ul class="menu-list">
                         <li class="button menu-item active" data="newStore">
                             <i class="fa fa-plus"></i>
@@ -96,8 +96,10 @@
 
                     </ul>
                 </div>
+            </div>
+            <div class="row dash-content">
                 <div class="col dash-box">
-                    <div id="editStore" class="dash-box-content show">
+                    <div id="editStore" class="dash-box-content hide">
                         <div class="dash-box-title">
                             <h2>Dashbord</h2>
                         </div>
@@ -157,7 +159,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="newStore" class="dash-box-content hide">
+                    <div id="newStore" class="dash-box-content show">
                         <div class="dash-box-title">
                             <h2>New Store</h2>
                         </div>
@@ -180,12 +182,15 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-item">
+                                    <div class="input-group">
                                     <div class="form-input">
                                         <input type="checkbox" required>
                                         <label>Private Store</label>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-item">
                                     <div class="form-input">
@@ -204,248 +209,266 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-item">
-                                    <button class="button large hover-animate primary">Create</button>
+                                    <div class="input-group">
+                                        <span class="input-text">Visibility : </span>
+                                        <div class="form-input">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"
+                                                checked />
+                                            <label>Public</label>
+                                        </div>
+
+                                        <div class="form-input">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"
+                                                checked />
+                                            <label>Private</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-
-                    <div id="myStore" class="dash-box-content hide">
-                        <div class="dash-box-title">
-                            <h2>My Store</h2>
+                    <div class="form-row">
+                        <div class="form-item">
+                            <button class="button large hover-animate primary">Create</button>
                         </div>
-                        <ul class="store-list">
-                            <li class="store-item">
-                                <div class="header">
-                                    <div class="type">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                    <span>Sample Product</span>
+                    </div>
+                    </form>
+                </div>
+
+                <div id="myStore" class="dash-box-content hide">
+                    <div class="dash-box-title">
+                        <h2>My Store</h2>
+                    </div>
+                    <ul class="store-list">
+                        <li class="store-item">
+                            <div class="header">
+                                <div class="type">
+                                    <i class="fas fa-lock"></i>
                                 </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                <span>Sample Product</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="store-item">
+                            <div class="header">
+                                <div class="type">
+                                    <i class="fas fa-lock"></i>
                                 </div>
+                                <span>Gems</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="store-item">
+                            <div class="header">
+                                <div class="type">
+                                    <i class="fas fa-lock-open"></i>
+                                </div>
+                                <span>Makana</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="store-item">
+                            <div class="header">
+                                <div class="type">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <span>Free API</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="store-item">
+                            <div class="header">
+                                <div class="type">
+                                    <i class="fas fa-lock-open"></i>
+                                </div>
+                                <span>Bit Star</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pagination">
+                        <ul class="pagination-group">
+                            <li class="pagination-item button">
+                                <i class="fas fa-chevron-left"></i>
                             </li>
-                            <li class="store-item">
-                                <div class="header">
-                                    <div class="type">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                    <span>Gems</span>
-                                </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </li>
-                            <li class="store-item">
-                                <div class="header">
-                                    <div class="type">
-                                        <i class="fas fa-lock-open"></i>
-                                    </div>
-                                    <span>Makana</span>
-                                </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </li>
-                            <li class="store-item">
-                                <div class="header">
-                                    <div class="type">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                    <span>Free API</span>
-                                </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </li>
-                            <li class="store-item">
-                                <div class="header">
-                                    <div class="type">
-                                        <i class="fas fa-lock-open"></i>
-                                    </div>
-                                    <span>Bit Star</span>
-                                </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
+                            <li class="pagination-item button">5</li>
+                            <li class="pagination-item button active">6</li>
+                            <li class="pagination-item button">7</li>
+                            <li class="pagination-item button">
+                                <i class="fas fa-chevron-right"></i>
                             </li>
                         </ul>
-                        <div class="pagination">
-                            <ul class="pagination-group">
-                                <li class="pagination-item button">
-                                    <i class="fas fa-chevron-left"></i>
-                                </li>
-                                <li class="pagination-item button">5</li>
-                                <li class="pagination-item button active">6</li>
-                                <li class="pagination-item button">7</li>
-                                <li class="pagination-item button">
-                                    <i class="fas fa-chevron-right"></i>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
+                </div>
 
-                    <div id="myProfile" class="dash-box-content hide">
-                        <div class="dash-box-title">
-                            <h2>My Profile</h2>
-                        </div>
-                        <form class="form" novalidate>
-                            <div class="form-row">
-                                <div class="form-item">
-                                    <div class="form-input ">
-                                        <input type="email" name="email" value="test@gmail.com" required disabled>
-                                        <label>Email</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-item">
-                                    <div class="form-input">
-                                        <input type="text" name="firstname" required>
-                                        <label>First Name</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-item">
-                                    <div class="form-input">
-                                        <input type="text" name="lastname" required>
-                                        <label>Last Name</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-item">
-                                    <button class="button large hover-animate primary">Update</button>
-                                </div>
-                            </div>
-                        </form>
+                <div id="myProfile" class="dash-box-content hide">
+                    <div class="dash-box-title">
+                        <h2>My Profile</h2>
                     </div>
-
-                    <div id="myBookmark" class="dash-box-content hide">
-                        <div class="dash-box-title">
-                            <h2>My Bookmark</h2>
+                    <form class="form" novalidate>
+                        <div class="form-row">
+                            <div class="form-item">
+                                <div class="form-input ">
+                                    <input type="email" name="email" value="test@gmail.com" required disabled>
+                                    <label>Email</label>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="bookmark-list">
-                            <li class="bookmark-item">
-                                <div class="header">
-                                    <div class="flag">
-                                        <i class="fas fa-bookmark"></i>
-                                    </div>
-                                    <span>Sample Product</span>
+                        <div class="form-row">
+                            <div class="form-item">
+                                <div class="form-input">
+                                    <input type="text" name="firstname" required>
+                                    <label>First Name</label>
                                 </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-item">
+                                <div class="form-input">
+                                    <input type="text" name="lastname" required>
+                                    <label>Last Name</label>
                                 </div>
-                            </li>
-                            <li class="bookmark-item">
-                                <div class="header">
-                                    <div class="flag">
-                                        <i class="fas fa-bookmark"></i>
-                                    </div>
-                                    <span>Sample Product</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-item">
+                                <button class="button large hover-animate primary">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="myBookmark" class="dash-box-content hide">
+                    <div class="dash-box-title">
+                        <h2>My Bookmark</h2>
+                    </div>
+                    <ul class="bookmark-list">
+                        <li class="bookmark-item">
+                            <div class="header">
+                                <div class="flag">
+                                    <i class="fas fa-bookmark"></i>
                                 </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                <span>Sample Product</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="bookmark-item">
+                            <div class="header">
+                                <div class="flag">
+                                    <i class="fas fa-bookmark"></i>
                                 </div>
-                            </li>
-                            <li class="bookmark-item">
-                                <div class="header">
-                                    <div class="flag">
-                                        <i class="fas fa-bookmark"></i>
-                                    </div>
-                                    <span>Sample Product</span>
+                                <span>Sample Product</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="bookmark-item">
+                            <div class="header">
+                                <div class="flag">
+                                    <i class="fas fa-bookmark"></i>
                                 </div>
-                                <div class="action">
-                                    <button class="button">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <button class="button">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- <div class="not-found">
+                                <span>Sample Product</span>
+                            </div>
+                            <div class="action">
+                                <button class="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="button">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- <div class="not-found">
                         <p>No item found</p>
                     </div> -->
-                        <div class="pagination">
-                            <ul class="pagination-group">
-                                <li class="pagination-item button">
-                                    <i class="fas fa-chevron-left"></i>
-                                </li>
-                                <li class="pagination-item button">5</li>
-                                <li class="pagination-item button active">6</li>
-                                <li class="pagination-item button">7</li>
-                                <li class="pagination-item button">
-                                    <i class="fas fa-chevron-right"></i>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="pagination">
+                        <ul class="pagination-group">
+                            <li class="pagination-item button">
+                                <i class="fas fa-chevron-left"></i>
+                            </li>
+                            <li class="pagination-item button">5</li>
+                            <li class="pagination-item button active">6</li>
+                            <li class="pagination-item button">7</li>
+                            <li class="pagination-item button">
+                                <i class="fas fa-chevron-right"></i>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+    </div>
+
     <nav class="navbar nav-bottom">
         <a href="/docs.html" class="button"><i class="fas fa-book"></i></a>
         <a href="/explore.html" class="button"><i class="fas fa-laptop-code"></i></a>
         <a href="/dash.html" class="button"><i class="fas fa-store"></i></a>
     </nav>
-    
+
     <footer>
         <div class="container">
             <div class="row align-items-end justify-content-center">

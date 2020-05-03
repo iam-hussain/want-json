@@ -308,6 +308,20 @@ h3 {
     position: relative;
     width: 100%;
     text-align: center;
+    .input-text {
+        font-family: "Rajdhani";
+        margin: -3px 10px;
+    }
+    .input-group{
+        justify-content: center;
+        .input-text{
+            min-width: 100px;
+        }
+        .form-input{
+            min-width: 115px;
+        }
+    }
+
 
     @media @sm,
     @xs,
@@ -377,7 +391,7 @@ h3 {
 
 }
 
-.form-row+.form-row {
+.form-row {
     margin-top: 28px;
 
     @media @sm,
@@ -498,7 +512,8 @@ input {
     overflow: visible;
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+input[type=radio] {
     left: 5px;
     position: absolute;
     width: 20px;
@@ -554,6 +569,26 @@ input[type=checkbox] {
         box-shadow: none;
         background: #colors[text3];
     }
+}
+
+
+input[type=radio] {
+
+    // Checkmark. Could be replaced with an image
+    &:checked+label:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        background: white;
+        width: 12px;
+        height: 12px;
+        border-radius: 5px;
+        background-color: #colors[bg];
+    }
+}
+
+input[type=checkbox] {
 
     // Checkmark. Could be replaced with an image
     &:checked+label:after {
@@ -574,8 +609,6 @@ input[type=checkbox] {
         transform: rotate(45deg);
     }
 }
-
-
 
 .has-error {
 
