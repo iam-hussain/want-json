@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import FullPage from '../components/FullPage';
-import ResetPasswordForm from '../components/form/ResetPasswordForm';
+import ResetPasswordForm from '../components/Form/ResetPasswordForm';
 import axios from '../lib/axios';
 import { openAlert } from "../redux/actions/alertActions";
 

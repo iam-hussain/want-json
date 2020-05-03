@@ -33,7 +33,7 @@ export default function TopNavbar(props) {
     <nav className="navBar nav-top">
         <div className="container">
             <div className="title">
-                <a className="brand hover-animate" href="/">getJSON</a>
+            <Link href="/"><a className="brand hover-animate">getJSON</a></Link>
                 <div className="pageTitle"></div>
             </div>
             <div className="pageTitle"></div>

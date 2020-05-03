@@ -1,12 +1,12 @@
 import React, { useEffect, Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
-import { loaderEnd } from '../redux/actions/commonActions'
-import NProgress from 'nprogress';
-import Router from 'next/router'
+import { loaderEnd } from "../redux/actions/commonActions";
+import NProgress from "nprogress";
+import Router from "next/router";
 
 import Alert from "./Alert";
-import Loader from './Loader'
+import Loader from "./Loader";
 
 export default function Wrapper(props) {
   const dispatch = useDispatch();
@@ -16,19 +16,33 @@ export default function Wrapper(props) {
     if (token) {
       dispatch(
         userLogin({
-          token
+          token,
         })
       );
     }
-  }
+  };
   useEffect(() => {
+    NProgress.start();
     setTimeout(() => {
       dispatch(loaderEnd());
-    }, 500)
+      NProgress.done();
+    }, 500);
     handleUserToken();
   }, []);
-  Router.events.on('routeChangeStart', handleUserToken)
-  
+
+  Router.onRouteChangeStart = () => {
+    NProgress.start();
+  };
+  Router.onRouteChangeComplete = () => {
+    NProgress.done();
+  };
+
+  Router.onRouteChangeError = () => {
+    NProgress.done();
+  };
+
+  Router.events.on("routeChangeStart", handleUserToken);
+
   return (
     <Fragment>
       <Loader />
