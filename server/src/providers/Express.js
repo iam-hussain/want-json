@@ -9,8 +9,8 @@ import Routes from './Routes';
 
 class Express {
     /**
-	 * Initializes the express server
-	 */
+   * Initializes the express server
+   */
     constructor() {
         this.express = express();
         this.mountMiddlewares();
@@ -39,7 +39,10 @@ class Express {
             }
             Log.info(`Server :: Running @ ${port}`);
             // eslint-disable-next-line no-console
-            return console.log('\x1b[33m%s\x1b[0m', `Server :: Running @ 'http://localhost:${port}'`);
+            return console.log(
+                '\x1b[33m%s\x1b[0m',
+                `Server :: Running @ 'http://localhost:${port}'`,
+            );
         });
     }
 }

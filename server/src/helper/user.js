@@ -20,7 +20,14 @@ export default class UserModule {
     static async getWithPublicData(where) {
         const returnData = await DB.models.User.findOne({
             where,
-            attributes: ['id', 'firstName', 'lastName', 'email', 'emailVerified', 'passwordSet'],
+            attributes: [
+                'id',
+                'firstName',
+                'lastName',
+                'email',
+                'emailVerified',
+                'passwordSet',
+            ],
         }).then((userIs) => (userIs.id ? userIs.dataValues : {}));
         return returnData;
     }
@@ -65,7 +72,8 @@ export default class UserModule {
                     date: new Date(),
                 },
             };
-        } if (type === 'reset_password') {
+        }
+        if (type === 'reset_password') {
             return {
                 ...existingData,
                 reset_password: {

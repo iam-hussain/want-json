@@ -8,7 +8,7 @@ import DB from './Database';
 export default class App {
     // Clear the console
     static clearConsole() {
-        // process.stdout.write('\x1B[2J\x1B[0f');
+    // process.stdout.write('\x1B[2J\x1B[0f');
     }
 
     // Loads your dotenv file

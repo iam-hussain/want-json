@@ -18,10 +18,11 @@
 }
 
 .dash-content {
-    padding: 15px 0;
+    padding: 20px 0;
     transition: all 0.6s ease-in-out 0s;
     align-items: center;
     justify-content: center;
+    .shadow();
 
     .dash-menu {
         min-width: 250px;
@@ -29,8 +30,10 @@
         .menu-list {
             display: -ms-flexbox;
             display: flex;
-            -ms-flex-direction: column;
-            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            -ms-flex-direction: row;
+            flex-direction: row;
             padding-left: 0;
             margin-bottom: 0;
             text-align: center;
@@ -45,6 +48,10 @@
                 padding: 0.75rem 1.25rem;
                 transition: all 0.3s ease-in-out 0s;
                 .shadow();
+
+                .menu-name{
+                    padding-left: 10px;
+                }
 
                 @media @hover {
                     &:hover {
@@ -82,7 +89,6 @@
     }
 
     .dash-box-content {
-        margin: 20px 0;
         transition: all 0.6s ease-in-out 0s;
 
         .dash-box-title {
@@ -95,6 +101,7 @@
             border-bottom: 2px solid #colors[primary];
 
             h2 {
+                margin: 0px;
                 -webkit-user-select: none;
                 -moz-user-select: none;
                 -ms-user-select: none;
@@ -123,6 +130,8 @@
 }
 
 .store-list {
+    color: #colors[text1];
+    font-weight: 600;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -179,6 +188,8 @@
 
 
 .bookmark-list {
+    color: #colors[text1];
+    font-weight: 600;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -245,6 +256,8 @@
 
 
 .tags-container {
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 10px;
     margin: 10px;
     display: flex;
@@ -264,7 +277,7 @@
 
         .tags {
             padding: 0px 5px;
-            padding-right: 15px;
+            padding-right: 5px;
             border-radius: 5px;
             margin-right: 5px;
             white-space: pre;

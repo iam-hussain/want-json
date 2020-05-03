@@ -18,7 +18,9 @@ export default class hashingModule {
         };
         await mg.messages().send(data, (error, body) => {
             if (error && !body) {
-                Log.error(`[onError]${JSON.stringify(error)}, [onBody]${JSON.stringify(body)}`);
+                Log.error(
+                    `[onError]${JSON.stringify(error)}, [onBody]${JSON.stringify(body)}`,
+                );
                 return {
                     success: false,
                     msg: 'Unknown error on sending mail',

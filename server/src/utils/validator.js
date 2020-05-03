@@ -1,8 +1,4 @@
-import {
-    check,
-    body,
-    param,
-} from 'express-validator';
+import { check, body, param } from 'express-validator';
 import validator from 'validator';
 import userModule from '@helper/user';
 import payloadModule from '../helper/payload';
@@ -53,9 +49,7 @@ const isEmailExist = body('email').custom(async (value) => {
     return true;
 });
 
-const isOTP = check('otp')
-    .notEmpty()
-    .withMessage('OTP must be provided');
+const isOTP = check('otp').notEmpty().withMessage('OTP must be provided');
 
 const isCurrentPassword = check('current_password')
     .notEmpty()
@@ -90,11 +84,15 @@ const isTitleTakenByAny = body('title').custom(async (value) => {
     return true;
 });
 
-
 const isTitleExistByOther = body('email').custom(async (value, { req }) => {
     if (value && req.params.id) {
         const url = await payloadUtils.urlMaker(value);
-        if (await payloadModule.existCheck({ url, id: { [DB.Op.not]: req.params.id } })) {
+        if (
+            await payloadModule.existCheck({
+                url,
+                id: { [DB.Op.not]: req.params.id },
+            })
+        ) {
             throw new Error('This title is already taken please different title');
         }
     }

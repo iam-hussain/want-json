@@ -88,6 +88,7 @@
     "eslint-plugin-import": "^2.20.1",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
+    "prettier": "2.0.5",
     "supertest": "^4.0.2"
   },
   "author": "ZaHuPro",

@@ -42,10 +42,7 @@ export class Database {
         const modelDirectory = path.join(Locals.root, '/src/models/');
         const sequelize = new Sequelize(Locals.db);
         fs.readdirSync(modelDirectory)
-            .filter((file) => (
-                file.indexOf('.') !== 0
-          && file.slice(-3) === '.js'
-            ))
+            .filter((file) => file.indexOf('.') !== 0 && file.slice(-3) === '.js')
             .forEach((file) => {
                 const model = sequelize.import(path.join(modelDirectory, file));
                 db[path.parse(file).name] = model;

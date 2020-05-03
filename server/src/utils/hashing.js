@@ -12,19 +12,28 @@ export default class hashingModule {
     }
 
     static async verifyPasswordHash(userPrivateData, password) {
-        return await MD5(MD5(password) + userPrivateData.salt) === userPrivateData.password;
+        return (
+            (await MD5(MD5(password) + userPrivateData.salt))
+      === userPrivateData.password
+        );
     }
 
     static async authHashGenerator() {
-        return `auth_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
+        return `auth_${MD5(
+            Locals.name + MD5(new Date().getTime()) + Locals.appSecret,
+        )}`;
     }
 
     static async payloadHashGenerator(title) {
-        return `${title}_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
+        return `${title}_${MD5(
+            Locals.name + MD5(new Date().getTime()) + Locals.appSecret,
+        )}`;
     }
 
     static async publicIDGenerator() {
-        return `id_${MD5(Locals.name + MD5(new Date().getTime()) + Locals.appSecret)}`;
+        return `id_${MD5(
+            Locals.name + MD5(new Date().getTime()) + Locals.appSecret,
+        )}`;
     }
 
     static async emailOTP() {

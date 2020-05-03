@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class FakeAPIExample extends Component {
   render() {
@@ -34,7 +34,7 @@ export default class FakeAPIExample extends Component {
                       <td>100 posts</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -45,7 +45,7 @@ export default class FakeAPIExample extends Component {
                       <td>500 comments</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -56,7 +56,7 @@ export default class FakeAPIExample extends Component {
                       <td>100 albums</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -67,7 +67,7 @@ export default class FakeAPIExample extends Component {
                       <td>5000 photos</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -78,7 +78,7 @@ export default class FakeAPIExample extends Component {
                       <td>200 todos</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -89,7 +89,7 @@ export default class FakeAPIExample extends Component {
                       <td>10 users</td>
                       <td>
                         <button className="button round">
-                          <i className="fa fa-arrow-right"></i>
+                          <i className="fa fa-arrow-right" />
                         </button>
                       </td>
                     </tr>
@@ -98,9 +98,9 @@ export default class FakeAPIExample extends Component {
               </div>
               <div className="col-md-6 browserBox">
                 <div className="browser">
-                  <div className="browser-button"></div>
-                  <div className="browser-button"></div>
-                  <div className="browser-button"></div>
+                  <div className="browser-button" />
+                  <div className="browser-button" />
+                  <div className="browser-button" />
                   <div className="address">
                     <span className="host">my-json-server.typicode.com/</span>
                     <span className="path">user/repo/posts/1</span>

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
-import { useForm, ErrorMessage } from "react-hook-form";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useForm, ErrorMessage } from 'react-hook-form';
 import {
-  required_input_msg,
-  email_invalid_msg,
-} from "../../msg";
+  requiredInputMsg,
+  emailInvalidMsg,
+} from '../../msg';
 import axios from '../../lib/axios';
 
-export default function EmailVerify(props) {
+export default function EmailVerify({ responseError, setEmail }) {
   const [componentLoading, setComponentLoading] = useState(true);
   const {
     register,
@@ -18,38 +19,40 @@ export default function EmailVerify(props) {
     reset,
     formState,
     setValue,
-    triggerValidation
-  } = useForm({ mode: "onChange" });
+    triggerValidation,
+  } = useForm({ mode: 'onChange' });
   const router = useRouter();
 
   useEffect(() => {
     setComponentLoading(false);
-    setValue("email", localStorage.getItem('email_verify'));
-    triggerValidation("email")
+    setValue('email', localStorage.getItem('email_verify'));
+    triggerValidation('email');
   }, []);
-  
-  let emailWatch = watch("email");
+
+  const emailWatch = watch('email');
   useEffect(() => {
-    props.setEmail(emailWatch);
+    setEmail(emailWatch);
   }, [emailWatch]);
 
   useEffect(() => {
-    props.responseError.map((m) => {
-      setError(m.param, "invalid", m.msg);
+    responseError.map((m) => {
+      setError(m.param, 'invalid', m.msg);
+      return true;
     });
-  }, [props.responseError]);
-  
+  }, [responseError]);
+
 
   const onSubmit = async (data) => {
-    let response = await axios('email_verify', 'post', data);
-    if(response.success){
+    const response = await axios('email_verify', 'post', data);
+    if (response.success) {
       localStorage.removeItem('email_verify');
       localStorage.setItem('token', response.payload.token);
       reset();
-      router.push('/')
-    }else{
+      router.push('/');
+    } else {
       response.message.map((m) => {
-        setError(m.param, "invalid", m.msg);
+        setError(m.param, 'invalid', m.msg);
+        return true;
       });
     }
   };
@@ -62,10 +65,10 @@ export default function EmailVerify(props) {
             <input
               type="text"
               ref={register({
-                required: required_input_msg,
+                required: requiredInputMsg,
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                  message: email_invalid_msg,
+                  message: emailInvalidMsg,
                 },
               })}
               name="email"
@@ -81,9 +84,14 @@ export default function EmailVerify(props) {
       <div className="form-row">
         <div className="form-item">
           <div className={`form-input${errors.otp ? ' has-error' : ''}`}>
-            <input type="text" name="otp" ref={register({
-                required: required_input_msg
-              })} required />
+            <input
+              type="text"
+              name="otp"
+              ref={register({
+                required: requiredInputMsg,
+              })}
+              required
+            />
             <label>Enter Verification OTP</label>
             <span className="error-block">
               <ErrorMessage errors={errors} name="otp" />
@@ -93,10 +101,14 @@ export default function EmailVerify(props) {
       </div>
       <div className="form-row">
         <div className="form-item">
-          <button type="submit"
+          <button
+            type="submit"
             className="button large primary"
             formNoValidate
-            disabled={!formState.isValid || formState.isSubmitting || componentLoading}>Verify</button>
+            disabled={!formState.isValid || formState.isSubmitting || componentLoading}
+          >
+            Verify
+          </button>
         </div>
       </div>
     </form>

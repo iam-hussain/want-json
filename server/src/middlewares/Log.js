@@ -9,8 +9,9 @@ import * as path from 'path';
 class Log {
     constructor() {
         this.today = new Date();
-        const dateString = `${this.today.getFullYear()}-${this.today.getMonth()
-      + 1}-${this.today.getDate()}`;
+        const dateString = `${this.today.getFullYear()}-${
+            this.today.getMonth() + 1
+        }-${this.today.getDate()}`;
         const timeString = `${this.today.getHours()}:${this.today.getMinutes()}:${this.today.getSeconds()}`;
         this.baseDir = path.join(__dirname, '../../logs/');
         this.fileName = `${dateString}.log`;
@@ -47,40 +48,36 @@ class Log {
         const that = this;
         const kind = kindIs.toUpperCase();
 
-        fs.open(
-            `${that.baseDir}${that.fileName}`,
-            'a',
-            (_err, _fileDescriptor) => {
-                if (!_err && _fileDescriptor) {
-                    // Append to file and close it
-                    return fs.appendFile(
-                        _fileDescriptor,
-                        `${that.linePrefix} [${kind}] ${_string}\n`,
-                        (error) => {
-                            if (!error) {
-                                return fs.close(_fileDescriptor, (_error) => {
-                                    if (!_error) {
-                                        return true;
-                                    }
-                                    return console.log(
-                                        '\x1b[31m%s\x1b[0m',
-                                        'Error closing log file that was being appended',
-                                    );
-                                });
-                            }
-                            return console.log(
-                                '\x1b[31m%s\x1b[0m',
-                                'Error appending to the log file',
-                            );
-                        },
-                    );
-                }
-                return console.log(
-                    '\x1b[31m%s\x1b[0m',
-                    "Error cloudn't open the log file for appending",
+        fs.open(`${that.baseDir}${that.fileName}`, 'a', (_err, _fileDescriptor) => {
+            if (!_err && _fileDescriptor) {
+                // Append to file and close it
+                return fs.appendFile(
+                    _fileDescriptor,
+                    `${that.linePrefix} [${kind}] ${_string}\n`,
+                    (error) => {
+                        if (!error) {
+                            return fs.close(_fileDescriptor, (_error) => {
+                                if (!_error) {
+                                    return true;
+                                }
+                                return console.log(
+                                    '\x1b[31m%s\x1b[0m',
+                                    'Error closing log file that was being appended',
+                                );
+                            });
+                        }
+                        return console.log(
+                            '\x1b[31m%s\x1b[0m',
+                            'Error appending to the log file',
+                        );
+                    },
                 );
-            },
-        );
+            }
+            return console.log(
+                '\x1b[31m%s\x1b[0m',
+                "Error cloudn't open the log file for appending",
+            );
+        });
     }
 }
 

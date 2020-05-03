@@ -18,7 +18,8 @@ class Locals {
         const jwtExpiresIn = process.env.JWT_EXPIRES_IN || 3;
 
         const name = process.env.APP_NAME || 'getJSON';
-        const description = process.env.APP_DESCRIPTION || 'getJSON is a free online REST API that you can use whenever you need some fake data.';
+        const description = process.env.APP_DESCRIPTION
+      || 'getJSON is a free online REST API that you can use whenever you need some fake data.';
         const isCORSEnabled = !(
             !process.env.CORS_ENABLED || process.env.CORS_ENABLED === 'false'
         );
@@ -29,11 +30,9 @@ class Locals {
             database: process.env.DB_DATABASE || 'getjson',
             host: process.env.DB_HOST || 'localhost',
             dialect: process.env.DB_DIALECT || 'mysql',
-            logging:
-        !process.env.DB_LOGGING || process.env.DB_LOGGING === 'false'
-            ? false
+
             // eslint-disable-next-line no-console
-            : console.log,
+            logging: !process.env.DB_LOGGING || process.env.DB_LOGGING === 'false' ? false : console.log,
         };
 
         const mailgun = {

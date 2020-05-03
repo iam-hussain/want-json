@@ -7,11 +7,13 @@ export default class authyModule {
             where: {
                 hash,
             },
-            include: [{
-                model: DB.models.User,
-                as: 'logger',
-                attributes: ['id', 'email'],
-            }],
+            include: [
+                {
+                    model: DB.models.User,
+                    as: 'logger',
+                    attributes: ['id', 'email'],
+                },
+            ],
         });
         return returnData;
     }
@@ -27,13 +29,16 @@ export default class authyModule {
     }
 
     static async updateAuth(hash, status) {
-        const returnData = await DB.models.Auth.update({
-            status,
-        }, {
-            where: {
-                hash,
+        const returnData = await DB.models.Auth.update(
+            {
+                status,
             },
-        });
+            {
+                where: {
+                    hash,
+                },
+            },
+        );
         return returnData;
     }
 }

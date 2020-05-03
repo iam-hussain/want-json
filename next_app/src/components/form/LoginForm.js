@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useForm, ErrorMessage } from "react-hook-form";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { useForm, ErrorMessage } from 'react-hook-form';
 import {
-  required_input_msg,
-  email_invalid_msg,
-  password_minLength_msg,
-} from "../../msg";
-import axios from "../../lib/axios";
-import { openAlert, closeAlert } from "../../redux/actions/alertActions";
+  requiredInputMsg,
+  emailInvalidMsg,
+  passwordMinLengthMsg,
+} from '../../msg';
+import axios from '../../lib/axios';
+import { openAlert, closeAlert } from '../../redux/actions/alertActions';
 
 export default function LoginForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -21,7 +22,7 @@ export default function LoginForm() {
     setError,
     reset,
     formState,
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: 'onChange' });
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -30,40 +31,41 @@ export default function LoginForm() {
   }, []);
 
   useEffect(() => {
-    if (alertData.value === "email_verify") {
-      dispatch(closeAlert(""));
-      router.push("/email_verify");
+    if (alertData.value === 'email_verify') {
+      dispatch(closeAlert(''));
+      router.push('/email_verify');
     }
   }, [alertData.value]);
 
   const onSubmit = async (data) => {
-    let response = await axios("signin", "post", data);
+    const response = await axios('signin', 'post', data);
     if (response.success) {
       if (response.payload.token) {
-        localStorage.setItem("token", response.payload.token);
+        localStorage.setItem('token', response.payload.token);
         reset();
-        router.push("/");
+        router.push('/');
       } else {
-        localStorage.setItem("email_verify", data.email);
+        localStorage.setItem('email_verify', data.email);
         reset();
         dispatch(
           openAlert({
-            title: "Verify",
-            content: "Your email not yet verified, Please verify your email to login",
+            title: 'Verify',
+            content: 'Your email not yet verified, Please verify your email to login',
             closeValue: 'email_verify',
             buttons: [
               {
-                title: "Verify Now",
-                value: "email_verify",
-                icon: "fas fa-user-check",
+                title: 'Verify Now',
+                value: 'email_verify',
+                icon: 'fas fa-user-check',
               },
             ],
-          })
+          }),
         );
       }
     } else {
       response.message.map((m) => {
-        setError(m.param, "invalid", m.msg);
+        setError(m.param, 'invalid', m.msg);
+        return true;
       });
     }
   };
@@ -76,10 +78,10 @@ export default function LoginForm() {
             <input
               type="text"
               ref={register({
-                required: required_input_msg,
+                required: requiredInputMsg,
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                  message: email_invalid_msg,
+                  message: emailInvalidMsg,
                 },
               })}
               name="email"
@@ -98,10 +100,10 @@ export default function LoginForm() {
             <input
               type="password"
               ref={register({
-                required: required_input_msg,
+                required: requiredInputMsg,
                 minLength: {
                   value: 8,
-                  message: password_minLength_msg,
+                  message: passwordMinLengthMsg,
                 },
               })}
               name="password"

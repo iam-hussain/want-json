@@ -22,7 +22,7 @@ export default class PayloadModule {
         const returnData = await DB.models.Payload.findOne({
             where,
             attributes: ['data'],
-        }).then((payLoad) => (payLoad || {}));
+        }).then((payLoad) => payLoad || {});
         return returnData;
     }
 
@@ -72,26 +72,32 @@ export default class PayloadModule {
 
     static async update(where, body, data) {
         const url = await payloadUtils.urlMaker(body.title);
-        const returnData = await DB.models.Payload.update({
-            url,
-            title: body.title,
-            description: body.description,
-            keywords: body.keywords,
-            data,
-            type: body.type,
-            visibility: body.visibility,
-        }, {
-            where,
-        });
+        const returnData = await DB.models.Payload.update(
+            {
+                url,
+                title: body.title,
+                description: body.description,
+                keywords: body.keywords,
+                data,
+                type: body.type,
+                visibility: body.visibility,
+            },
+            {
+                where,
+            },
+        );
         return returnData;
     }
 
     static async statusUpdate(where, status) {
-        const returnData = await DB.models.Payload.update({
-            status,
-        }, {
-            where,
-        });
+        const returnData = await DB.models.Payload.update(
+            {
+                status,
+            },
+            {
+                where,
+            },
+        );
         return returnData;
     }
 }

@@ -5,8 +5,17 @@ import payloadUtils from '../../utils/payload';
 export default class Payload {
     static async readAll(req, res, next) {
         try {
-            const storeData = await payloadModule.getAll({ user_id: req.userID, status: 'active' });
-            return successResponce(req, res, 'All our payload fetched successfully', 202, storeData);
+            const storeData = await payloadModule.getAll({
+                user_id: req.userID,
+                status: 'active',
+            });
+            return successResponce(
+                req,
+                res,
+                'All our payload fetched successfully',
+                202,
+                storeData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -14,8 +23,17 @@ export default class Payload {
 
     static async readAllDeleted(req, res, next) {
         try {
-            const storeData = await payloadModule.getAll({ user_id: req.userID, status: 'inactive' });
-            return successResponce(req, res, 'All our payload fetched successfully', 202, storeData);
+            const storeData = await payloadModule.getAll({
+                user_id: req.userID,
+                status: 'inactive',
+            });
+            return successResponce(
+                req,
+                res,
+                'All our payload fetched successfully',
+                202,
+                storeData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -27,7 +45,13 @@ export default class Payload {
                 id: req.params.id,
                 user_id: req.userID,
             });
-            return successResponce(req, res, 'Your payload fetched successfully', 202, storeData);
+            return successResponce(
+                req,
+                res,
+                'Your payload fetched successfully',
+                202,
+                storeData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -51,11 +75,21 @@ export default class Payload {
     static async update(req, res, next) {
         try {
             const data = await payloadUtils.validIt(req.body.data, req.body.type);
-            const updateData = await payloadModule.update({
-                id: req.params.id,
-                user_id: req.userID,
-            }, req.body, data);
-            return successResponce(req, res, 'Payload updated successfully', 202, updateData);
+            const updateData = await payloadModule.update(
+                {
+                    id: req.params.id,
+                    user_id: req.userID,
+                },
+                req.body,
+                data,
+            );
+            return successResponce(
+                req,
+                res,
+                'Payload updated successfully',
+                202,
+                updateData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -63,11 +97,20 @@ export default class Payload {
 
     static async delete(req, res, next) {
         try {
-            const statusUpdateData = await payloadModule.statusUpdate({
-                id: req.params.id,
-                user_id: req.userID,
-            }, 'inactive');
-            return successResponce(req, res, 'Payload deleted successfully', 202, statusUpdateData);
+            const statusUpdateData = await payloadModule.statusUpdate(
+                {
+                    id: req.params.id,
+                    user_id: req.userID,
+                },
+                'inactive',
+            );
+            return successResponce(
+                req,
+                res,
+                'Payload deleted successfully',
+                202,
+                statusUpdateData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -75,11 +118,20 @@ export default class Payload {
 
     static async restore(req, res, next) {
         try {
-            const statusUpdateData = await payloadModule.statusUpdate({
-                id: req.params.id,
-                user_id: req.userID,
-            }, 'active');
-            return successResponce(req, res, 'Payload restored successfully', 202, statusUpdateData);
+            const statusUpdateData = await payloadModule.statusUpdate(
+                {
+                    id: req.params.id,
+                    user_id: req.userID,
+                },
+                'active',
+            );
+            return successResponce(
+                req,
+                res,
+                'Payload restored successfully',
+                202,
+                statusUpdateData,
+            );
         } catch (_error) {
             return next(_error);
         }

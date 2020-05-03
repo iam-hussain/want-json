@@ -4,8 +4,16 @@ import userModule from '../../helper/user';
 export default class Profile {
     static async get(req, res, next) {
         try {
-            const profileData = await userModule.getWithPublicData({ id: req.userID });
-            return successResponce(req, res, 'Profile data fetched successfully', 202, profileData);
+            const profileData = await userModule.getWithPublicData({
+                id: req.userID,
+            });
+            return successResponce(
+                req,
+                res,
+                'Profile data fetched successfully',
+                202,
+                profileData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -13,10 +21,13 @@ export default class Profile {
 
     static async update(req, res, next) {
         try {
-            await userModule.update({ id: req.userID }, {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-            });
+            await userModule.update(
+                { id: req.userID },
+                {
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                },
+            );
             return successResponce(req, res, 'Profile updated successfully', 202, {});
         } catch (_error) {
             return next(_error);

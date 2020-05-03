@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { useForm, ErrorMessage } from "react-hook-form";
-import { required_input_msg, email_invalid_msg } from "../../msg";
-import Editor from "../Editor";
-import axios from "../../lib/axios";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useForm, ErrorMessage } from 'react-hook-form';
+import { requiredInputMsg, emailInvalidMsg } from '../../msg';
+import Editor from '../Editor';
+import axios from '../../lib/axios';
 
 export default function EmailVerify(props) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -17,7 +17,7 @@ export default function EmailVerify(props) {
     formState,
     setValue,
     triggerValidation,
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: 'onChange' });
   const router = useRouter();
 
   useEffect(() => {
@@ -25,15 +25,15 @@ export default function EmailVerify(props) {
   }, []);
 
   const onSubmit = async (data) => {
-    let response = await axios("email_verify", "post", data);
+    const response = await axios('email_verify', 'post', data);
     if (response.success) {
-      localStorage.removeItem("email_verify");
-      localStorage.setItem("token", response.payload.token);
+      localStorage.removeItem('email_verify');
+      localStorage.setItem('token', response.payload.token);
       reset();
-      router.push("/");
+      router.push('/');
     } else {
       response.message.map((m) => {
-        setError(m.param, "invalid", m.msg);
+        setError(m.param, 'invalid', m.msg);
       });
     }
   };
@@ -62,12 +62,9 @@ export default function EmailVerify(props) {
             <input type="text" id="keywords" name="keywords" required />
             <label>Keywords</label>
           </div>
-          <div className="tags-container row">
-            <div className="tags-box col-auto">
+          <div className="dashboard-tags-container">
+            <div className="tags-box">
               <div className="tags">Sweet Street</div>
-              <div className="tags-close">
-                <i className="fas fa-times"></i>
-              </div>
             </div>
           </div>
         </div>
@@ -80,7 +77,7 @@ export default function EmailVerify(props) {
               <input
                 type="radio"
                 name="visibility"
-                autocomplete="off"
+                autoComplete="off"
                 checked
               />
               <label>Public</label>
@@ -90,7 +87,7 @@ export default function EmailVerify(props) {
               <input
                 type="radio"
                 name="visibility"
-                autocomplete="off"
+                autoComplete="off"
               />
               <label>Private</label>
             </div>
@@ -105,7 +102,7 @@ export default function EmailVerify(props) {
               <input
                 type="radio"
                 name="type"
-                autocomplete="off"
+                autoComplete="off"
               />
               <label>Dynamic</label>
             </div>
@@ -114,7 +111,7 @@ export default function EmailVerify(props) {
               <input
                 type="radio"
                 name="type"
-                autocomplete="off"
+                autoComplete="off"
               />
               <label>Static</label>
             </div>
@@ -127,7 +124,8 @@ export default function EmailVerify(props) {
           <div className="form-input code-input">
             <Editor />
           </div>
-        </div>{" "}
+        </div>
+        {' '}
       </div>
       <div className="form-row">
         <div className="form-item">

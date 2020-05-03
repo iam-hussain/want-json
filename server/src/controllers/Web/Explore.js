@@ -4,8 +4,17 @@ import payloadModule from '../../helper/payload';
 export default class Explore {
     static async readAll(req, res, next) {
         try {
-            const storeData = await payloadModule.getAll({ status: 'active', visibility: 'public' });
-            return successResponce(req, res, 'All our payload fetched successfully', 202, storeData);
+            const storeData = await payloadModule.getAll({
+                status: 'active',
+                visibility: 'public',
+            });
+            return successResponce(
+                req,
+                res,
+                'All our payload fetched successfully',
+                202,
+                storeData,
+            );
         } catch (_error) {
             return next(_error);
         }
@@ -18,7 +27,13 @@ export default class Explore {
                 status: 'active',
                 visibility: 'public',
             });
-            return successResponce(req, res, 'Your payload fetched successfully', 202, storeData);
+            return successResponce(
+                req,
+                res,
+                'Your payload fetched successfully',
+                202,
+                storeData,
+            );
         } catch (_error) {
             return next(_error);
         }

@@ -1,6 +1,6 @@
 export default class payloadFixerModule {
     static urlMaker(title) {
-        return title.toLowerCase().replace(/[^a-z0-9]+/ig, '_');
+        return title.toLowerCase().replace(/[^a-z0-9]+/gi, '_');
     }
 
     static async validIt(data, type) {

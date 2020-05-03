@@ -1,9 +1,9 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions/userActions";
+import { USER_LOGIN, USER_LOGOUT } from '../actions/userActions';
 
 const initializeState = {
-  token: "",
+  token: '',
   logged: false,
-  userData : {},
+  userData: {},
 };
 
 const counterReducer = (state = initializeState, action) => {

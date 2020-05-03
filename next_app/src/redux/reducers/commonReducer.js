@@ -1,4 +1,4 @@
-import { LOADER_START, LOADER_END, MENU_TOGGLE } from "../actions/commonActions";
+import { LOADER_START, LOADER_END, MENU_TOGGLE } from '../actions/commonActions';
 
 const initializeState = {
   loading: true,

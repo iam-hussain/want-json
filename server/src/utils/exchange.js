@@ -12,8 +12,13 @@ export async function successResponce(req, res, message, status, payload) {
         .end();
 }
 
-
-export async function errorResponce(req, res, message, status, errorType = 'validation') {
+export async function errorResponce(
+    req,
+    res,
+    message,
+    status,
+    errorType = 'validation',
+) {
     return res
         .status(status)
         .json({
@@ -25,7 +30,6 @@ export async function errorResponce(req, res, message, status, errorType = 'vali
         })
         .end();
 }
-
 
 export async function validateRequest(req, res, next) {
     const errors = validationResult(req);

@@ -1,13 +1,9 @@
-import React, { Component } from "react";
-import Router from "next/router";
+import React from 'react';
 
-export default class _error extends Component {
-
-  render() {
-    return (
-      <div>
-        Error
-      </div>
-    );
-  }
+export default function ErrorPage() {
+  return (
+    <div>
+      Error
+    </div>
+  );
 }

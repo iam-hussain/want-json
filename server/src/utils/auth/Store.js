@@ -1,7 +1,6 @@
 import authModule from '../../helper/auth';
-import { errorResponce } from '../exchange';
 
-export default async function storeAuthorization(req, res, next) {
+export default async function storeAuthorization(req) {
     try {
         const { authorization } = req.headers;
         if (!authorization) {

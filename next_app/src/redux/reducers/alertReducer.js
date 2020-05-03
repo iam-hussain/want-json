@@ -1,12 +1,12 @@
-import { OPEN_ALERT, CLOSE_ALERT } from "../actions/alertActions";
+import { OPEN_ALERT, CLOSE_ALERT } from '../actions/alertActions';
 
 const initializeState = {
-  title: "",
-  content: "",
+  title: '',
+  content: '',
   show: false,
   buttons: [],
   closeValue: '',
-  value: ''
+  value: '',
 };
 
 const alertReducer = (state = initializeState, action) => {
@@ -20,7 +20,7 @@ const alertReducer = (state = initializeState, action) => {
         closeValue: action.closeValue || 'close',
         show: true,
       };
-      
+
     case CLOSE_ALERT:
       return { ...initializeState, value: action.value };
 

@@ -1,16 +1,16 @@
-export const LOADER_START = "LOADER_START";
-export const LOADER_END = "LOADER_END";
-export const MENU_TOGGLE = "MENU_TOGGLE";
+export const LOADER_START = 'LOADER_START';
+export const LOADER_END = 'LOADER_END';
+export const MENU_TOGGLE = 'MENU_TOGGLE';
 
-//Action Creator
+// Action Creator
 export const loaderEnd = () => ({
-   type: LOADER_END
+  type: LOADER_END,
 });
 
 export const loaderStart = () => ({
-    type: LOADER_START
+  type: LOADER_START,
 });
 
 export const menuToggle = () => ({
-    type: MENU_TOGGLE
-})
+  type: MENU_TOGGLE,
+});

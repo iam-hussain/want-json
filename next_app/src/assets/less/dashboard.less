@@ -17,11 +17,21 @@
     }
 }
 
+.dash-group {
+    .shadow();
+}
+
 .dash-content {
-    padding: 15px 0;
+    padding: 20px 0;
+    margin: 0px;
     transition: all 0.6s ease-in-out 0s;
     align-items: center;
     justify-content: center;
+
+    &:first-child {
+        border-bottom: 2px solid #colors[primary];
+    }
+
 
     .dash-menu {
         min-width: 250px;
@@ -29,8 +39,10 @@
         .menu-list {
             display: -ms-flexbox;
             display: flex;
-            -ms-flex-direction: column;
-            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            -ms-flex-direction: row;
+            flex-direction: row;
             padding-left: 0;
             margin-bottom: 0;
             text-align: center;
@@ -45,6 +57,10 @@
                 padding: 0.75rem 1.25rem;
                 transition: all 0.3s ease-in-out 0s;
                 .shadow();
+
+                .menu-name {
+                    padding-left: 10px;
+                }
 
                 @media @hover {
                     &:hover {
@@ -71,8 +87,6 @@
             @media @sm,
             @xs {
                 justify-content: space-between;
-                -ms-flex-direction: row;
-                flex-direction: row;
 
                 .menu-name {
                     display: none;
@@ -82,19 +96,18 @@
     }
 
     .dash-box-content {
-        margin: 20px 0;
         transition: all 0.6s ease-in-out 0s;
 
         .dash-box-title {
             color: #colors[text1];
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #colors[primary];
+            justify-content: center;
+            margin: 10px 0;
+            // border-bottom: 2px solid #colors[primary];
 
             h2 {
+                margin: 0px;
                 -webkit-user-select: none;
                 -moz-user-select: none;
                 -ms-user-select: none;
@@ -102,11 +115,19 @@
             }
 
             button {
+                font-size: 20px;
+                padding: 0 10px; 
                 display: flex;
                 justify-content: center;
                 background-color: #colors[bg];
                 color: #colors[text2];
                 max-width: 100px;
+
+                @media @hover {
+                    &:hover {
+                        color: #colors[primary];
+                    }
+                }
 
                 span {
                     margin-left: 5px;
@@ -123,6 +144,8 @@
 }
 
 .store-list {
+    color: #colors[text1];
+    font-weight: 600;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -176,9 +199,9 @@
     }
 }
 
-
-
 .bookmark-list {
+    color: #colors[text1];
+    font-weight: 600;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -244,13 +267,15 @@
 }
 
 
-.tags-container {
+.dashboard-tags-container {
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0;
     display: flex;
     min-height: 25px;
     border-radius: 5px;
-    background-color:  #colors[paper];
+    background-color: #colors[paper];
 
     .tags-box {
         font-family: "Rajdhani";
@@ -264,7 +289,7 @@
 
         .tags {
             padding: 0px 5px;
-            padding-right: 15px;
+            padding-right: 5px;
             border-radius: 5px;
             margin-right: 5px;
             white-space: pre;

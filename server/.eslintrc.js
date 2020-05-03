@@ -1,27 +1,27 @@
 module.exports = {
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   extends: ["airbnb-base", "plugin:import/errors", "plugin:import/warnings"],
   settings: {
     "import/resolver": {
-      "babel-module": {}
-    }
+      "babel-module": {},
+    },
   },
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   rules: {
     "consistent-return": 2,
     indent: [1, 4],
     "no-else-return": 1,
     semi: [1, "always"],
-    "space-unary-ops": 2
-  }
+    "space-unary-ops": 2,
+  },
 };

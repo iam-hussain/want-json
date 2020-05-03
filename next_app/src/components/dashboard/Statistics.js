@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PieChart from '../chart/Pie';
 import Doughnut from '../chart/Doughnut';
 
@@ -10,10 +10,10 @@ export default function Statistics() {
       </div>
       <div className="row">
         <div className="col-md-6">
-        <PieChart />
+          <PieChart />
         </div>
         <div className="col-md-6">
-        <Doughnut />
+          <Doughnut />
         </div>
       </div>
     </div>

@@ -11,18 +11,22 @@ import Log from './Log';
 
 class Http {
     static mount(_express) {
-        Log.info('Booting the \'HTTP\' middleware...');
+        Log.info("Booting the 'HTTP' middleware...");
 
         // Enables the request body parser
-        _express.use(express.json({
-            limit: Locals.maxUploadLimit,
-        }));
+        _express.use(
+            express.json({
+                limit: Locals.maxUploadLimit,
+            }),
+        );
 
-        _express.use(express.urlencoded({
-            limit: Locals.maxUploadLimit,
-            parameterLimit: Locals.maxParameterLimit,
-            extended: false,
-        }));
+        _express.use(
+            express.urlencoded({
+                limit: Locals.maxUploadLimit,
+                parameterLimit: Locals.maxParameterLimit,
+                extended: false,
+            }),
+        );
 
         // Disable the x-powered-by header in response
         _express.disable('x-powered-by');
