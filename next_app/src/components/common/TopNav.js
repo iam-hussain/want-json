@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import cookie from 'js-cookie';
+import Router from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { userLogout } from '../../redux/actions/userActions';
@@ -25,7 +27,11 @@ export default function TopNavbar() {
     };
   }, [commonData.menuToggle]);
   const logOut = () => {
-    localStorage.removeItem('token');
+    cookie.remove('token');
+    // To trigger the event listener we save some random data into the `logout` key
+    window.localStorage.setItem('logout', Date.now()); // new
+    Router.push('/login');
+    // localStorage.removeItem('token');
     dispatch(userLogout());
   };
 

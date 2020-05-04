@@ -5,7 +5,9 @@ import Hero from '../components/Home/Hero';
 import Dummy from '../components/Home/Dummy';
 import Own from '../components/Home/Own';
 
-export default function Index() {
+import { withAuth } from '../components/Authorization';
+
+function Index() {
   return (
     <>
       <Page>
@@ -16,3 +18,5 @@ export default function Index() {
     </>
   );
 }
+
+export default withAuth(Index);

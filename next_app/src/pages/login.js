@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { AuthPage } from '../components/Page';
 import LoginForm from '../components/Form/LoginForm';
+import { withOutAuth } from '../components/Authorization';
 
-export default function LoginPage() {
+function LoginPage() {
   return (
     <AuthPage>
       <div className="form-box">
@@ -31,3 +32,5 @@ export default function LoginPage() {
     </AuthPage>
   );
 }
+
+export default withOutAuth(LoginPage);

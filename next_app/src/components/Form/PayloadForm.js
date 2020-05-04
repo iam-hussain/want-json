@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, ErrorMessage } from 'react-hook-form';
-import { requiredInputMsg, emailInvalidMsg } from '../../msg';
+import { useForm } from 'react-hook-form';
 import Editor from '../Editor';
-import axios from '../../lib/axios';
+import axios from '../../utils/axios';
 
 export default function EmailVerify(props) {
   const [componentLoading, setComponentLoading] = useState(true);

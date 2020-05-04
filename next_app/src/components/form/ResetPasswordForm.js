@@ -11,7 +11,7 @@ import {
   passwordMinLengthMsg,
   repeatPasswordNotMatch,
 } from '../../msg';
-import axios from '../../lib/axios';
+import axios from '../../utils/axios';
 
 export default function ResetPassword({ responseError, setEmail, mailSent }) {
   const [componentLoading, setComponentLoading] = useState(true);

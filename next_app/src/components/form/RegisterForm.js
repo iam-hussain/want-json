@@ -8,7 +8,7 @@ import {
   passwordMinLengthMsg,
   repeatPasswordNotMatch,
 } from '../../msg';
-import axios from '../../lib/axios';
+import axios from '../../utils/axios';
 
 export default function RegisterForm() {
   const [componentLoading, setComponentLoading] = useState(true);

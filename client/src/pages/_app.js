@@ -1,31 +1,29 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
-
+import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
-import Store from '../redux/store';
 
-import Wrapper from '../components/Wrapper';
+import Store from '../Redux/Store';
+import { theme, GlobalStyle } from '../style';
+import Loader from '../Components/Basic/Loader';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../assets/vendor/font-awesome.min';
-import '../assets/less/nprogress.less';
-import '../assets/less/codebox.less';
-import '../assets/less/standard.less';
-import '../assets/less/common.less';
-// Pages
-import '../assets/less/authentication.less';
-import '../assets/less/dashboard.less';
-import '../assets/less/documentation.less';
-import '../assets/less/explore.less';
-import '../assets/less/home.less';
 
 function MyApp({ Component, pageProps, store }) {
+  const [loader, setLoader] = useState({ index: '10', opacity: '1' });
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader({ index: '-10', opacity: '0' });
+    }, 500);
+  }, []);
   return (
     <Provider store={store}>
-      <Wrapper>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Loader index={loader.index} opacity={loader.opacity} />
         <Component pageProps={pageProps} />
-      </Wrapper>
+      </ThemeProvider>
     </Provider>
   );
 }

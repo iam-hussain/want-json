@@ -6,7 +6,7 @@ import {
   requiredInputMsg,
   emailInvalidMsg,
 } from '../../msg';
-import axios from '../../lib/axios';
+import axios from '../../utils/axios';
 
 export default function EmailVerify({ responseError, setEmail }) {
   const [componentLoading, setComponentLoading] = useState(true);
