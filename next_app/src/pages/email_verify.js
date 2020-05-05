@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthPage } from '../components/Page';
 import EmailVerifyForm from '../components/Form/EmailVerifyForm';
-import axios from '../lib/axios';
+import axios from '../utils/axios';
 import { openAlert } from '../redux/actions/alertActions';
 
 

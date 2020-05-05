@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '../../../style';
 
 export const TabSwitch = styled.div`
-    margin-top: 30px;
+    margin: 28px 0px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;

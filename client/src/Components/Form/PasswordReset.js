@@ -9,15 +9,17 @@ import {
   requiredInputMsg,
   emailInvalidMsg,
   passwordMinLengthMsg,
+  repeatPasswordNotMatch,
 } from '../../utils/Message';
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const [componentLoading, setComponentLoading] = useState(true);
   const {
     register,
     handleSubmit,
     errors,
     formState,
+    watch,
   } = useForm({ mode: 'onChange' });
 
   useEffect(() => {
@@ -50,6 +52,21 @@ export default function LoginForm() {
       </Item>
       <Item>
         <Input
+          hasError={errors.otp}
+          type="text"
+          name="otp"
+          ref={register({
+            required: requiredInputMsg,
+          })}
+          required
+        />
+        <Label>Enter Verification OTP</Label>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="otp" />
+        </ErrorBlock>
+      </Item>
+      <Item>
+        <Input
           hasError={errors.password}
           type="password"
           ref={register({
@@ -62,9 +79,25 @@ export default function LoginForm() {
           name="password"
           required
         />
-        <Label>Password</Label>
+        <Label>New Password</Label>
         <ErrorBlock>
           <ErrorMessage errors={errors} name="password" />
+        </ErrorBlock>
+      </Item>
+      <Item>
+        <Input
+          hasError={errors.repeat_password}
+          type="password"
+          ref={register({
+            required: requiredInputMsg,
+            validate: (value) => value === watch('password') || repeatPasswordNotMatch,
+          })}
+          name="repeat_password"
+          required
+        />
+        <Label>Repeat Password</Label>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="repeat_password" />
         </ErrorBlock>
       </Item>
       <Item>
@@ -75,7 +108,7 @@ export default function LoginForm() {
           formNoValidate
           disabled={!formState.isValid || formState.isSubmitting || componentLoading}
         >
-          Login to your Account!
+          Reset your Password!
         </PrimaryBtn>
       </Item>
     </form>

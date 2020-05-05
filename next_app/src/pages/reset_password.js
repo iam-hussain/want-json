@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthPage } from '../components/Page';
 import ResetPasswordForm from '../components/Form/ResetPasswordForm';
-import axios from '../lib/axios';
+import axios from '../utils/axios';
 import { openAlert } from '../redux/actions/alertActions';
 
 

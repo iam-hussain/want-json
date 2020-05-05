@@ -1,19 +1,18 @@
 import React from 'react';
-import Link from 'next/link';
 import AuthLayout from '../Components/Layout/AuthLayout';
 import { H2 } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import { Button } from '../Components/Basic/Button/Button';
-import LoginForm from '../Components/Form/Login';
+import PasswordResetForm from '../Components/Form/PasswordReset';
 
 export default function Login() {
   return (
     <AuthLayout>
       <CustomFormBox>
-        <H2 align="center" padding="14px 0px" size="1.65rem">Account Login</H2>
-        <LoginForm />
+        <H2 align="center" padding="14px 0px" size="1.65rem">Reset Account Password</H2>
+        <PasswordResetForm />
         <BottomSeparator>
-          <Link href="/reset_password"><Button padding="2px" size="0.75rem">Forgot Password</Button></Link>
+          <Button padding="2px" size="0.75rem">Resend OTP</Button>
         </BottomSeparator>
       </CustomFormBox>
     </AuthLayout>

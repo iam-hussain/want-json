@@ -1,5 +1,9 @@
-import { Router } from 'express';
-import { validateRequest } from '@utils/exchange';
+import {
+    Router,
+} from 'express';
+import {
+    validateRequest,
+} from '@utils/exchange';
 import {
     profileUpdateRules,
     registerRules,
@@ -15,7 +19,10 @@ import {
     restorePayloadRules,
     exploreOneRules,
 } from '../utils/validator';
-import { shouldBeLoggedIn, shouldNotLoggedIn } from '../utils/auth/WebAuth';
+import {
+    shouldBeLoggedIn,
+    shouldNotLoggedIn,
+} from '../utils/auth/WebAuth';
 import authController from '../controllers/Auth/Auth';
 import payloadController from '../controllers/Web/Payload';
 import exploreController from '../controllers/Web/Explore';
@@ -65,24 +72,14 @@ router.post('/change_password', [
 
 // Payload API
 router.get('/payload', [shouldBeLoggedIn, payloadController.readAll]);
-router.get('/payload/:id', [
-    shouldBeLoggedIn,
-    getOnePayloadRules,
-    validateRequest,
-    payloadController.read,
-]);
+router.get('/payload/:id', [shouldBeLoggedIn, getOnePayloadRules, validateRequest, payloadController.read]);
 router.post('/payload', [
     shouldBeLoggedIn,
     createPayloadRules,
     validateRequest,
     payloadController.create,
 ]);
-router.put('/payload/:id', [
-    shouldBeLoggedIn,
-    updatePayloadRules,
-    validateRequest,
-    payloadController.update,
-]);
+router.put('/payload/:id', [shouldBeLoggedIn, updatePayloadRules, validateRequest, payloadController.update]);
 router.delete('/payload/:id', [
     shouldBeLoggedIn,
     deletePayloadRules,

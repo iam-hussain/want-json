@@ -40,7 +40,7 @@ export const Decorator = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  padding: 15px;
+  padding: 28px 15px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -67,6 +67,11 @@ export const Container = styled.div`
 
 
 export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
   background: ${(props) => props.background || props.theme.bg};
   z-index: ${(props) => props.index || '1'};
   padding: ${(props) => props.padding || '10px'};
@@ -79,6 +84,11 @@ export const Box = styled.div`
 `;
 
 export const ProjectedBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
   background: ${(props) => props.background || props.theme.bg};
   z-index: ${(props) => props.index || '1'};
   padding: ${(props) => props.padding || '10px'};

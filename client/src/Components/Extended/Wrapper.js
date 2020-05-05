@@ -4,9 +4,9 @@ import { device } from '../../style';
 
 export const CustomFormBox = styled(ProjectedBox)`
     width: 484px;
-    margin: 10px 0;
+    margin: 0px;
     min-width: 300px;
-    padding: 30px 64px;
+    padding: 28px 64px;
     background-color: ${(props) => props.theme.bg};
     border-radius: 5px;
 
@@ -37,9 +37,11 @@ export const InfoText = styled.p`
 `;
 
 
-export const BottomSeparator = styled.p`
+export const BottomSeparator = styled.div`
     text-align: center;
     border-top: 2px solid;
     border-color: ${(props) => props.theme.primary}; 
+    margin: 0px;
     margin-top: 28px;
+    padding-top: 10px;
 `;

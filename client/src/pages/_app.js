@@ -3,20 +3,37 @@ import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
+import NProgress from 'nprogress';
+import Router from 'next/router';
 
 import Store from '../Redux/Store';
 import { theme, GlobalStyle } from '../style';
 import Loader from '../Components/Basic/Loader';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../assets/vendor/nprogress.css';
 
 function MyApp({ Component, pageProps, store }) {
   const [loader, setLoader] = useState({ index: '10', opacity: '1' });
   useEffect(() => {
+    NProgress.start();
     setTimeout(() => {
       setLoader({ index: '-10', opacity: '0' });
+      NProgress.done();
     }, 500);
   }, []);
+
+  Router.onRouteChangeStart = () => {
+    NProgress.start();
+  };
+  Router.onRouteChangeComplete = () => {
+    NProgress.done();
+  };
+
+  Router.onRouteChangeError = () => {
+    NProgress.done();
+  };
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

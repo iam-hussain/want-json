@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 export const Label = styled.label`
+    font-family: "Rajdhani";
     font-size: 1rem;
     font-weight: 600;
     position: absolute;

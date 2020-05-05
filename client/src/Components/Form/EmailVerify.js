@@ -8,10 +8,9 @@ import { PrimaryBtn } from '../Basic/Button/Button';
 import {
   requiredInputMsg,
   emailInvalidMsg,
-  passwordMinLengthMsg,
 } from '../../utils/Message';
 
-export default function LoginForm() {
+export default function EmailVerifyForm() {
   const [componentLoading, setComponentLoading] = useState(true);
   const {
     register,
@@ -50,21 +49,17 @@ export default function LoginForm() {
       </Item>
       <Item>
         <Input
-          hasError={errors.password}
-          type="password"
+          hasError={errors.otp}
+          type="text"
+          name="otp"
           ref={register({
             required: requiredInputMsg,
-            minLength: {
-              value: 8,
-              message: passwordMinLengthMsg,
-            },
           })}
-          name="password"
           required
         />
-        <Label>Password</Label>
+        <Label>Enter Verification OTP</Label>
         <ErrorBlock>
-          <ErrorMessage errors={errors} name="password" />
+          <ErrorMessage errors={errors} name="otp" />
         </ErrorBlock>
       </Item>
       <Item>
@@ -75,7 +70,7 @@ export default function LoginForm() {
           formNoValidate
           disabled={!formState.isValid || formState.isSubmitting || componentLoading}
         >
-          Login to your Account!
+          Verify your Email!
         </PrimaryBtn>
       </Item>
     </form>

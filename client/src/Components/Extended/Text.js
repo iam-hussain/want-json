@@ -3,9 +3,11 @@ import { H1, P } from '../Basic/Text';
 import { device } from '../../style';
 
 export const InfoTitle = styled(H1)`
-  font-family: "FredokaOne";
-  font-size: ${(props) => props.size || '6.5rem'};
-  color: ${(props) => props.theme.primary};
+    margin:0px;
+    padding:28px 0px;
+    font-family: "FredokaOne";
+    font-size: ${(props) => props.size || '6.5rem'};
+    color: ${(props) => props.theme.primary};
 
     @media ${device.xs}{
         font-size: 3.50rem;
@@ -17,7 +19,7 @@ export const InfoTitle = styled(H1)`
 
 export const InfoText = styled(P)`
     width: 500px;
-    margin: 30px auto 0;
+    margin: 0;
     font-size: 1.125rem;
     line-height: 1.3em;
     font-weight: 500;
@@ -26,6 +28,8 @@ export const InfoText = styled(P)`
         width: auto;
     }
     @media ${device.xs_sm}{
+        font-size: 1rem;
         margin: 0px;
+        padding: 0px;
     }
 `;

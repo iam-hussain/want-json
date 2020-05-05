@@ -6,8 +6,9 @@ export const Button = styled.button`
     color: ${(props) => props.theme.primary};
     background-color: ${(props) => props.theme.bg};
     padding: ${(props) => props.padding || '12px 14px'};
+    margin: ${(props) => props.margin || '0px'};
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: ${(props) => props.size || '1rem'};
     font-weight: 700;
     overflow: hidden;
     line-height: 1;

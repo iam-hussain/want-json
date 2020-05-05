@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
+import cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import {
   Item, Label, Input, ErrorBlock,
@@ -9,23 +11,40 @@ import {
   requiredInputMsg,
   emailInvalidMsg,
   passwordMinLengthMsg,
+  repeatPasswordNotMatch,
 } from '../../utils/Message';
+import { postMethod } from '../../utils/Axios';
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const [componentLoading, setComponentLoading] = useState(true);
   const {
     register,
     handleSubmit,
     errors,
     formState,
+    watch,
+    setError,
+    reset,
   } = useForm({ mode: 'onChange' });
+  const router = useRouter();
 
   useEffect(() => {
     setComponentLoading(false);
   }, []);
 
   const onSubmit = async (data) => {
-    console.log(data, '===============');
+    const responseData = await postMethod('signup', data);
+    console.log("======================", responseData);
+    if (responseData.success) {
+      cookie.set('email_verify', data.email, { expires: 1 });
+      reset();
+      router.push('/email_verify');
+    } else {
+      responseData.message.map((m) => {
+        setError(m.param, 'invalid', m.msg);
+        return true;
+      });
+    }
   };
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -68,6 +87,22 @@ export default function LoginForm() {
         </ErrorBlock>
       </Item>
       <Item>
+        <Input
+          hasError={errors.repeat_password}
+          type="password"
+          ref={register({
+            required: requiredInputMsg,
+            validate: (value) => value === watch('password') || repeatPasswordNotMatch,
+          })}
+          name="repeat_password"
+          required
+        />
+        <Label>Repeat Password</Label>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="repeat_password" />
+        </ErrorBlock>
+      </Item>
+      <Item>
         <PrimaryBtn
           large
           type="submit"
@@ -75,7 +110,7 @@ export default function LoginForm() {
           formNoValidate
           disabled={!formState.isValid || formState.isSubmitting || componentLoading}
         >
-          Login to your Account!
+          Register your Account!
         </PrimaryBtn>
       </Item>
     </form>

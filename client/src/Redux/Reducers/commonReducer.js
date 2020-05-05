@@ -1,8 +1,18 @@
-import { LOADER_START, LOADER_END, MENU_TOGGLE } from '../actions/commonActions';
+import {
+  LOADER_START, LOADER_END, MENU_TOGGLE, OPEN_ALERT, CLOSE_ALERT,
+} from '../Actions/commonActions';
 
 const initializeState = {
   loading: true,
   menuToggle: false,
+  alert: {
+    title: '',
+    content: '',
+    show: false,
+    buttons: [],
+    closeValue: '',
+    value: '',
+  },
 };
 
 const commonReducer = (state = initializeState, action) => {
@@ -24,6 +34,21 @@ const commonReducer = (state = initializeState, action) => {
         ...state,
         menuToggle: !state.menuToggle,
       };
+
+    case OPEN_ALERT:
+      return {
+        ...state,
+        alert: {
+          title: action.title,
+          content: action.content,
+          buttons: action.buttons,
+          closeValue: action.closeValue || 'close',
+          show: true,
+        },
+      };
+
+    case CLOSE_ALERT:
+      return { ...state, alert: { ...initializeState.alert, value: action.value } };
 
     default:
       return { ...state };
