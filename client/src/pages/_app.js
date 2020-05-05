@@ -9,6 +9,7 @@ import Router from 'next/router';
 import Store from '../Redux/Store';
 import { theme, GlobalStyle } from '../style';
 import Loader from '../Components/Basic/Loader';
+import Alert from '../Components/Basic/Alert';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/nprogress.css';
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps, store }) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Loader index={loader.index} opacity={loader.opacity} />
+        <Alert />
         <Component pageProps={pageProps} />
       </ThemeProvider>
     </Provider>

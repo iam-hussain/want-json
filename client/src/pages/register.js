@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import AuthLayout from '../Components/Layout/AuthLayout';
+import Landing from '../Components/Layout/Landing';
 import { H2, P, ASpan } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import RegisterForm from '../Components/Form/Register';
 
 export default function Login() {
   return (
-    <AuthLayout>
+    <Landing>
       <CustomFormBox>
         <H2 align="center" padding="14px 0px" size="1.65rem">Create your Account!</H2>
         <RegisterForm />
@@ -23,6 +23,6 @@ export default function Login() {
           </P>
         </BottomSeparator>
       </CustomFormBox>
-    </AuthLayout>
+    </Landing>
   );
 }

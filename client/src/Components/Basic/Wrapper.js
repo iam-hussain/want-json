@@ -7,7 +7,7 @@ export const Cover = styled.section`
   bottom: 0;
   right: 0;
   left: 0;
-  background: ${(props) => props.background || '#fff'};
+  background: ${(props) => (props.transparency ? props.theme.transparency : props.background || '#fff')};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,14 +17,14 @@ export const Cover = styled.section`
   overflow: hidden;
   z-index: ${(props) => props.index || '-10'};
   opacity: ${(props) => props.opacity || '0'};
-  transition: ${(props) => props.transition || 'all 0.3s ease-in-out 0s'};
+  transition: ${(props) => props.transition || 'all .3s ease-in-out .8s'};
 `;
 
 export const Decorator = styled.div`
   position: absolute;
   width: ${(props) => props.width || '50vw'};
   height: ${(props) => props.height || '50vh'};
-  background-color:  ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.primary};
   top: ${(props) => props.top || 'auto'};
   left: ${(props) => props.left || 'auto'};
   right: ${(props) => props.right || 'auto'};

@@ -46,6 +46,9 @@ export const H1 = styled.h1`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    @media ${device.xs_sm}{
+      font-size: calc(${(props) => props.size || '2rem'} - 0.2rem);
+    }
 `;
 
 
@@ -64,6 +67,9 @@ export const H2 = styled.h2`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    @media ${device.xs_sm}{
+      font-size: calc(${(props) => props.size || '1.5rem'} - 0.2rem);
+    }
 `;
 
 

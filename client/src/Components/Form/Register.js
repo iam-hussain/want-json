@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import {
   Item, Label, Input, ErrorBlock,
@@ -13,7 +14,8 @@ import {
   passwordMinLengthMsg,
   repeatPasswordNotMatch,
 } from '../../utils/Message';
-import { postMethod } from '../../utils/Axios';
+import { postMethod } from '../../utils/Integration';
+import { openAlert } from '../../Redux/Actions/commonActions';
 
 export default function RegisterForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -27,23 +29,25 @@ export default function RegisterForm() {
     reset,
   } = useForm({ mode: 'onChange' });
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setComponentLoading(false);
   }, []);
 
   const onSubmit = async (data) => {
-    const responseData = await postMethod('signup', data);
-    console.log("======================", responseData);
+    const responseData = await postMethod('signupss', data);
     if (responseData.success) {
       cookie.set('email_verify', data.email, { expires: 1 });
       reset();
       router.push('/email_verify');
-    } else {
+    } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
         setError(m.param, 'invalid', m.msg);
         return true;
       });
+    } else {
+      dispatch(openAlert(responseData.alert));
     }
   };
   return (
