@@ -10,7 +10,6 @@ import {
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
   requiredInputMsg,
-  emailInvalidMsg,
   passwordMinLengthMsg,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
