@@ -53,29 +53,6 @@ export const Input = styled.input`
     }
 `;
 
-export const Radio = styled.input`
-
-    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.text3)};
-    color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
-
-    &:focus {
-        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
-        outline: none;
-    }
-    +${Label}{
-        position: relative;
-        left: 0px;
-        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
-    }
-
-    &:focus+${Label},
-    &:valid+${Label},
-    &:disabled+${Label} {
-        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
-        background-color: ${(props) => props.theme.bg};
-    }
-`;
-
 export const ErrorBlock = styled.span`
     position: absolute;
     top: 52px;

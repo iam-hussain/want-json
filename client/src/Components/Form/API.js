@@ -12,6 +12,7 @@ import {
   requiredInputMsg,
   passwordMinLengthMsg,
 } from '../../utils/Message';
+import CodeEditor from '../Editor';
 import { postMethod } from '../../utils/Integration';
 import { openAlert } from '../../Redux/Actions/commonActions';
 import { loggedUpdate } from '../../Redux/Actions/userActions';
@@ -151,6 +152,7 @@ export default function LoginForm() {
           <ErrorMessage errors={errors} name="visibility" />
         </ErrorBlock>
       </RadioGroup>
+      <CodeEditor />
       <Item>
         <PrimaryBtn
           large
