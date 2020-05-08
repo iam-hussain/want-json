@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import {
   Decorator, Container, Box,
 } from '../Basic/Wrapper';
-import { H2 } from '../Basic/Text';
+import { H3 } from '../Basic/Text';
 import { InfoTitle, InfoText } from '../Extended/Text';
 import { TabSwitch, TabSwitchButton } from '../Basic/Button/Switch';
 
@@ -17,8 +17,8 @@ export default function Login({ children }) {
         <div className="row">
           <div className="col-md">
             <Box>
-              <H2 transform="uppercase" align="center">Welcome to</H2>
-              <InfoTitle align="center">getJSON</InfoTitle>
+              <H3 transform="uppercase" align="center">Welcome to</H3>
+              <Link href="/"><InfoTitle align="center">getJSON</InfoTitle></Link>
               <InfoText align="center">
                 The next generation social network &amp; community! Connect with your friends
                 and play with our quests and badges gamification system!

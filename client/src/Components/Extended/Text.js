@@ -6,14 +6,17 @@ export const InfoTitle = styled(H1)`
     margin:0px;
     padding:28px 0px;
     font-family: "FredokaOne";
+    cursor: pointer;
     font-size: ${(props) => props.size || '6.5rem'};
     color: ${(props) => props.theme.primary};
 
     @media ${device.xs}{
         font-size: 3.50rem;
+        padding: 15px 0px;
     }
     @media ${device.sm_lg}{
         font-size: 4.50rem;
+        padding: 20px 0px;
     }
 `;
 

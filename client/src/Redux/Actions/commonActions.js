@@ -1,6 +1,5 @@
 export const LOADER_START = 'LOADER_START';
 export const LOADER_END = 'LOADER_END';
-export const MENU_TOGGLE = 'MENU_TOGGLE';
 export const OPEN_ALERT = 'OPEN_ALERT';
 export const CLOSE_ALERT = 'CLOSE_ALERT';
 
@@ -13,18 +12,14 @@ export const loaderStart = () => ({
   type: LOADER_START,
 });
 
-export const menuToggle = () => ({
-  type: MENU_TOGGLE,
-});
-
 export const openAlert = ({
-  title, content, buttons, closeValue,
+  title, content, buttons, defaultClose,
 }) => ({
   type: OPEN_ALERT,
   title,
   content,
   buttons,
-  closeValue,
+  defaultClose,
 });
 
 export const closeAlert = (value) => ({

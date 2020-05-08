@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import NProgress from 'nprogress';
 import Router from 'next/router';
+import nextCookie from 'next-cookies';
 
 import Store from '../Redux/Store';
 import { theme, GlobalStyle } from '../style';
@@ -14,12 +15,29 @@ import Alert from '../Components/Basic/Alert';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/nprogress.css';
 
-function MyApp({ Component, pageProps, store }) {
-  const [loader, setLoader] = useState({ index: '10', opacity: '1' });
+
+import { loggedUpdate } from '../Redux/Actions/userActions';
+
+function Wrapper({ children, logged }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loggedUpdate(logged));
+  }, []);
+  return (
+    <>
+      {children}
+    </>
+  );
+}
+
+function MyApp({
+  Component, pageProps, store, logged,
+}) {
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
     NProgress.start();
     setTimeout(() => {
-      setLoader({ index: '-10', opacity: '0' });
+      setLoader(false);
       NProgress.done();
     }, 500);
   }, []);
@@ -38,21 +56,24 @@ function MyApp({ Component, pageProps, store }) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Loader index={loader.index} opacity={loader.opacity} />
-        <Alert />
-        <Component pageProps={pageProps} />
+        <Wrapper logged={logged}>
+          <GlobalStyle />
+          <Loader show={loader} />
+          <Alert />
+          <Component pageProps={pageProps} />
+        </Wrapper>
       </ThemeProvider>
     </Provider>
   );
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const { token } = nextCookie(ctx);
   const pageProps = Component.getInitialProps
     ? await Component.getInitialProps(ctx)
     : {};
   // Anything returned here can be accessed by the client
-  return { pageProps };
+  return { pageProps, logged: !!token };
 };
 
 const makeStore = () => Store;

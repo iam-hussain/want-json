@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import {
-  Item, Label, Input, ErrorBlock, Form,
+  Item, Label, Input, ErrorBlock, Form, RadioGroup, GroupName,
 } from '../Basic/Form';
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
@@ -53,45 +53,105 @@ export default function LoginForm() {
     }
   };
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form className="form" onSubmit={handleSubmit(onSubmit)}>
       <Item>
         <Input
-          hasError={errors.email}
+          hasError={errors.title}
           type="text"
           ref={register({
             required: requiredInputMsg,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: emailInvalidMsg,
+            minLength: {
+              value: 4,
+              message: passwordMinLengthMsg,
             },
           })}
-          name="email"
+          name="title"
           required
         />
-        <Label>Your Email</Label>
+        <Label>API Title</Label>
         <ErrorBlock>
-          <ErrorMessage errors={errors} name="email" />
+          <ErrorMessage errors={errors} name="title" />
         </ErrorBlock>
       </Item>
       <Item>
         <Input
-          hasError={errors.password}
-          type="password"
+          hasError={errors.description}
+          type="text"
           ref={register({
             required: requiredInputMsg,
             minLength: {
-              value: 8,
+              value: 10,
               message: passwordMinLengthMsg,
             },
           })}
-          name="password"
+          name="description"
           required
         />
-        <Label>Password</Label>
+        <Label>Short description</Label>
         <ErrorBlock>
-          <ErrorMessage errors={errors} name="password" />
+          <ErrorMessage errors={errors} name="description" />
         </ErrorBlock>
       </Item>
+      <RadioGroup hasError={errors.type}>
+        <GroupName>API Type</GroupName>
+        <Item>
+          <Input
+            type="radio"
+            value="dynamic"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="type"
+            required
+          />
+          <Label>Dynamic</Label>
+        </Item>
+        <Item>
+          <Input
+            type="radio"
+            value="static"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="type"
+            required
+          />
+          <Label>Static</Label>
+        </Item>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="type" />
+        </ErrorBlock>
+      </RadioGroup>
+      <RadioGroup hasError={errors.visibility}>
+        <GroupName>Visibility</GroupName>
+        <Item>
+          <Input
+            type="radio"
+            value="public"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="visibility"
+            required
+          />
+          <Label>Public</Label>
+        </Item>
+        <Item>
+          <Input
+            type="radio"
+            value="private"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="visibility"
+            required
+          />
+          <Label>Private</Label>
+        </Item>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="visibility" />
+        </ErrorBlock>
+      </RadioGroup>
       <Item>
         <PrimaryBtn
           large
@@ -100,7 +160,7 @@ export default function LoginForm() {
           formNoValidate
           disabled={!formState.isValid || formState.isSubmitting || componentLoading}
         >
-          Login to your Account!
+          Create new API!
         </PrimaryBtn>
       </Item>
     </Form>

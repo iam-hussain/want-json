@@ -23,12 +23,35 @@ export const bounce = keyframes`
 
 export const buttonPush = keyframes`
     50% {
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8);
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
     }
 
     100% {
         -webkit-transform: scale(1);
         transform: scale(1);
+    }
+`;
+
+
+export const fadeIn = keyframes`
+    from {
+        z-index: -10;
+        filter: grayscale(0%);
+        opacity: 0;
+    }
+    to {
+        z-index: 10;
+        filter: grayscale(80%);
+        opacity: 1;
+    }
+`;
+
+export const fadeOut = keyframes`
+    from {
+        opacity: 1;
+     }
+    to {
+        opacity: 0;
     }
 `;

@@ -43,6 +43,18 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     display: flex;
     flex-direction: column;
+
+    &::-webkit-scrollbar-track {
+      background-color:  ${(props) => props.theme.paper1};
+    }
+
+    &::-webkit-scrollbar {
+        background-color:  ${(props) => props.theme.paper1};
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.primary};
+    }
   }
 
   #__next,

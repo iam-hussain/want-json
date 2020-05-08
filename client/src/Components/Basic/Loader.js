@@ -27,9 +27,9 @@ export const Bubble = styled.div`
     animation-delay: ${(props) => props.delay || '0s'};
 `;
 
-export default function Loader({ index, opacity }) {
+export default function Loader({ show }) {
   return (
-    <Cover index={index} opacity={opacity}>
+    <Cover show={show}>
       <Brand size="25px">getJSON.io</Brand>
       <Spinner>
         <Bubble top="0px" />

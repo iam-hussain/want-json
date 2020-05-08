@@ -1,3 +1,4 @@
+import cookie from 'js-cookie';
 import instance from './Instance';
 
 export const handleData = (data) => {
@@ -7,11 +8,14 @@ export const handleData = (data) => {
   }
   alert = {
     title: 'Oops',
-    content: data.msg,
-    closeValue: 'close',
+    content: data.message,
+    defaultClose: {
+      value: 'close',
+      action: false,
+      data: {},
+    },
     buttons: [
       {
-        id: 1,
         title: 'Close',
         type: 'primary',
         value: 'close',
@@ -21,17 +25,31 @@ export const handleData = (data) => {
       },
     ],
   };
+  if (data.errorType === 'email_verify') {
+    cookie.set('email_verify', data.payload.email, { expires: 1 });
+    const updateData = { value: 'close', action: true, data: { url: '/email_verify', type: 'redirect' } };
+    alert.defaultClose = updateData;
+    alert.buttons[0] = {
+      ...alert.buttons[0], title: 'Verify', ...updateData,
+    };
+  }
   if (data.errorType === 'token_required') {
+    const updateData = { value: 'close', action: true, data: { url: '/login', type: 'redirect' } };
+    alert.defaultClose = updateData;
     alert.buttons[0] = {
       ...alert.buttons[0], action: true, data: { url: '/login', type: 'redirect' },
     };
   }
   if (data.errorType === 'token_not_required') {
+    const updateData = { value: 'close', action: true, data: { url: '/', type: 'redirect' } };
+    alert.defaultClose = updateData;
     alert.buttons[0] = {
       ...alert.buttons[0], action: true, data: { url: '/', type: 'redirect' },
     };
   }
   if (data.errorType === 'token_error' && data.errorType === 'invalid_token') {
+    const updateData = { value: 'close', action: true, data: { url: '/login', type: 'redirect' } };
+    alert.defaultClose = updateData;
     alert.buttons[0] = {
       ...alert.buttons[0], action: true, data: { url: '/login', type: 'logout' },
     };

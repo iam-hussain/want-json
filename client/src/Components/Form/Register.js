@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import {
-  Item, Label, Input, ErrorBlock,
+  Item, Label, Input, ErrorBlock, Form,
 } from '../Basic/Form';
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
@@ -36,11 +36,11 @@ export default function RegisterForm() {
   }, []);
 
   const onSubmit = async (data) => {
-    const responseData = await postMethod('signupss', data);
+    const responseData = await postMethod('signup', data);
     if (responseData.success) {
-      cookie.set('email_verify', data.email, { expires: 1 });
+      cookie.set('token', responseData.payload.token, { expires: 1 });
       reset();
-      router.push('/email_verify');
+      router.push('/');
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
         setError(m.param, 'invalid', m.msg);
@@ -51,7 +51,7 @@ export default function RegisterForm() {
     }
   };
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Item>
         <Input
           hasError={errors.email}
@@ -117,6 +117,6 @@ export default function RegisterForm() {
           Register your Account!
         </PrimaryBtn>
       </Item>
-    </form>
+    </Form>
   );
 }

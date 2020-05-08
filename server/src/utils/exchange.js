@@ -18,15 +18,16 @@ export async function errorResponce(
     message,
     status,
     errorType = 'validation',
+    payload = {},
 ) {
     return res
-        .status(status)
+        .status(200)
         .json({
             success: false,
             errorType,
             status,
             message,
-            payload: {},
+            payload,
         })
         .end();
 }
@@ -41,7 +42,7 @@ export async function validateRequest(req, res, next) {
                 errorType: 'validation',
                 message: errors.array(),
                 status: 403,
-                data: {},
+                payload: {},
             })
             .end();
     }

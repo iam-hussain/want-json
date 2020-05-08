@@ -1,15 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Landing from '../Components/Layout/Landing';
-import { H2, P, ASpan } from '../Components/Basic/Text';
+import { H3, P, ASpan } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import RegisterForm from '../Components/Form/Register';
 
-export default function Login() {
+export default function Register() {
   return (
     <Landing>
       <CustomFormBox>
-        <H2 align="center" padding="14px 0px" size="1.65rem">Create your Account!</H2>
+        <H3 align="center" padding="14px 0px">Create your Account!</H3>
         <RegisterForm />
         <BottomSeparator>
           <P align="center" padding="2px" size="0.75rem" font="Rajdhani">

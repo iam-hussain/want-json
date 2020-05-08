@@ -15,7 +15,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'User joinded successfully!',
+                'Your Email registered successfully!',
                 202,
                 publicUserData,
             );
@@ -39,7 +39,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'Invalid password please check',
+                            msg: 'Your password does not matching, please check!',
                             param: 'password',
                         },
                     ],
@@ -52,11 +52,12 @@ export default class Auth {
                 email: req.body.email,
             });
             if (!userPublicData.emailVerified) {
-                return successResponce(
+                return errorResponce(
                     req,
                     res,
-                    'User not yet verified!',
+                    'Your account email not yet verified!',
                     202,
+                    'email_verify',
                     userPublicData,
                 );
             }
@@ -65,7 +66,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'User logged in successfully!',
+                'Your logged in successfully!',
                 202,
                 userPublicData,
             );
@@ -80,7 +81,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'User logged out successfully!',
+                'Your logged out successfully!',
                 202,
                 {},
             );
@@ -101,7 +102,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'invalid OTP',
+                            msg: 'Your OTP is invalid, Try to request OTP',
                             param: 'otp',
                         },
                     ],
@@ -115,7 +116,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'OTP incorrect',
+                            msg: 'Your OTP does not matching, please check!',
                             param: 'otp',
                         },
                     ],
@@ -136,7 +137,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'User email verified successfully!',
+                'Your Email verified successfully!',
                 202,
                 userPublicData,
             );
@@ -186,7 +187,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'invalid OTP',
+                            msg: 'Your OTP is invalid, Try to request OTP',
                             param: 'otp',
                         },
                     ],
@@ -200,7 +201,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'OTP incorrect',
+                            msg: 'Your OTP does not matching, please check!',
                             param: 'otp',
                         },
                     ],
@@ -220,7 +221,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'Password reset done successfully!',
+                'Your account password resetted successfully!',
                 202,
                 {},
             );
@@ -244,7 +245,7 @@ export default class Auth {
                     res,
                     [
                         {
-                            msg: 'Invalid current password please check',
+                            msg: 'Your account current password is not matching, please check!',
                             param: 'current_password',
                         },
                     ],
@@ -265,7 +266,7 @@ export default class Auth {
             return successResponce(
                 req,
                 res,
-                'Password change done successfully!',
+                'Your account password changed successfully!',
                 202,
                 {},
             );
