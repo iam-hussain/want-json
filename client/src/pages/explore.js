@@ -1,10 +1,10 @@
 import React from 'react';
 import Page from '../Components/Layout/Page';
 
-export default function API() {
+export default function Explore() {
   return (
     <Page>
-      I am API
+      I am Explore
     </Page>
   );
 }

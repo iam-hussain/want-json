@@ -11,5 +11,6 @@ module.exports = withFonts(withCSS({
   env: {
     AUTH_SECRET: process.env.AUTH_SECRET,
     API_BASE_URL: process.env.API_BASE_URL,
+    PAYLOAD_URL: process.env.PAYLOAD_URL,
   },
 }));

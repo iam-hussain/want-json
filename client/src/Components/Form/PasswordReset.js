@@ -57,7 +57,6 @@ export default function RegisterForm({ responseError, setEmail, mailSent }) {
             {
               title: 'Close',
               value: 'reset_password',
-              icon: 'fas fa-window-close',
               type: 'primary',
               action: false,
               data: {},

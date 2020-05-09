@@ -34,7 +34,6 @@ export default function ResetPassword() {
             {
               title: 'Close',
               value: 'close',
-              icon: 'fas fa-window-close',
               action: false,
               data: {},
             },

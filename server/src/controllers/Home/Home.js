@@ -3,7 +3,11 @@ import DB from '@providers/Database';
 
 class Home {
     static async index(req, res) {
-        return successResponce(req, res, 'Reached Home Page', 202, {});
+        return successResponce(req, res, 'Reached Home Page', 202, {
+            body: req.body,
+            params: req.params,
+            header: req.headers,
+        });
     }
 
     static flush(req, res) {

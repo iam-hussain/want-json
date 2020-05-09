@@ -35,7 +35,6 @@ export default function EmailVerify() {
             {
               title: 'Close',
               value: 'close',
-              icon: 'fas fa-window-close',
               action: false,
               data: {},
             },

@@ -27,19 +27,16 @@ export const ActionItem = styled(Button)`
     display: flex;    
     justify-content: center;
     border-radius: 5px;
-    width: 130px;
-    color : ${(props) => (props.active ? props.theme.tertiary : props.theme.primary)};
-    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.tertiary)};
+    color : ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
+    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper1)};
     margin: 8px;
     padding: 8px;
     transition: all 0.3s ease-in-out 0s;
-    box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
-    -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
 
     @media ${device.web}{
         &:hover{
-            background-color : ${(props) => props.theme.paper1};
-            color : ${(props) => props.theme.text1};
+            background-color : ${(props) => props.theme.secondary};
+            color : ${(props) => props.theme.tertiary};
         }
     }
 `;
@@ -51,11 +48,14 @@ export const DashContent = styled.div`
     justify-content: start;
     align-items: center;
     width: 100%;
-    height: 1000px;
     border-radius: 5px;
     margin: 10px;
     padding: 0.75rem 1.25rem;
     transition: all 0.3s ease-in-out 0s;  
+    @media ${device.xs_sm}{
+      padding: 0px;
+      margin: 0px;
+  }
 `;
 
 export default function Dash({ children }) {
@@ -63,11 +63,11 @@ export default function Dash({ children }) {
   return (
     <Page>
       <ActionBar>
-        <Link href="/dashboard/api/create">
-          <ActionItem active={router.pathname === '/dashboard/api/create'}>Create API</ActionItem>
+        <Link href="/dashboard/payload/create">
+          <ActionItem active={router.pathname === '/dashboard/payload/create'}>Create</ActionItem>
         </Link>
-        <Link href="/dashboard/api">
-          <ActionItem active={router.pathname === '/dashboard/api'}>My API</ActionItem>
+        <Link href="/dashboard/payload">
+          <ActionItem active={router.pathname === '/dashboard/payload'}>My Payload</ActionItem>
         </Link>
         <Link href="/dashboard/profile">
           <ActionItem active={router.pathname === '/dashboard/profile'}>My Profile</ActionItem>

@@ -29,6 +29,25 @@ export const P = styled.p`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  word-break: break-word;
+`;
+
+export const DimText = styled.p`
+  font-family: ${(props) => props.font || 'Rajdhani'};
+  font-size: ${(props) => props.size || '.8rem'};
+  padding: ${(props) => props.padding || '0 10px'};
+  margin: ${(props) => props.margin || '0px'};
+  color: ${(props) => props.color || props.theme.text3};
+  text-transform: ${(props) => props.transform || 'unset'};
+  font-weight: ${(props) => props.weight || 'unset'};
+  cursor: ${(props) => props.cursor || 'unset'};
+  text-align: ${(props) => props.align || 'left'};
+  transition: all 0.6s ease-in-out 0s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  word-break: break-word;
 `;
 
 export const H1 = styled.h1`

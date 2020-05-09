@@ -37,7 +37,7 @@ export const ModelButtonGroup = styled.div`
     margin-top: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: center;
     transition: all .3s ease-in-out;
 `;
 
@@ -63,7 +63,11 @@ export default function Alert() {
 
 
   return (
-    <AlertCover show={alertData.show} transparency onClick={() => clickHandle(alertData.defaultClose)}>
+    <AlertCover
+      show={alertData.show}
+      transparency
+      onClick={() => clickHandle(alertData.defaultClose)}
+    >
       <ModelBox flip={alertData.show}>
         <H2 align="center" margin="10px 0px">{alertData.title}</H2>
         <P align="center" margin="5px 0px">{alertData.content}</P>
@@ -71,14 +75,12 @@ export default function Alert() {
           {alertData.buttons.map((b, i) => (
             b.type === 'primary'
               ? (
-                <PrimaryBtn type="button" small key={i} className="button secondary model-close" onClick={() => clickHandle(b.value)}>
-                  {b.icon && <i className={b.icon} />}
+                <PrimaryBtn type="button" small key={i} className="button secondary model-close" onClick={() => clickHandle(b)}>
                   {b.title}
                 </PrimaryBtn>
               )
               : (
-                <Button type="button" small key={i} className="button secondary model-close" onClick={() => clickHandle(b.value)}>
-                  {b.icon && <i className={b.icon} />}
+                <Button type="button" small key={i} className="button secondary model-close" onClick={() => clickHandle(b)}>
                   {b.title}
                 </Button>
               )

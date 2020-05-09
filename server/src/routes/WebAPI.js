@@ -27,8 +27,12 @@ import authController from '../controllers/Auth/Auth';
 import payloadController from '../controllers/Web/Payload';
 import exploreController from '../controllers/Web/Explore';
 import profileController from '../controllers/Web/Profile';
+import homeController from '../controllers/Home/Home';
 
 const router = Router();
+
+
+router.post('/test', [homeController.index]);
 
 //  Auth API
 router.post('/signup', [

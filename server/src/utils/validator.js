@@ -133,13 +133,13 @@ const isPayloadData = body('data').custom(async (value, { req }) => {
         throw new Error('Data must be provided');
     }
     if (req.body.type === 'dynamic' && !Array.isArray(value)) {
-        throw new Error('Provide a valid array data!');
+        throw new Error('Provide a valid Aarry Object!');
     }
     if (req.body.type === 'static' && !(value instanceof Object)) {
-        throw new Error('Provide a valid JSON data!');
+        throw new Error('Provide a valid JSON Object!');
     }
     if (!(value instanceof Object)) {
-        throw new Error('Provide a valid data!');
+        throw new Error('Provide a valid JSON!');
     }
     return true;
 });

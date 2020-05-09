@@ -75,6 +75,7 @@ export const DropdownLI = styled(MenuLI)`
     clear: both;
     min-width: 200px;
     text-align: center;
+
     button{
       width: 180px;
       margin: 5px 0px;
@@ -85,8 +86,8 @@ export const MenuItem = styled(Button)`
     width: auto;
     font-size: 14px;
     list-style: none;
-    padding: ${(props) => props.padding || '0px 15px'};
-    margin: 0;
+    padding: ${(props) => props.padding || '5px 15px'};    
+    margin: 0 5px;
     color : ${(props) => (props.active ? props.theme.primary : props.theme.text1)};
     svg{
         margin: 0px 5px;
@@ -146,15 +147,15 @@ export default function NavBar() {
             <Link href="/explore">
               <MenuItem active={router.pathname === '/explore'}>
                 <FontAwesomeIcon icon={faLaptopCode} />
-                <span>API&apos;s</span>
+                <span>Payload&apos;s</span>
               </MenuItem>
             </Link>
           </MenuLI>
           <MenuLI>
             <Link href="/dashboard">
-              <MenuItem active={router.pathname === '/dashboard'}>
+              <MenuItem active={router.pathname.match('/dashboard')}>
                 <FontAwesomeIcon icon={faStore} />
-                <span>Custom API&apos;s</span>
+                <span>Custom Payload&apos;s</span>
               </MenuItem>
             </Link>
           </MenuLI>
@@ -166,9 +167,9 @@ export default function NavBar() {
                 </MenuItem>
                 <DropdownUL show={menuToggle} ref={targetNode}>
                   <DropdownLI mobile>
-                    <Link href="/dashboard/api">
+                    <Link href="/dashboard/payload">
                       <MenuItem padding="5px">
-                        My API&apos;s
+                        My Payload&apos;s
                       </MenuItem>
                     </Link>
                   </DropdownLI>

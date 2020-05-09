@@ -54,7 +54,6 @@ export const Button = styled.button`
     &:focus {
         outline: 0px dotted;
         outline: 0px auto -webkit-focus-ring-color;
-        border-color: transparent;
     }
     &:disabled {
         -webkit-user-select: none;

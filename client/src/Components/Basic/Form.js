@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Button } from './Button/Button';
+import { device } from '../../style';
 
 export const Label = styled.label`
     font-family: "Rajdhani";
@@ -11,7 +13,7 @@ export const Label = styled.label`
     pointer-events: none;
     display: block;
     margin: 0;
-    color: ${(props) => props.theme.text2};
+    color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
     background-color: transparent;
     line-height: 1em;
     text-align: left;
@@ -73,6 +75,78 @@ export const Item = styled.div`
     margin: 28px 0;
 `;
 
+
+export const TagGroup = styled.div`
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    min-height: 25px;
+    border-radius: 5px;
+    font-family: "Rajdhani";
+    box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
+    -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
+    
+    ${ErrorBlock}{
+        top: auto;
+        bottom: -18px;
+    }
+`;
+
+export const TagItem = styled.div`
+    font-family: "Rajdhani";
+    display: flex;
+    background-color:  ${(props) => props.theme.paper1};
+    color: ${(props) => props.theme.secondary};
+    border-radius: 5px;
+    padding: 2px 8px;
+    padding-right: 16px;
+    margin: 2px;
+    position: relative;
+
+    span {
+        font-size: 12px;
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        cursor: pointer;
+        @media ${device.web}{
+            &:hover{
+                color : ${(props) => props.theme.primary};
+            }
+        }
+    }
+`;
+
+export const InputButton = styled(Button)`
+    color:  ${(props) => props.theme.secondary};
+    display: flex;
+    padding: 10px;
+    font-size: 2rem;
+    width: auto;
+    border-left: none;
+    border-radius: 0px 5px 5px 0px;
+    border-color: ${(props) => props.theme.text3};
+`;
+
+export const InputGroup = styled.div`
+    display: flex;
+    ${Input}{
+        border-right: none;
+        border-radius: 5px 0px 0px 5px;
+        &:focus ~ ${InputButton} {
+            border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
+            outline: none; 
+        }
+    }
+    ${InputButton}{
+        color:  ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
+        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.text3)};
+    }
+`;
+
 export const GroupName = styled.span`
     font-family: "Rajdhani";
     font-size: 1rem;
@@ -106,6 +180,7 @@ export const RadioGroup = styled.div`
         margin: 5px;
     }
     ${Input}{
+        cursor: pointer;
         left: 6px;
         position: absolute;
         width: 20px;
@@ -119,7 +194,8 @@ export const RadioGroup = styled.div`
             background-color: ${(props) => props.theme.bg};
         }
 
-        &+${Label} {position: relative;
+        &+${Label} {
+            position: relative;
             color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
             background-color: ${(props) => props.theme.bg};
             padding: 0 6px;
@@ -131,7 +207,8 @@ export const RadioGroup = styled.div`
             left: 0px;
         }
 
-        &+${Label}:before {
+        &+${Label}:before {    
+            cursor: pointer;
             content: '';
             margin-right: 10px;
             display: inline-block;
@@ -150,8 +227,49 @@ export const RadioGroup = styled.div`
             background: white;
             width: 12px;
             height: 12px;
-            border-radius: 5px;
-            background-color: #colors[bg];
+            border-radius: 20px;
+            background-color: ${(props) => props.theme.primary};
         }
+    }
+`;
+
+export const CodeItem = styled(Item)`
+    margin-top: 28px;
+    ${ErrorBlock}{
+        top: auto;
+        bottom: -18px;
+    }
+
+    ${Label}{
+        font-size: 0.75rem;
+        top: -15px;
+        right: 7px;
+        left: auto;
+    }
+`;
+
+export const CodeWrapper = styled.div`
+    height: 300px;
+    overflow: auto;
+    border-radius: 5px;
+    max-width: 100%;
+
+    &::-webkit-scrollbar-track {
+        background-color: #000;
+        border-radius: 0 5px 5px 0;
+        margin: 4px 0;
+    }
+
+    &::-webkit-scrollbar {
+        background-color: #000;
+        border-radius: 0 5px 5px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.primary}; 
+    }
+
+    pre{
+        min-height: 300px;
     }
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
@@ -60,7 +61,7 @@ function MyApp({
           <GlobalStyle />
           <Loader show={loader} />
           <Alert />
-          <Component pageProps={pageProps} />
+          <Component {...pageProps} />
         </Wrapper>
       </ThemeProvider>
     </Provider>

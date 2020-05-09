@@ -1,55 +1,54 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-json';
 import '../assets/vendor/code.css';
 
-export const CodeWrapper = styled.div`
-    height: 300px;
-    overflow: auto;
-    border-radius: 5px;
-    max-width: 100%;
-    &::-webkit-scrollbar-track {
-        background-color: #000;
-        border-radius: 0 5px 5px 0;
-        margin: 4px 0;
-    }
+import {
+  Label, ErrorBlock, CodeWrapper, CodeItem,
+} from './Basic/Form';
 
-    &::-webkit-scrollbar {
-        background-color: #000;
-        border-radius: 0 5px 5px 0;
+export default function CodeEditor({
+  setCode, codeError, setCodeError, codeString, setCodeString,
+}) {
+  const handleCodeChange = (codeIs) => {
+    setCodeString(codeIs);
+    try {
+      const JSONCode = JSON.parse(codeIs);
+      if (typeof JSONCode === 'object') {
+        setCode(JSONCode);
+        setCodeError({ status: false, msg: '' });
+      } else {
+        setCodeError({ status: true, msg: 'Provide a valid JSON formate !' });
+      }
+    } catch (err) {
+      setCodeError({ status: true, msg: 'Provide a valid JSON formate !' });
     }
+  };
 
-    &::-webkit-scrollbar-thumb {
-        background-color: ${(props) => props.theme.primary}; 
-    }
-
-    pre{
-        min-height: 300px;
-    }
-`;
-
-export default function CodeEditor() {
-  const [codeIs, setCode] = useState('');
   return (
-    <CodeWrapper>
-      <Editor
-        name="data"
-        value={codeIs}
-        onValueChange={(code) => setCode(code)}
-        padding={10}
-        highlight={(code) => highlight(code, languages.json)}
-        textareaClassName="code-textbox code-box"
-        preClassName="code-pre code-box"
-        style={{
-          'min-height': '300px',
-          background: '#060940',
-          fontFamily: 'monospace',
-          fontSize: '14px',
-          'line-height': '20px',
-        }}
-      />
-    </CodeWrapper>
+    <CodeItem>
+      <Label hasError={codeError.msg !== ''}>JSON Code</Label>
+      <CodeWrapper hasError={codeError.msg !== ''}>
+        <Editor
+          name="data"
+          value={codeString}
+          onValueChange={(codeIs) => handleCodeChange(codeIs)}
+          padding={10}
+          highlight={(codeIs) => highlight(codeIs, languages.json)}
+          textareaClassName="code-textbox code-box"
+          preClassName="code-pre code-box"
+          style={{
+            minHeight: '300px',
+            background: '#060940',
+            fontFamily: 'monospace',
+            fontSize: '14px',
+            lineHeight: '20px',
+          }}
+        />
+      </CodeWrapper>
+      <ErrorBlock>{codeError.msg}</ErrorBlock>
+    </CodeItem>
+
   );
 }
