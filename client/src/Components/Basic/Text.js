@@ -1,3 +1,5 @@
+import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { device } from '../../style';
 
@@ -113,6 +115,27 @@ export const H3 = styled.h3`
 `;
 
 
+export const H4 = styled.h4`
+    font-family: ${(props) => props.font || "'Raleway', sans-serif"};
+    font-size: ${(props) => props.size || '1.5rem'};
+    padding: ${(props) => props.padding || '0px 10px'};
+    margin: ${(props) => props.margin || '0px'};
+    color: ${(props) => props.color || props.theme.text1};
+    text-transform: ${(props) => props.transform || 'unset'};
+    font-weight: ${(props) => props.weight || '500'};
+    cursor: ${(props) => props.cursor || 'unset'};
+    text-align: ${(props) => props.align || 'left'};
+    transition: all 0.6s ease-in-out 0s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media ${device.xs_sm}{
+      font-size: calc(${(props) => props.size || '1.5rem'} - 0.2rem);
+    }
+`;
+
+
 export const ASpan = styled.span`
     font-family: ${(props) => props.font || "'Raleway', sans-serif"};
     font-size: ${(props) => props.size || '1rem'};
@@ -132,3 +155,27 @@ export const ASpan = styled.span`
         text-decoration: none;
     }
 `;
+
+export const HeadingWrapper = styled.div`
+    font-family: "Rajdhani";
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin: 0px 10px 18px;
+    padding-bottom: 10px;
+    padding: 14px 10px;
+    border-bottom: 2px solid;
+    border-color: ${(props) => props.color || props.theme.secondary};
+`;
+
+export function SubHeadingComp({ back, title }) {
+  return (
+    <HeadingWrapper>
+      <H4 font="Rajdhani">
+        {title}
+      </H4>
+      {back !== '' && <Link href={back}><ASpan font="Rajdhani">Back</ASpan></Link> }
+    </HeadingWrapper>
+  );
+}

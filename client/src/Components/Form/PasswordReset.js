@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
+import { useAlert } from 'react-alert';
 import {
   Item, Label, Input, ErrorBlock, Form,
 } from '../Basic/Form';
@@ -14,7 +14,6 @@ import {
   repeatPasswordNotMatch,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
-import { openAlert } from '../../Redux/Actions/commonActions';
 
 export default function RegisterForm({ responseError, setEmail, mailSent }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -28,7 +27,7 @@ export default function RegisterForm({ responseError, setEmail, mailSent }) {
     setError,
   } = useForm({ mode: 'onChange' });
   const router = useRouter();
-  const dispatch = useDispatch();
+  const alert = useAlert();
 
   useEffect(() => {
     setComponentLoading(false);
@@ -49,30 +48,16 @@ export default function RegisterForm({ responseError, setEmail, mailSent }) {
   const onSubmit = async (data) => {
     const responseData = await postMethod('reset_password', data);
     if (responseData.success) {
-      dispatch(
-        openAlert({
-          title: 'Success',
-          content: responseData.message,
-          buttons: [
-            {
-              title: 'Close',
-              value: 'reset_password',
-              type: 'primary',
-              action: false,
-              data: {},
-            },
-          ],
-        }),
-      );
+      alert.success(responseData.message);
       reset();
-      router.push('/');
+      router.push('/login');
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
         setError(m.param, 'invalid', m.msg);
         return true;
       });
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
   };
   return (

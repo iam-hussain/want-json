@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { device } from '../../style';
 import Page from './Page';
 import { Button } from '../Basic/Button/Button';
+import { Decorator } from '../Basic/Wrapper';
 
 export const ActionBar = styled.div`
     display: flex;
@@ -15,11 +16,12 @@ export const ActionBar = styled.div`
     width: 100%;
     padding-left: 0;
     margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid;
-    border-color: ${(props) => props.theme.primary};
+    padding: 8px 0px;
+    // border-bottom: 2px solid;
+    // border-color: ${(props) => props.theme.primary};
     text-align: center;
     transition: all 0.6s ease-in-out 0s;
+    background-color : ${(props) => props.theme.paper1};
 `;
 
 export const ActionItem = styled(Button)`
@@ -35,8 +37,8 @@ export const ActionItem = styled(Button)`
 
     @media ${device.web}{
         &:hover{
-            background-color : ${(props) => props.theme.secondary};
-            color : ${(props) => props.theme.tertiary};
+            background-color : ${(props) => props.theme.tertiary};
+            color : ${(props) => props.theme.secondary};
         }
     }
 `;
@@ -53,7 +55,7 @@ export const DashContent = styled.div`
     padding: 0.75rem 1.25rem;
     transition: all 0.3s ease-in-out 0s;  
     @media ${device.xs_sm}{
-      padding: 0px;
+      padding: 28px 0px;
       margin: 0px;
   }
 `;
@@ -62,6 +64,7 @@ export default function Dash({ children }) {
   const router = useRouter();
   return (
     <Page>
+      <Decorator width="33vw" height="100vh" top="0px" right="0px" />
       <ActionBar>
         <Link href="/dashboard/payload/create">
           <ActionItem active={router.pathname === '/dashboard/payload/create'}>Create</ActionItem>
@@ -73,7 +76,7 @@ export default function Dash({ children }) {
           <ActionItem active={router.pathname === '/dashboard/profile'}>My Profile</ActionItem>
         </Link>
         <Link href="/dashboard/settings">
-          <ActionItem active={router.pathname === '/dashboard/settings'}>Settings</ActionItem>
+          <ActionItem active={router.pathname.match('/dashboard/settings')}>Settings</ActionItem>
         </Link>
       </ActionBar>
       <DashContent>

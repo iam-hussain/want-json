@@ -4,6 +4,7 @@ import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
+import { useAlert } from 'react-alert';
 import {
   Item, Label, Input, ErrorBlock, Form,
 } from '../Basic/Form';
@@ -14,7 +15,6 @@ import {
   passwordMinLengthMsg,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
-import { openAlert } from '../../Redux/Actions/commonActions';
 import { loggedUpdate } from '../../Redux/Actions/userActions';
 
 export default function LoginForm() {
@@ -27,6 +27,7 @@ export default function LoginForm() {
     setError,
     reset,
   } = useForm({ mode: 'onChange' });
+  const alert = useAlert();
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -37,6 +38,7 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     const responseData = await postMethod('signin', data);
     if (responseData.success) {
+      alert.success(responseData.message);
       cookie.set('token', responseData.payload.token, { expires: 7 });
       cookie.remove('email_verify');
       window.localStorage.setItem('login', Date.now());
@@ -49,7 +51,7 @@ export default function LoginForm() {
         return true;
       });
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
   };
   return (

@@ -64,7 +64,10 @@ export const GlobalStyle = createGlobalStyle`
       height: 100%;
       flex:1;
   }
-  
+  #__react-alert__ div{
+    pointer-events: unset !important;
+    bottom: 50px !important;
+  }
   h1,
   h2,
   h3,
@@ -90,8 +93,9 @@ export const theme = {
   text1: '#3e3f5e',
   text2: '#5E5C7F',
   text3: '#8f919e',
-  error: '#EF89A1',
-  success: '#809E82',
+  error: '#F24B6A',
+  success: '#12805c',
+  info: '#3498DB',
   transparency: 'rgba(0, 0, 0, 0.2)',
 };
 

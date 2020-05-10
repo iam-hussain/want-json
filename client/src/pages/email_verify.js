@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert';
+import withAuthorization from '../Components/Authorization';
 import Landing from '../Components/Layout/Landing';
 import { H3 } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import { Button } from '../Components/Basic/Button/Button';
 import EmailVerifyForm from '../Components/Form/EmailVerify';
 import { postMethod } from '../utils/Integration';
-import { openAlert } from '../Redux/Actions/commonActions';
 import { emailInvalidMsg } from '../utils/Message';
 
-export default function EmailVerify() {
+function EmailVerify() {
   const [emailInput, setEmailInput] = useState('');
   const [responseError, setResponseError] = useState([]);
   const [resendDisable, setResendDisable] = useState(false);
-  const dispatch = useDispatch();
+  const alert = useAlert();
 
   const handleResend = async () => {
     if (!emailInput) {
@@ -27,24 +27,11 @@ export default function EmailVerify() {
     if (responseData.success) {
       setResendDisable(true);
       localStorage.setItem('email_verify', emailInput);
-      dispatch(
-        openAlert({
-          title: 'Sent',
-          content: `Email resent to ${emailInput} succesfully, please check your mail`,
-          buttons: [
-            {
-              title: 'Close',
-              value: 'close',
-              action: false,
-              data: {},
-            },
-          ],
-        }),
-      );
+      alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       setResponseError(responseData.message);
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
     return true;
   };
@@ -62,3 +49,5 @@ export default function EmailVerify() {
     </Landing>
   );
 }
+
+export default withAuthorization(EmailVerify, false);

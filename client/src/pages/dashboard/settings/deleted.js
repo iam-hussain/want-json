@@ -3,17 +3,17 @@ import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faLock, faLockOpen, faEye, faEdit, faTrashAlt,
+  faLock, faLockOpen, faUndo,
 } from '@fortawesome/free-solid-svg-icons';
 import { shouldHaveAuth } from '../../../utils/Authentication';
-import Dash from '../../../Components/Layout/Dashboard';
+import { SubHeadingComp } from '../../../Components/Basic/Text';
 import {
-  List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action, URL,
+  List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action,
 } from '../../../Components/Basic/List';
-import { DimText, SubHeadingComp } from '../../../Components/Basic/Text';
+import Dash from '../../../Components/Layout/Dashboard';
 import { getMethod, deleteMethod } from '../../../utils/Integration';
 
-function Payload({ myPayload, token }) {
+function Deleted({ myPayload, token }) {
   const alert = useAlert();
   const router = useRouter();
 
@@ -29,38 +29,39 @@ function Payload({ myPayload, token }) {
     };
   }, []);
 
-  const nullDelete = {
+  const nullRestore = {
     click: 0,
     id: '',
     intervel: 0,
   };
-  const [deleteData, setDeleteData] = useState(nullDelete);
+
+  const [restoreData, setRestoreData] = useState(nullRestore);
   const [payload, setPayload] = useState(myPayload);
 
-  const handleDetele = async (id) => {
-    clearInterval(deleteData.interval);
-    if (deleteData.click === 1 && deleteData.id === id) {
-      const responseData = await deleteMethod(`payload/${id}`, token);
+  const handleRestore = async (id) => {
+    clearInterval(restoreData.interval);
+    if (restoreData.click === 1 && restoreData.id === id) {
+      const responseData = await deleteMethod(`payload_restore/${id}`, token);
       if (responseData.success) {
         alert.success(responseData.message);
-        const newPayload = await getMethod('payload', token);
+        const newPayload = await getMethod('payload_deleted', token);
         setPayload(newPayload.payload || []);
       } else {
         alert.error(responseData.message || '');
       }
-      setDeleteData(nullDelete);
+      setRestoreData(nullRestore);
     } else {
-      alert.info('Click one more time to confirm Delete');
+      alert.info('Click one more time to confirm Restore');
       const intervel = setInterval(() => {
-        setDeleteData(nullDelete);
+        setRestoreData(nullRestore);
       }, 4000);
-      await setDeleteData({ click: 1, id, intervel });
+      await setRestoreData({ click: 1, id, intervel });
     }
   };
 
   return (
     <Dash>
-      <SubHeadingComp back="" title="My Payloads" />
+      <SubHeadingComp back="/dashboard/settings" title="Deleted Payloads" />
       {payload.map((p) => (
         <List key={p.id}>
           <ListItem>
@@ -71,21 +72,10 @@ function Payload({ myPayload, token }) {
             </FrontIcon>
             <ListContent>
               <ListTitle>{p.title}</ListTitle>
-              <DimText>{p.description}</DimText>
-              <URL>
-                {process.env.PAYLOAD_URL}
-                {p.url}
-              </URL>
             </ListContent>
             <ListAction>
-              <Action>
-                <FontAwesomeIcon icon={faEye} />
-              </Action>
-              <Action>
-                <FontAwesomeIcon icon={faEdit} />
-              </Action>
-              <Action onClick={() => handleDetele(p.id)}>
-                <FontAwesomeIcon icon={faTrashAlt} />
+              <Action onClick={() => handleRestore(p.id)}>
+                <FontAwesomeIcon icon={faUndo} />
               </Action>
             </ListAction>
           </ListItem>
@@ -95,11 +85,10 @@ function Payload({ myPayload, token }) {
   );
 }
 
-
-Payload.getInitialProps = async (ctx) => {
+Deleted.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
-  const myPayload = await getMethod('payload', token);
+  const myPayload = await getMethod('payload_deleted', token);
   return { myPayload: myPayload.payload, token };
 };
 
-export default Payload;
+export default Deleted;

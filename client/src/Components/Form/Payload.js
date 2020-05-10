@@ -4,8 +4,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
-import { useDispatch } from 'react-redux';
 import { useForm, ErrorMessage } from 'react-hook-form';
+import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -19,7 +19,6 @@ import {
 } from '../../utils/Message';
 import CodeEditor from '../Editor';
 import { postMethod } from '../../utils/Integration';
-import { openAlert } from '../../Redux/Actions/commonActions';
 
 export default function APIForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -35,7 +34,7 @@ export default function APIForm() {
     setValue,
     triggerValidation,
   } = useForm({ mode: 'onChange' });
-  const dispatch = useDispatch();
+  const alert = useAlert();
 
   const [code, setCode] = useState('');
   const [codeString, setCodeString] = useState('');
@@ -72,21 +71,7 @@ export default function APIForm() {
       setKeyWords([]);
       setCodeString('');
       reset();
-      dispatch(
-        openAlert({
-          title: 'Created',
-          content: 'New Payload created successfully',
-          buttons: [
-            {
-              title: 'Close',
-              value: 'reset_password',
-              type: 'primary',
-              action: false,
-              data: {},
-            },
-          ],
-        }),
-      );
+      alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
         if (m.param === 'data') {
@@ -97,7 +82,7 @@ export default function APIForm() {
         return true;
       });
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
   };
   return (

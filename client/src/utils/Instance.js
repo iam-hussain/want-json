@@ -22,7 +22,7 @@ const errorHandler = (error) => {
   console.log(error);
   return {
     success: false,
-    message: 'Unexpected error has occurred',
+    message: 'Unexpected error from server',
     status: 500,
     errorType: 'server',
     payload: {},

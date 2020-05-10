@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import withAuthorization from '../Components/Authorization';
 import Landing from '../Components/Layout/Landing';
 import { H3, P, ASpan } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import RegisterForm from '../Components/Form/Register';
 
-export default function Register() {
+function Register() {
   return (
     <Landing>
       <CustomFormBox>
@@ -26,3 +27,5 @@ export default function Register() {
     </Landing>
   );
 }
+
+export default withAuthorization(Register, false);

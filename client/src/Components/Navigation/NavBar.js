@@ -152,8 +152,8 @@ export default function NavBar() {
             </Link>
           </MenuLI>
           <MenuLI>
-            <Link href="/dashboard">
-              <MenuItem active={router.pathname.match('/dashboard')}>
+            <Link href="/dashboard/payload">
+              <MenuItem active={router.pathname.match('/dashboard/payload')}>
                 <FontAwesomeIcon icon={faStore} />
                 <span>Custom Payload&apos;s</span>
               </MenuItem>

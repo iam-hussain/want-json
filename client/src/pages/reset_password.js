@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert';
+import withAuthorization from '../Components/Authorization';
 import Landing from '../Components/Layout/Landing';
 import { H3 } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import { Button } from '../Components/Basic/Button/Button';
 import PasswordResetForm from '../Components/Form/PasswordReset';
 import { postMethod } from '../utils/Integration';
-import { openAlert } from '../Redux/Actions/commonActions';
 import { emailInvalidMsg } from '../utils/Message';
 
-export default function ResetPassword() {
+function ResetPassword() {
   const [emailInput, setEmailInput] = useState('');
   const [responseError, setResponseError] = useState([]);
   const [mailSent, setMailSent] = useState(false);
-  const dispatch = useDispatch();
+  const alert = useAlert();
 
   const handleSendOTP = async () => {
     if (!emailInput) {
@@ -26,26 +26,18 @@ export default function ResetPassword() {
     const responseData = await postMethod('send_otp', { email: emailInput, type: 'reset_password' });
     if (responseData.success) {
       setMailSent(true);
-      dispatch(
-        openAlert({
-          title: 'Sent',
-          content: `Email OTP sent to ${emailInput} succesfully, please check your mail`,
-          buttons: [
-            {
-              title: 'Close',
-              value: 'close',
-              action: false,
-              data: {},
-            },
-          ],
-        }),
-      );
+      alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       setResponseError(responseData.message);
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
     return true;
+  };
+
+  const handleChangeEmail = () => {
+    setMailSent(false);
+    alert.info('Now you can change your Email ID');
   };
 
   return (
@@ -59,10 +51,12 @@ export default function ResetPassword() {
         />
         <BottomSeparator>
           {mailSent
-            ? <Button padding="2px" size="0.75rem" onClick={() => setMailSent(false)}>Change Email ID</Button>
+            ? <Button padding="2px" size="0.75rem" onClick={() => handleChangeEmail()}>Change Email ID</Button>
             : <Button padding="2px" size="0.75rem" onClick={() => handleSendOTP()}>Resend OTP</Button> }
         </BottomSeparator>
       </CustomFormBox>
     </Landing>
   );
 }
+
+export default withAuthorization(ResetPassword, false);

@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import withAuthorization from '../Components/Authorization';
 import Landing from '../Components/Layout/Landing';
 import { H3 } from '../Components/Basic/Text';
 import { CustomFormBox, BottomSeparator } from '../Components/Extended/Wrapper';
 import { Button } from '../Components/Basic/Button/Button';
 import LoginForm from '../Components/Form/Login';
 
-export default function Login() {
+function Login() {
   return (
     <Landing>
       <CustomFormBox>
@@ -19,3 +20,5 @@ export default function Login() {
     </Landing>
   );
 }
+
+export default withAuthorization(Login, false);

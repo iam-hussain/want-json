@@ -11,7 +11,8 @@ import { device } from '../../style';
 
 export const Appbar = styled.div`
     z-index: 2;
-    background-color: ${(props) => props.theme.bg};width: 100%;
+    background-color: ${(props) => props.theme.bg};
+    width: 100%;
     display: none;
     justify-content: space-around;
     align-items: center;
@@ -62,13 +63,13 @@ export default function AppBar() {
       <Icon active={router.pathname === '/documentation'}>
         <FontAwesomeIcon icon={faBook} />
       </Icon>
-      <Link href="/">
+      <Link href="/explore">
         <Icon active={router.pathname === '/explore'}>
           <FontAwesomeIcon icon={faLaptopCode} />
         </Icon>
       </Link>
-      <Link href="/">
-        <Icon active={router.pathname === '/dashboard'}>
+      <Link href="/dashboard/payload">
+        <Icon active={router.pathname === '/dashboard/payload'}>
           <FontAwesomeIcon icon={faStore} />
         </Icon>
       </Link>

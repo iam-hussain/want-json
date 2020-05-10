@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import {
   Item, Label, Input, ErrorBlock, Form,
@@ -13,7 +13,6 @@ import {
   emailInvalidMsg,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
-import { openAlert } from '../../Redux/Actions/commonActions';
 
 export default function EmailVerifyForm({ responseError, setEmail }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -25,12 +24,18 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
     setError,
     reset,
     watch,
+    setValue,
+    triggerValidation,
   } = useForm({ mode: 'onChange' });
   const router = useRouter();
-  const dispatch = useDispatch();
+  const alert = useAlert();
 
   useEffect(() => {
     setComponentLoading(false);
+    if (cookie.get('email_verify')) {
+      setValue('email', cookie.get('email_verify'));
+      triggerValidation('email');
+    }
   }, []);
 
   const emailWatch = watch('email');
@@ -48,9 +53,10 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
   const onSubmit = async (data) => {
     const responseData = await postMethod('email_verify', data);
     if (responseData.success) {
-      cookie.set('token', data.email, { expires: 7 });
+      alert.success(responseData.message);
+      cookie.set('token', responseData.payload.token, { expires: 7 });
       cookie.remove('email_verify');
-      localStorage.setItem('token', responseData.payload.token);
+      window.localStorage.setItem('login', Date.now());
       reset();
       router.push('/');
     } else if (responseData.errorType === 'validation') {
@@ -59,7 +65,7 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
         return true;
       });
     } else {
-      dispatch(openAlert(responseData.alert));
+      alert.error(responseData.message);
     }
   };
   return (
