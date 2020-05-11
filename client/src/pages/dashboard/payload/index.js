@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import debounce from 'lodash.debounce';
 import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,23 +13,58 @@ import {
   List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action, URL,
 } from '../../../Components/Basic/List';
 import { DimText, SubHeadingComp } from '../../../Components/Basic/Text';
+import { SecondaryBtn } from '../../../Components/Basic/Button/Button';
 import { getMethod, deleteMethod } from '../../../utils/Integration';
 
-function Payload({ myPayload, token }) {
+function Payload({ myPayload, token, pages }) {
   const alert = useAlert();
   const router = useRouter();
+  const [payload, setPayload] = useState(myPayload);
+  const [page, setPage] = useState(pages);
+  const [loader, setLoader] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const syncLogout = (event) => {
     if (event.key === 'logout') {
       router.push('/login');
     }
   };
+
   useEffect(() => {
+    if (pages.total === 1) {
+      setLoader(false);
+    }
     window.addEventListener('storage', syncLogout);
     return () => {
       window.removeEventListener('storage', syncLogout);
     };
   }, []);
+
+  const loadData = async () => {
+    if (currentPage < page.total) {
+      const newPayload = await getMethod(`payload?page=${currentPage + 1}`, token);
+      setCurrentPage(newPayload.page.current);
+      setPayload([...payload, ...newPayload.payload]);
+      setPage(newPayload.page);
+      if (newPayload.page.current === newPayload.page.total) {
+        setLoader(false);
+      }
+    } else {
+      setLoader(false);
+    }
+  };
+
+  useEffect(() => {
+    const pageMaker = document.getElementById('pageMaker');
+    pageMaker.onscroll = debounce(() => {
+      if (Math.ceil(pageMaker.scrollTop + pageMaker.clientHeight)
+      >= Math.ceil(pageMaker.scrollHeight)) {
+        if (currentPage < page.total) {
+          loadData();
+        }
+      }
+    }, 100);
+  }, [currentPage, payload]);
 
   const nullDelete = {
     click: 0,
@@ -35,7 +72,6 @@ function Payload({ myPayload, token }) {
     intervel: 0,
   };
   const [deleteData, setDeleteData] = useState(nullDelete);
-  const [payload, setPayload] = useState(myPayload);
 
   const handleDetele = async (id) => {
     clearInterval(deleteData.interval);
@@ -43,7 +79,7 @@ function Payload({ myPayload, token }) {
       const responseData = await deleteMethod(`payload/${id}`, token);
       if (responseData.success) {
         alert.success(responseData.message);
-        const newPayload = await getMethod('payload', token);
+        const newPayload = await getMethod(`payload?limit=${currentPage * page.limit}`, token);
         setPayload(newPayload.payload || []);
       } else {
         alert.error(responseData.message || '');
@@ -61,9 +97,9 @@ function Payload({ myPayload, token }) {
   return (
     <Dash>
       <SubHeadingComp back="" title="My Payloads" />
-      {payload.map((p) => (
-        <List key={p.id}>
-          <ListItem>
+      <List>
+        {payload.map((p) => (
+          <ListItem key={p.id}>
             <FrontIcon>
               {p.visibility === 'public'
                 ? <FontAwesomeIcon icon={faLockOpen} />
@@ -81,25 +117,33 @@ function Payload({ myPayload, token }) {
               <Action>
                 <FontAwesomeIcon icon={faEye} />
               </Action>
-              <Action>
-                <FontAwesomeIcon icon={faEdit} />
-              </Action>
+              <Link href={`/dashboard/payload/edit/${p.id}`}>
+                <Action>
+                  <FontAwesomeIcon icon={faEdit} />
+                </Action>
+              </Link>
               <Action onClick={() => handleDetele(p.id)}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </Action>
             </ListAction>
           </ListItem>
-        </List>
-      ))}
+        ))}
+
+      </List>
+      {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
     </Dash>
   );
 }
 
-
 Payload.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const myPayload = await getMethod('payload', token);
-  return { myPayload: myPayload.payload, token };
+  if (!myPayload.success) {
+    ctx.res.writeHead(302, { Location: '/' });
+    ctx.res.end();
+    return null;
+  }
+  return { myPayload: myPayload.payload, pages: myPayload.page, token };
 };
 
 export default Payload;

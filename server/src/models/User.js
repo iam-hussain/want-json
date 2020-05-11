@@ -8,13 +8,20 @@ module.exports = function userModel(sequelize, DataTypes) {
                 primaryKey: true,
                 field: 'id',
             },
+            displayName: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                defaultValue: '',
+            },
             firstName: {
                 type: DataTypes.STRING,
                 allowNull: true,
+                defaultValue: '',
             },
             lastName: {
                 type: DataTypes.STRING,
                 allowNull: true,
+                defaultValue: '',
             },
             email: {
                 type: DataTypes.STRING,
@@ -37,6 +44,10 @@ module.exports = function userModel(sequelize, DataTypes) {
                 validate: {
                     notEmpty: true,
                 },
+            },
+            url: {
+                type: DataTypes.STRING,
+                allowNull: true,
             },
             emailVerified: {
                 type: DataTypes.BOOLEAN,

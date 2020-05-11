@@ -8,7 +8,7 @@ function Create() {
   return (
     <Dash>
       <SubHeadingComp back="" title="Create Payload" />
-      <Payload />
+      <Payload data={{}} />
     </Dash>
   );
 }

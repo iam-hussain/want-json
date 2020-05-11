@@ -18,17 +18,19 @@ export default class PayloadModule {
         });
     }
 
-    static async getPayload(where) {
+    static async getPayload(where, condition = {}) {
         const returnData = await DB.models.Payload.findOne({
             where,
+            ...condition,
             attributes: ['data'],
         }).then((payLoad) => payLoad || {});
         return returnData;
     }
 
-    static async get(where) {
+    static async get(where, condition = {}) {
         const returnData = await DB.models.Payload.findOne({
             where,
+            ...condition,
             attributes: {
                 exclude: ['user_id'],
             },
@@ -36,16 +38,18 @@ export default class PayloadModule {
         return returnData;
     }
 
-    static async getFullData(where) {
+    static async getFullData(where, condition = {}) {
         const returnData = await DB.models.Payload.findOne({
             where,
+            ...condition,
         }).then((payLoad) => (payLoad.id ? payLoad : {}));
         return returnData;
     }
 
-    static async getAll(where) {
+    static async getAll(where, condition = {}) {
         const returnData = await DB.models.Payload.findAll({
             where,
+            ...condition,
             attributes: {
                 exclude: ['user_id'],
             },

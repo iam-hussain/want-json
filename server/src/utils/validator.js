@@ -1,9 +1,9 @@
 import { check, body, param } from 'express-validator';
 import validator from 'validator';
 import userModule from '@helper/user';
+import Sequelize from 'sequelize';
 import payloadModule from '../helper/payload';
 import payloadUtils from './payload';
-import DB from '../providers/Database';
 
 const isFirstName = check('firstName')
     .notEmpty()
@@ -11,7 +11,7 @@ const isFirstName = check('firstName')
     .isLength({
         min: 4,
     })
-    .withMessage('Provide a valid firstName with min 4 letters');
+    .withMessage('Provide a valid First Name with min 4 letters');
 
 const isLastName = check('lastName')
     .notEmpty()
@@ -19,7 +19,37 @@ const isLastName = check('lastName')
     .isLength({
         min: 4,
     })
-    .withMessage('Provide a valid lastName with min 4 letters');
+    .withMessage('Provide a valid Last Name with min 4 letters');
+
+const isURL = check('url')
+    .notEmpty()
+    .withMessage('URL must be provided')
+    .isURL()
+    .withMessage('Provide a valid URL');
+
+const isDisplayName = check('displayName')
+    .notEmpty()
+    .withMessage('LastName must be provided')
+    .isLength({
+        min: 4,
+    })
+    .withMessage('Provide a valid display name with min 4 letters');
+
+
+const isDisplayNameTaken = body('displayName').custom(async (value, { req }) => {
+    if (value) {
+        if (
+            await userModule.existCheck({
+                displayName: value,
+                id: { [Sequelize.Op.not]: req.params.id },
+            })
+        ) {
+            throw new Error('This display name is already taken please different name');
+        }
+    }
+    return true;
+});
+
 
 const isEmail = check('email')
     .notEmpty()
@@ -84,13 +114,14 @@ const isTitleTakenByAny = body('title').custom(async (value) => {
     return true;
 });
 
-const isTitleExistByOther = body('email').custom(async (value, { req }) => {
+const isTitleExistByOther = body('title').custom(async (value, { req }) => {
+    console.log('========================', req.params.id);
     if (value && req.params.id) {
         const url = await payloadUtils.urlMaker(value);
         if (
             await payloadModule.existCheck({
                 url,
-                id: { [DB.Op.not]: req.params.id },
+                id: { [Sequelize.Op.not]: req.params.id },
             })
         ) {
             throw new Error('This title is already taken please different title');
@@ -133,10 +164,10 @@ const isPayloadData = body('data').custom(async (value, { req }) => {
         throw new Error('Data must be provided');
     }
     if (req.body.type === 'dynamic' && !Array.isArray(value)) {
-        throw new Error('Provide a valid Aarry Object!');
+        throw new Error('Provide a valid Aarry formate !');
     }
     if (req.body.type === 'static' && !(value instanceof Object)) {
-        throw new Error('Provide a valid JSON Object!');
+        throw new Error('Provide a valid JSON formate !');
     }
     if (!(value instanceof Object)) {
         throw new Error('Provide a valid JSON!');
@@ -206,7 +237,8 @@ const isValidPublicPayload = param('id').custom(async (value) => {
     return true;
 });
 
-export const profileUpdateRules = [isFirstName, isLastName];
+export const profileUpdateRules = [isFirstName, isLastName,
+    isDisplayName, isDisplayNameTaken, isURL];
 
 // Auth
 export const registerRules = [isEmail, isPassword, isEmailTaken];
@@ -214,7 +246,7 @@ export const loginRules = [isEmail, isPassword, isEmailExist];
 export const sendOTPRules = [isEmail, isEmailExist, isAuthType];
 export const emailVerifyRules = [isEmail, isEmailExist, isOTP];
 export const resetPasswordRules = [isEmail, isEmailExist, isOTP, isPassword];
-export const changePasswordRules = [isOTP, isCurrentPassword, isPassword];
+export const changePasswordRules = [isCurrentPassword, isPassword];
 
 // Payload
 export const getOnePayloadRules = [isUUID, isValidPayloadAndOwner];

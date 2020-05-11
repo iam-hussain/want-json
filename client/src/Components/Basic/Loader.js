@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Brand } from './Text';
-import { rotate360, bounce } from './Animation';
+import { rotate360, bounce, jump } from './Animation';
 import { Cover } from './Wrapper';
 
 export const Spinner = styled.div`
@@ -38,5 +38,38 @@ export default function Loader({ show }) {
         <Bubble delay="-1.5s" bottom="0px" right="0px" />
       </Spinner>
     </Cover>
+  );
+}
+
+export const DotsGroup = styled.div`
+  position: relative;
+  width: 45px;
+  height: 30px;
+  cursor: pointer;
+  margin: 10px 0px;
+`;
+
+export const Dots = styled.div`
+    position: absolute;
+    top: ${(props) => props.top || 'auto'};
+    left: ${(props) => props.left || 'auto'};
+    right: ${(props) => props.right || 'auto'};
+    bottom: ${(props) => props.bottom || 'auto'};
+    width: ${(props) => props.size || '10px'};
+    height: ${(props) => props.size || '10px'};
+    border-radius: 100%;
+    background-color: ${(props) => props.theme.primary};
+    animation: ${jump} 1s ease-in-out infinite;
+    animation-delay: ${(props) => props.delay || '0s'};
+`;
+
+
+export function LoadMore({ click }) {
+  return (
+    <DotsGroup onClick={() => click()}>
+      <Dots top="0px" left="0px" />
+      <Dots delay="-0.25s" top="0px" left="15px" />
+      <Dots delay="-0.5s" top="0px" left="35px" />
+    </DotsGroup>
   );
 }

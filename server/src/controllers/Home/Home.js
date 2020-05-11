@@ -7,6 +7,7 @@ class Home {
             body: req.body,
             params: req.params,
             header: req.headers,
+            query: req.query,
         });
     }
 

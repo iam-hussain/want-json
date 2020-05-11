@@ -1,13 +1,22 @@
 import { successResponce } from '@utils/exchange';
 import payloadModule from '../../helper/payload';
 import payloadUtils from '../../utils/payload';
+import pageCalculation from '../../utils/page';
 
 export default class Payload {
     static async readAll(req, res, next) {
         try {
+            const totalItems = await payloadModule.countBy({
+                user_id: req.userID,
+                status: 'active',
+            });
+            const page = await pageCalculation(req.query, totalItems);
             const storeData = await payloadModule.getAll({
                 user_id: req.userID,
                 status: 'active',
+            }, {
+                offset: page.offset,
+                limit: page.limit,
             });
             return successResponce(
                 req,
@@ -15,6 +24,7 @@ export default class Payload {
                 'All our payload fetched successfully',
                 202,
                 storeData,
+                { page },
             );
         } catch (_error) {
             return next(_error);
@@ -23,9 +33,17 @@ export default class Payload {
 
     static async readAllDeleted(req, res, next) {
         try {
+            const totalItems = await payloadModule.countBy({
+                user_id: req.userID,
+                status: 'inactive',
+            });
+            const page = await pageCalculation(req.query, totalItems);
             const storeData = await payloadModule.getAll({
                 user_id: req.userID,
                 status: 'inactive',
+            }, {
+                offset: page.offset,
+                limit: page.limit,
             });
             return successResponce(
                 req,
@@ -33,6 +51,7 @@ export default class Payload {
                 'All our payload fetched successfully',
                 202,
                 storeData,
+                { page },
             );
         } catch (_error) {
             return next(_error);

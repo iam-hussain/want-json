@@ -30,7 +30,7 @@ export default function Page({ children }) {
   return (
     <>
       <NavBar />
-      <ContentWrapper>
+      <ContentWrapper id="pageMaker">
         <Container padding="10px" shadow>
           {children}
         </Container>

@@ -22,8 +22,10 @@ export default class UserModule {
             where,
             attributes: [
                 'id',
+                'displayName',
                 'firstName',
                 'lastName',
+                'url',
                 'email',
                 'emailVerified',
                 'passwordSet',

@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 
-export async function successResponce(req, res, message, status, payload) {
+export async function successResponce(req, res, message, status, payload, others = {}) {
     return res
         .status(200)
         .json({
@@ -8,6 +8,7 @@ export async function successResponce(req, res, message, status, payload) {
             status,
             message,
             payload,
+            ...others,
         })
         .end();
 }

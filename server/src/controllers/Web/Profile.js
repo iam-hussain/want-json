@@ -26,6 +26,8 @@ export default class Profile {
                 {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
+                    displayName: req.body.displayName,
+                    url: req.body.url,
                 },
             );
             return successResponce(req, res, 'Profile updated successfully', 202, {});

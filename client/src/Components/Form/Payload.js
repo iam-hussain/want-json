@@ -18,9 +18,9 @@ import {
   passwordMinLengthMsg,
 } from '../../utils/Message';
 import CodeEditor from '../Editor';
-import { postMethod } from '../../utils/Integration';
+import { postMethod, putMethod } from '../../utils/Integration';
 
-export default function APIForm() {
+export default function APIForm({ data, editMode }) {
   const [componentLoading, setComponentLoading] = useState(true);
   const [keyWords, setKeyWords] = useState([]);
   const {
@@ -41,6 +41,31 @@ export default function APIForm() {
   const [codeError, setCodeError] = useState({ status: true, msg: '' });
   const keyWordsInput = watch('keywords');
 
+
+  const setValues = async () => {
+    await setCodeString(JSON.stringify(data.data, null, 4));
+    await setCode(data.data);
+    await setValue([
+      { title: data.title },
+      { description: data.description },
+      { type: data.type },
+      { visibility: data.visibility },
+    ]);
+    await setKeyWords(data.keywords);
+    await triggerValidation('title');
+    await triggerValidation('description');
+    await triggerValidation('type');
+    await triggerValidation('visibility');
+    await triggerValidation('keywords');
+  };
+
+  useEffect(() => {
+    if (editMode) {
+      setValues();
+    }
+    setComponentLoading(false);
+  }, []);
+
   const handleKeyPush = async () => {
     if (keyWordsInput.trim() !== '') {
       await setKeyWords([...new Set([...keyWords, keyWordsInput])]);
@@ -60,17 +85,24 @@ export default function APIForm() {
     await triggerValidation('keywords');
   };
 
-  useEffect(() => {
-    setComponentLoading(false);
-  }, []);
-
-  const onSubmit = async (data) => {
+  const apiCall = async (_payloadData) => {
     const token = cookie.get('token');
-    const responseData = await postMethod('payload', { ...data, keywords: keyWords, data: code }, token);
+    if (editMode) {
+      const updatedData = await putMethod(`payload/${data.id}`, { ..._payloadData, keywords: keyWords, data: code }, token);
+      return updatedData;
+    }
+    const createdData = await postMethod('payload', { ..._payloadData, keywords: keyWords, data: code }, token);
+    return createdData;
+  };
+
+  const onSubmit = async (payloadData) => {
+    const responseData = await apiCall(payloadData);
     if (responseData.success) {
-      setKeyWords([]);
-      setCodeString('');
-      reset();
+      if (!editMode) {
+        setKeyWords([]);
+        setCodeString('');
+        reset();
+      }
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
@@ -218,6 +250,7 @@ export default function APIForm() {
         codeError={codeError}
         codeString={codeString}
         setCodeString={setCodeString}
+        type={watch('type')}
       />
       <Item>
         <PrimaryBtn
@@ -230,7 +263,7 @@ export default function APIForm() {
             || componentLoading || codeError.status
           }
         >
-          Create new Payload!
+          {`${editMode ? 'Edit Your' : 'Create new'} Payload!`}
         </PrimaryBtn>
       </Item>
     </Form>

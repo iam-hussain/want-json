@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import debounce from 'lodash.debounce';
 import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,27 +8,60 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { shouldHaveAuth } from '../../../utils/Authentication';
 import { SubHeadingComp } from '../../../Components/Basic/Text';
+import { SecondaryBtn } from '../../../Components/Basic/Button/Button';
 import {
   List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action,
 } from '../../../Components/Basic/List';
 import Dash from '../../../Components/Layout/Dashboard';
 import { getMethod, deleteMethod } from '../../../utils/Integration';
 
-function Deleted({ myPayload, token }) {
+function Deleted({ myPayload, token, pages }) {
   const alert = useAlert();
   const router = useRouter();
+  const [payload, setPayload] = useState(myPayload);
+  const [page, setPage] = useState(pages);
+  const [loader, setLoader] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const syncLogout = (event) => {
     if (event.key === 'logout') {
       router.push('/login');
     }
   };
+
   useEffect(() => {
+    if (pages.total === 1) {
+      setLoader(false);
+    }
     window.addEventListener('storage', syncLogout);
     return () => {
       window.removeEventListener('storage', syncLogout);
     };
   }, []);
+
+  const loadData = async () => {
+    if (currentPage < page.total) {
+      const newPayload = await getMethod(`payload_deleted?page=${currentPage + 1}`, token);
+      setCurrentPage(newPayload.page.current);
+      setPayload([...payload, ...newPayload.payload]);
+      setPage(newPayload.page);
+      if (newPayload.page.current === newPayload.page.total) {
+        setLoader(false);
+      }
+    } else {
+      setLoader(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   const pageMaker = document.getElementById('pageMaker');
+  //   pageMaker.onscroll = debounce(() => {
+  //     if (Math.ceil(pageMaker.scrollTop + pageMaker.clientHeight)
+  //     >= Math.ceil(pageMaker.scrollHeight)) {
+  //       loadData();
+  //     }
+  //   }, 100);
+  // }, [currentPage, payload]);
 
   const nullRestore = {
     click: 0,
@@ -36,7 +70,6 @@ function Deleted({ myPayload, token }) {
   };
 
   const [restoreData, setRestoreData] = useState(nullRestore);
-  const [payload, setPayload] = useState(myPayload);
 
   const handleRestore = async (id) => {
     clearInterval(restoreData.interval);
@@ -44,7 +77,7 @@ function Deleted({ myPayload, token }) {
       const responseData = await deleteMethod(`payload_restore/${id}`, token);
       if (responseData.success) {
         alert.success(responseData.message);
-        const newPayload = await getMethod('payload_deleted', token);
+        const newPayload = await getMethod(`payload_deleted?limit=${currentPage * page.limit}`, token);
         setPayload(newPayload.payload || []);
       } else {
         alert.error(responseData.message || '');
@@ -62,9 +95,9 @@ function Deleted({ myPayload, token }) {
   return (
     <Dash>
       <SubHeadingComp back="/dashboard/settings" title="Deleted Payloads" />
-      {payload.map((p) => (
-        <List key={p.id}>
-          <ListItem>
+      <List>
+        {payload.map((p) => (
+          <ListItem key={p.id}>
             <FrontIcon>
               {p.visibility === 'public'
                 ? <FontAwesomeIcon icon={faLockOpen} />
@@ -79,8 +112,9 @@ function Deleted({ myPayload, token }) {
               </Action>
             </ListAction>
           </ListItem>
-        </List>
-      ))}
+        ))}
+      </List>
+      {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
     </Dash>
   );
 }
@@ -88,7 +122,12 @@ function Deleted({ myPayload, token }) {
 Deleted.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const myPayload = await getMethod('payload_deleted', token);
-  return { myPayload: myPayload.payload, token };
+  if (!myPayload.success) {
+    ctx.res.writeHead(302, { Location: '/' });
+    ctx.res.end();
+    return null;
+  }
+  return { myPayload: myPayload.payload, pages: myPayload.page, token };
 };
 
 export default Deleted;

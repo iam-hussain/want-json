@@ -20,6 +20,17 @@ export const bounce = keyframes`
     }
 `;
 
+export const jump = keyframes`
+    0%,
+    100% {
+        top: 0px;
+    }
+
+    50% {
+        top: 15px;
+    }
+`;
+
 
 export const buttonPush = keyframes`
     50% {
