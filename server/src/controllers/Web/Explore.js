@@ -5,6 +5,8 @@ import Sequelize from 'sequelize';
 import payloadModule from '../../helper/payload';
 import pageCalculation from '../../utils/page';
 
+const SqlString = require('sequelize/lib/sql-string');
+
 const { Op } = Sequelize;
 export default class Explore {
     static async readAll(req, res, next) {
@@ -14,19 +16,29 @@ export default class Explore {
                 visibility: 'public',
             };
             if (req.body.search) {
-                const searchData = {
-                    [Op.or]: [{
+                const searchData = req.body.search.split(' ');
+                const mapData = [];
+                searchData.map((s) => {
+                    mapData.push({
                         title: {
-                            [Op.like]: `%${req.body.search}%`,
+                            [Op.iLike]: `%${s}%`,
                         },
-                    }, {
+                    });
+                    mapData.push({
                         description: {
-                            [Op.like]: `%${req.body.search}%`,
+                            [Op.iLike]: `%${s}%`,
                         },
-                    }],
+                    });
+                });
+                //
+                // const searchData = {
+                //     title: Sequelize.literal(`lower("title") like ${Sequelize.escape(`%${req.body.search.toLowerCase()}`)}`),
+                // };
+                const finalData = {
+                    [Op.or]: mapData,
                 };
 
-                whereIs = { ...whereIs, ...searchData };
+                whereIs = { ...whereIs, ...finalData };
             }
             const totalItems = await payloadModule.countBy(whereIs);
             req.body.limit = req.body.limit || 10;

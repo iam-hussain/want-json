@@ -49,6 +49,10 @@ module.exports = function payloadModel(sequelize, DataTypes) {
                 type: DataTypes.BIGINT,
                 defaultValue: 0,
             },
+            viewCount: {
+                type: DataTypes.BIGINT,
+                defaultValue: 0,
+            },
             type: {
                 type: DataTypes.ENUM,
                 values: ['static', 'dynamic'],
