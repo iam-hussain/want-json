@@ -56,7 +56,7 @@ router.get('/payload_deleted', [shouldBeLoggedIn, payloadController.readAllDelet
 router.delete('/payload_restore/:id', [shouldBeLoggedIn, restorePayloadRules, validateRequest, payloadController.restore]);
 
 // Search API
-router.get('/explore', [exploreController.readAll]);
+router.post('/explore', [exploreController.readAll]);
 router.get('/explore/:id', [exploreOneRules, validateRequest, exploreController.read]);
 
 // Profile API

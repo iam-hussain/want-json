@@ -169,6 +169,21 @@ export const HeadingWrapper = styled.div`
     border-color: ${(props) => props.color || props.theme.secondary};
 `;
 
+// export const NotFound = styled(P)`
+//   width: 100%;
+//   text-align: center;
+//   padding: 20px;
+//   margin: 10px;
+// `;
+
+
+export function NotFound() {
+  return (
+    <P padding="20px" margin="10px">No items found !</P>
+  );
+}
+
+
 export function SubHeadingComp({ back, title }) {
   return (
     <HeadingWrapper>

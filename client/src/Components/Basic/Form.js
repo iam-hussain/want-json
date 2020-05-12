@@ -19,6 +19,18 @@ export const Label = styled.label`
     text-align: left;
 `;
 
+
+export const URLShow = styled(Label)`
+    top: -25px;
+    left: 10px;
+    padding: 0 6px;
+    font-size: .75rem;
+    word-break: break-all;
+    @media ${device.xs_sm}{
+        top: -35px;
+    }
+`;
+
 export const Input = styled.input`
     height: 54px;
     padding: 0 18px;

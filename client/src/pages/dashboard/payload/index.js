@@ -12,7 +12,7 @@ import Dash from '../../../Components/Layout/Dashboard';
 import {
   List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action, URL,
 } from '../../../Components/Basic/List';
-import { DimText, SubHeadingComp } from '../../../Components/Basic/Text';
+import { DimText, SubHeadingComp, NotFound } from '../../../Components/Basic/Text';
 import { SecondaryBtn } from '../../../Components/Basic/Button/Button';
 import { getMethod, deleteMethod } from '../../../utils/Integration';
 
@@ -22,7 +22,6 @@ function Payload({ myPayload, token, pages }) {
   const [payload, setPayload] = useState(myPayload);
   const [page, setPage] = useState(pages);
   const [loader, setLoader] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const syncLogout = (event) => {
     if (event.key === 'logout') {
@@ -31,7 +30,7 @@ function Payload({ myPayload, token, pages }) {
   };
 
   useEffect(() => {
-    if (pages.total === 1) {
+    if (pages.total <= 1) {
       setLoader(false);
     }
     window.addEventListener('storage', syncLogout);
@@ -41,9 +40,8 @@ function Payload({ myPayload, token, pages }) {
   }, []);
 
   const loadData = async () => {
-    if (currentPage < page.total) {
-      const newPayload = await getMethod(`payload?page=${currentPage + 1}`, token);
-      setCurrentPage(newPayload.page.current);
+    if (page.current < page.total) {
+      const newPayload = await getMethod(`payload?page=${page.current + 1}`, token);
       setPayload([...payload, ...newPayload.payload]);
       setPage(newPayload.page);
       if (newPayload.page.current === newPayload.page.total) {
@@ -59,12 +57,10 @@ function Payload({ myPayload, token, pages }) {
     pageMaker.onscroll = debounce(() => {
       if (Math.ceil(pageMaker.scrollTop + pageMaker.clientHeight)
       >= Math.ceil(pageMaker.scrollHeight)) {
-        if (currentPage < page.total) {
-          loadData();
-        }
+        // loadData();
       }
     }, 100);
-  }, [currentPage, payload]);
+  }, [payload]);
 
   const nullDelete = {
     click: 0,
@@ -79,7 +75,7 @@ function Payload({ myPayload, token, pages }) {
       const responseData = await deleteMethod(`payload/${id}`, token);
       if (responseData.success) {
         alert.success(responseData.message);
-        const newPayload = await getMethod(`payload?limit=${currentPage * page.limit}`, token);
+        const newPayload = await getMethod(`payload?limit=${page.current * page.limit}`, token);
         setPayload(newPayload.payload || []);
       } else {
         alert.error(responseData.message || '');
@@ -128,9 +124,9 @@ function Payload({ myPayload, token, pages }) {
             </ListAction>
           </ListItem>
         ))}
-
       </List>
       {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
+      {payload.length === 0 && <NotFound />}
     </Dash>
   );
 }

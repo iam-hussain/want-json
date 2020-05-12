@@ -7,7 +7,7 @@ import {
   faLock, faLockOpen, faUndo,
 } from '@fortawesome/free-solid-svg-icons';
 import { shouldHaveAuth } from '../../../utils/Authentication';
-import { SubHeadingComp } from '../../../Components/Basic/Text';
+import { SubHeadingComp, NotFound } from '../../../Components/Basic/Text';
 import { SecondaryBtn } from '../../../Components/Basic/Button/Button';
 import {
   List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action,
@@ -21,7 +21,6 @@ function Deleted({ myPayload, token, pages }) {
   const [payload, setPayload] = useState(myPayload);
   const [page, setPage] = useState(pages);
   const [loader, setLoader] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const syncLogout = (event) => {
     if (event.key === 'logout') {
@@ -30,7 +29,7 @@ function Deleted({ myPayload, token, pages }) {
   };
 
   useEffect(() => {
-    if (pages.total === 1) {
+    if (pages.total <= 1) {
       setLoader(false);
     }
     window.addEventListener('storage', syncLogout);
@@ -40,9 +39,8 @@ function Deleted({ myPayload, token, pages }) {
   }, []);
 
   const loadData = async () => {
-    if (currentPage < page.total) {
-      const newPayload = await getMethod(`payload_deleted?page=${currentPage + 1}`, token);
-      setCurrentPage(newPayload.page.current);
+    if (page.current < page.total) {
+      const newPayload = await getMethod(`payload_deleted?page=${page.current + 1}`, token);
       setPayload([...payload, ...newPayload.payload]);
       setPage(newPayload.page);
       if (newPayload.page.current === newPayload.page.total) {
@@ -61,7 +59,7 @@ function Deleted({ myPayload, token, pages }) {
   //       loadData();
   //     }
   //   }, 100);
-  // }, [currentPage, payload]);
+  // }, [page.current, payload]);
 
   const nullRestore = {
     click: 0,
@@ -77,7 +75,7 @@ function Deleted({ myPayload, token, pages }) {
       const responseData = await deleteMethod(`payload_restore/${id}`, token);
       if (responseData.success) {
         alert.success(responseData.message);
-        const newPayload = await getMethod(`payload_deleted?limit=${currentPage * page.limit}`, token);
+        const newPayload = await getMethod(`payload_deleted?limit=${page.current * page.limit}`, token);
         setPayload(newPayload.payload || []);
       } else {
         alert.error(responseData.message || '');
@@ -115,6 +113,7 @@ function Deleted({ myPayload, token, pages }) {
         ))}
       </List>
       {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
+      {payload.length === 0 && <NotFound />}
     </Dash>
   );
 }

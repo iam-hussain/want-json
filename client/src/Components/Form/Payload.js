@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
   Item, Label, Input, ErrorBlock, Form, RadioGroup,
-  GroupName, TagGroup, TagItem, InputGroup, InputButton,
+  GroupName, TagGroup, TagItem, InputGroup, InputButton, URLShow,
 } from '../Basic/Form';
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
@@ -36,11 +36,21 @@ export default function APIForm({ data, editMode }) {
   } = useForm({ mode: 'onChange' });
   const alert = useAlert();
 
+  const [url, setURL] = useState('');
   const [code, setCode] = useState('');
   const [codeString, setCodeString] = useState('');
   const [codeError, setCodeError] = useState({ status: true, msg: '' });
   const keyWordsInput = watch('keywords');
+  const titleWatch = watch('title');
 
+  useEffect(() => {
+    if (titleWatch) {
+      const urlConvert = titleWatch.toLowerCase().replace(/[^a-z0-9]+/gi, '_');
+      setURL(`URL : ${process.env.PAYLOAD_URL}${urlConvert}`);
+    } else {
+      setURL('');
+    }
+  }, [titleWatch]);
 
   const setValues = async () => {
     await setCodeString(JSON.stringify(data.data, null, 4));
@@ -134,6 +144,7 @@ export default function APIForm({ data, editMode }) {
           required
         />
         <Label>Payload Title</Label>
+        <URLShow hasError={errors.title}>{url}</URLShow>
         <ErrorBlock>
           <ErrorMessage errors={errors} name="title" />
         </ErrorBlock>
