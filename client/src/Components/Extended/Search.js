@@ -14,7 +14,7 @@ export const Showing = styled.div`
     user-select: none;
     span{
         color: ${(props) => props.theme.primary};
-        padding: 0px 5px;
+        padding: 0px 2px;
     }
 `;
 

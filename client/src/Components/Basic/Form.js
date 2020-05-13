@@ -76,7 +76,7 @@ export const ErrorBlock = styled.span`
 `;
 
 export const Form = styled.form`
-    min-width: 80%;
+    width: 96%;
 `;
 
 export const Item = styled.div`
@@ -260,18 +260,18 @@ export const CodeItem = styled(Item)`
 export const CodeWrapper = styled.div`
     height: 300px;
     overflow: auto;
-    border-radius: 5px;
+    // border-radius: 5px;
     max-width: 100%;
 
     &::-webkit-scrollbar-track {
         background-color: #000;
-        border-radius: 0 5px 5px 0;
+        // border-radius: 0 5px 5px 0;
         margin: 4px 0;
     }
 
     &::-webkit-scrollbar {
         background-color: #000;
-        border-radius: 0 5px 5px 0;
+        // border-radius: 0 5px 5px 0;
     }
 
     &::-webkit-scrollbar-thumb {

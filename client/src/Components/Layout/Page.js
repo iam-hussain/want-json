@@ -31,7 +31,7 @@ export default function Page({ children }) {
     <>
       <NavBar />
       <ContentWrapper id="pageMaker">
-        <Container padding="10px" shadow>
+        <Container padding="0px" shadow>
           {children}
         </Container>
       </ContentWrapper>

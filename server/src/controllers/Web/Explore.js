@@ -2,6 +2,7 @@ import {
     successResponce,
 } from '@utils/exchange';
 import Sequelize from 'sequelize';
+import BigNumber from 'big-number';
 import payloadModule from '../../helper/payload';
 import pageCalculation from '../../utils/page';
 
@@ -11,12 +12,13 @@ export default class Explore {
         try {
             const sortBy = req.body.sortBy || 'createdAt';
             const orderBy = req.body.orderBy || 'DESC';
+            const queryBy = req.body.search || '';
             let whereIs = {
                 status: 'active',
                 visibility: 'public',
             };
-            if (req.body.search) {
-                const searchData = req.body.search.split(' ');
+            if (queryBy) {
+                const searchData = queryBy.split(' ');
                 const mapData = [];
                 searchData.map((s) => {
                     mapData.push({
@@ -42,7 +44,6 @@ export default class Explore {
                 whereIs = { ...whereIs, ...finalData };
             }
             const totalItems = await payloadModule.countBy(whereIs);
-            req.body.limit = req.body.limit || 10;
             const page = await pageCalculation(req.body, totalItems);
             const payloadData = await payloadModule.getAll(whereIs, {
                 offset: page.offset,
@@ -58,6 +59,11 @@ export default class Explore {
                 202,
                 payloadData, {
                     page,
+                    search: {
+                        queryBy,
+                        sortBy,
+                        orderBy,
+                    },
                 },
             );
         } catch (_error) {
@@ -73,7 +79,7 @@ export default class Explore {
                 visibility: 'public',
             });
             payloadModule.updateAny({ id: req.params.id },
-                { viewCount: payloadData.viewCount + 1 });
+                { viewCount: BigNumber(payloadData.viewCount).plus(1) });
             return successResponce(
                 req,
                 res,

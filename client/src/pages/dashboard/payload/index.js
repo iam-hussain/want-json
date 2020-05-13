@@ -110,9 +110,11 @@ function Payload({ myPayload, token, pages }) {
               </URL>
             </ListContent>
             <ListAction>
-              <Action>
-                <FontAwesomeIcon icon={faEye} />
-              </Action>
+              <Link href={`/dashboard/payload/view/${p.id}`}>
+                <Action>
+                  <FontAwesomeIcon icon={faEye} />
+                </Action>
+              </Link>
               <Link href={`/dashboard/payload/edit/${p.id}`}>
                 <Action>
                   <FontAwesomeIcon icon={faEdit} />

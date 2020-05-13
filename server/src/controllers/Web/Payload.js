@@ -17,6 +17,9 @@ export default class Payload {
             }, {
                 offset: page.offset,
                 limit: page.limit,
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             });
             return successResponce(
                 req,
@@ -44,6 +47,9 @@ export default class Payload {
             }, {
                 offset: page.offset,
                 limit: page.limit,
+                order: [
+                    ['updatedAt', 'DESC'],
+                ],
             });
             return successResponce(
                 req,

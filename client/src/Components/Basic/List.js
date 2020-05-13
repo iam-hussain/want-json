@@ -7,7 +7,7 @@ export const FrontIcon = styled.div`
     transition: all 0.6s ease-in-out 0s;
     background-color: transparent;
     align-self: center;
-    color: ${(props) => props.theme.text2};
+    color: ${(props) => (props.active ? props.theme.primary : props.theme.text2)};
     min-width: 25px;
 `;
 
@@ -96,7 +96,7 @@ export const ListItem = styled.li`
         &:hover{
             background-color: ${(props) => props.theme.paper2};
             color: ${(props) => props.theme.tertiary};
-            ${FrontIcon}, ${ListTitle}{
+            ${ListTitle}{
                 color: ${(props) => props.theme.primary};
             }
         }

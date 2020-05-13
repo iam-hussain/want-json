@@ -34,6 +34,7 @@ export default class PayloadModule {
             attributes: {
                 exclude: ['user_id'],
             },
+            include: [{ model: DB.models.User, as: 'owner', attributes: ['displayName'] }],
         }).then((payLoad) => (payLoad.id ? payLoad : {}));
         return returnData;
     }
@@ -53,6 +54,7 @@ export default class PayloadModule {
             attributes: {
                 exclude: ['user_id'],
             },
+            include: [{ model: DB.models.User, as: 'owner', attributes: ['displayName'] }],
         }).then((payLoad) => (payLoad.length > 0 ? payLoad : []));
         return returnData;
     }

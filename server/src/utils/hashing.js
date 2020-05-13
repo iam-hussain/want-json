@@ -25,8 +25,8 @@ export default class hashingModule {
     }
 
     static async payloadHashGenerator(title) {
-        return `${title}_${MD5(
-            Locals.name + MD5(new Date().getTime()) + Locals.appSecret,
+        return `tkn_${MD5(
+            title + Locals.name + MD5(new Date().getTime()) + Locals.appSecret,
         )}`;
     }
 

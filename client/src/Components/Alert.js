@@ -40,9 +40,6 @@ export const Wrapper = styled.div`
 export const Message = styled.div`
     flex: 1;
     margin-right: 10px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 `;
 
@@ -72,28 +69,3 @@ export default function AlertBox(_ref) {
     </Wrapper>
   );
 }
-
-// export default function AlertTemplate(_ref) {
-//   const { message } = _ref;
-//   const { options } = _ref;
-//   const { style } = _ref;
-//   const { close } = _ref;
-
-//   return React.createElement(
-//     'div',
-//     { style: { ...style } },
-//     options.type === 'info' && React.createElement(InfoIcon, null),
-//     options.type === 'success' && React.createElement(SuccessIcon, null),
-//     options.type === 'error' && React.createElement(ErrorIcon, null),
-//     React.createElement(
-//       'span',
-//       { style: { flex: 2 } },
-//       message,
-//     ),
-//     React.createElement(
-//       'button',
-//       { onClick: close, style: buttonStyle, type: 'button' },
-//       React.createElement(CloseIcon, null),
-//     ),
-//   );
-// }

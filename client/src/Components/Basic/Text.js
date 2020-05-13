@@ -89,7 +89,7 @@ export const H2 = styled.h2`
     -ms-user-select: none;
     user-select: none;
     @media ${device.xs_sm}{
-      font-size: calc(${(props) => props.size || '1.5rem'} - 0.2rem);
+      font-size: calc(${(props) => props.size || '2rem'} - 0.2rem);
     }
 `;
 
@@ -110,7 +110,7 @@ export const H3 = styled.h3`
     -ms-user-select: none;
     user-select: none;
     @media ${device.xs_sm}{
-      font-size: calc(${(props) => props.size || '1.5rem'} - 0.2rem);
+      font-size: calc(${(props) => props.size || '1.75rem'} - 0.2rem);
     }
 `;
 
