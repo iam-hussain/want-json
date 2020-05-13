@@ -93,6 +93,14 @@ export default class PayloadModule {
         return returnData;
     }
 
+    static async updateAny(where, updateData) {
+        const returnData = await DB.models.Payload.update(updateData,
+            {
+                where,
+            });
+        return returnData;
+    }
+
     static async statusUpdate(where, status) {
         const returnData = await DB.models.Payload.update(
             {

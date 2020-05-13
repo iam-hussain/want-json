@@ -19,7 +19,6 @@ import Alert from '../Components/Basic/Alert';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/nprogress.css';
 
-
 import { loggedUpdate } from '../Redux/Actions/userActions';
 
 function Wrapper({ children, logged }) {

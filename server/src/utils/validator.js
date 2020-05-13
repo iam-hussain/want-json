@@ -35,7 +35,6 @@ const isDisplayName = check('displayName')
     })
     .withMessage('Provide a valid display name with min 4 letters');
 
-
 const isDisplayNameTaken = body('displayName').custom(async (value, { req }) => {
     if (value) {
         if (
@@ -49,7 +48,6 @@ const isDisplayNameTaken = body('displayName').custom(async (value, { req }) => 
     }
     return true;
 });
-
 
 const isEmail = check('email')
     .notEmpty()
@@ -115,7 +113,6 @@ const isTitleTakenByAny = body('title').custom(async (value) => {
 });
 
 const isTitleExistByOther = body('title').custom(async (value, { req }) => {
-    console.log('========================', req.params.id);
     if (value && req.params.id) {
         const url = await payloadUtils.urlMaker(value);
         if (
@@ -237,6 +234,17 @@ const isValidPublicPayload = param('id').custom(async (value) => {
     return true;
 });
 
+const isSortBy = check('sortBy')
+    .optional()
+    .isIn(['hitCount', 'viewCount', 'createdAt'])
+    .withMessage('Provide a valid sort type');
+
+const isOrderBy = check('orderBy')
+    .optional()
+    .isIn(['ASC', 'DESC'])
+    .withMessage('Provide a valid order type');
+
+
 export const profileUpdateRules = [isFirstName, isLastName,
     isDisplayName, isDisplayNameTaken, isURL];
 
@@ -272,4 +280,5 @@ export const updatePayloadRules = [
 ];
 export const deletePayloadRules = [isUUID, isValidPayloadAndOwner];
 export const restorePayloadRules = [isUUID, isDeletedPayloadAndOwner];
+export const exploreRules = [isSortBy, isOrderBy];
 export const exploreOneRules = [isUUID, isValidPublicPayload];
