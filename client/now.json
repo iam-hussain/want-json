@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "AUTH_SECRET": "verysecret",
+      "API_BASE_URL": "http://localhost:4040/web/",
+      "PAYLOAD_URL": "http://localhost:4040/"
+    }
+  }
+}

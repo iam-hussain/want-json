@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faLock, faLockOpen, faEye,
+  faLock, faLockOpen, faEye, faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Components/Layout/Page';
 import { postMethod } from '../utils/Integration';
@@ -11,6 +11,12 @@ import {
 } from '../Components/Basic/List';
 import { DimText, NotFound } from '../Components/Basic/Text';
 import { SecondaryBtn } from '../Components/Basic/Button/Button';
+import {
+  InputGroup, Input, Label, InputButton,
+} from '../Components/Basic/Form';
+import {
+  SearchForm, Showing, SortGroup, SortItem,
+} from '../Components/Extended/Search';
 
 function Explore({ payloadData, pages }) {
   const [payload, setPayload] = useState(payloadData);
@@ -38,6 +44,28 @@ function Explore({ payloadData, pages }) {
 
   return (
     <Page>
+      <SearchForm>
+        <InputGroup>
+          <Input
+            type="text"
+            name="keywords"
+            required
+          />
+          <Label>Keywords</Label>
+          <InputButton type="button"><FontAwesomeIcon icon={faSearch} /></InputButton>
+        </InputGroup>
+        <Showing>
+          Showing 1 – 40 of 5,728 results for &quot;
+          <span>fff</span>
+          &quot;
+        </Showing>
+        <SortGroup>
+          <span>Sort By</span>
+          <SortItem>Recent</SortItem>
+          <SortItem active>Viewed</SortItem>
+          <SortItem>Used</SortItem>
+        </SortGroup>
+      </SearchForm>
       <List>
         {payload.map((p) => (
           <ListItem key={p.id}>

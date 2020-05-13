@@ -19,7 +19,6 @@ export const Label = styled.label`
     text-align: left;
 `;
 
-
 export const URLShow = styled(Label)`
     top: -25px;
     left: 10px;
@@ -80,13 +79,11 @@ export const Form = styled.form`
     min-width: 80%;
 `;
 
-
 export const Item = styled.div`
     position: relative;
     text-align: center;
     margin: 28px 0;
 `;
-
 
 export const TagGroup = styled.div`
     position: relative;
