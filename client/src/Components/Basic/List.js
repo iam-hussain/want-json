@@ -73,7 +73,7 @@ export const List = styled.ul`
     -ms-flex-direction: column;
     flex-direction: column;
     padding-left: 0;
-    margin-bottom: 0;
+    margin-bottom: 28px;
     text-align: center;
     transition: all 0.6s ease-in-out 0s;
 `;

@@ -6,8 +6,8 @@ import webRouter from '@routes/WebAPI';
 class Routes {
     static mountWeb(_express) {
         Log.info('Routes :: Mounting Web Routes...');
-        _express.use('/', rootRouter);
         _express.use('/web/', webRouter);
+        _express.use('/', rootRouter);
         return _express;
     }
 }

@@ -1,4 +1,5 @@
 import { successResponce } from '@utils/exchange';
+import hashingUtil from '@utils/hashing';
 import payloadModule from '../../helper/payload';
 import payloadUtils from '../../utils/payload';
 import pageCalculation from '../../utils/page';
@@ -11,7 +12,7 @@ export default class Payload {
                 status: 'active',
             });
             const page = await pageCalculation(req.query, totalItems);
-            const storeData = await payloadModule.getAll({
+            const payloadData = await payloadModule.getAll({
                 user_id: req.userID,
                 status: 'active',
             }, {
@@ -26,7 +27,7 @@ export default class Payload {
                 res,
                 'All our payload fetched successfully',
                 202,
-                storeData,
+                payloadData,
                 { page },
             );
         } catch (_error) {
@@ -41,7 +42,7 @@ export default class Payload {
                 status: 'inactive',
             });
             const page = await pageCalculation(req.query, totalItems);
-            const storeData = await payloadModule.getAll({
+            const payloadData = await payloadModule.getAll({
                 user_id: req.userID,
                 status: 'inactive',
             }, {
@@ -56,7 +57,7 @@ export default class Payload {
                 res,
                 'All our payload fetched successfully',
                 202,
-                storeData,
+                payloadData,
                 { page },
             );
         } catch (_error) {
@@ -66,7 +67,7 @@ export default class Payload {
 
     static async read(req, res, next) {
         try {
-            const storeData = await payloadModule.get({
+            const payloadData = await payloadModule.get({
                 id: req.params.id,
                 user_id: req.userID,
             });
@@ -75,7 +76,7 @@ export default class Payload {
                 res,
                 'Your payload fetched successfully',
                 202,
-                storeData,
+                payloadData,
             );
         } catch (_error) {
             return next(_error);
@@ -99,6 +100,10 @@ export default class Payload {
 
     static async update(req, res, next) {
         try {
+            const payloadOriginal = await payloadModule.get({ id: req.params.id });
+            req.body.hash = payloadOriginal.visibility === req.body.visibility
+                ? payloadOriginal.hash
+                : await hashingUtil.payloadHashGenerator(req.body.title);
             const data = await payloadUtils.validIt(req.body.data, req.body.type);
             const updateData = await payloadModule.update(
                 {

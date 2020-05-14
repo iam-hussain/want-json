@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import DB from '@providers/Database';
 import hashingUtil from '@utils/hashing';
+// eslint-disable-next-line import/no-cycle
 import payloadUtils from '../utils/payload';
 
 export default class PayloadModule {
@@ -35,7 +36,7 @@ export default class PayloadModule {
                 exclude: ['user_id'],
             },
             include: [{ model: DB.models.User, as: 'owner', attributes: ['displayName'] }],
-        }).then((payLoad) => (payLoad.id ? payLoad : {}));
+        }).then((payLoad) => (payLoad || {}));
         return returnData;
     }
 
@@ -43,7 +44,7 @@ export default class PayloadModule {
         const returnData = await DB.models.Payload.findOne({
             where,
             ...condition,
-        }).then((payLoad) => (payLoad.id ? payLoad : {}));
+        }).then((payLoad) => (payLoad || {}));
         return returnData;
     }
 
@@ -55,7 +56,7 @@ export default class PayloadModule {
                 exclude: ['user_id'],
             },
             include: [{ model: DB.models.User, as: 'owner', attributes: ['displayName'] }],
-        }).then((payLoad) => (payLoad.length > 0 ? payLoad : []));
+        }).then((payLoad) => (payLoad || []));
         return returnData;
     }
 
@@ -85,6 +86,7 @@ export default class PayloadModule {
                 description: body.description,
                 keywords: body.keywords,
                 data,
+                hash: body.hash,
                 type: body.type,
                 visibility: body.visibility,
             },

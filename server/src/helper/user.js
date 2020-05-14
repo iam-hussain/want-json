@@ -30,14 +30,14 @@ export default class UserModule {
                 'emailVerified',
                 'passwordSet',
             ],
-        }).then((userIs) => (userIs.id ? userIs.dataValues : {}));
+        }).then((userIs) => (userIs || {}));
         return returnData;
     }
 
     static async getWithPrivateData(where) {
         const returnData = await DB.models.User.findOne({
             where,
-        }).then((userIs) => (userIs.id ? userIs.dataValues : {}));
+        }).then((userIs) => (userIs || {}));
         return returnData;
     }
 

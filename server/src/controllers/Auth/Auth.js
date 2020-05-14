@@ -62,13 +62,12 @@ export default class Auth {
                 );
             }
             const authToken = await authyModule.createAuth(req, userPublicData.id);
-            userPublicData.token = authToken.hash;
             return successResponce(
                 req,
                 res,
                 'Your logged in successfully!',
                 202,
-                userPublicData,
+                { ...userPublicData.dataValues, token: authToken.dataValues.hash },
             );
         } catch (_error) {
             return next(_error);

@@ -30,7 +30,7 @@ function Payload({ myPayload, token, pages }) {
   };
 
   useEffect(() => {
-    if (pages.total <= 1) {
+    if (payload.length === 0 || page.total <= 1) {
       setLoader(false);
     }
     window.addEventListener('storage', syncLogout);

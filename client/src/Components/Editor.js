@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
+import { highlight } from 'prismjs/components/prism-core';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-json';
 
 import {
@@ -47,7 +49,7 @@ export default function CodeEditor({
           value={codeString}
           onValueChange={(codeIs) => handleCodeChange(codeIs)}
           padding={10}
-          highlight={(codeIs) => highlight(codeIs, languages.json)}
+          highlight={(codeIs) => highlight(codeIs, Prism.languages.json)}
           textareaClassName="code-textbox code-box"
           preClassName="code-pre code-box"
           style={{

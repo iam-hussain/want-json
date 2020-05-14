@@ -42,7 +42,7 @@ async function validateAuth(req) {
 export async function shouldBeLoggedIn(req, res, next) {
     const authorizationData = await validateAuth(req);
     if (!authorizationData.success) {
-        return errorResponce(req, res, authorizationData.msg, 300, authorizationData.type);
+        return errorResponce(req, res, authorizationData.msg, 401, authorizationData.type);
     }
     req.userData = authorizationData.userData;
     req.userID = authorizationData.userData.id;
@@ -60,7 +60,7 @@ export async function mightBeLoggedIn(req, res, next) {
 
 export async function shouldNotLoggedIn(req, res, next) {
     if (req.headers.authorization) {
-        return errorResponce(req, res, 'Authorization is found in header', 300, 'token_not_required');
+        return errorResponce(req, res, 'Authorization is found in header', 401, 'token_not_required');
     }
     return next();
 }

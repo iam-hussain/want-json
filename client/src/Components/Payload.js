@@ -22,8 +22,13 @@ export const RowWrapper = styled.div`
     align-items: center;
     width: 100%;
 `;
+
 export const ColWrapper = styled.div`
-    margin: 28px 0px;
+    margin: 28px 15px;
+    margin-top: 0px;
+    padding: 0px;
+    overflow: auto;
+    width: 100%;
 `;
 
 export const Title = styled(H2)`
@@ -82,6 +87,7 @@ export const Table = styled.table`
     text-transform: uppercase;
 
     td{
+        user-select: none;
         padding: 4px 10px;
         width: 50%;
 
@@ -93,13 +99,60 @@ export const Table = styled.table`
     }
 `;
 
+
+export const APITable = styled.table`
+    word-break: break-all;
+    flex: 1;
+    background-color: ${(props) => props.theme.bg};
+    width: 100%;
+    font-family: "Rajdhani";
+    font-size: 1rem;
+    td,th{
+        padding: 5px 8px;
+        border: 1px solid;
+        border-color: #F20574;
+        white-space: nowrap;
+        text-align: center;
+        border-color: ${(props) => props.theme.secondary};
+        color: ${(props) => props.theme.paper1};
+
+        &:first-child{
+            text-align: right;
+            border-right: 5px solid;
+            border-color: ${(props) => props.theme.secondary};
+            color: ${(props) => props.theme.text2};
+            width: 200px;
+        }
+        &:last-child{
+          text-align: left;
+          border-left: 5px solid;
+          border-color: ${(props) => props.theme.secondary};
+          color: ${(props) => props.theme.text2};
+          width: 200px;
+      }
+
+    }
+    
+      
+    td{
+      color: ${(props) => props.theme.secondary};
+      font-size: .85rem;
+    }
+    th{
+      border-color: ${(props) => props.theme.secondary};
+      color: ${(props) => props.theme.text1};
+      user-select: none;
+      border-bottom: 5px solid;
+    }
+`;
+
 export const TokenView = styled.div`
     cursor: pointer;
     display: flex;
     border-radius: 5px;
     font-family: "Rajdhani";
     width: auto;
-    margin: 10px;
+    margin: 28px 10px;
     padding: 5px 10px;
     background-color: transparent;
     color:  ${(props) => props.theme.secondary};
@@ -123,11 +176,9 @@ export const TokenView = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0px;
         padding: 2px;
         word-break: break-all;
     }
-    
 `;
 
 export const CodeViewWrapper = styled.div`
@@ -160,7 +211,6 @@ export const CodeViewWrapper = styled.div`
     @media ${device.xs_sm}{
 
     }
-    
 `;
 
 export default function View({ payload }) {
@@ -201,7 +251,7 @@ export default function View({ payload }) {
               </tr>
               <tr>
                 <td>Creator</td>
-                <td>{payload.owner.displayName}</td>
+                <td>{payload.owner.displayName !== '' ? payload.owner.displayName : 'Nameless'}</td>
               </tr>
               <tr>
                 <td>View Count</td>
@@ -221,6 +271,69 @@ export default function View({ payload }) {
           <span>{payload.hash}</span>
         </TokenView>
       </CopyToClipboard>
+      <RowWrapper>
+        <ColWrapper className="col-md-10">
+          <APITable>
+            <thead>
+              <tr>
+                <th>METHOD</th>
+                <th>URL</th>
+                <th>NOTE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GET</td>
+                <td>
+                  {process.env.PAYLOAD_URL}
+                  {payload.url}
+                </td>
+                <td>Fetch Complete Object</td>
+              </tr>
+              {payload.type === 'dynamic'
+              && (
+              <>
+                <tr>
+                  <td>GET</td>
+                  <td>
+                    {process.env.PAYLOAD_URL}
+                    {payload.url}
+                    /:id
+                  </td>
+                  <td>Fetch Object by ID</td>
+                </tr>
+                <tr>
+                  <td>POST</td>
+                  <td>
+                    {process.env.PAYLOAD_URL}
+                    {payload.url}
+                  </td>
+                  <td>Add New Object</td>
+                </tr>
+                <tr>
+                  <td>PUT</td>
+                  <td>
+                    {process.env.PAYLOAD_URL}
+                    {payload.url}
+                    /:id
+                  </td>
+                  <td>Update Object by ID</td>
+                </tr>
+                <tr>
+                  <td>DELETE</td>
+                  <td>
+                    {process.env.PAYLOAD_URL}
+                    {payload.url}
+                    /:id
+                  </td>
+                  <td>Delete Object by ID</td>
+                </tr>
+              </>
+              )}
+            </tbody>
+          </APITable>
+        </ColWrapper>
+      </RowWrapper>
       <CodeViewWrapper>
         <pre id="codeViewer">
           <code className="language-json">
