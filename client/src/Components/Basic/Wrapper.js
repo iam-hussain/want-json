@@ -41,7 +41,8 @@ export const Decorator = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  padding: ${(props) => props.padding || '28px 15px'};
+  min-height:  ${(props) => (props.minHeight ? 'calc(100vh - 100px)' : 'auto')};
+  padding: ${(props) => props.padding || '28px 10px'};
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -68,6 +69,24 @@ export const Container = styled.div`
       max-width: 1140px;
   }
 `;
+
+export const RowWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: ${(props) => props.margin || '0px'};
+    flex: 1;
+    justify-content: ${(props) => props.justify || 'center'};
+    align-items: ${(props) => props.items || 'center'};
+    width: 100%;
+`;
+
+export const ColWrapper = styled.div`
+    margin: ${(props) => props.margin || '0px'};
+    padding: ${(props) => props.padding || '0px'};
+    overflow: ${(props) => props.overflow || 'unset'};
+    width: 100%;
+`;
+
 
 export const Box = styled.div`
   display: flex;

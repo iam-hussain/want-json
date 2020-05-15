@@ -9,27 +9,9 @@ import 'prismjs/components/prism-json';
 import {
   H2, P,
 } from './Basic/Text';
-import { Container } from './Basic/Wrapper';
+import { Container, RowWrapper, ColWrapper } from './Basic/Wrapper';
+import CodeView from './Basic/Code';
 import { device } from '../style';
-
-
-export const RowWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0px;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-`;
-
-export const ColWrapper = styled.div`
-    margin: 28px 15px;
-    margin-top: 0px;
-    padding: 0px;
-    overflow: auto;
-    width: 100%;
-`;
 
 export const Title = styled(H2)`
     color: ${(props) => props.theme.primary};
@@ -181,37 +163,6 @@ export const TokenView = styled.div`
     }
 `;
 
-export const CodeViewWrapper = styled.div`
-    word-break: break-all;
-    flex: 1;
-    background-color: ${(props) => props.theme.secondary};
-    width: 96%;
-    margin: 28px 5px;
-    padding: 0px;
-
-    pre{
-        height: 350px;
-        overflow: auto;
-        margin: 0px;
-
-        &::-webkit-scrollbar-track {
-            background-color: #000;
-            margin: 4px 0;
-        }
-    
-        &::-webkit-scrollbar {
-            background-color: #000;
-        }
-    
-        &::-webkit-scrollbar-thumb {
-            background-color: ${(props) => props.theme.primary}; 
-        }
-    }
-
-    @media ${device.xs_sm}{
-
-    }
-`;
 
 export default function View({ payload }) {
   const alert = useAlert();
@@ -220,9 +171,9 @@ export default function View({ payload }) {
     Prism.highlightAllUnder(codeViewer);
   }, []);
   return (
-    <Container column padding="0px">
+    <Container column>
       <RowWrapper>
-        <ColWrapper className="col-md-6">
+        <ColWrapper padding="10px 0px" className="col-md-6">
           <Title>{payload.title}</Title>
           <Description>{payload.description}</Description>
           <Keywords>
@@ -272,7 +223,7 @@ export default function View({ payload }) {
         </TokenView>
       </CopyToClipboard>
       <RowWrapper>
-        <ColWrapper className="col-md-10">
+        <ColWrapper overflow="auto" margin="0px 10px" className="col-md-10">
           <APITable>
             <thead>
               <tr>
@@ -334,13 +285,7 @@ export default function View({ payload }) {
           </APITable>
         </ColWrapper>
       </RowWrapper>
-      <CodeViewWrapper>
-        <pre id="codeViewer">
-          <code className="language-json">
-            {JSON.stringify(payload.data, null, 4)}
-          </code>
-        </pre>
-      </CodeViewWrapper>
+      <CodeView code={payload.data} />
     </Container>
   );
 }

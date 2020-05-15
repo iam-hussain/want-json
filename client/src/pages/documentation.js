@@ -1,10 +1,10 @@
 import React from 'react';
-import Page from '../Components/Layout/Page';
+import DocsLayout from '../Components/Layout/Docs';
 
 export default function Docs() {
   return (
-    <Page>
+    <DocsLayout>
       I am Doc
-    </Page>
+    </DocsLayout>
   );
 }
