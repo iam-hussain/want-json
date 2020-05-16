@@ -93,6 +93,7 @@ function Deleted({ myPayload, token, pages }) {
   return (
     <Dash>
       <SubHeadingComp back="/dashboard/settings" title="Deleted Payloads" />
+      {payload.length !== 0 && (
       <List>
         {payload.map((p) => (
           <ListItem key={p.id}>
@@ -112,6 +113,7 @@ function Deleted({ myPayload, token, pages }) {
           </ListItem>
         ))}
       </List>
+      )}
       {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
       {payload.length === 0 && <NotFound />}
     </Dash>

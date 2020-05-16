@@ -17,6 +17,7 @@ export const Brand = styled.p`
 `;
 
 export const P = styled.p`
+  width: ${(props) => props.width || '100%'};
   font-family: ${(props) => props.font || 'Josefin_Sans'};
   font-size: ${(props) => props.size || '1rem'};
   padding: ${(props) => props.padding || '0 10px'};
@@ -162,35 +163,24 @@ export const HeadingWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    margin: 0px 10px 18px;
-    padding-bottom: 10px;
-    padding: 14px 10px;
+    margin:  ${(props) => props.margin || '0px 0px 28px'};
     border-bottom: 2px solid;
     border-color: ${(props) => props.color || props.theme.secondary};
 `;
 
-// export const NotFound = styled(P)`
-//   width: 100%;
-//   text-align: center;
-//   padding: 20px;
-//   margin: 10px;
-// `;
-
-
 export function NotFound() {
   return (
-    <P padding="20px" margin="10px">No items found !</P>
+    <P padding="0px" align="center" weight="600" margin="0px 0px 28px 0px">No items found !</P>
   );
 }
 
-
-export function SubHeadingComp({ back, title }) {
+export function SubHeadingComp({ back, title, margin }) {
   return (
-    <HeadingWrapper>
+    <HeadingWrapper margin={margin}>
       <H4 font="Rajdhani">
         {title}
       </H4>
-      {back !== '' && <Link href={back}><ASpan font="Rajdhani">Back</ASpan></Link> }
+      {back !== '' && <Link href={back}><ASpan padding="0px 10px" font="Rajdhani">Back</ASpan></Link> }
     </HeadingWrapper>
   );
 }

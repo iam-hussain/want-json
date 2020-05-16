@@ -41,8 +41,9 @@ export const Decorator = styled.div`
 
 export const Container = styled.div`
   width: 100%;
+  border-radius: 5px;
   min-height:  ${(props) => (props.minHeight ? 'calc(100vh - 100px)' : 'auto')};
-  padding: ${(props) => props.padding || '28px 10px'};
+  padding: ${(props) => props.padding || '15px'};
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -50,8 +51,8 @@ export const Container = styled.div`
   justify-content: ${(props) => props.justify || 'center'};
   align-items: ${(props) => props.align || 'center'};
   background: ${(props) => props.background || props.theme.bg};
-  box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
-  -webkit-box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
+  // box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
+  // -webkit-box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
 
   @media (min-width: 576px) {
       max-width: 540px;

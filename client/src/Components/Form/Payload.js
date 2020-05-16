@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
   Item, Label, Input, ErrorBlock, Form, RadioGroup,
-  GroupName, TagGroup, TagItem, InputGroup, InputButton, URLShow,
+  GroupName, TagGroup, TagItem, TagInputGroup, InputButton, URLShow,
 } from '../Basic/Form';
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
@@ -169,7 +169,7 @@ export default function APIForm({ data, editMode }) {
         </ErrorBlock>
       </Item>
       <Item>
-        <InputGroup hasError={errors.keywords}>
+        <TagInputGroup hasError={errors.keywords}>
           <Input
             hasError={errors.keywords}
             type="text"
@@ -181,19 +181,20 @@ export default function APIForm({ data, editMode }) {
             onKeyDown={(e) => keyPressKeyPush(e)}
           />
           <Label>Keywords</Label>
-          <InputButton type="button" onClick={() => handleKeyPush()}><FontAwesomeIcon icon={faPlusSquare} /></InputButton>
-        </InputGroup>
-        <TagGroup>
-          {keyWords.map((a, i) => (
-            <TagItem key={`key_${i}`}>
-              {a}
-              <span onClick={() => handleKeyRemove(i)}>x</span>
-            </TagItem>
-          ))}
-          <ErrorBlock>
-            <ErrorMessage errors={errors} name="keywords" />
-          </ErrorBlock>
-        </TagGroup>
+          <InputButton tertiary type="button" onClick={() => handleKeyPush()}><FontAwesomeIcon icon={faPlusSquare} /></InputButton>
+          <TagGroup>
+            {keyWords.map((a, i) => (
+              <TagItem key={`key_${i}`}>
+                {a}
+                <span onClick={() => handleKeyRemove(i)}>x</span>
+              </TagItem>
+            ))}
+            <ErrorBlock>
+              <ErrorMessage errors={errors} name="keywords" />
+            </ErrorBlock>
+          </TagGroup>
+        </TagInputGroup>
+
       </Item>
       <RadioGroup hasError={errors.type}>
         <GroupName>Payload Type</GroupName>

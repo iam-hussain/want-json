@@ -43,13 +43,14 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     display: flex;
     flex-direction: column;
+    background-color:  ${(props) => props.theme.bg};
 
     &::-webkit-scrollbar-track {
-      background-color:  ${(props) => props.theme.paper1};
+      background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar {
-        background-color:  ${(props) => props.theme.paper1};
+        background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar-thumb {
@@ -84,19 +85,19 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const theme = {
-  primary: '#F20574',
-  secondary: '#060940',
+  primary: '#025373',
+  secondary: '#2989B3',
   tertiary: '#fff',
-  bg: '#fff',
-  paper1: '#efefef',
-  paper2: '#f7f7f7',
-  text1: '#3e3f5e',
+  bg: '#FBFBFB',
+  paper: '#DEE7F3',
+  text1: '#0D212C',
   text2: '#5E5C7F',
   text3: '#8f919e',
   error: '#F24B6A',
   success: '#12805c',
   info: '#3498DB',
   transparency: 'rgba(0, 0, 0, 0.2)',
+  shadow: '0px 5px 15px -1px rgba(2, 83, 115, .2)',
 };
 
 

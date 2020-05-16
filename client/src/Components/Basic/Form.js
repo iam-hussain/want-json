@@ -39,11 +39,10 @@ export const Input = styled.input`
     border-radius: 5px;
     font-size: 1rem;
     font-weight: 700;
-    background-color: ${(props) => props.theme.bg};
+    background-color: ${(props) => props.theme.tertiary};
     border: 1px solid;
     transition: border-color .2s ease-in-out;
-
-    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.text3)};
+    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
     color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
 
     &:focus {
@@ -76,7 +75,7 @@ export const ErrorBlock = styled.span`
 `;
 
 export const Form = styled.form`
-    width: 96%;
+    width: 100%;
 `;
 
 export const Item = styled.div`
@@ -87,16 +86,20 @@ export const Item = styled.div`
 
 export const TagGroup = styled.div`
     position: relative;
+    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 0px 5px 5px;
     margin: 0;
     display: flex;
     min-height: 25px;
     border-radius: 5px;
     font-family: "Rajdhani";
-    box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
-    -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
+    border-radius: 0px 0px 5px 5px;
+    border: 1px solid;
+    border-top: none;
+    background-color: ${(props) => props.theme.tertiary};
+    border-color: ${(props) => props.theme.paper};
     
     ${ErrorBlock}{
         top: auto;
@@ -107,10 +110,10 @@ export const TagGroup = styled.div`
 export const TagItem = styled.div`
     font-family: "Rajdhani";
     display: flex;
-    background-color:  ${(props) => props.theme.paper1};
+    background-color:  ${(props) => props.theme.paper};
     color: ${(props) => props.theme.secondary};
     border-radius: 5px;
-    padding: 2px 8px;
+    padding: 2px 12px;
     padding-right: 16px;
     margin: 2px;
     position: relative;
@@ -134,7 +137,7 @@ export const InputButton = styled(Button)`
     display: flex;
     padding: 10px;
     font-size: 2rem;
-    width: auto;
+    width: 50px;
     border-left: none;
     border-radius: 0px 5px 5px 0px;
     border-color: ${(props) => props.theme.text3};
@@ -142,17 +145,35 @@ export const InputButton = styled(Button)`
 
 export const InputGroup = styled.div`
     display: flex;
+    flex-wrap: wrap;
     ${Input}{
+        width: calc(100% - 50px);
         border-right: none;
         border-radius: 5px 0px 0px 5px;
-        &:focus ~ ${InputButton} {
+        &:focus ~ ${InputButton}, &:focus ~ ${TagGroup} {
             border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
             outline: none; 
         }
     }
     ${InputButton}{
         color:  ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
-        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.text3)};
+        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
+    }
+`;
+
+
+export const TagInputGroup = styled(InputGroup)`
+    ${Input}{
+        border-bottom: none;
+        border-right: none;
+        border-radius: 5px 0px 0px 0px;
+    }
+    ${InputButton}{
+        border-bottom: none;
+        border-radius: 0px 5px 0px 0px;
+    }
+    ${TagGroup}{
+        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
     }
 `;
 
@@ -175,11 +196,12 @@ export const RadioGroup = styled.div`
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.text3)};
+    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
+    background-color: ${(props) => props.theme.tertiary};
     margin: 28px 0;
 
     ${GroupName}{
-        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
+        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
     }
     ${ErrorBlock}{
         top: auto;
@@ -205,7 +227,7 @@ export const RadioGroup = styled.div`
 
         &+${Label} {
             position: relative;
-            color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
+            color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
             background-color: ${(props) => props.theme.bg};
             padding: 0 6px;
             font-size: .75rem;
@@ -224,7 +246,7 @@ export const RadioGroup = styled.div`
             vertical-align: text-top;
             width: 20px;
             height: 20px;
-            background: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
+            background: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
             border-radius: 5px;
         }
 

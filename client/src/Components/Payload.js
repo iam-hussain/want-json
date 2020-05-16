@@ -96,7 +96,7 @@ export const APITable = styled.table`
         white-space: nowrap;
         text-align: center;
         border-color: ${(props) => props.theme.secondary};
-        color: ${(props) => props.theme.paper1};
+        color: ${(props) => props.theme.paper};
 
         &:first-child{
             text-align: right;

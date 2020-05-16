@@ -7,7 +7,7 @@ import { SubHeadingComp } from '../../../Components/Basic/Text';
 function Create() {
   return (
     <Dash>
-      <SubHeadingComp back="" title="Create Payload" />
+      <SubHeadingComp margin="0px" back="" title="Create Payload" />
       <Payload data={{}} />
     </Dash>
   );

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
     width: ${(props) => (props.small ? '100px' : props.large ? '280px' : '180px')};
     color: ${(props) => props.theme.primary};
-    background-color: ${(props) => props.theme.bg};
+    background-color: ${(props) => (props.tertiary ? props.theme.tertiary : props.theme.bg)};
     padding: ${(props) => props.padding || '12px 14px'};
     margin: ${(props) => props.margin || '0px'};
     border-radius: 5px;
@@ -69,7 +69,7 @@ export const PrimaryBtn = styled(Button)`
     color: ${(props) => props.theme.tertiary};
     background-color: ${(props) => props.theme.primary};
     &:disabled {
-        background-color: ${(props) => props.theme.paper1};
+        background-color: ${(props) => props.theme.paper};
     }
 `;
 
@@ -77,6 +77,6 @@ export const SecondaryBtn = styled(Button)`
     color: ${(props) => props.theme.tertiary};
     background-color: ${(props) => props.theme.secondary};
     &:disabled {
-        background-color: ${(props) => props.theme.paper1};
+        background-color: ${(props) => props.theme.paper};
     }
 `;

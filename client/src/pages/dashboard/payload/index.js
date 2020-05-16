@@ -93,6 +93,7 @@ function Payload({ myPayload, token, pages }) {
   return (
     <Dash>
       <SubHeadingComp back="" title="My Payloads" />
+      {payload.length !== 0 && (
       <List>
         {payload.map((p) => (
           <ListItem key={p.id}>
@@ -127,6 +128,7 @@ function Payload({ myPayload, token, pages }) {
           </ListItem>
         ))}
       </List>
+      )}
       {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
       {payload.length === 0 && <NotFound />}
     </Dash>

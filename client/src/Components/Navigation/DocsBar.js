@@ -20,11 +20,11 @@ export const SideBar = styled.div`
 
     
     &::-webkit-scrollbar-track {
-        background-color:  ${(props) => props.theme.paper1};
+        background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar {
-        background-color:  ${(props) => props.theme.paper1};
+        background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar-thumb {

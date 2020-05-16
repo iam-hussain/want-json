@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCertificate, faEye, faSearch,
+  faCertificate, faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Components/Layout/Page';
 import { postMethod } from '../utils/Integration';
 import {
-  List, ListItem, ListContent, FrontIcon, ListTitle, ListAction, Action, URL,
+  List, ListContent, FrontIcon, ListTitle, ListAction, URL,
 } from '../Components/Basic/List';
 import { DimText, NotFound } from '../Components/Basic/Text';
 import { SecondaryBtn } from '../Components/Basic/Button/Button';
@@ -15,7 +15,7 @@ import {
   InputGroup, Input, Label, InputButton, Item,
 } from '../Components/Basic/Form';
 import {
-  SearchForm, Showing, SortGroup, SortItem,
+  SearchForm, Showing, SortGroup, SortItem, SearchListItem,
 } from '../Components/Extended/Search';
 
 function Explore({ payloadData, pages, searchData }) {
@@ -78,7 +78,7 @@ function Explore({ payloadData, pages, searchData }) {
               required
             />
             <Label>Search</Label>
-            <InputButton type="button"><FontAwesomeIcon icon={faSearch} /></InputButton>
+            <InputButton tertiary type="button" onClick={() => reQuery(searchInput)}><FontAwesomeIcon icon={faSearch} /></InputButton>
           </InputGroup>
         </Item>
         <Showing>
@@ -109,31 +109,40 @@ function Explore({ payloadData, pages, searchData }) {
           <SortItem onClick={() => handleSortBy('hitCount', 'DESC')} active={search.sortBy === 'hitCount' && search.orderBy === 'DESC'}>Used</SortItem>
         </SortGroup>
       </SearchForm>
+      {payload.length !== 0 && (
       <List>
         {payload.map((p) => (
-          <ListItem key={p.id}>
-            <FrontIcon active={p.owner.displayName === 'getJSON'}>
-              <FontAwesomeIcon icon={faCertificate} />
-            </FrontIcon>
-            <ListContent>
-              <ListTitle>{p.title}</ListTitle>
-              <DimText>{p.description}</DimText>
-              <URL>
-                {process.env.PAYLOAD_URL}
-                {p.url}
-              </URL>
-            </ListContent>
-            <ListAction>
-              <Link href={`/view/${p.id}`}>
-                <Action>
-                  <FontAwesomeIcon icon={faEye} />
-                </Action>
-              </Link>
-            </ListAction>
-          </ListItem>
+          <Link href={`/view/${p.id}`}>
+            <SearchListItem key={p.id}>
+              <FrontIcon active={p.owner.displayName === 'getJSON'}>
+                <FontAwesomeIcon icon={faCertificate} />
+              </FrontIcon>
+              <ListContent>
+                <ListTitle>{p.title}</ListTitle>
+                <DimText>{p.description}</DimText>
+                <URL>
+                  {process.env.PAYLOAD_URL}
+                  {p.url}
+                </URL>
+              </ListContent>
+              <ListAction>
+                <DimText>
+                  Hit:
+                  {' '}
+                  {p.hitCount}
+                </DimText>
+                <DimText>
+                  View:
+                  {' '}
+                  {p.viewCount}
+                </DimText>
+              </ListAction>
+            </SearchListItem>
+          </Link>
         ))}
       </List>
-      {loader && <SecondaryBtn margin="10px" onClick={() => loadData()}> Load More </SecondaryBtn>}
+      )}
+      {loader && <SecondaryBtn margin="0px 0px 28px 0px" onClick={() => loadData()}> Load More </SecondaryBtn>}
       {payload.length === 0 && <NotFound />}
     </Page>
   );

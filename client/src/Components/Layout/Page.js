@@ -13,11 +13,11 @@ export const ContentWrapper = styled.div`
     -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
 
     &::-webkit-scrollbar-track {
-        background-color:  ${(props) => props.theme.paper1};
+        background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar {
-        background-color:  ${(props) => props.theme.paper1};
+        background-color:  ${(props) => props.theme.paper};
     }
 
     &::-webkit-scrollbar-thumb {
@@ -31,7 +31,7 @@ export default function Page({ children }) {
     <>
       <NavBar />
       <ContentWrapper id="pageMaker">
-        <Container padding="0px" shadow>
+        <Container shadow>
           {children}
         </Container>
       </ContentWrapper>

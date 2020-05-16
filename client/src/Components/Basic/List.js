@@ -7,7 +7,7 @@ export const FrontIcon = styled.div`
     transition: all 0.6s ease-in-out 0s;
     background-color: transparent;
     align-self: center;
-    color: ${(props) => (props.active ? props.theme.primary : props.theme.text2)};
+    color: ${(props) => (props.active ? props.theme.primary : props.theme.text3)};
     min-width: 25px;
 `;
 
@@ -35,10 +35,13 @@ export const URL = styled(P)`
 `;
 
 export const ListContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: center;
     transition: all 0.6s ease-in-out 0s;
     background-color: transparent;
-    text-align: left;
-    flex: 1;
 `;
 
 export const ListAction = styled.div`
@@ -70,32 +73,42 @@ export const List = styled.ul`
     font-weight: 600;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding-left: 0;
+    justify-content: space-between;
     margin-bottom: 28px;
     text-align: center;
     transition: all 0.6s ease-in-out 0s;
 `;
 
 export const ListItem = styled.li`
-    background-color: ${(props) => props.theme.paper1};
+    width: 49%;
+    background-color: ${(props) => props.theme.tertiary};
     border-radius: 5px;
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
-    margin: 5px;
+    margin: 5px 0px;
     padding: 10px;
     transition: all 0.3s ease-in-out 0s;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    // border: 2px solid;
+    // border-color: ${(props) => props.theme.primary};
+    box-shadow: ${(props) => props.theme.shadow};
+
+    @media ${device.xs_md}{
+        width:  100%;
+        margin: 5px;
+    }
 
     @media ${device.web}{
         &:hover{
-            background-color: ${(props) => props.theme.paper2};
-            color: ${(props) => props.theme.tertiary};
+            background-color: ${(props) => props.theme.paper};
+            color: ${(props) => props.theme.primary};
             ${ListTitle}{
                 color: ${(props) => props.theme.primary};
             }

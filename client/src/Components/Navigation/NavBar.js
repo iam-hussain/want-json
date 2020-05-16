@@ -24,8 +24,7 @@ export const Navbar = styled.div`
     padding: ${(props) => props.padding || '0px'};
     background-color:  ${(props) => props.theme.bg};
     transition: all 0.6s ease-in-out 0s;
-    box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
-    -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
+    box-shadow:  ${(props) => props.theme.shadow};
 `;
 
 export const MenuUL = styled.ul`
@@ -55,22 +54,21 @@ export const DropdownUL = styled(MenuUL)`
     display: ${(props) => (props.show ? 'flex' : 'none')};;
     flex-direction: column;
     z-index: ${(props) => (props.show ? '20' : '-5')};
-    padding: 10px 0px;
+    padding: 5px;
     border-radius: 5px;
-    background: #colors[bg];
+    background: ${(props) => props.theme.tertiary};
     visibility: ${(props) => (props.show ? 'visible' : 'hidden')};
     position: absolute;
     top: ${(props) => (props.show ? '45px' : '-100vh')};
     right: 0px;
     box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
-    -webkit-box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
     animation: ${(props) => (props.out ? fadeOut : fadeIn)} .5s linear 1;
     transition: visibility 1s linear;
+    border: 2px solid;
+    border-color:  ${(props) => props.theme.bg};
 `;
 
 export const DropdownLI = styled(MenuLI)`
-    margin-top: ${(props) => (props.separate ? '5px' : '0px')};
-    padding-top: ${(props) => (props.separate ? '5px' : '0px')};
     border-top: ${(props) => (props.separate ? `2px solid ${props.theme.primary}` : 'none')};
     clear: both;
     min-width: 200px;
@@ -78,7 +76,7 @@ export const DropdownLI = styled(MenuLI)`
 
     button{
       width: 180px;
-      margin: 5px 0px;
+      background: ${(props) => props.theme.tertiary};
     }
 `;
 
@@ -86,18 +84,22 @@ export const MenuItem = styled(Button)`
     width: auto;
     font-size: 14px;
     list-style: none;
-    padding: ${(props) => props.padding || '5px 15px'};    
-    margin: 0 5px;
+    padding: ${(props) => props.padding || '8px 15px'};    
+    margin: 5px;
     color : ${(props) => (props.active ? props.theme.primary : props.theme.text1)};
     svg{
         margin: 0px 5px;
         font-size: 14px;
         inline-size: 17px;
     }
-
+    
+    @media ${device.md}{
+      padding: 8px 5px; 
+    }
     @media ${device.web}{
         &:hover{
             color : ${(props) => props.theme.primary};
+            background-color:  ${(props) => props.theme.paper};
             box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
             -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
         }
@@ -167,21 +169,28 @@ export default function NavBar() {
                 </MenuItem>
                 <DropdownUL show={menuToggle} ref={targetNode}>
                   <DropdownLI mobile>
-                    <Link href="/dashboard/payload">
-                      <MenuItem padding="5px">
-                        My Payload&apos;s
+                    <Link href="/dashboard/payload/create">
+                      <MenuItem>
+                        Create Payload
                       </MenuItem>
                     </Link>
                   </DropdownLI>
                   <DropdownLI mobile>
                     <Link href="/dashboard/profile">
-                      <MenuItem padding="5px">
+                      <MenuItem>
                         Profile
                       </MenuItem>
                     </Link>
                   </DropdownLI>
+                  <DropdownLI mobile>
+                    <Link href="/dashboard/settings">
+                      <MenuItem>
+                        Settings
+                      </MenuItem>
+                    </Link>
+                  </DropdownLI>
                   <DropdownLI mobile separate>
-                    <MenuItem padding="5px" onClick={() => handleLogout()}>
+                    <MenuItem onClick={() => handleLogout()}>
                       Logout
                     </MenuItem>
                   </DropdownLI>

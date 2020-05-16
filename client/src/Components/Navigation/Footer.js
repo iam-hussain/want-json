@@ -42,7 +42,6 @@ export const Left = styled.div`
         color: ${(props) => props.theme.text2};
         @media ${device.web}{
             &:hover{
-                animation: ${buttonPush} .3s ease-in-out;
                 color : ${(props) => props.theme.primary};
                 cursor: pointer;
             }
@@ -55,10 +54,11 @@ export const Right = styled.div`
     text-align: right;
     font-size: 14px;
     transition: all 0.6s ease-in-out 0s;
+    color: ${(props) => props.theme.text2};
     svg{
         margin: 0px 5px;
-        color: ${(props) => props.theme.primary};
-        @media ${device.web}{
+        color: #F20574;
+        @media ${device.web}{          
             &:hover{
                 animation: ${buttonPush} .3s ease-in-out;
                 cursor: pointer;

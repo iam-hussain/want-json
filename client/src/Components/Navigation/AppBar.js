@@ -42,7 +42,7 @@ export const Icon = styled(Button)`
     list-style: none;
     padding: ${(props) => props.padding || '10px 15px'};
     margin: 0;
-    color : ${(props) => (props.active ? props.theme.primary : props.theme.text1)};
+    color : ${(props) => (props.active ? props.theme.primary : props.theme.text3)};
     svg{
         margin: 0px 5px;
         font-size: 14px;

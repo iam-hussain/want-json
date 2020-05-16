@@ -24,7 +24,7 @@ function Profile({ profileData, token }) {
 
   return (
     <Dash>
-      <SubHeadingComp back="" title="My Profile" />
+      <SubHeadingComp margin="0px" back="" title="My Profile" />
       <ProfileForm profileData={profileData} token={token} />
     </Dash>
   );

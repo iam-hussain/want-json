@@ -7,7 +7,7 @@ import ChangePasswordForm from '../../../Components/Form/ChangePassword';
 function ChangePassword() {
   return (
     <Dash>
-      <SubHeadingComp back="/dashboard/settings" title="Change Password" />
+      <SubHeadingComp margin="0px" back="/dashboard/settings" title="Change Password" />
       <ChangePasswordForm />
     </Dash>
   );

@@ -22,7 +22,7 @@ export const ActionBar = styled.div`
     // border-color: ${(props) => props.theme.primary};
     text-align: center;
     transition: all 0.6s ease-in-out 0s;
-    background-color : ${(props) => props.theme.paper1};
+    background-color : ${(props) => props.theme.paper};
 `;
 
 export const ActionItem = styled(Button)`
@@ -31,7 +31,7 @@ export const ActionItem = styled(Button)`
     justify-content: center;
     border-radius: 5px;
     color : ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
-    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper1)};
+    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper)};
     margin: 8px;
     padding: 8px;
     transition: all 0.3s ease-in-out 0s;

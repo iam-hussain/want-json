@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faPlus, faAddressBook, faDatabase, faCog,
+} from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../style';
 import Page from './Page';
 import { Button } from '../Basic/Button/Button';
-import { Decorator } from '../Basic/Wrapper';
 
 export const ActionBar = styled.div`
     display: flex;
@@ -15,13 +18,10 @@ export const ActionBar = styled.div`
     flex-direction: row;
     width: 100%;
     padding-left: 0;
-    margin-bottom: 8px;
-    padding: 8px 0px;
-    // border-bottom: 2px solid;
-    // border-color: ${(props) => props.theme.primary};
+    margin: 28px 0px;
     text-align: center;
     transition: all 0.6s ease-in-out 0s;
-    background-color : ${(props) => props.theme.paper1};
+    background-color : ${(props) => props.theme.bg};
 `;
 
 export const ActionItem = styled(Button)`
@@ -30,10 +30,21 @@ export const ActionItem = styled(Button)`
     justify-content: center;
     border-radius: 5px;
     color : ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
-    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper1)};
-    margin: 8px;
-    padding: 8px;
+    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper)};
+    margin: 0px 8px;
     transition: all 0.3s ease-in-out 0s;
+
+    span{
+      padding-left: 8px;
+
+      @media ${device.xs_md}{
+        display: none;
+      }
+    }
+
+    @media ${device.xs_md}{
+      width: auto;
+    }
 
     @media ${device.web}{
         &:hover{
@@ -51,32 +62,37 @@ export const DashContent = styled.div`
     align-items: center;
     width: 100%;
     border-radius: 5px;
-    margin: 10px;
-    padding: 0.75rem 1.25rem;
-    transition: all 0.3s ease-in-out 0s;  
-    @media ${device.xs_sm}{
-      padding: 28px 0px;
-      margin: 0px;
-  }
+    transition: all 0.3s ease-in-out 0s;
 `;
 
 export default function Dash({ children }) {
   const router = useRouter();
   return (
     <Page>
-      <Decorator width="33vw" height="100vh" top="0px" right="0px" />
       <ActionBar>
         <Link href="/dashboard/payload/create">
-          <ActionItem active={router.pathname === '/dashboard/payload/create'}>Create</ActionItem>
+          <ActionItem active={router.pathname === '/dashboard/payload/create'}>
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Create</span>
+          </ActionItem>
         </Link>
         <Link href="/dashboard/payload">
-          <ActionItem active={router.pathname === '/dashboard/payload'}>My Payload</ActionItem>
+          <ActionItem active={router.pathname === '/dashboard/payload'}>
+            <FontAwesomeIcon icon={faDatabase} />
+            <span>My Payload</span>
+          </ActionItem>
         </Link>
         <Link href="/dashboard/profile">
-          <ActionItem active={router.pathname === '/dashboard/profile'}>My Profile</ActionItem>
+          <ActionItem active={router.pathname === '/dashboard/profile'}>
+            <FontAwesomeIcon icon={faAddressBook} />
+            <span>My Profile</span>
+          </ActionItem>
         </Link>
         <Link href="/dashboard/settings">
-          <ActionItem active={router.pathname.match('/dashboard/settings')}>Settings</ActionItem>
+          <ActionItem active={router.pathname.match('/dashboard/settings')}>
+            <FontAwesomeIcon icon={faCog} />
+            <span>Settings</span>
+          </ActionItem>
         </Link>
       </ActionBar>
       <DashContent>
