@@ -61,7 +61,7 @@ export const DropdownUL = styled(MenuUL)`
     position: absolute;
     top: ${(props) => (props.show ? '45px' : '-100vh')};
     right: 0px;
-    box-shadow: 0 0 60px 0 rgba(94, 92, 154, .12);
+    box-shadow: ${(props) => props.theme.shadow};
     animation: ${(props) => (props.out ? fadeOut : fadeIn)} .5s linear 1;
     transition: visibility 1s linear;
     border: 2px solid;

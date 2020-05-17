@@ -96,8 +96,6 @@ export const ListItem = styled.li`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    // border: 2px solid;
-    // border-color: ${(props) => props.theme.primary};
     box-shadow: ${(props) => props.theme.shadow};
 
     @media ${device.xs_md}{

@@ -30,6 +30,17 @@ export const URLShow = styled(Label)`
     }
 `;
 
+
+export const ErrorBlock = styled.span`
+    position: absolute;
+    bottom: -18px;
+    left: 5px;
+    font-size: 0.75rem;
+    color: ${(props) => props.theme.error};
+    font-family: "Rajdhani";
+`;
+
+
 export const Input = styled.input`
     height: 54px;
     padding: 0 18px;
@@ -65,13 +76,55 @@ export const Input = styled.input`
     }
 `;
 
-export const ErrorBlock = styled.span`
-    position: absolute;
-    top: 52px;
-    left: 5px;
-    font-size: 0.75rem;
-    color: ${(props) => props.theme.error};
+
+export const Textarea = styled.textarea`
+    height: ${(props) => (props.height ? props.theme.height : '200px')};
+    padding: 18px;
+    overflow: visible;
     font-family: "Rajdhani";
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: ${(props) => props.theme.tertiary};
+    border: 1px solid;
+    transition: border-color .2s ease-in-out;
+    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
+    color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
+    
+    &::-webkit-scrollbar-track {
+        background-color:  ${(props) => props.theme.paper};
+    }
+
+    &::-webkit-scrollbar {
+        background-color:  ${(props) => props.theme.paper};
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${(props) => (props.hasError ? props.theme.error : props.theme.primary)};
+    }
+
+    &:focus {
+        border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
+        outline: none;
+    }
+    +${Label}{
+        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
+    }
+    ~${ErrorBlock}{
+        bottom: -8px;
+    }
+
+    &:focus+${Label},
+    &:valid+${Label},
+    &:disabled+${Label} {
+        color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
+        background-color: ${(props) => props.theme.bg};
+        padding: 0 6px;
+        font-size: .75rem;
+        top: -6px;
+        left: 12px;
+    }
 `;
 
 export const Form = styled.form`
@@ -222,13 +275,13 @@ export const RadioGroup = styled.div`
         &:valid+${Label},
         &:disabled+${Label} {
             color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
-            background-color: ${(props) => props.theme.bg};
+            background-color: ${(props) => props.theme.tertiary};
         }
 
         &+${Label} {
             position: relative;
             color: ${(props) => (props.hasError ? props.theme.error : props.theme.text1)};
-            background-color: ${(props) => props.theme.bg};
+            background-color: ${(props) => props.theme.tertiary};
             padding: 0 6px;
             font-size: .75rem;
             display: flex;
@@ -282,18 +335,16 @@ export const CodeItem = styled(Item)`
 export const CodeWrapper = styled.div`
     height: 300px;
     overflow: auto;
-    // border-radius: 5px;
+    background-color: ${(props) => props.theme.code};
     max-width: 100%;
 
     &::-webkit-scrollbar-track {
         background-color: #000;
-        // border-radius: 0 5px 5px 0;
         margin: 4px 0;
     }
 
     &::-webkit-scrollbar {
         background-color: #000;
-        // border-radius: 0 5px 5px 0;
     }
 
     &::-webkit-scrollbar-thumb {

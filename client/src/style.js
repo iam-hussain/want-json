@@ -96,6 +96,7 @@ export const theme = {
   error: '#F24B6A',
   success: '#12805c',
   info: '#3498DB',
+  code: 'rgb(6, 9, 64)',
   transparency: 'rgba(0, 0, 0, 0.2)',
   shadow: '0px 5px 15px -1px rgba(2, 83, 115, .2)',
 };
@@ -124,6 +125,7 @@ export const device = {
   xs_lg: '(max-width: 1199.98px)',
   sm_lg: '(min-width: 576px) and (max-width: 1199.98px)',
   xs_md: '(max-width: 991.98px)',
+  md_xxl: '(min-width: 768px)',
   lg_xxl: '(min-width: 992px) and (max-width: 1440px)',
 
 };

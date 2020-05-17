@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Dash from '../../../../Components/Layout/Dashboard';
 import Payload from '../../../../Components/Form/Payload';
 import { SubHeadingComp } from '../../../../Components/Basic/Text';
@@ -34,11 +34,15 @@ Edit.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
   const token = shouldHaveAuth(ctx);
   const myPayload = await getMethod(`payload/${id}`, token);
-  if (!myPayload.success) {
+  if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/dashboard/payload' });
     ctx.res.end();
     return null;
   }
+  if (!myPayload.success) {
+    Router.push('/');
+  }
+
   return { payload: myPayload.payload, token };
 };
 

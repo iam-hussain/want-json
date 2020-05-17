@@ -36,3 +36,42 @@ export const InfoText = styled(P)`
         padding: 0px;
     }
 `;
+
+export const Contribute = styled.a`
+    color: ${(props) => props.theme.text2};
+    font-size: ${(props) => props.size || '2rem'};
+    margin: ${(props) => props.margin || '0px'};
+    transition: all 0.6s ease-in-out 0s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: ${(props) => props.margin || '0px'};
+
+    &:not([href]) {
+        color: ${(props) => props.theme.text2};
+        @media ${device.web}{          
+            &:hover{      
+                color: ${(props) => props.theme.primary};
+          }
+        }
+    }
+    
+    ${P}{
+        font-family: "Rajdhani";
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    @media ${device.web}{          
+        &:hover{      
+            color: ${(props) => props.theme.primary};
+            text-decoration: none;
+            cursor: pointer;
+            ${P}{
+                color: ${(props) => props.theme.primary};
+                text-decoration: none;
+                cursor: pointer;
+            }
+      }
+`;

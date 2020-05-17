@@ -51,8 +51,6 @@ export const Container = styled.div`
   justify-content: ${(props) => props.justify || 'center'};
   align-items: ${(props) => props.align || 'center'};
   background: ${(props) => props.background || props.theme.bg};
-  // box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
-  // -webkit-box-shadow: ${(props) => (props.shadow ? '0 0 60px 0 rgba(94, 92, 154, .12)' : 'none')};
 
   @media (min-width: 576px) {
       max-width: 540px;
@@ -85,6 +83,7 @@ export const ColWrapper = styled.div`
     margin: ${(props) => props.margin || '0px'};
     padding: ${(props) => props.padding || '0px'};
     overflow: ${(props) => props.overflow || 'unset'};
+    box-shadow: ${(props) => (props.shadow ? props.theme.shadow : 'none')};
     width: 100%;
 `;
 
@@ -95,6 +94,7 @@ export const Box = styled.div`
   flex: 1;
   height: 100%;
   justify-content: center;
+  align-items: center;
   background: ${(props) => props.background || props.theme.bg};
   z-index: ${(props) => props.index || '1'};
   padding: ${(props) => props.padding || '10px'};
@@ -124,4 +124,35 @@ export const ProjectedBox = styled.div`
   @media ${device.xs_md}{
     width:100%;
   }
+`;
+
+export const CodeViewWrapper = styled.div`
+    word-break: break-all;
+    flex: 1;
+    background-color: ${(props) => props.theme.code};
+    width: 100%;
+    margin: 28px 0px;
+    padding: 0px;
+    box-shadow: ${(props) => props.theme.shadow};
+
+    pre{
+        min-height: ${(props) => props.height || '300px'};
+        height: ${(props) => props.height || '300px'};
+        overflow: auto;
+        margin: 0px;
+        padding: 10px;
+
+        &::-webkit-scrollbar-track {
+            background-color: #000;
+            margin: 4px 0;
+        }
+    
+        &::-webkit-scrollbar {
+            background-color: #000;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: ${(props) => props.theme.primary}; 
+        }
+    }
 `;

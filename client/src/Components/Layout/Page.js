@@ -9,8 +9,6 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex: 1;
     overflow: auto;
-    box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
-    -webkit-box-shadow: 0 0 28px 0 rgba(94, 92, 154, .12);
 
     &::-webkit-scrollbar-track {
         background-color:  ${(props) => props.theme.paper};
@@ -26,12 +24,25 @@ export const ContentWrapper = styled.div`
 `;
 
 
+export function PageWithOutContainer({ children }) {
+  return (
+    <>
+      <NavBar />
+      <ContentWrapper id="pageMaker">
+        {children}
+      </ContentWrapper>
+      <AppBar />
+      <Footer />
+    </>
+  );
+}
+
 export default function Page({ children }) {
   return (
     <>
       <NavBar />
       <ContentWrapper id="pageMaker">
-        <Container shadow>
+        <Container>
           {children}
         </Container>
       </ContentWrapper>

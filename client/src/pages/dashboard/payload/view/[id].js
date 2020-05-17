@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Page from '../../../../Components/Layout/Page';
 import { SubHeadingComp } from '../../../../Components/Basic/Text';
 import { getMethod } from '../../../../utils/Integration';
@@ -23,7 +23,7 @@ function Edit({ payload }) {
 
   return (
     <Page>
-      <SubHeadingComp back="/dashboard/payload" title="View Payload" />
+      <SubHeadingComp margin="28px 0px 0px" back="/dashboard/payload" title="View Payload" />
       <ViewPayload payload={payload} />
     </Page>
   );
@@ -32,10 +32,13 @@ function Edit({ payload }) {
 Edit.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
   const myPayload = await getMethod(`explore/${id}`);
-  if (!myPayload.success) {
+  if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/explore' });
     ctx.res.end();
     return null;
+  }
+  if (!myPayload.success) {
+    Router.push('/');
   }
   return { payload: myPayload.payload };
 };

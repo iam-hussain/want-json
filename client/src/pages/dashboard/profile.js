@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Dash from '../../Components/Layout/Dashboard';
 import { SubHeadingComp } from '../../Components/Basic/Text';
 import ProfileForm from '../../Components/Form/Profile';
@@ -34,10 +34,13 @@ function Profile({ profileData, token }) {
 Profile.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const profileIs = await getMethod('profile', token);
-  if (!profileIs.success) {
+  if (!profileIs.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();
     return null;
+  }
+  if (!profileIs.success) {
+    Router.push('/');
   }
   return { profileData: profileIs.payload, token };
 };

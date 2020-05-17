@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import debounce from 'lodash.debounce';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -123,10 +123,13 @@ function Deleted({ myPayload, token, pages }) {
 Deleted.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const myPayload = await getMethod('payload_deleted', token);
-  if (!myPayload.success) {
+  if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();
     return null;
+  }
+  if (!myPayload.success) {
+    Router.push('/');
   }
   return { myPayload: myPayload.payload, pages: myPayload.page, token };
 };

@@ -1,9 +1,8 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAlert } from 'react-alert';
 import styled from 'styled-components';
-import Prism from 'prismjs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import 'prismjs/components/prism-json';
 import {
@@ -89,10 +88,12 @@ export const APITable = styled.table`
     width: 100%;
     font-family: "Rajdhani";
     font-size: 1rem;
+
     td,th{
         padding: 5px 8px;
         border: 1px solid;
         border-color: #F20574;
+        background-color: ${(props) => props.theme.tertiary};
         white-space: nowrap;
         text-align: center;
         border-color: ${(props) => props.theme.secondary};
@@ -134,12 +135,14 @@ export const TokenView = styled.div`
     border-radius: 5px;
     font-family: "Rajdhani";
     width: auto;
-    margin: 28px 10px;
+    margin-bottom: 28px;
     padding: 5px 10px;
     background-color: transparent;
     color:  ${(props) => props.theme.secondary};
+    background-color: ${(props) => props.theme.tertiary};
     border: 5px solid;
     border-color: ${(props) => props.theme.primary};
+    box-shadow: ${(props) => props.theme.shadow};
 
     span{
         padding: 0px 5px;    
@@ -166,14 +169,10 @@ export const TokenView = styled.div`
 
 export default function View({ payload }) {
   const alert = useAlert();
-  useEffect(() => {
-    const codeViewer = document.getElementById('codeViewer');
-    Prism.highlightAllUnder(codeViewer);
-  }, []);
   return (
-    <Container column>
+    <Container padding="0px" column>
       <RowWrapper>
-        <ColWrapper padding="10px 0px" className="col-md-6">
+        <ColWrapper padding="28px 0px" className="col-md-6">
           <Title>{payload.title}</Title>
           <Description>{payload.description}</Description>
           <Keywords>
@@ -185,7 +184,7 @@ export default function View({ payload }) {
           </Keywords>
         </ColWrapper>
 
-        <ColWrapper className="col-md-4">
+        <ColWrapper padding="28px 0px" className="col-md-4">
           <Table>
             <tbody>
               <tr>
@@ -223,7 +222,7 @@ export default function View({ payload }) {
         </TokenView>
       </CopyToClipboard>
       <RowWrapper>
-        <ColWrapper overflow="auto" margin="0px 10px" className="col-md-10">
+        <ColWrapper shadow overflow="auto" margin="0px 10px" className="col-md-10">
           <APITable>
             <thead>
               <tr>

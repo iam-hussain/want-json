@@ -136,7 +136,6 @@ export const H4 = styled.h4`
     }
 `;
 
-
 export const ASpan = styled.span`
     font-family: ${(props) => props.font || "'Raleway', sans-serif"};
     font-size: ${(props) => props.size || '1rem'};
@@ -155,6 +154,18 @@ export const ASpan = styled.span`
     @media ${device.web}{
         text-decoration: none;
     }
+`;
+
+export const Anchor = styled.a`
+  color: ${(props) => props.theme.text2};
+  font-size: ${(props) => props.size || '1rem'};
+  transition: all 0.6s ease-in-out 0s;
+  @media ${device.web}{          
+    &:hover, span{      
+        color: ${(props) => props.theme.primary};
+        text-decoration: none;
+        cursor: pointer;
+  }
 `;
 
 export const HeadingWrapper = styled.div`

@@ -30,7 +30,7 @@ export const ActionItem = styled(Button)`
     justify-content: center;
     border-radius: 5px;
     color : ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
-    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper)};
+    background-color : ${(props) => (props.active ? props.theme.primary : props.theme.paper1)};
     margin: 0px 8px;
     transition: all 0.3s ease-in-out 0s;
 
@@ -62,7 +62,7 @@ export const DashContent = styled.div`
     align-items: center;
     width: 100%;
     border-radius: 5px;
-    transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s; 
 `;
 
 export default function Dash({ children }) {
