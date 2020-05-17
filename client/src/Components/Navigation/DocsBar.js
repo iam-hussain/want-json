@@ -42,7 +42,7 @@ export const SideBar = styled.div`
 export const Header = styled.h5`
   font-size: 1.2rem;
   margin: 5px 0px;
-  padding-left: 20px;
+  padding-right: 20px;
   font-family: "Rajdhani";
   color: ${(props) => props.theme.text2};
 
@@ -57,7 +57,6 @@ export const Header = styled.h5`
 export const Wrapper = styled.div`
   width: auto;
   padding: 15px;
-  padding-right: 20px;
   text-align: right;
   height: 100%;
   right: 0px;
@@ -75,6 +74,8 @@ export const Group = styled.ul`
   font-size: 1rem;
   list-style: none;
   margin: ${(props) => props.margin || '0px 0px 1rem'};
+  padding: 0px;
+  padding-right: 25px;
 `;
 export const Item = styled.li`
   color : ${(props) => (props.active ? props.theme.primary : props.theme.text3)};
