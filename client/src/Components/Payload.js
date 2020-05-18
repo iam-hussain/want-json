@@ -4,7 +4,6 @@ import React from 'react';
 import { useAlert } from 'react-alert';
 import styled from 'styled-components';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import 'prismjs/components/prism-json';
 import {
   H2, P,
 } from './Basic/Text';

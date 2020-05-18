@@ -60,7 +60,7 @@ export const Input = styled.input`
         border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
         outline: none;
     }
-    +${Label}{
+    ~${Label}{
         color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
     }
 
@@ -108,7 +108,7 @@ export const Textarea = styled.textarea`
         border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.secondary)};
         outline: none;
     }
-    +${Label}{
+    ~${Label}{
         color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
     }
     ~${ErrorBlock}{

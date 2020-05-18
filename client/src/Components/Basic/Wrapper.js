@@ -125,34 +125,3 @@ export const ProjectedBox = styled.div`
     width:100%;
   }
 `;
-
-export const CodeViewWrapper = styled.div`
-    word-break: break-all;
-    flex: 1;
-    background-color: ${(props) => props.theme.code};
-    width: 100%;
-    margin: 28px 0px;
-    padding: 0px;
-    box-shadow: ${(props) => props.theme.shadow};
-
-    pre{
-        min-height: ${(props) => props.height || '300px'};
-        height: ${(props) => props.height || '300px'};
-        overflow: auto;
-        margin: 0px;
-        padding: 10px;
-
-        &::-webkit-scrollbar-track {
-            background-color: #000;
-            margin: 4px 0;
-        }
-    
-        &::-webkit-scrollbar {
-            background-color: #000;
-        }
-    
-        &::-webkit-scrollbar-thumb {
-            background-color: ${(props) => props.theme.primary}; 
-        }
-    }
-`;

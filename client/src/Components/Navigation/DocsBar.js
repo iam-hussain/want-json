@@ -13,22 +13,10 @@ export const SideBar = styled.div`
   background-color: ${(props) => props.theme.tertiary};
   box-shadow: ${(props) => props.theme.shadow};
   width: calc(calc(100vw/100) * 30);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   position: fixed;
   transition: all 0.6s ease-in-out 0s;
   
-  &::-webkit-scrollbar-track {
-      background-color:  ${(props) => props.theme.paper};
-  }
-
-  &::-webkit-scrollbar {
-      background-color:  ${(props) => props.theme.paper};
-  }
-
-  &::-webkit-scrollbar-thumb {
-      background-color: ${(props) => props.theme.primary};
-  }
   @media ${device.xs_sm}{
       opacity: ${(props) => (props.show ? '1' : '0')};
       width: 100%;
@@ -67,6 +55,18 @@ export const Wrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   position: absolute;
+  
+  &::-webkit-scrollbar-track {
+    background-color:  ${(props) => props.theme.paper};
+  }
+
+  &::-webkit-scrollbar {
+      background-color:  ${(props) => props.theme.paper};
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: ${(props) => props.theme.primary};
+  }
 `;
 
 export const Group = styled.ul`

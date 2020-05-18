@@ -35,6 +35,7 @@ export const Left = styled.div`
     text-align: right;
     font-size: 14px;
     transition: all 0.6s ease-in-out 0s;
+    display: flex;
     svg{
         margin: 0px 5px;
         color: ${(props) => props.theme.text2};
@@ -67,11 +68,11 @@ export default function Footer() {
     <FooterElement>
       <Container padding="0px 15px" justify="space-between">
         <Left>
-          <Link href="/"><FontAwesomeIcon icon={faHome} /></Link>
-          <Link href="/explore"><FontAwesomeIcon icon={faLaptopCode} /></Link>
-          <Link href="/documentation"><FontAwesomeIcon icon={faBook} /></Link>
+          <Link href="/"><div><FontAwesomeIcon icon={faHome} /></div></Link>
+          <Link href="/explore"><div><FontAwesomeIcon icon={faLaptopCode} /></div></Link>
+          <Link href="/documentation"><div><FontAwesomeIcon icon={faBook} /></div></Link>
           <Anchor href="https://github.com/ZaHuPro/getJSON" target="_blank" size="14px"><FontAwesomeIcon icon={faGithub} /></Anchor>
-          <Link href="/contact_us"><FontAwesomeIcon icon={faAddressCard} /></Link>
+          <Link href="/contact_us"><div><FontAwesomeIcon icon={faAddressCard} /></div></Link>
         </Left>
         <Right href="https://github.com/ZaHuPro" target="_blank">
           <FontAwesomeIcon icon={faCode} />
