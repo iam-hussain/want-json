@@ -9,14 +9,12 @@ const instance = axios.create({
   headers: { APP_SECRET: process.env.APP_SECRET },
 });
 
-
 const requestHandler = (request) => {
   if (request.hasOwnProperty('pushToken') && request.pushToken) {
     request.headers.Authorization = `Bearer ${request.pushToken}`;
   }
   return request;
 };
-
 
 const errorHandler = (error) => {
   console.log(error);
@@ -38,6 +36,5 @@ instance.interceptors.response.use(
   (response) => response.data,
   (error) => errorHandler(error),
 );
-
 
 export default instance;
