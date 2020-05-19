@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-transform-object-assign",
+    ["styled-components", {
+      "ssr": true,
+      "displayName": true,
+      "preprocess": false
+    }]
+  ],
+  "presets": ["next/babel", "@babel/preset-env"]
+}
