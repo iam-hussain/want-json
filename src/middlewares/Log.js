@@ -13,7 +13,7 @@ class Log {
       this.today.getMonth() + 1
     }-${this.today.getDate()}`;
     const timeString = `${this.today.getHours()}:${this.today.getMinutes()}:${this.today.getSeconds()}`;
-    this.baseDir = path.join(__dirname, '../../.logs/');
+    this.baseDir = path.join(__dirname, '../../logs/');
     this.fileName = `${dateString}.log`;
     this.linePrefix = `[${dateString} ${timeString}]`;
   }
