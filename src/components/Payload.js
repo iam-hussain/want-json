@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
@@ -175,8 +176,8 @@ export default function View({ payload }) {
           <Title>{payload.title}</Title>
           <Description>{payload.description}</Description>
           <Keywords>
-            {payload.keywords.map((k) => (
-              <span>
+            {payload.keywords.map((k, i) => (
+              <span key={i}>
                 {k}
               </span>
             ))}

@@ -6,7 +6,7 @@ const instance = axios.create({
   baseURL: process.env.API_BASE_URL,
   // timeout: 1000,
   responseType: 'json',
-  headers: { AuthSecet: process.env.AUTH_SECRET },
+  headers: { APP_SECRET: process.env.APP_SECRET },
 });
 
 
