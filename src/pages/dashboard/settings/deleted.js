@@ -123,6 +123,7 @@ function Deleted({ myPayload, token, pages }) {
 Deleted.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const myPayload = await getMethod('payload_deleted', token);
+
   if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();

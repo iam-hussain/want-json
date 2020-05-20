@@ -16,7 +16,7 @@ export default function Home() {
       <HomeContainer>
         <HeroRowWrapper margin="28px 0px">
           <HeroColWrapper className="col-lg-5">
-            <HeroImg src="/img/illustrations/undraw_code_review_l1q9.svg" alt="Hero" />
+            <HeroImg src="/images/illustrations/undraw_code_review_l1q9.svg" alt="Hero" />
           </HeroColWrapper>
           <HeroColWrapper className="col-lg-6">
             <HeroTitle>How can we help you?</HeroTitle>

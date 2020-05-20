@@ -34,6 +34,7 @@ function Profile({ profileData, token }) {
 Profile.getInitialProps = async (ctx) => {
   const token = shouldHaveAuth(ctx);
   const profileIs = await getMethod('profile', token);
+
   if (!profileIs.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();

@@ -13,5 +13,6 @@ module.exports = withFonts(withCSS({
     API_BASE_URL: process.env.API_BASE_URL,
     PAYLOAD_URL: process.env.PAYLOAD_URL,
     CONTACT_EMAIL: process.env.CONTACT_EMAIL,
+    APP_URL: process.env.APP_URL,
   },
 }));

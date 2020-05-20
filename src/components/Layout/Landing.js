@@ -20,8 +20,8 @@ export default function Login({ children }) {
               <H3 transform="uppercase" align="center">Welcome to</H3>
               <Link href="/"><InfoTitle align="center">getJSON</InfoTitle></Link>
               <InfoText align="center">
-                The next generation social network &amp; community! Connect with your friends
-                and play with our quests and badges gamification system!
+                Free online custom REST API for development and testing,
+                Create a custom API in some seconds with GET, POST, PUT, DELETE methods.
               </InfoText>
               <TabSwitch>
                 <Link href="/login">

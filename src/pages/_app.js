@@ -8,12 +8,12 @@ import Router from 'next/router';
 import nextCookie from 'next-cookies';
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate, { alretOptions } from '../components/Alert';
-// import AlertTemplate from 'react-alert-template-basic';
 
 import Store from '../Redux/Store';
 import { theme, GlobalStyle } from '../style';
 import Loader from '../components/Basic/Loader';
 import Alert from '../components/Basic/Alert';
+import Meta from '../components/Meta';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/nprogress.css';
@@ -74,6 +74,7 @@ function MyApp({
     <Provider store={Store}>
       <ThemeProvider theme={theme}>
         <AlertProvider template={AlertTemplate} {...alretOptions}>
+          <Meta />
           <Wrapper logged={logged}>
             <GlobalStyle />
             <Loader show={loader} />

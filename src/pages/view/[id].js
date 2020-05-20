@@ -15,6 +15,7 @@ function Edit({ payload }) {
 Edit.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
   const myPayload = await getMethod(`explore/${id}`);
+
   if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/explore' });
     ctx.res.end();

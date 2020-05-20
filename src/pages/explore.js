@@ -151,6 +151,7 @@ function Explore({ payloadData, pages, searchData }) {
 
 Explore.getInitialProps = async (ctx) => {
   const payloadData = await postMethod('explore');
+
   if (!payloadData.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();
