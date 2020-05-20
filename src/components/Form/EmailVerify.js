@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { useForm, ErrorMessage } from 'react-hook-form';
@@ -13,6 +14,7 @@ import {
   emailInvalidMsg,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
+import { loggedUpdate } from '../../Redux/Actions/userActions';
 
 export default function EmailVerifyForm({ responseError, setEmail }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -29,6 +31,7 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
   } = useForm({ mode: 'onChange' });
   const router = useRouter();
   const alert = useAlert();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setComponentLoading(false);
@@ -58,6 +61,7 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
       cookie.remove('email_verify');
       window.localStorage.setItem('login', Date.now());
       reset();
+      dispatch(loggedUpdate(true));
       router.push('/');
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {

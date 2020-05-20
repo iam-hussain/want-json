@@ -42,9 +42,9 @@ export default function LoginForm() {
       cookie.set('token', responseData.payload.token, { expires: 7 });
       cookie.remove('email_verify');
       window.localStorage.setItem('login', Date.now());
+      reset();
       dispatch(loggedUpdate(true));
       router.push('/');
-      reset();
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
         setError(m.param, 'invalid', m.msg);

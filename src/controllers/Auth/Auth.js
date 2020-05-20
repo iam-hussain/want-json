@@ -132,13 +132,13 @@ export default class Auth {
         email: userData.email,
       });
       const authToken = await authyModule.createAuth(req, userPublicData.id);
-      userPublicData.token = authToken.hash;
+
       return successResponce(
         req,
         res,
         'Your Email verified successfully!',
         202,
-        userPublicData,
+        { ...userPublicData.dataValues, token: authToken.dataValues.hash },
       );
     } catch (_error) {
       return next(_error);
@@ -165,7 +165,7 @@ export default class Auth {
       return successResponce(
         req,
         res,
-        'OTP sent successfully, please check your email',
+        `OTP sent successfully ! [ ${authData[req.body.type].otp} ]`,
         202,
         {},
       );

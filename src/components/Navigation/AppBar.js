@@ -60,16 +60,18 @@ export default function AppBar() {
   const router = useRouter();
   return (
     <Appbar>
-      <Icon active={router.pathname === '/documentation'}>
-        <FontAwesomeIcon icon={faBook} />
-      </Icon>
+      <Link href="/documentation">
+        <Icon active={router.pathname === '/documentation'}>
+          <FontAwesomeIcon icon={faBook} />
+        </Icon>
+      </Link>
       <Link href="/explore">
         <Icon active={router.pathname === '/explore'}>
           <FontAwesomeIcon icon={faLaptopCode} />
         </Icon>
       </Link>
       <Link href="/dashboard/payload">
-        <Icon active={router.pathname === '/dashboard/payload'}>
+        <Icon active={router.pathname.match('/dashboard')}>
           <FontAwesomeIcon icon={faStore} />
         </Icon>
       </Link>

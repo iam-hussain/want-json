@@ -23,8 +23,22 @@ import { loggedUpdate } from '../Redux/Actions/userActions';
 
 function Wrapper({ children, logged }) {
   const dispatch = useDispatch();
+
+  const syncLogged = (event) => {
+    if (event.key === 'logout') {
+      dispatch(loggedUpdate(false));
+    }
+    if (event.key === 'login') {
+      dispatch(loggedUpdate(true));
+    }
+  };
+
   useEffect(() => {
     dispatch(loggedUpdate(logged));
+    window.addEventListener('storage', syncLogged);
+    return () => {
+      window.removeEventListener('storage', syncLogged);
+    };
   }, []);
   return (
     <>

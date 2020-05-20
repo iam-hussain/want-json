@@ -26,6 +26,8 @@ function ResetPassword() {
     const responseData = await postMethod('send_otp', { email: emailInput, type: 'reset_password' });
     if (responseData.success) {
       setMailSent(true);
+      // eslint-disable-next-line no-console
+      console.log(responseData.message);
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       setResponseError(responseData.message);
