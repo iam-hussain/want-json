@@ -12,11 +12,26 @@ const metaData = {
   'image-180x110': `${process.env.APP_URL}/static/metaImg-180x100.png`,
 };
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App) => (props) => sheet.collectStyles(<App {...props} />));
-    const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
+    const originalRenderPage = ctx.renderPage;
+    try {
+      ctx.renderPage = () => originalRenderPage({
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      });
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 
   render() {
@@ -46,7 +61,7 @@ export default class MyDocument extends Document {
           <meta property="og:image:height" content="110" />
           <link rel="icon" href="/static/favicon.ico" />
           <link rel="apple-touch-icon" href="/static/favicon.ico" />
-          {this.props.styleTags}
+          {/* {this.props.styleTags} */}
         </Head>
         <body>
           <Main />

@@ -15,7 +15,7 @@ import Loader from '../components/Basic/Loader';
 import Alert from '../components/Basic/Alert';
 import Meta from '../components/Meta';
 
-import '../assets/vendor/bootstrap.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../assets/vendor/nprogress.css';
 import '../assets/vendor/code.css';
 
@@ -53,10 +53,8 @@ function MyApp({
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     NProgress.start();
-    setTimeout(() => {
-      setLoader(false);
-      NProgress.done();
-    }, 500);
+    setLoader(false);
+    NProgress.done();
   }, []);
 
   Router.onRouteChangeStart = () => {

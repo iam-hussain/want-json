@@ -18,7 +18,7 @@ export const Cover = styled.section`
   overflow: hidden;
   backdrop-filter: grayscale(1);
   z-index: ${(props) => (props.show ? '10' : '-10')};
-  opacity: ${(props) => (props.show ? '1' : '.5')};
+  // opacity: ${(props) => (props.show ? '1' : '.5')};
   transition: ${(props) => props.transition || 'all 1s linear 0s'};
 `;
 
