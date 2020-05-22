@@ -9,10 +9,10 @@ module.exports = withFonts(withCSS({
     return config;
   },
   env: {
-    APP_SECRET: process.env.APP_SECRET,
-    API_BASE_URL: process.env.API_BASE_URL,
-    PAYLOAD_URL: process.env.PAYLOAD_URL,
-    CONTACT_EMAIL: process.env.CONTACT_EMAIL,
-    APP_URL: process.env.APP_URL,
+    APP_SECRET: process.env.APP_SECRET || '1242#$%$^%!@@$!%*(%^jnadkjcn',
+    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000/web/',
+    PAYLOAD_URL: process.env.PAYLOAD_URL || 'http://localhost:3000/api/',
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'admin@getjson.io',
+    APP_URL: process.env.APP_URL || 'http://localhost:3000',
   },
 }));

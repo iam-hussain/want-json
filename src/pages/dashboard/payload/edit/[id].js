@@ -36,12 +36,12 @@ Edit.getInitialProps = async (ctx) => {
   const myPayload = await getMethod(`payload/${id}`, token);
 
   if (!myPayload.success && ctx.res) {
-    ctx.res.writeHead(302, { Location: '/dashboard/payload' });
+    ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end();
     return null;
   }
   if (!myPayload.success) {
-    Router.push('/');
+    Router.push('/login');
   }
   return { payload: myPayload.payload, token };
 };

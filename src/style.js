@@ -44,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     background-color:  ${(props) => props.theme.bg};
+    color:  ${(props) => props.theme.bg};
 
     &::-webkit-scrollbar-track {
       background-color:  ${(props) => props.theme.paper};

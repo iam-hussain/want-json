@@ -36,12 +36,12 @@ Profile.getInitialProps = async (ctx) => {
   const profileIs = await getMethod('profile', token);
 
   if (!profileIs.success && ctx.res) {
-    ctx.res.writeHead(302, { Location: '/' });
+    ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end();
     return null;
   }
   if (!profileIs.success) {
-    Router.push('/');
+    Router.push('/login');
   }
   return { profileData: profileIs.payload, token };
 };

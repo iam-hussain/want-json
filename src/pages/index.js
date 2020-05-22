@@ -67,11 +67,13 @@ export default function Home() {
 
   const reqIs = {
     method: 'GET',
-    url: `${process.env.PAYLOAD_URL}static_payload`,
+    url: `${process.env.PAYLOAD_URL}:url`,
     header: {
       Authorization: 'Bearer <token>',
     },
-    params: {},
+    params: {
+      url: 'dynamic_payload',
+    },
     body: {},
   };
 
@@ -98,35 +100,35 @@ export default function Home() {
   };
 
   const [currentCall, setCurrentCall] = useState(1);
-  const [reqPayload, setReqPayload] = useState(reqIs);
+  const [reqPayload, setReqPayload] = useState({ ...reqIs, params: { ...reqIs.params, url: 'static_payload' } });
   const [resPayload, setResPayload] = useState(resIs);
 
   const handleMethod = (_call) => {
     setCurrentCall(_call);
     if (_call === 2) {
-      setReqPayload({ ...reqIs, url: `${process.env.PAYLOAD_URL}dynamic_payload` });
+      setReqPayload({ ...reqIs });
       setResPayload({ ...resIs, payload: dynamicPayload });
     } else if (_call === 3) {
-      setReqPayload({ ...reqIs, params: { id: 3 }, url: `${process.env.PAYLOAD_URL}dynamic_payload/3` });
+      setReqPayload({ ...reqIs, params: { ...reqIs.params, id: 3 }, url: `${reqIs.url}/:id` });
       setResPayload({ ...resIs, message: 'Fetched', payload: dynamicPayload.find((p) => p.id === 3) });
     } else if (_call === 4) {
       setReqPayload({
-        ...reqIs, body: bodyData.create, method: 'POST', url: `${process.env.PAYLOAD_URL}dynamic_payload`,
+        ...reqIs, body: bodyData.create, method: 'POST',
       });
       setResPayload({ ...resIs, message: 'Created', payload: [...dynamicPayload, bodyData.create] });
     } else if (_call === 5) {
       setReqPayload({
-        ...reqIs, body: bodyData.update, params: { id: 4 }, method: 'PUT', url: `${process.env.PAYLOAD_URL}dynamic_payload/4`,
+        ...reqIs, body: bodyData.update, params: { ...reqIs.params, id: 4 }, method: 'PUT', url: `${reqIs.url}/:id`,
       });
       setResPayload({ ...resIs, message: 'Created', payload: [...dynamicPayload.map((p) => { if (p.id === 4) { p = bodyData.update; } return p; })] });
     } else if (_call === 6) {
       setReqPayload({
-        ...reqIs, method: 'DELETE', params: { id: 2 }, url: `${process.env.PAYLOAD_URL}dynamic_payload/2`,
+        ...reqIs, method: 'DELETE', params: { ...reqIs.params, id: 2 }, url: `${reqIs.url}/:id`,
       });
       setResPayload({ ...resIs, message: 'Deleted', payload: dynamicPayload.filter((p) => p.id !== 2) });
     } else {
       setCurrentCall(1);
-      setReqPayload(reqIs);
+      setReqPayload({ ...reqIs, params: { ...reqIs.params, url: 'static_payload' } });
       setResPayload(resIs);
     }
   };
@@ -135,7 +137,7 @@ export default function Home() {
     <PageWithOutContainer>
       {/* <Decorator width="33vw" height="100vh" top="0px" left="0px" /> */}
       <HomeContainer>
-        <HeroRowWrapper margin="28px 0px">
+        <HeroRowWrapper>
           <HeroColWrapper className="col-lg-5">
             <HeroImg src="/images/illustrations/undraw_code_review_l1q9.svg" alt="Hero" />
           </HeroColWrapper>

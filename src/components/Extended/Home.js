@@ -91,7 +91,7 @@ export const MethodGroup = styled.div`
 export const MethodTable = styled(APITable)`
     width: calc(100% - 30px);
     td{
-        background-color: ${(props) => props.theme.paper}; 
+        background-color: ${(props) => props.theme.bg}; 
         width: auto;
         &:first-child{
             width: auto;
@@ -128,7 +128,7 @@ export const MethodButton = styled(Button)`
     // border: 1px solid;
     // border-color: ${(props) => props.theme.bg};
     color: ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
-    background-color: ${(props) => (props.active ? props.theme.primary : props.theme.bg)};    
+    background-color: ${(props) => (props.active ? props.theme.primary : props.theme.paper)};    
     cursor: pointer;
 
     @media ${device.web}{          

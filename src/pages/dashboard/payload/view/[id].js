@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
+import { shouldHaveAuth } from '../../../../utils/Authentication';
 import Page from '../../../../components/Layout/Page';
 import { SubHeadingComp } from '../../../../components/Basic/Text';
 import { getMethod } from '../../../../utils/Integration';
@@ -31,14 +32,16 @@ function Edit({ payload }) {
 
 Edit.getInitialProps = async (ctx) => {
   const { id } = ctx.query;
-  const myPayload = await getMethod(`explore/${id}`);
+  const token = shouldHaveAuth(ctx);
+
+  const myPayload = await getMethod(`payload/${id}`, token);
   if (!myPayload.success && ctx.res) {
-    ctx.res.writeHead(302, { Location: '/explore' });
+    ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end();
     return null;
   }
   if (!myPayload.success) {
-    Router.push('/');
+    Router.push('/login');
   }
   return { payload: myPayload.payload };
 };

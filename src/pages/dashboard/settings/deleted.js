@@ -125,12 +125,12 @@ Deleted.getInitialProps = async (ctx) => {
   const myPayload = await getMethod('payload_deleted', token);
 
   if (!myPayload.success && ctx.res) {
-    ctx.res.writeHead(302, { Location: '/' });
+    ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end();
     return null;
   }
   if (!myPayload.success) {
-    Router.push('/');
+    Router.push('/login');
   }
   return { myPayload: myPayload.payload, pages: myPayload.page, token };
 };

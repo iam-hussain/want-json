@@ -7,7 +7,7 @@ export const Cover = styled.section`
   bottom: 0;
   right: 0;
   left: 0;
-  background: ${(props) => (props.transparency ? props.theme.transparency : props.background || '#fff')};
+  background: ${(props) => (props.transparency ? props.theme.transparency : props.background || props.theme.bg)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@ export const Cover = styled.section`
   overflow: hidden;
   backdrop-filter: grayscale(1);
   z-index: ${(props) => (props.show ? '10' : '-10')};
-  opacity: ${(props) => (props.show ? '1' : '0')};
+  opacity: ${(props) => (props.show ? '1' : '.5')};
   transition: ${(props) => props.transition || 'all 1s linear 0s'};
 `;
 

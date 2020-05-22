@@ -15,7 +15,7 @@ import Loader from '../components/Basic/Loader';
 import Alert from '../components/Basic/Alert';
 import Meta from '../components/Meta';
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../assets/vendor/bootstrap.css';
 import '../assets/vendor/nprogress.css';
 import '../assets/vendor/code.css';
 

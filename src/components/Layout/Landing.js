@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
-  Decorator, Container, Box,
+  Decorator, Container, Box, RowWrapper, ColWrapper,
 } from '../Basic/Wrapper';
 import { H3 } from '../Basic/Text';
 import { InfoTitle, InfoText } from '../Extended/Text';
@@ -14,8 +14,8 @@ export default function Login({ children }) {
     <>
       <Decorator width="33vw" height="100vh" top="0px" right="0px" />
       <Container background="transparent">
-        <div className="row">
-          <div className="col-md">
+        <RowWrapper>
+          <ColWrapper className="col-md">
             <Box>
               <H3 transform="uppercase" align="center">Welcome to</H3>
               <Link href="/"><InfoTitle align="center">getJSON</InfoTitle></Link>
@@ -32,11 +32,11 @@ export default function Login({ children }) {
                 </Link>
               </TabSwitch>
             </Box>
-          </div>
-          <div className="col-md">
+          </ColWrapper>
+          <ColWrapper className="col-md">
             {children}
-          </div>
-        </div>
+          </ColWrapper>
+        </RowWrapper>
       </Container>
     </>
   );
