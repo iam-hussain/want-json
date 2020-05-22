@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { device } from '../../style';
 import { H1, P } from '../Basic/Text';
+import { Button } from '../Basic/Button/Button';
 import { RowWrapper, ColWrapper, Container } from '../Basic/Wrapper';
 import { Keywords, APITable } from '../Payload';
 
 export const HeroRowWrapper = styled(RowWrapper)`
     min-height: calc(100vh - 176px);
+    margin: 28px 0px 0px;
     @media ${device.xs_lg}{
         min-height: auto;
     }
@@ -13,10 +15,11 @@ export const HeroRowWrapper = styled(RowWrapper)`
 
 export const HeroColWrapper = styled(ColWrapper)`
     text-align: center;
-    padding: 0px 10px;
+    padding: 0px 5px;
     @media ${device.xs_md}{
-        padding: 0px;
+        padding: 0px !important;
     }
+
 `;
 
 export const BoxRow = styled(RowWrapper)`
@@ -55,9 +58,7 @@ export const HeroText = styled(P)`
 `;
 
 export const Text = styled(P)`
-    word-spacing: 0px;
-    line-height: 18px;
-    text-align: justify;
+    text-align: center;
 `;
 
 export const HeroButtonGroup = styled.div`
@@ -88,8 +89,9 @@ export const MethodGroup = styled.div`
 `;
 
 export const MethodTable = styled(APITable)`
-    width: 96%;
+    width: calc(100% - 30px);
     td{
+        background-color: ${(props) => props.theme.paper}; 
         width: auto;
         &:first-child{
             width: auto;
@@ -98,6 +100,9 @@ export const MethodTable = styled(APITable)`
             width: auto;
         }
     }
+    @media ${device.xs_md}{
+        width: 100%;
+    }
 `;
 
 export const Methods = styled(Keywords)`
@@ -105,9 +110,30 @@ export const Methods = styled(Keywords)`
     justify-content: center;
     align-items: center;
     @media ${device.xs_sm}{
-        justify-content: start;
+        justify-content: space-between;
     }
     span{
+        background-color: ${(props) => (props.active ? props.theme.primary : props.theme.secondary)};    
         cursor: pointer;
     }
+`;
+
+export const MethodButton = styled(Button)`
+    padding: 2px 7px;
+    margin: 2px;
+    width: 90px;
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 15px;
+    // border: 1px solid;
+    // border-color: ${(props) => props.theme.bg};
+    color: ${(props) => (props.active ? props.theme.tertiary : props.theme.text2)};
+    background-color: ${(props) => (props.active ? props.theme.primary : props.theme.bg)};    
+    cursor: pointer;
+
+    @media ${device.web}{          
+        &:hover{      
+            color: ${(props) => (props.active ? props.theme.tertiary : props.theme.primary)};
+            background-color: ${(props) => (props.active ? props.theme.primary : props.theme.tertiary)};
+      }
 `;

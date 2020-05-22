@@ -18,7 +18,7 @@ export const Brand = styled.p`
 
 export const P = styled.p`
   width: ${(props) => props.width || '100%'};
-  font-family: ${(props) => props.font || 'Josefin_Sans'};
+  font-family: ${(props) => props.font || 'Vollkorn'};
   font-size: ${(props) => props.size || '1rem'};
   padding: ${(props) => props.padding || '0 10px'};
   margin: ${(props) => props.margin || '0px'};
@@ -33,6 +33,10 @@ export const P = styled.p`
   -ms-user-select: none;
   user-select: none;
   word-break: break-word;
+
+  @media ${device.xs_sm}{
+    padding: 0px;
+  }
 `;
 
 export const DimText = styled.p`

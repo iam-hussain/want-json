@@ -9,6 +9,7 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex: 1;
     overflow: auto;
+    background-color:  ${(props) => props.theme.bg};
 
     &::-webkit-scrollbar-track {
         background-color:  ${(props) => props.theme.paper};

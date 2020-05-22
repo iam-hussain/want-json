@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 import FredokaOne from './assets/fonts/FredokaOne-Regular.ttf';
-import JosefinSans from './assets/fonts/JosefinSans-VariableFont_wght.ttf';
 import Rajdhani from './assets/fonts/Rajdhani-Bold.ttf';
 import Raleway from './assets/fonts/Raleway-Bold.ttf';
+import Vollkorn from './assets/fonts/Vollkorn-VariableFont_wght.ttf';
 
 export const GlobalStyle = createGlobalStyle`    
 
@@ -13,8 +13,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'Josefin_Sans';
-    src: url(${JosefinSans});
+    font-family: 'Vollkorn';
+    src: url(${Vollkorn});
   }
 
   @font-face {
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     margin 0px;
-    font-family: "Josefin_Sans";
+    font-family: "Vollkorn";
     font-size: 16px;
     font-weight: 300;
     line-height: 1.7;

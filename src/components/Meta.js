@@ -22,28 +22,28 @@ const pathMetaData = {
         title: 'My Payloads | getJSON.io',
       },
       create: {
-        title: 'Create new payload | getJSON.io',
+        title: 'New Payload | getJSON.io',
       },
       edit: {
-        title: 'Edit my payload | getJSON.io',
+        title: 'Edit Payload | getJSON.io',
       },
       view: {
-        title: 'View Payload | getJSON.io',
+        title: 'View My Payload | getJSON.io',
       },
     },
     settings: {
       index: {
-        title: 'Settings | getJSON.io',
+        title: 'My Settings | getJSON.io',
       },
       change_password: {
-        title: 'Change Password | Settings | getJSON.io',
+        title: 'Change Password | getJSON.io',
       },
       deleted: {
-        title: 'Deleted payload | Settings | getJSON.io',
+        title: 'Deleted Payloads | getJSON.io',
       },
     },
     profile: {
-      title: 'Profile | getJSON.io',
+      title: 'My Profile | getJSON.io',
     },
   },
   view: {
@@ -53,13 +53,13 @@ const pathMetaData = {
     title: 'Contact Us | getJSON.io',
   },
   documentation: {
-    title: 'Documentation|| getJSON.io',
+    title: 'Documentation | getJSON.io',
   },
   email_verify: {
     title: 'Email Verify | getJSON.io',
   },
   explore: {
-    title: 'Explore Payload | getJSON.io',
+    title: 'Explore Payloads | getJSON.io',
   },
   login: {
     title: 'Login | getJSON.io',

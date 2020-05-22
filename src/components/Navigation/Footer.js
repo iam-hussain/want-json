@@ -13,7 +13,8 @@ import { Anchor } from '../Basic/Text';
 
 export const FooterElement = styled.footer`
     z-index: 1;
-    background-color: ${(props) => props.theme.bg};width: 100%;
+    background-color: ${(props) => props.theme.bg};
+    width: 100%;
     display: flex;
     justify-content: center;
     height: 50px;
@@ -53,7 +54,7 @@ export const Right = styled(Anchor)`
     font-size: 14px;
     svg{
         margin: 0px 5px;
-        color: #F20574;
+        color:  ${(props) => props.theme.primary}; //#F20574;
         @media ${device.web}{          
             &:hover{
                 animation: ${buttonPush} .3s ease-in-out;
@@ -78,7 +79,7 @@ export default function Footer() {
           <FontAwesomeIcon icon={faCode} />
           with
           <FontAwesomeIcon icon={faHeart} />
-          by ZaHu
+          by ZaHuBu
         </Right>
       </Container>
     </FooterElement>
