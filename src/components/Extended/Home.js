@@ -24,7 +24,7 @@ export const HeroColWrapper = styled(ColWrapper)`
 
 export const BoxRow = styled(RowWrapper)`
     background-color: ${(props) => props.theme.bg};
-    padding-top: 28px;
+    background: ${(props) => props.background || props.theme.bg};
 `;
 
 export const HeroImg = styled.img`
@@ -89,14 +89,16 @@ export const MethodGroup = styled.div`
 `;
 
 export const MethodTable = styled(APITable)`
-    width: calc(100% - 30px);
+    width: 100%;
     td{
         background-color: ${(props) => props.theme.bg}; 
         width: auto;
         &:first-child{
+            border-color: ${(props) => props.theme.text1};
             width: auto;
         }
         &:last-child{
+            border-color: ${(props) => props.theme.text1};
             width: auto;
         }
     }
@@ -109,9 +111,7 @@ export const Methods = styled(Keywords)`
     display: flex;
     justify-content: center;
     align-items: center;
-    @media ${device.xs_sm}{
-        justify-content: space-between;
-    }
+
     span{
         background-color: ${(props) => (props.active ? props.theme.primary : props.theme.secondary)};    
         cursor: pointer;

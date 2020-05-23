@@ -140,6 +140,26 @@ export const H4 = styled.h4`
     }
 `;
 
+export const H5 = styled.h5`
+    font-family: ${(props) => props.font || "'Raleway', sans-serif"};
+    font-size: ${(props) => props.size || '1.15rem'};
+    padding: ${(props) => props.padding || '0px 10px'};
+    margin: ${(props) => props.margin || '0px'};
+    color: ${(props) => props.color || props.theme.text1};
+    text-transform: ${(props) => props.transform || 'unset'};
+    font-weight: ${(props) => props.weight || '500'};
+    cursor: ${(props) => props.cursor || 'unset'};
+    text-align: ${(props) => props.align || 'left'};
+    transition: all 0.6s ease-in-out 0s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media ${device.xs_sm}{
+      font-size: calc(${(props) => props.size || '1.15rem'} - 0.05rem);
+    }
+`;
+
 export const ASpan = styled.span`
     font-family: ${(props) => props.font || "'Raleway', sans-serif"};
     font-size: ${(props) => props.size || '1rem'};

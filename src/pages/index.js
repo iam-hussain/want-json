@@ -7,7 +7,7 @@ import {
   HeroRowWrapper, HomeContainer, Text, BoxRow, Methods, MethodTable, MethodButton,
 } from '../components/Extended/Home';
 import { PrimaryBtn } from '../components/Basic/Button/Button';
-import { H4, P } from '../components/Basic/Text';
+import { H3, H5 } from '../components/Basic/Text';
 import CodeView from '../components/Basic/Code';
 
 export default function Home() {
@@ -135,14 +135,13 @@ export default function Home() {
 
   return (
     <PageWithOutContainer>
-      {/* <Decorator width="33vw" height="100vh" top="0px" left="0px" /> */}
       <HomeContainer>
         <HeroRowWrapper>
           <HeroColWrapper className="col-lg-5">
             <HeroImg src="/images/illustrations/undraw_code_review_l1q9.svg" alt="Hero" />
           </HeroColWrapper>
           <HeroColWrapper className="col-lg-6">
-            <HeroTitle>How can we help you?</HeroTitle>
+            <HeroTitle>What we do ?</HeroTitle>
             <HeroText padding="0px 0px 28px" align="center">
               The best thing about Freepik’s free vector images?
               You don’t need to provide any attribution.
@@ -155,52 +154,63 @@ export default function Home() {
             </HeroButtonGroup>
           </HeroColWrapper>
         </HeroRowWrapper>
-        {/* <Heading>Lets go with a Demo</Heading> */}
-        <BoxRow margin="0px 0px">
-          <HeroColWrapper className="col-md-6">
-            <H4 font="Rajdhani" align="center" margin="0px 0px 10px">Static Payload</H4>
-            <Text>All of these are available thanks to a community of creatives who regularly contribute their vector designs.</Text>
-            <CodeView margin="0px 0px 28px" code={staticPayload} />
+
+        <BoxRow margin="28px 0px 0px" padding="28px 0px 0px">
+          <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
+            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Static Payload</H5>
+            <CodeView margin="0px" code={staticPayload} />
           </HeroColWrapper>
-          <HeroColWrapper className="col-md-6">
-            <H4 font="Rajdhani" align="center" margin="0px 0px 10px">Dynamic Payload</H4>
-            <Text>All of these are available thanks to a community of creatives who regularly contribute their vector designs.</Text>
-            <CodeView margin="0px 0px 28px" code={dynamicPayload} />
+          <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
+            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Dynamic Payload</H5>
+            <CodeView margin="0px" code={dynamicPayload} />
           </HeroColWrapper>
         </BoxRow>
-        <MethodTable>
-          <tbody>
-            <tr>
-              <td>Static</td>
-              <td>
-                <Methods>
-                  <MethodButton onClick={() => handleMethod(1)} active={currentCall === 1}>Fetch</MethodButton>
-                </Methods>
-              </td>
-            </tr>
 
-            <tr>
-              <td>Dynamic</td>
-              <td>
-                <Methods>
-                  <MethodButton onClick={() => handleMethod(2)} active={currentCall === 2}>Fetch All</MethodButton>
-                  <MethodButton onClick={() => handleMethod(3)} active={currentCall === 3}>Fetch One</MethodButton>
-                  <MethodButton onClick={() => handleMethod(4)} active={currentCall === 4}>Add</MethodButton>
-                  <MethodButton onClick={() => handleMethod(5)} active={currentCall === 5}>Update</MethodButton>
-                  <MethodButton onClick={() => handleMethod(6)} active={currentCall === 6}>Delete</MethodButton>
-                </Methods>
-              </td>
-            </tr>
-          </tbody>
-        </MethodTable>
-        <BoxRow margin="0px">
-          <HeroColWrapper className="col-md-6">
-            <P font="Rajdhani">Request</P>
-            <CodeView margin="0px 0px 28px" code={reqPayload} />
+        <BoxRow margin="0px 0px 28px">
+          <HeroColWrapper className="col-md">
+            <H3 font="Rajdhani" align="center" margin="0px 0px 10px">Let&rsquo;s see some practical examples</H3>
+            <Text margin="0px">All of these are available thanks to a community of creatives who regularly contribute their vector designs.</Text>
           </HeroColWrapper>
-          <HeroColWrapper className="col-md-6">
-            <P font="Rajdhani">Response</P>
-            <CodeView margin="0px 0px 28px" code={resPayload} />
+        </BoxRow>
+
+        <BoxRow margin="0px 0px 10px">
+          <HeroColWrapper className="col-md">
+            <MethodTable>
+              <tbody>
+                <tr>
+                  <td>Static</td>
+                  <td>
+                    <Methods>
+                      <MethodButton onClick={() => handleMethod(1)} active={currentCall === 1}>Fetch</MethodButton>
+                    </Methods>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Dynamic</td>
+                  <td>
+                    <Methods>
+                      <MethodButton onClick={() => handleMethod(2)} active={currentCall === 2}>Fetch All</MethodButton>
+                      <MethodButton onClick={() => handleMethod(3)} active={currentCall === 3}>Fetch One</MethodButton>
+                      <MethodButton onClick={() => handleMethod(4)} active={currentCall === 4}>Add</MethodButton>
+                      <MethodButton onClick={() => handleMethod(5)} active={currentCall === 5}>Update</MethodButton>
+                      <MethodButton onClick={() => handleMethod(6)} active={currentCall === 6}>Delete</MethodButton>
+                    </Methods>
+                  </td>
+                </tr>
+              </tbody>
+            </MethodTable>
+          </HeroColWrapper>
+        </BoxRow>
+
+        <BoxRow padding="28px 0px 0px">
+          <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
+            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Request</H5>
+            <CodeView margin="0px" code={reqPayload} />
+          </HeroColWrapper>
+          <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
+            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Response</H5>
+            <CodeView margin="0px" code={resPayload} />
           </HeroColWrapper>
         </BoxRow>
       </HomeContainer>
