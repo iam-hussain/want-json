@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { PageWithOutContainer } from '../components/Layout/Page';
 import {
   HeroImg, HeroTitle, HeroText, HeroButtonGroup, HeroColWrapper,
@@ -143,25 +144,36 @@ export default function Home() {
           <HeroColWrapper className="col-lg-6">
             <HeroTitle>What we do ?</HeroTitle>
             <HeroText padding="0px 0px 28px" align="center">
-              The best thing about Freepik’s free vector images?
-              You don’t need to provide any attribution.
-              You just need to create an account, then start downloading illustrations and icons,
-              saving your favorites to your account.
+              We let you create custom Rest API in simple way for development and testing, also we call this Rest API as
+              {' '}
+              <span>Payload&apos;s</span>
+              . We two differnt types
+              {' '}
+              <span>Static</span>
+              {' '}
+              and
+              {' '}
+              <span>Dynamic</span>
+              .
             </HeroText>
             <HeroButtonGroup>
-              <PrimaryBtn margin="5px">Explore</PrimaryBtn>
-              <PrimaryBtn margin="5px">Create</PrimaryBtn>
+              <Link href="/explore">
+                <PrimaryBtn margin="5px">Explore</PrimaryBtn>
+              </Link>
+              <Link href="/dashboard/payload/create">
+                <PrimaryBtn margin="5px">Create</PrimaryBtn>
+              </Link>
             </HeroButtonGroup>
           </HeroColWrapper>
         </HeroRowWrapper>
 
         <BoxRow margin="28px 0px 0px" padding="28px 0px 0px">
           <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
-            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Static Payload</H5>
+            <H5 font="Rajdhani">Static Payload</H5>
             <CodeView margin="0px" code={staticPayload} />
           </HeroColWrapper>
           <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
-            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Dynamic Payload</H5>
+            <H5 font="Rajdhani">Dynamic Payload</H5>
             <CodeView margin="0px" code={dynamicPayload} />
           </HeroColWrapper>
         </BoxRow>
@@ -169,7 +181,24 @@ export default function Home() {
         <BoxRow margin="0px 0px 28px">
           <HeroColWrapper className="col-md">
             <H3 font="Rajdhani" align="center" margin="0px 0px 10px">Let&rsquo;s see some practical examples</H3>
-            <Text margin="0px">All of these are available thanks to a community of creatives who regularly contribute their vector designs.</Text>
+            <Text margin="0px" maxWidth="600px">
+              What if we create two types of
+              {' '}
+              <span>Payload&apos;s</span>
+              {' '}
+              with the name of
+              {' '}
+              <span>static_payload</span>
+              {' '}
+              and
+              {' '}
+              <span>dynamic_payload</span>
+              . Check how it work&apos;s in below by clicking on the
+              {' '}
+              <span>Buttons</span>
+              .
+            </Text>
+
           </HeroColWrapper>
         </BoxRow>
 
@@ -205,11 +234,11 @@ export default function Home() {
 
         <BoxRow padding="28px 0px 0px">
           <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
-            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Request</H5>
+            <H5 font="Rajdhani">Request</H5>
             <CodeView margin="0px" code={reqPayload} />
           </HeroColWrapper>
           <HeroColWrapper margin="0px 0px 28px" className="col-md-6">
-            <H5 font="Rajdhani" color={(props) => props.theme.text3}>Response</H5>
+            <H5 font="Rajdhani">Response</H5>
             <CodeView margin="0px" code={resPayload} />
           </HeroColWrapper>
         </BoxRow>

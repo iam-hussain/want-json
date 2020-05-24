@@ -6,7 +6,7 @@ import { RowWrapper, ColWrapper, Container } from '../Basic/Wrapper';
 import { Keywords, APITable } from '../Payload';
 
 export const HeroRowWrapper = styled(RowWrapper)`
-    min-height: calc(100vh - 176px);
+    min-height: calc(100vh - 170px);
     margin: 28px 0px 0px;
     @media ${device.xs_lg}{
         min-height: auto;
@@ -51,6 +51,14 @@ export const HeroTitle = styled(H1)`
 export const HeroText = styled(P)`
     padding: 0px 0px 28px;
     text-align: center;
+    max-width: 460px;
+    margin: auto;
+
+    span{
+        color: ${(props) => props.theme.secondary};
+        font-weight: 700;
+        font-family: "Rajdhani";
+    }
 
     @media ${device.xs_sm}{
         padding: 0px 0px 10px;
@@ -59,6 +67,14 @@ export const HeroText = styled(P)`
 
 export const Text = styled(P)`
     text-align: center;
+    max-width: ${(props) => props.maxWidth || 'auto'};
+    margin: auto;
+
+    span{
+        color: ${(props) => props.theme.secondary};
+        font-weight: 700;
+        font-family: "Rajdhani";
+    }
 `;
 
 export const HeroButtonGroup = styled.div`

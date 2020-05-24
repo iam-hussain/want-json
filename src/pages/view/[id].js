@@ -22,7 +22,7 @@ Edit.getInitialProps = async (ctx) => {
     return null;
   }
   if (!myPayload.success) {
-    Router.push('/');
+    Router.push('/explore');
   }
   return { payload: myPayload.payload };
 };

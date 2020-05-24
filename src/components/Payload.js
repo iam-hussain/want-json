@@ -63,6 +63,7 @@ export const Table = styled.table`
     word-break: break-all;
     flex: 1;
     background-color: ${(props) => props.theme.bg};
+    color: ${(props) => props.theme.text1};
     width: 100%;
     font-family: "Rajdhani";
     text-transform: uppercase;

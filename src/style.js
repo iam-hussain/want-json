@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import FredokaOne from './assets/fonts/FredokaOne-Regular.ttf';
 import Rajdhani from './assets/fonts/Rajdhani-Bold.ttf';
 import Raleway from './assets/fonts/Raleway-Bold.ttf';
-import Vollkorn from './assets/fonts/Vollkorn-VariableFont_wght.ttf';
+import Hind from './assets/fonts/Hind-Medium.ttf';
 
 export const GlobalStyle = createGlobalStyle`    
 
@@ -13,8 +13,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'Vollkorn';
-    src: url(${Vollkorn});
+    font-family: 'Hind';
+    src: url(${Hind});
   }
 
   @font-face {
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     margin 0px;
-    font-family: "Vollkorn";
+    font-family: "Hind";
     font-size: 16px;
     font-weight: 300;
     line-height: 1.7;

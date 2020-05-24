@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import BigNumber from 'big-number';
+import bigInt from 'big-integer';
 import {
   successResponce,
 } from '../../utils/exchange';
@@ -78,8 +78,7 @@ export default class Explore {
         status: 'active',
         visibility: 'public',
       });
-      payloadModule.updateAny({ id: req.params.id },
-        { viewCount: BigNumber(payloadData.viewCount).plus(1) });
+      await payloadData.update({ viewCount: bigInt(payloadData.viewCount).next() });
       return successResponce(
         req,
         res,

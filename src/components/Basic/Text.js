@@ -18,7 +18,7 @@ export const Brand = styled.p`
 
 export const P = styled.p`
   width: ${(props) => props.width || '100%'};
-  font-family: ${(props) => props.font || 'Vollkorn'};
+  font-family: ${(props) => props.font || 'Hind'};
   font-size: ${(props) => props.size || '1rem'};
   padding: ${(props) => props.padding || '0 10px'};
   margin: ${(props) => props.margin || '0px'};
