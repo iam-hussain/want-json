@@ -23,7 +23,7 @@ export const InfoTitle = styled(H1)`
 export const InfoText = styled(P)`
     width: 500px;
     margin: 0;
-    font-size: 1.125rem;
+    font-size: 16px;
     line-height: 1.3em;
     font-weight: 500;
 
@@ -31,7 +31,7 @@ export const InfoText = styled(P)`
         width: auto;
     }
     @media ${device.xs_sm}{
-        font-size: 1rem;
+        font-size: 16px;
         margin: 0px;
         padding: 0px;
     }

@@ -2,7 +2,6 @@
 /* eslint-disable import/no-cycle */
 import { param } from 'express-validator';
 import { uniqBy } from 'lodash';
-import bigInt from 'big-integer';
 import payloadModule from '../helper/payload';
 
 const isValidPayload = param('url').custom(async (value, { req }) => {

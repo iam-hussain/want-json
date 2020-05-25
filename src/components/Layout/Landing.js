@@ -20,8 +20,8 @@ export default function Login({ children }) {
               <H3 transform="uppercase" align="center">Welcome to</H3>
               <Link href="/"><InfoTitle align="center">getJSON</InfoTitle></Link>
               <InfoText align="center">
-                Free online custom REST API for development and testing,
-                Create a custom API in some seconds with GET, POST, PUT, DELETE methods.
+                Join with us to create some free online custom REST API for development
+                , testing and more in a simplest way with CRUD operations.
               </InfoText>
               <TabSwitch>
                 <Link href="/login">

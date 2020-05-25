@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
 import { useForm, ErrorMessage } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +24,7 @@ import { postMethod, putMethod } from '../../utils/Integration';
 export default function APIForm({ data, editMode }) {
   const [componentLoading, setComponentLoading] = useState(true);
   const [keyWords, setKeyWords] = useState([]);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -112,6 +114,7 @@ export default function APIForm({ data, editMode }) {
         setKeyWords([]);
         setCodeString('');
         reset();
+        router.push('/dashboard/payload');
       }
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {

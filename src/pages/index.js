@@ -147,7 +147,7 @@ export default function Home() {
               We let you create custom Rest API in simple way for development and testing, also we call this Rest API as
               {' '}
               <span>Payload&apos;s</span>
-              . We two differnt types
+              . We separated payload into two types
               {' '}
               <span>Static</span>
               {' '}

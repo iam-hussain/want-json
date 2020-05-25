@@ -7,8 +7,16 @@ import {
   faPlus, faAddressBook, faDatabase, faCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { device } from '../../style';
-import Page from './Page';
+import { PageWithOutContainer } from './Page';
+import { Container } from '../Basic/Wrapper';
 import { Button } from '../Basic/Button/Button';
+
+
+export const DashContainer = styled(Container)`
+  margin-top: 0px;
+  align-items: start;
+  justify-content: start;
+`;
 
 export const ActionBar = styled.div`
     display: flex;
@@ -68,36 +76,38 @@ export const DashContent = styled.div`
 export default function Dash({ children }) {
   const router = useRouter();
   return (
-    <Page>
-      <ActionBar>
-        <Link href="/dashboard/payload/create">
-          <ActionItem active={router.pathname === '/dashboard/payload/create'}>
-            <FontAwesomeIcon icon={faPlus} />
-            <span>Create</span>
-          </ActionItem>
-        </Link>
-        <Link href="/dashboard/payload">
-          <ActionItem active={router.pathname === '/dashboard/payload'}>
-            <FontAwesomeIcon icon={faDatabase} />
-            <span>My Payload</span>
-          </ActionItem>
-        </Link>
-        <Link href="/dashboard/profile">
-          <ActionItem active={router.pathname === '/dashboard/profile'}>
-            <FontAwesomeIcon icon={faAddressBook} />
-            <span>My Profile</span>
-          </ActionItem>
-        </Link>
-        <Link href="/dashboard/settings">
-          <ActionItem active={router.pathname.match('/dashboard/settings')}>
-            <FontAwesomeIcon icon={faCog} />
-            <span>Settings</span>
-          </ActionItem>
-        </Link>
-      </ActionBar>
-      <DashContent>
-        {children}
-      </DashContent>
-    </Page>
+    <PageWithOutContainer>
+      <DashContainer>
+        <ActionBar>
+          <Link href="/dashboard/payload/create">
+            <ActionItem active={router.pathname === '/dashboard/payload/create'}>
+              <FontAwesomeIcon icon={faPlus} />
+              <span>Create</span>
+            </ActionItem>
+          </Link>
+          <Link href="/dashboard/payload">
+            <ActionItem active={router.pathname === '/dashboard/payload'}>
+              <FontAwesomeIcon icon={faDatabase} />
+              <span>My Payload</span>
+            </ActionItem>
+          </Link>
+          <Link href="/dashboard/profile">
+            <ActionItem active={router.pathname === '/dashboard/profile'}>
+              <FontAwesomeIcon icon={faAddressBook} />
+              <span>My Profile</span>
+            </ActionItem>
+          </Link>
+          <Link href="/dashboard/settings">
+            <ActionItem active={router.pathname.match('/dashboard/settings')}>
+              <FontAwesomeIcon icon={faCog} />
+              <span>Settings</span>
+            </ActionItem>
+          </Link>
+        </ActionBar>
+        <DashContent>
+          {children}
+        </DashContent>
+      </DashContainer>
+    </PageWithOutContainer>
   );
 }
