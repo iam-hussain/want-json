@@ -1,2 +1,2 @@
-# getJSON
-getJSON is a free online REST API that you can use whenever you need some fake data. 
+# wantJSON
+wantJSON is a free online REST API that you can use whenever you need some fake data. 

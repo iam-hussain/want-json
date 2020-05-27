@@ -17,9 +17,13 @@ class Locals {
     const appSecret = process.env.APP_SECRET || '1242#$%$^%!@@$!%*(%^jnadkjcn';
     const jwtExpiresIn = process.env.JWT_EXPIRES_IN || 3;
 
-    const name = process.env.APP_NAME || 'getJSON';
+    const apiBaseURL = process.env.API_BASE_URL || 'http://localhost:3000/web/';
+    const payloadURL = process.env.PAYLOAD_URL || 'http://localhost:3000/api/';
+    const contactEmail = process.env.CONTACT_EMAIL || 'support@wantjson.com';
+
+    const name = process.env.APP_NAME || 'wantJSON';
     const description = process.env.APP_DESCRIPTION
-      || 'getJSON is a free online REST API that you can use whenever you need some fake data.';
+      || 'wantJSON is a free online REST API that you can use whenever you need some fake data.';
     const isCORSEnabled = !(
       !process.env.CORS_ENABLED || process.env.CORS_ENABLED === 'false'
     );
@@ -27,7 +31,7 @@ class Locals {
     const db = {
       username: process.env.DB_USERNAME || 'root',
       password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_DATABASE || 'getjson',
+      database: process.env.DB_DATABASE || 'wantjson',
       host: process.env.DB_HOST || 'localhost',
       dialect: process.env.DB_DIALECT || 'mysql',
 
@@ -35,10 +39,11 @@ class Locals {
       logging: !process.env.DB_LOGGING || process.env.DB_LOGGING === 'false' ? false : console.log,
     };
 
-    const mailgun = {
-      sender: process.env.MAIL_SENDER || 'getJSON.io <admin@getjosn.io>',
-      api_key: process.env.MAILGUN_API_KEY || '',
-      domain: process.env.MAILGUN_DOMAIN || '',
+    const mail = {
+      user: process.env.MAIL_USER || '',
+      password: process.env.MAIL_PASSWORD || '',
+      sevice: process.env.MAIL_SERVICE || 'gmail',
+      sender: process.env.MAIL_SENDER || process.env.MAIL_USER || '',
     };
 
     return {
@@ -54,7 +59,10 @@ class Locals {
       db,
       appSecret,
       jwtExpiresIn,
-      mailgun,
+      mail,
+      apiBaseURL,
+      payloadURL,
+      contactEmail,
     };
   }
 }

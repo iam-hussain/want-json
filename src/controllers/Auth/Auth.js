@@ -3,15 +3,20 @@ import { successResponce, errorResponce } from '../../utils/exchange';
 import userModule from '../../helper/user';
 import hashingUtil from '../../utils/hashing';
 import authyModule from '../../helper/auth';
-// import notification from '../../utils/notification';
+import otpEmail from '../../utils/email/otpEmail';
 
 export default class Auth {
   static async signUp(req, res, next) {
     try {
+      req.body.authData = await userModule.createAuthData('email_verify', {});
       const created = await userModule.create(req.body, req.requestIp);
       const publicUserData = await userModule.getWithPublicData({
         id: created.id,
       });
+      const mailedData = await otpEmail(req.body.authData.email_verify.otp, req.body.email);
+      if (!mailedData.success) {
+        return errorResponce(req, res, 'Unexpected error on sending mail!', 200, {});
+      }
       return successResponce(
         req,
         res,
@@ -160,12 +165,14 @@ export default class Auth {
         },
         { authData },
       );
-      // const data = await notification.sendEmail(
-      // req.body.email,'', 'email_auth', { otp: '' });
+      const mailedData = await otpEmail(authData[req.body.type].otp, req.body.email);
+      if (!mailedData.success) {
+        return errorResponce(req, res, 'Unexpected error on sending mail!', 200, {});
+      }
       return successResponce(
         req,
         res,
-        `OTP sent successfully ! [ ${authData[req.body.type].otp} ]`,
+        'OTP sent successfully !',
         202,
         {},
       );

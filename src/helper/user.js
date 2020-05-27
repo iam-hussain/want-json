@@ -42,7 +42,6 @@ export default class UserModule {
   }
 
   static async create(payLoad, requestIp) {
-    const authData = await UserModule.createAuthData('email_verify', {});
     const hashed = await hashingUtil.createPasswordHash(payLoad.password);
     const returnData = await DB.models.User.create({
       email: payLoad.email,
@@ -50,7 +49,7 @@ export default class UserModule {
       password: hashed.password,
       salt: hashed.salt,
       joinedIP: requestIp.clientIp,
-      authData,
+      authData: payLoad.authData,
     });
     return returnData;
   }
@@ -64,8 +63,6 @@ export default class UserModule {
 
   static async createAuthData(type, existingData) {
     const OTP = await hashingUtil.emailOTP();
-    // eslint-disable-next-line no-console
-    console.log(type, 'OTP is  ==', OTP);
     if (type === 'email_verify') {
       return {
         ...existingData,

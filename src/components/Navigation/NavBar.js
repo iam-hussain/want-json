@@ -135,7 +135,7 @@ export default function NavBar() {
   return (
     <Navbar>
       <Container padding="0px 15px" justify="space-between">
-        <Link href="/"><Brand>getJSON</Brand></Link>
+        <Link href="/"><Brand>wantJSON</Brand></Link>
         <MenuUL>
           <MenuLI>
             <Link href="/documentation">

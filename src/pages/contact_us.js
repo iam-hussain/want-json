@@ -22,7 +22,7 @@ function ContactUs() {
             <P>Email Us</P>
           </Contribute>
         </CopyToClipboard>
-        <Contribute size="2rem" href="https://github.com/ZaHuPro/getJSON" target="_blank">
+        <Contribute size="2rem" href="https://github.com/ZaHuPro/wantJSON" target="_blank">
           <FontAwesomeIcon icon={faGithubSquare} />
           <P>Contribute with us</P>
         </Contribute>

@@ -1,35 +1,38 @@
+import nodeMailer from 'nodemailer';
 import Locals from '../providers/Locals';
 import Log from '../middlewares/Log';
 
-const mailgun = require('mailgun-js');
+export default class notification {
+  static async sendEmail(to, subject, html) {
+    const transporter = nodeMailer.createTransport({
+      service: Locals.mail.sevice,
+      auth: {
+        user: Locals.mail.user,
+        pass: Locals.mail.password,
+      },
+    });
 
-const mg = mailgun({
-  apiKey: Locals.mailgun.api_key,
-  domain: Locals.mailgun.domain,
-});
-export default class hashingModule {
-  static async sendEmail(to, subject, template, varible) {
-    const data = {
-      from: 'Excited User <me@samples.mailgun.org>', //  Locals.mailgun.sender,
+    const mailOptions = {
+      from: Locals.mail.sender,
       to,
       subject,
-      template,
-      'h:X-Mailgun-Variables': varible,
+      html,
     };
-    await mg.messages().send(data, (error, body) => {
-      if (error && !body) {
-        Log.error(
-          `[onError]${JSON.stringify(error)}, [onBody]${JSON.stringify(body)}`,
-        );
-        return {
-          success: false,
-          msg: 'Unknown error on sending mail',
-        };
-      }
+
+    const info = await transporter.sendMail(mailOptions);
+    if (!info.messageId) {
+      Log.error(
+        `Unable to send OTP mail to ${to}`,
+      );
       return {
         success: false,
-        msg: 'Mail send successfully',
+        msg: 'Unknown error on sending mail',
       };
-    });
+    }
+
+    return {
+      success: true,
+      msg: 'Mail send successfully',
+    };
   }
 }

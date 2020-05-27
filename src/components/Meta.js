@@ -3,9 +3,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const stdMeta = {
-  title: 'getJSON.io | Free online custom REST API for development and testing',
+  title: 'wantJSON.io | Free online custom REST API for development and testing',
   description: 'Create a custom API in some seconds with GET, POST, PUT, DELETE methods, With static and dynamic API every developer and tester can do CURD (Create, Update, Read, Delete) operations.',
-  site_name: 'getJSON.io',
+  site_name: 'wantJSON.io',
   creator: 'ZaHuPro@GitHub',
   'image-1200x630': `${process.env.APP_URL}/static/metaImg-1200x630.png`,
   'image-600x314': `${process.env.APP_URL}/static/metaImg-600x314.png`,
@@ -14,61 +14,61 @@ const stdMeta = {
 
 const pathMetaData = {
   index: {
-    title: 'getJSON.io | Free online custom REST API for development and testing',
+    title: 'wantJSON.io | Free online custom REST API for development and testing',
   },
   dashboard: {
     payload: {
       index: {
-        title: 'My Payloads | getJSON.io',
+        title: 'My Payloads | wantJSON.io',
       },
       create: {
-        title: 'New Payload | getJSON.io',
+        title: 'New Payload | wantJSON.io',
       },
       edit: {
-        title: 'Edit Payload | getJSON.io',
+        title: 'Edit Payload | wantJSON.io',
       },
       view: {
-        title: 'View My Payload | getJSON.io',
+        title: 'View My Payload | wantJSON.io',
       },
     },
     settings: {
       index: {
-        title: 'My Settings | getJSON.io',
+        title: 'My Settings | wantJSON.io',
       },
       change_password: {
-        title: 'Change Password | getJSON.io',
+        title: 'Change Password | wantJSON.io',
       },
       deleted: {
-        title: 'Deleted Payloads | getJSON.io',
+        title: 'Deleted Payloads | wantJSON.io',
       },
     },
     profile: {
-      title: 'My Profile | getJSON.io',
+      title: 'My Profile | wantJSON.io',
     },
   },
   view: {
-    title: 'View Payload | getJSON.io',
+    title: 'View Payload | wantJSON.io',
   },
   contact_us: {
-    title: 'Contact Us | getJSON.io',
+    title: 'Contact Us | wantJSON.io',
   },
   documentation: {
-    title: 'Documentation | getJSON.io',
+    title: 'Documentation | wantJSON.io',
   },
   email_verify: {
-    title: 'Email Verify | getJSON.io',
+    title: 'Email Verify | wantJSON.io',
   },
   explore: {
-    title: 'Explore Payloads | getJSON.io',
+    title: 'Explore Payloads | wantJSON.io',
   },
   login: {
-    title: 'Login | getJSON.io',
+    title: 'Login | wantJSON.io',
   },
   register: {
-    title: 'Register | getJSON.io',
+    title: 'Register | wantJSON.io',
   },
   reset_password: {
-    title: 'Reset password | getJSON.io',
+    title: 'Reset password | wantJSON.io',
   },
 };
 

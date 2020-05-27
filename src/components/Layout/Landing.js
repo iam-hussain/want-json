@@ -18,7 +18,7 @@ export default function Login({ children }) {
           <ColWrapper className="col-md">
             <Box>
               <H3 transform="uppercase" align="center">Welcome to</H3>
-              <Link href="/"><InfoTitle align="center">getJSON</InfoTitle></Link>
+              <Link href="/"><InfoTitle align="center">wantJSON</InfoTitle></Link>
               <InfoText align="center">
                 Join with us to create some free online custom REST API for development
                 , testing and more in a simplest way with CRUD operations.

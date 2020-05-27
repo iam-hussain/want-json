@@ -12,7 +12,7 @@ module.exports = withFonts(withCSS({
     APP_SECRET: process.env.APP_SECRET || '1242#$%$^%!@@$!%*(%^jnadkjcn',
     API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000/web/',
     PAYLOAD_URL: process.env.PAYLOAD_URL || 'http://localhost:3000/api/',
-    CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'admin@getjson.io',
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'admin@wantjson.com',
     APP_URL: process.env.APP_URL || 'http://localhost:3000',
   },
 }));
