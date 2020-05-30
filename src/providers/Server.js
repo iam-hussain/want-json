@@ -50,8 +50,9 @@ export default function erverInit() {
       });
     } else {
       const options = {
-        key: fs.readFileSync(path.resolve('./ssl/server-key.pem')),
-        cert: fs.readFileSync(path.resolve('./ssl/server-cert.pem')),
+        cert: fs.readFileSync(path.resolve('./ssl/cert.crt')),
+        ca: fs.readFileSync(path.resolve('./ssl/bundle.ca-bundle')),
+        key: fs.readFileSync(path.resolve('./ssl/key.key')),
       };
 
       https.createServer(options, expressApp).listen(port, (_error) => {
