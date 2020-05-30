@@ -5,6 +5,7 @@ import next from 'next';
 // import http from 'http';
 import https from 'https';
 import fs from 'fs';
+import path from 'path';
 import Bootstrap from '../middlewares/Kernel';
 import Log from '../middlewares/Log';
 import Locals from './Locals';
@@ -49,8 +50,8 @@ export default function erverInit() {
       });
     } else {
       const options = {
-        key: fs.readFileSync(`${Locals.sslPath}server-key.pem`),
-        cert: fs.readFileSync(`${Locals.sslPath}server-cert.pem`),
+        key: fs.readFileSync(path.resolve('./ssl/server-key.pem')),
+        cert: fs.readFileSync(path.resolve('./ssl/server-cert.pem')),
       };
 
       https.createServer(options, expressApp).listen(port, (_error) => {

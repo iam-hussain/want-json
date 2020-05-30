@@ -46,8 +46,6 @@ class Locals {
       sender: process.env.MAIL_SENDER || process.env.MAIL_USER || '',
     };
 
-    const sslPath = process.env.SSL_PATH || './';
-
     return {
       env,
       name,
@@ -65,7 +63,6 @@ class Locals {
       apiBaseURL,
       payloadURL,
       contactEmail,
-      sslPath,
     };
   }
 }
