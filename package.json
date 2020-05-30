@@ -5,10 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "client": "next",
-    "nodemon": "nodemon --watch src -r @babel/register ./src",
+    "dev": "nodemon --watch src -r @babel/register ./src",
     "build": "next build",
-    "dev": "node -r @babel/register ./src",
-    "start": "next build && node -r @babel/register ./src",
+    "start": "node -r @babel/register ./src",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix"
   },
