@@ -27,8 +27,6 @@ function EmailVerify() {
     if (responseData.success) {
       setResendDisable(true);
       localStorage.setItem('email_verify', emailInput);
-      // eslint-disable-next-line no-console
-      console.log(responseData.message);
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       setResponseError(responseData.message);

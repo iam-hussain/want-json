@@ -2,6 +2,9 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import next from 'next';
+// import http from 'http';
+import https from 'https';
+import fs from 'fs';
 import Bootstrap from '../middlewares/Kernel';
 import Log from '../middlewares/Log';
 import Locals from './Locals';
@@ -31,18 +34,36 @@ export default function erverInit() {
       Log.error(err.stack);
       return errorResponce(req, res, 'Unexpected error from server', 500, 'server');
     });
-
-    expressApp.listen(port, (_error) => {
-      if (_error) {
+    if (Locals.env !== 'production') {
+      expressApp.listen(port, (_error) => {
+        if (_error) {
+          // eslint-disable-next-line no-console
+          return console.log('Error: ', _error);
+        }
+        Log.info(`Server :: Running @ ${port}`);
         // eslint-disable-next-line no-console
-        return console.log('Error: ', _error);
-      }
-      Log.info(`Server :: Running @ ${port}`);
-      // eslint-disable-next-line no-console
-      return console.log(
-        '\x1b[33m%s\x1b[0m',
-        `Server :: Running @ 'http://localhost:${port}'`,
-      );
-    });
+        return console.log(
+          '\x1b[33m%s\x1b[0m',
+          `Server :: Running @ 'http://localhost:${port}'`,
+        );
+      });
+    } else {
+      const options = {
+        key: fs.readFileSync(`${Locals.sslPath}server-key.pem`),
+        cert: fs.readFileSync(`${Locals.sslPath}server-cert.pem`),
+      };
+
+      https.createServer(options, expressApp).listen(port, (_error) => {
+        if (_error) {
+          // eslint-disable-next-line no-console
+          return console.log('Error: ', _error);
+        }
+        // eslint-disable-next-line no-console
+        return console.log(
+          '\x1b[33m%s\x1b[0m',
+          `Server with SSL :: Running @ 'http://localhost:${port}'`,
+        );
+      });
+    }
   });
 }
