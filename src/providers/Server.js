@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import next from 'next';
-// import http from 'http';
+import http from 'http';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
@@ -65,6 +65,11 @@ export default function erverInit() {
           `Server with SSL :: Running @ 'http://localhost:${port}'`,
         );
       });
+
+      http.createServer((req, res) => {
+        res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
+        res.end();
+      }).listen(80);
     }
   });
 }
