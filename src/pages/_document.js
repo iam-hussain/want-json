@@ -5,7 +5,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 const metaData = {
   description: 'Create a custom API in some seconds with GET, POST, PUT, DELETE methods, With static and dynamic API every developer and tester can do CURD (Create, Update, Read, Delete) operations.',
-  site_name: 'wantJSON.io',
+  site_name: 'wantJSON.com',
   creator: 'ZaHuPro@GitHub',
   'image-1200x630': `${process.env.APP_URL}/static/metaImg-1200x630.png`,
   'image-600x314': `${process.env.APP_URL}/static/metaImg-600x314.png`,

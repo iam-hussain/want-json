@@ -30,7 +30,7 @@ export const Bubble = styled.div`
 export default function Loader({ show }) {
   return (
     <Cover show={show}>
-      <Brand size="25px">wantJSON.io</Brand>
+      <Brand size="25px">wantJSON.com</Brand>
       <Spinner>
         <Bubble top="0px" />
         <Bubble delay="-0.5s" right="0px" />

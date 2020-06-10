@@ -8,7 +8,7 @@ const emailIs = `
   xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-  <title>wantJSON.io</title>
+  <title>wantJSON.com</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
@@ -252,7 +252,7 @@ const emailIs = `
                           color: #025373;
                           font-size: 35px;
                           font-family: 'Fredoka One', cursive;
-                        " href="#" target="_blank" style="text-decoration: none;">wantJSON.io</a>
+                        " href="#" target="_blank" style="text-decoration: none;">wantJSON.com</a>
                   </td>
                 </tr>
                 <tr>
@@ -443,9 +443,8 @@ const emailIs = `
 </html>
 `;
 
-
 export default async function otpEmail(otp, email) {
   const newEmailTemplate = emailIs.replace('{{otpIs}}', otp);
-  const mailedData = await notification.sendEmail(email, 'wantJSON Email OTP is here !', newEmailTemplate);
+  const mailedData = await notification.sendEmail(email, `${otp} is your Email OTP from wantJSON !`, newEmailTemplate);
   return mailedData;
 }

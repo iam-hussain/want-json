@@ -7,7 +7,7 @@ export const InfoTitle = styled(H1)`
     padding:28px 0px;
     font-family: "FredokaOne";
     cursor: pointer;
-    font-size: ${(props) => props.size || '6.5rem'};
+    font-size: ${(props) => props.size || '5rem'};
     color: ${(props) => props.theme.primary};
 
     @media ${device.xs}{

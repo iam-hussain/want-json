@@ -39,11 +39,12 @@ class Locals {
       logging: !process.env.DB_LOGGING || process.env.DB_LOGGING === 'false' ? false : console.log,
     };
 
-    const mail = {
-      user: process.env.MAIL_USER || '',
-      password: process.env.MAIL_PASSWORD || '',
-      sevice: process.env.MAIL_SERVICE || 'gmail',
-      sender: process.env.MAIL_SENDER || process.env.MAIL_USER || '',
+    const mailSender = process.env.MAIL_SENDER || 'wantJSON.com <support@wantjson.com>';
+
+    const aws = {
+      region: process.env.AWS_REGION || 'us-west-2',
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'XXXX',
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'XXXX/XXXX',
     };
 
     return {
@@ -59,10 +60,11 @@ class Locals {
       db,
       appSecret,
       jwtExpiresIn,
-      mail,
       apiBaseURL,
       payloadURL,
       contactEmail,
+      aws,
+      mailSender,
     };
   }
 }
