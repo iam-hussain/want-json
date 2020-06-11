@@ -14,9 +14,7 @@ const emailIs = `
   <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
   <meta name="format-detection" content="telephone=no" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Raleway:wght@800&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Raleway:wght@800&display=swap" rel="stylesheet">
 
   <style type="text/css">
     body {
@@ -247,12 +245,9 @@ const emailIs = `
                 </tr>
                 <tr>
                   <td align="center" valign="top">
-                    <a style="
-                          text-decoration: none;
-                          color: #025373;
-                          font-size: 35px;
-                          font-family: 'Fredoka One', cursive;
-                        " href="#" target="_blank" style="text-decoration: none;">wantJSON.com</a>
+                    <a href="${Locals.url}">
+                        <img style="max-width: 80%;" src="${Locals.url}/static/logo.png" />
+                    </a></a>
                   </td>
                 </tr>
                 <tr>
@@ -377,7 +372,7 @@ const emailIs = `
             <td align="center" valign="top" style="padding: 0 25px;" class="em_aside10">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
                 <tr>
-                  <td height="40" style="height: 40px;" class="em_h20">
+                  <td height="20" class="em_h20">
                     &nbsp;
                   </td>
                 </tr>
@@ -408,27 +403,13 @@ const emailIs = `
                   </td>
                 </tr>
                 <tr>
-                  <td align="center" valign="top" style="font-size: 0px; line-height: 0px;">
-                    <table border="0" cellspacing="0" cellpadding="0" align="center">
-                      <tr>
-                        <td width="15" align="left" valign="middle" style="
-                              font-size: 0px;
-                              line-height: 0px;
-                              width: 15px;
-                            ">
-                        </td>
-                        <td class="em_grey em_font_11" align="left" valign="middle" style="
-                              font-family: Arial, sans-serif;
-                              font-size: 13px;
-                              line-height: 15px;
-                              color: #434343;
-                            ">
-                          <a href="mailto:${Locals.contactEmail}" style="text-decoration: none; color: #025373;">${Locals.contactEmail}</a>
-                        </td>
-                      </tr>
-                    </table>
+                  <td align="center" valign="middle" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color: #434343;"">
+                    <a href="mailto:${Locals.contactEmail}" style="text-decoration: none; color: #025373;">${Locals.contactEmail}</a>
+                     || 
+                    <a href="${Locals.url}" style="text-decoration: none; color: #025373;">${Locals.url}</a>
                   </td>
                 </tr>
+                
               </table>
             </td>
           </tr>

@@ -62,7 +62,7 @@ export const DropdownUL = styled(MenuUL)`
     top: ${(props) => (props.show ? '45px' : '-100vh')};
     right: 0px;
     box-shadow: ${(props) => props.theme.shadow};
-    animation: ${(props) => (props.out ? fadeOut : fadeIn)} .5s linear 1;
+    animation: ${(props) => (props.out ? fadeOut : fadeIn)};
     transition: visibility 1s linear;
     border: 2px solid;
     border-color:  ${(props) => props.theme.bg};
