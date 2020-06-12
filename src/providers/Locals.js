@@ -47,6 +47,8 @@ class Locals {
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'XXXX/XXXX',
     };
 
+    const GATrakingID = process.env.GA_TRAKING_ID || 'UA-xxxxxxxxx-1';
+
     return {
       env,
       name,
@@ -65,6 +67,7 @@ class Locals {
       contactEmail,
       aws,
       mailSender,
+      GATrakingID,
     };
   }
 }

@@ -13,6 +13,7 @@ import {
   repeatPasswordNotMatch,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function ChangePasswordForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -37,6 +38,7 @@ export default function ChangePasswordForm() {
     const token = cookie.get('token');
     const responseData = await postMethod('change_password', data, token);
     if (responseData.success) {
+      logEvent('User', responseData.message);
       alert.success(responseData.message);
       reset();
       router.push('/login');

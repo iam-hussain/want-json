@@ -10,6 +10,7 @@ import {
   requiredInputMsg,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function ContactUsForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -30,6 +31,7 @@ export default function ContactUsForm() {
   const onSubmit = async (data) => {
     const responseData = await postMethod('contact_us', data);
     if (responseData.success) {
+      logEvent('Contact Us', responseData.message);
       alert.success(responseData.message);
       reset();
     } else if (responseData.errorType === 'validation') {

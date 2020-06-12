@@ -1,14 +1,14 @@
 import cookie from 'js-cookie';
 import instance from './Instance';
+import { logException } from './Analytics';
 
 export const handleData = (data) => {
   let msg = null;
   let errorType = null;
+
   if (data.success || (!data.success && data.errorType === 'validation')) {
     return { ...data };
   }
-  // eslint-disable-next-line no-console
-  console.log(data.message);
   if (data.errorType === 'token') {
     cookie.remove('token');
     if (window) {
@@ -27,6 +27,7 @@ export const handleData = (data) => {
     msg = 'Logged user is not allowed to access this';
     errorType = 'token';
   }
+  logException(msg, data.errorType === 'server');
   return { ...data, message: msg || data.message || 'Unexpected error from server', errorType: errorType || data.errorType };
 };
 

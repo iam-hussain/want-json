@@ -15,6 +15,7 @@ import {
   repeatPasswordNotMatch,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function RegisterForm() {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -37,6 +38,7 @@ export default function RegisterForm() {
   const onSubmit = async (data) => {
     const responseData = await postMethod('signup', data);
     if (responseData.success) {
+      logEvent('User', responseData.message);
       alert.success(responseData.message);
       alert.info('Please verify your Email ID to Login');
       cookie.set('email_verify', responseData.payload.email, { expires: 1 });

@@ -14,6 +14,7 @@ import {
   repeatPasswordNotMatch,
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function RegisterForm({ responseError, setEmail, mailSent }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -48,6 +49,7 @@ export default function RegisterForm({ responseError, setEmail, mailSent }) {
   const onSubmit = async (data) => {
     const responseData = await postMethod('reset_password', data);
     if (responseData.success) {
+      logEvent('User', responseData.message);
       alert.success(responseData.message);
       reset();
       router.push('/login');

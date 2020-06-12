@@ -14,5 +14,6 @@ module.exports = withFonts(withCSS({
     PAYLOAD_URL: process.env.PAYLOAD_URL || 'http://localhost:3000/api/',
     CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'admin@wantjson.com',
     APP_URL: process.env.APP_URL || 'http://localhost:3000',
+    GA_TRAKING_ID: process.env.GA_TRAKING_ID || 'UA-xxxxxxxxx-1',
   },
 }));

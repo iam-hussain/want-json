@@ -8,7 +8,7 @@ import { Container } from '../Basic/Wrapper';
 
 export const StartContainer = styled(Container)`
   align-items: start;
-  margin: 0px;
+  margin: 0px auto;
 `;
 
 export const ContentWrapper = styled.div`

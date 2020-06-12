@@ -9,6 +9,7 @@ import {
   requiredInputMsg,
 } from '../../utils/Message';
 import { putMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function ChangePasswordForm({ profileData, token }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function ChangePasswordForm({ profileData, token }) {
   const onSubmit = async (data) => {
     const responseData = await putMethod('profile', data, token);
     if (responseData.success) {
+      logEvent('User', responseData.message);
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {

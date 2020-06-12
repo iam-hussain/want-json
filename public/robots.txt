@@ -1,0 +1,4 @@
+Sitemap: https://wantjson.com/static/sitemap.xml
+
+User-agent: *
+Allow: /*

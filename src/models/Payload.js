@@ -38,6 +38,10 @@ module.exports = function payloadModel(sequelize, DataTypes) {
         type: DataTypes.JSONB,
         defaultValue: {},
       },
+      hasAuth: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
       hash: {
         type: DataTypes.STRING,
         allowNull: false,

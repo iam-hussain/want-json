@@ -92,6 +92,7 @@ export default class Payload {
         title: createData.title,
         url: createData.url,
         data: createData.data,
+        hasAuth: createData.hasAuth,
       });
     } catch (_error) {
       return next(_error);
@@ -101,9 +102,10 @@ export default class Payload {
   static async update(req, res, next) {
     try {
       const payloadOriginal = await payloadModule.get({ id: req.params.id });
-      req.body.hash = payloadOriginal.visibility === req.body.visibility
-        ? payloadOriginal.hash
-        : await hashingUtil.payloadHashGenerator(req.body.title);
+      req.body.hash = payloadOriginal.visibility !== req.body.visibility
+      && req.body.hasAuth === true
+        ? await hashingUtil.payloadHashGenerator(req.body.title)
+        : payloadOriginal.hash;
       const data = await payloadUtils.validIt(req.body.data, req.body.type);
       const updateData = await payloadModule.update(
         {

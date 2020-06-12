@@ -20,6 +20,7 @@ import {
 } from '../../utils/Message';
 import CodeEditor from '../Editor';
 import { postMethod, putMethod } from '../../utils/Integration';
+import { logEvent } from '../../utils/Analytics';
 
 export default function APIForm({ data, editMode }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -62,6 +63,7 @@ export default function APIForm({ data, editMode }) {
       { description: data.description },
       { type: data.type },
       { visibility: data.visibility },
+      { hasAuth: data.hasAuth ? 'yes' : 'no' },
     ]);
     await setKeyWords(data.keywords);
     await triggerValidation('title');
@@ -100,10 +102,14 @@ export default function APIForm({ data, editMode }) {
   const apiCall = async (_payloadData) => {
     const token = cookie.get('token');
     if (editMode) {
-      const updatedData = await putMethod(`payload/${data.id}`, { ..._payloadData, keywords: keyWords, data: code }, token);
+      const updatedData = await putMethod(`payload/${data.id}`, {
+        ..._payloadData, keywords: keyWords, data: code, hasAuth: _payloadData.hasAuth === 'yes',
+      }, token);
       return updatedData;
     }
-    const createdData = await postMethod('payload', { ..._payloadData, keywords: keyWords, data: code }, token);
+    const createdData = await postMethod('payload', {
+      ..._payloadData, keywords: keyWords, data: code, hasAuth: _payloadData.hasAuth === 'yes',
+    }, token);
     return createdData;
   };
 
@@ -116,6 +122,7 @@ export default function APIForm({ data, editMode }) {
         reset();
         router.push('/dashboard/payload');
       }
+      logEvent('Payload', responseData.message);
       alert.success(responseData.message);
     } else if (responseData.errorType === 'validation') {
       responseData.message.map((m) => {
@@ -257,6 +264,36 @@ export default function APIForm({ data, editMode }) {
         </Item>
         <ErrorBlock>
           <ErrorMessage errors={errors} name="visibility" />
+        </ErrorBlock>
+      </RadioGroup>
+      <RadioGroup hasError={errors.hasAuth}>
+        <GroupName>Header Authentication</GroupName>
+        <Item>
+          <Input
+            type="radio"
+            value="yes"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="hasAuth"
+            required
+          />
+          <Label>Yes</Label>
+        </Item>
+        <Item>
+          <Input
+            type="radio"
+            value="no"
+            ref={register({
+              required: requiredInputMsg,
+            })}
+            name="hasAuth"
+            required
+          />
+          <Label>No</Label>
+        </Item>
+        <ErrorBlock>
+          <ErrorMessage errors={errors} name="hasAuth" />
         </ErrorBlock>
       </RadioGroup>
       <CodeEditor

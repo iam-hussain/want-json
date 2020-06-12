@@ -15,6 +15,7 @@ import {
 } from '../../utils/Message';
 import { postMethod } from '../../utils/Integration';
 import { loggedUpdate } from '../../Redux/Actions/userActions';
+import { logEvent } from '../../utils/Analytics';
 
 export default function EmailVerifyForm({ responseError, setEmail }) {
   const [componentLoading, setComponentLoading] = useState(true);
@@ -56,6 +57,7 @@ export default function EmailVerifyForm({ responseError, setEmail }) {
   const onSubmit = async (data) => {
     const responseData = await postMethod('email_verify', data);
     if (responseData.success) {
+      logEvent('User', responseData.message);
       alert.success(responseData.message);
       cookie.set('token', responseData.payload.token, { expires: 7 });
       cookie.remove('email_verify');

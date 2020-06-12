@@ -7,6 +7,7 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import nextCookie from 'next-cookies';
 import { Provider as AlertProvider } from 'react-alert';
+import { initGA, logPageView } from '../utils/Analytics';
 import AlertTemplate, { alretOptions } from '../components/Alert';
 
 import Store from '../Redux/Store';
@@ -36,6 +37,11 @@ function Wrapper({ children, logged }) {
   useEffect(() => {
     dispatch(loggedUpdate(logged));
     window.addEventListener('storage', syncLogged);
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
     return () => {
       window.removeEventListener('storage', syncLogged);
     };

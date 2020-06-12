@@ -212,16 +212,23 @@ export default function View({ payload }) {
                 <td>API Hit Count</td>
                 <td>{payload.hitCount}</td>
               </tr>
+              <tr>
+                <td>Authentication</td>
+                <td>{payload.hasAuth ? 'Yes' : 'No'}</td>
+              </tr>
             </tbody>
           </Table>
         </ColWrapper>
       </RowWrapper>
+      {payload.hasAuth
+      && (
       <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
         <TokenView>
           <span>Token</span>
           <span>{payload.hash}</span>
         </TokenView>
       </CopyToClipboard>
+      )}
       <RowWrapper>
         <ColWrapper shadow overflow="auto" margin="0px 10px" className="col-md-10">
           <APITable>

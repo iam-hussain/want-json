@@ -140,6 +140,19 @@ const isVisibility = body('visibility')
   .isIn(['public', 'private'])
   .withMessage('Provide a valid visibility type');
 
+const isHasAuth = body('hasAuth')
+  .isBoolean()
+  .withMessage('Provide a valid authentication requirement');
+
+const isValidHasAuth = body('hasAuth').custom(async (value, { req }) => {
+  if ((value === true || value === false) && req.body.visibility) {
+    if (req.body.visibility === 'private' && !value) {
+      throw new Error('Private payload must have header authentication');
+    }
+  }
+  return true;
+});
+
 const isPayloadData = body('data').custom(async (value, { req }) => {
   if (!value) {
     throw new Error('Data must be provided');
@@ -261,6 +274,8 @@ export const createPayloadRules = [
   isDescription,
   isKeywords,
   isType,
+  isHasAuth,
+  isValidHasAuth,
   isVisibility,
   isPayloadData,
   isTitleTakenByAny,
@@ -270,6 +285,8 @@ export const updatePayloadRules = [
   isDescription,
   isKeywords,
   isType,
+  isHasAuth,
+  isValidHasAuth,
   isVisibility,
   isPayloadData,
   isUUID,
