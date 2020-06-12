@@ -12,7 +12,19 @@ export default function Docs() {
     <DocsLayout>
       {/* {DocsData.map((D) => (
         <Article>
-          {D.id}
+          <Heading>{D.content}</Heading>
+          {D.child.map((E) => {
+            if (E.type === 'content') {
+              return <Content>{E.content}</Content>;
+            } if (E.type === 'subheading') {
+              return (
+                <ArticleContent>
+                  <SubHeading>{E.content}</SubHeading>
+                </ArticleContent>
+              );
+            }
+            return <></>;
+          })}
         </Article>
       ))} */}
       <Article>

@@ -23,7 +23,7 @@ export const TabSwitchButton = styled.div`
     border-color: ${(props) => props.theme.secondary};
     width: 180px;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 100;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out 0s;

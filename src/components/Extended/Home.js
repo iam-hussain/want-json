@@ -56,7 +56,7 @@ export const HeroText = styled(P)`
 
     span{
         color: ${(props) => props.theme.secondary};
-        font-weight: 700;
+        font-weight: 100;
         font-family: "Rajdhani";
     }
 
@@ -72,7 +72,7 @@ export const Text = styled(P)`
 
     span{
         color: ${(props) => props.theme.secondary};
-        font-weight: 700;
+        font-weight: 100;
         font-family: "Rajdhani";
     }
 `;

@@ -9,7 +9,7 @@ export const Button = styled.button`
     margin: ${(props) => props.margin || '0px'};
     border-radius: 5px;
     font-size: ${(props) => props.size || '1rem'};
-    font-weight: 700;
+    font-weight: 100;
     overflow: hidden;
     line-height: 1;
     font-family: "Rajdhani";

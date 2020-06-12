@@ -70,7 +70,7 @@ export const Action = styled(Button)`
 export const List = styled.ul`
     width: 100%;
     color: ${(props) => props.theme.text1};
-    font-weight: 600;
+    font-weight: 200;
     display: -ms-flexbox;
     display: flex;
     flex-direction: row;

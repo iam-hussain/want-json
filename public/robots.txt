@@ -1,4 +1,4 @@
-Sitemap: https://wantjson.com/static/sitemap.xml
+sitemap: https://wantjson.com/static/sitemap.xml
 
-User-agent: *
-Allow: /*
+user-agent: *
+disallow: /downloads/

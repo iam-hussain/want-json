@@ -5,7 +5,7 @@ import { device } from '../../style';
 export const Label = styled.label`
     font-family: "Rajdhani";
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 100;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -49,7 +49,7 @@ export const Input = styled.input`
     width: 100%;
     border-radius: 5px;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 100;
     background-color: ${(props) => props.theme.tertiary};
     border: 1px solid;
     transition: border-color .2s ease-in-out;
@@ -85,7 +85,7 @@ export const Textarea = styled.textarea`
     width: 100%;
     border-radius: 5px;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 100;
     background-color: ${(props) => props.theme.tertiary};
     border: 1px solid;
     transition: border-color .2s ease-in-out;
