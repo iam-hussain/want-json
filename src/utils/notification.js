@@ -36,7 +36,7 @@ export default class notification {
           Log.error(err);
           return {
             success: false,
-            msg: err,
+            msg: 'Unexpected error on mail sending',
           };
         }
         return {

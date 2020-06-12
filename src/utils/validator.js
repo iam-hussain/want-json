@@ -1,33 +1,29 @@
-import { check, body, param } from 'express-validator';
+import { body, param } from 'express-validator';
 import validator from 'validator';
 import Sequelize from 'sequelize';
 import userModule from '../helper/user';
 import payloadModule from '../helper/payload';
 import payloadUtils from './payload';
 
-const isFirstName = check('firstName')
-  .notEmpty()
-  .withMessage('FirstName must be provided')
+const isFirstName = body('firstName')
   .isLength({
     min: 4,
   })
   .withMessage('Provide a valid First Name with min 4 letters');
 
-const isLastName = check('lastName')
-  .notEmpty()
-  .withMessage('LastName must be provided')
+const isLastName = body('lastName')
   .isLength({
     min: 4,
   })
   .withMessage('Provide a valid Last Name with min 4 letters');
 
-const isURL = check('url')
+const isURL = body('url')
   .notEmpty()
   .withMessage('URL must be provided')
   .isURL()
   .withMessage('Provide a valid URL');
 
-const isDisplayName = check('displayName')
+const isDisplayName = body('displayName')
   .notEmpty()
   .withMessage('LastName must be provided')
   .isLength({
@@ -49,15 +45,13 @@ const isDisplayNameTaken = body('displayName').custom(async (value, { req }) => 
   return true;
 });
 
-const isEmail = check('email')
+const isEmail = body('email')
   .notEmpty()
   .withMessage('Email must be provided')
   .isEmail()
   .withMessage('Provied a valid Email ID!');
 
-const isPassword = check('password')
-  .notEmpty()
-  .withMessage('Password must be provided')
+const isPassword = body('password')
   .isLength({
     min: 8,
   })
@@ -77,9 +71,9 @@ const isEmailExist = body('email').custom(async (value) => {
   return true;
 });
 
-const isOTP = check('otp').notEmpty().withMessage('OTP must be provided');
+const isOTP = body('otp').notEmpty().withMessage('OTP must be provided');
 
-const isCurrentPassword = check('current_password')
+const isCurrentPassword = body('current_password')
   .notEmpty()
   .withMessage('Current password must be provided')
   .isLength({
@@ -87,16 +81,14 @@ const isCurrentPassword = check('current_password')
   })
   .withMessage('Provide a valid Password with min 8 letters');
 
-const isAuthType = check('type')
+const isAuthType = body('type')
   .notEmpty()
   .withMessage('Type must be provided')
   .isIn(['email_verify', 'reset_password'])
   .withMessage('Provide a valid OTP type');
 
 // Payload
-const isTitle = check('title')
-  .notEmpty()
-  .withMessage('Title must be provided')
+const isTitle = body('title')
   .isLength({
     min: 4,
   })
@@ -127,32 +119,24 @@ const isTitleExistByOther = body('title').custom(async (value, { req }) => {
   return true;
 });
 
-const isDescription = check('description')
-  .notEmpty()
-  .withMessage('Description must be provided')
+const isDescription = body('description')
   .isLength({
     min: 10,
   })
   .withMessage('Provide a valid Description with min 10 letters');
 
-const isKeywords = check('keywords')
-  .notEmpty()
-  .withMessage('Keywords must be provided')
+const isKeywords = body('keywords')
   .isArray({
     min: 1,
     max: 6,
   })
   .withMessage('Provide a valid keywords with min 1 and max 6 words');
 
-const isType = check('type')
-  .notEmpty()
-  .withMessage('Type must be provided')
+const isType = body('type')
   .isIn(['static', 'dynamic'])
   .withMessage('Provide a valid data type');
 
-const isVisibility = check('visibility')
-  .notEmpty()
-  .withMessage('Visibility must be provided')
+const isVisibility = body('visibility')
   .isIn(['public', 'private'])
   .withMessage('Provide a valid visibility type');
 
@@ -234,21 +218,35 @@ const isValidPublicPayload = param('id').custom(async (value) => {
   return true;
 });
 
-const isSortBy = check('sortBy')
+const isSortBy = body('sortBy')
   .optional()
   .isIn(['hitCount', 'viewCount', 'createdAt'])
   .withMessage('Provide a valid sort type');
 
-const isOrderBy = check('orderBy')
+const isOrderBy = body('orderBy')
   .optional()
   .isIn(['ASC', 'DESC'])
   .withMessage('Provide a valid order type');
 
 
+const isMailSubject = body('subject')
+  .isLength({
+    min: 10,
+    max: 100,
+  })
+  .withMessage('Provide a valid subject with min 10 letters and max 100 letters');
+
+const isMailMessage = body('message')
+  .isLength({
+    min: 100,
+    max: 1000,
+  })
+  .withMessage('Provide a valid message with min 100 letters and max 1000 letters');
+
 export const profileUpdateRules = [isFirstName, isLastName,
   isDisplayName, isDisplayNameTaken, isURL];
 
-// Auth
+// Export Validator
 export const registerRules = [isEmail, isPassword, isEmailTaken];
 export const loginRules = [isEmail, isPassword, isEmailExist];
 export const sendOTPRules = [isEmail, isEmailExist, isAuthType];
@@ -282,3 +280,4 @@ export const deletePayloadRules = [isUUID, isValidPayloadAndOwner];
 export const restorePayloadRules = [isUUID, isDeletedPayloadAndOwner];
 export const exploreRules = [isSortBy, isOrderBy];
 export const exploreOneRules = [isUUID, isValidPublicPayload];
+export const contactUSRules = [isEmail, isMailMessage, isMailSubject];

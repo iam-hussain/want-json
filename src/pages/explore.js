@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCertificate, faSearch,
 } from '@fortawesome/free-solid-svg-icons';
-import Page from '../components/Layout/Page';
+import { PageFromStart } from '../components/Layout/Page';
 import { postMethod } from '../utils/Integration';
 import {
   List, ListContent, FrontIcon, ListTitle, ListAction, URL,
@@ -66,7 +66,7 @@ function Explore({ payloadData, pages, searchData }) {
   };
 
   return (
-    <Page>
+    <PageFromStart>
       <SearchForm>
         <Item>
           <InputGroup>
@@ -145,7 +145,7 @@ function Explore({ payloadData, pages, searchData }) {
       )}
       {loader && <SecondaryBtn margin="0px 0px 28px 0px" onClick={() => loadData()}> Load More </SecondaryBtn>}
       {payload.length === 0 && <NotFound />}
-    </Page>
+    </PageFromStart>
   );
 }
 

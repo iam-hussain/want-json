@@ -5,16 +5,16 @@ import CodeView from '../components/Basic/Code';
 import {
   Article, Heading, SubHeading, ArticleContent, Content, Highlight,
 } from '../components/Extended/Docs';
-import DocsData from '../assets/docs.json';
+// import DocsData from '../assets/docs.json';
 
 export default function Docs() {
   return (
     <DocsLayout>
-      {DocsData.map((D) => (
+      {/* {DocsData.map((D) => (
         <Article>
           {D.id}
         </Article>
-      ))}
+      ))} */}
       <Article>
         <Heading>Introduction</Heading>
         <Content>

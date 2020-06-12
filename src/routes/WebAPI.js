@@ -4,13 +4,15 @@ import { validateRequest, errorResponce } from '../utils/exchange';
 import {
   profileUpdateRules, registerRules, loginRules, sendOTPRules, emailVerifyRules,
   resetPasswordRules, changePasswordRules, createPayloadRules, updatePayloadRules,
-  deletePayloadRules, getOnePayloadRules, restorePayloadRules, exploreOneRules, exploreRules,
+  deletePayloadRules, getOnePayloadRules, restorePayloadRules, exploreOneRules,
+  exploreRules, contactUSRules,
 } from '../utils/validator';
 import { shouldBeLoggedIn, shouldNotLoggedIn } from '../utils/auth/WebAuth';
 import authController from '../controllers/Auth/Auth';
 import payloadController from '../controllers/Web/Payload';
 import exploreController from '../controllers/Web/Explore';
 import profileController from '../controllers/Web/Profile';
+import webCommonController from '../controllers/Web/Common';
 import homeController from '../controllers/Home/Home';
 
 const router = Router();
@@ -46,6 +48,9 @@ router.get('/explore/:id', [exploreOneRules, validateRequest, exploreController.
 // Profile API
 router.get('/profile', [shouldBeLoggedIn, profileController.get]);
 router.put('/profile', [shouldBeLoggedIn, profileUpdateRules, validateRequest, profileController.update]);
+
+// Contact Us
+router.post('/contact_us', [contactUSRules, validateRequest, webCommonController.sentContactMail]);
 
 router.all('*', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;

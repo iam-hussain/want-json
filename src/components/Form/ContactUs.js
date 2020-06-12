@@ -72,6 +72,10 @@ export default function ContactUsForm() {
               value: 10,
               message: 'Provide a valid subject with min 10 letters',
             },
+            maxLength: {
+              value: 10,
+              message: 'Provide a valid subject with max 100 letters',
+            },
           })}
           name="subject"
           required
@@ -88,8 +92,12 @@ export default function ContactUsForm() {
           ref={register({
             required: requiredInputMsg,
             minLength: {
-              value: 50,
-              message: 'Provide a valid message with min 50 letters',
+              value: 100,
+              message: 'Provide a valid message with min 100 letters',
+            },
+            maxLength: {
+              value: 1000,
+              message: 'Provide a valid message with min 1000 letters',
             },
           })}
           name="message"

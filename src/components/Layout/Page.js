@@ -5,6 +5,12 @@ import Footer from '../Navigation/Footer';
 import AppBar from '../Navigation/AppBar';
 import { Container } from '../Basic/Wrapper';
 
+
+export const StartContainer = styled(Container)`
+  align-items: start;
+  margin: 0px;
+`;
+
 export const ContentWrapper = styled.div`
     display: flex;
     flex: 1;
@@ -31,6 +37,21 @@ export function PageWithOutContainer({ children }) {
       <NavBar />
       <ContentWrapper id="pageMaker">
         {children}
+      </ContentWrapper>
+      <AppBar />
+      <Footer />
+    </>
+  );
+}
+
+export function PageFromStart({ children }) {
+  return (
+    <>
+      <NavBar />
+      <ContentWrapper id="pageMaker">
+        <StartContainer>
+          {children}
+        </StartContainer>
       </ContentWrapper>
       <AppBar />
       <Footer />
