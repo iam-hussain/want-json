@@ -50,6 +50,10 @@ export default function LoginForm() {
         setError(m.param, 'invalid', m.msg);
         return true;
       });
+    } else if (responseData.errorType === 'email_verify') {
+      alert.error(responseData.message);
+      cookie.set('email_verify', responseData.payload.email, { expires: 1 });
+      router.push('/email_verify');
     } else {
       alert.error(responseData.message);
     }
