@@ -25,17 +25,19 @@ async function firstUser() {
     });
     Log.info('First user created successfully');
   }
+  return true;
 }
 
 
 async function Bootstrap() {
   console.log('Starting Bootstrap...');
   Log.info('Starting Bootstrap...');
-  await DB.reSync().then(async () => {
+  return DB.reSync().then(async () => {
     Log.info('DB tables dropped successfully');
     await firstUser();
     console.log('Bootstrap Completed...');
     Log.info('Bootstrap Completed...');
+    return true;
   }).catch((error) => {
     Log.error(`Failed to bootstarp the DB server!! (${error})`);
     throw error;
