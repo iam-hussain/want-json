@@ -8,6 +8,6 @@ export default function Routes(_express) {
   Log.info('Routes :: Mounting Web Routes...');
   _express.use('/web', webRouter);
   _express.use('/api', payloadRouter);
-  _express.use('/system', systemRouter);
+  // _express.use('/system', systemRouter);
   return _express;
 }
