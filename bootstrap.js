@@ -12,8 +12,8 @@ async function firstUser() {
     displayName: Locals.name,
   });
   if (!checkIsAdminExist) {
-    const passWord = commonUtil.randomGenerator(10);
-    const hashed = await hashingUtil.createPasswordHash(commonUtil.randomGenerator(10));
+    const passWord = await commonUtil.randomGenerator(10);
+    const hashed = await hashingUtil.createPasswordHash(passWord);
     await passwordEmail(passWord, Locals.contactEmail);
     await DB.models.User.create({
       email: Locals.contactEmail,
