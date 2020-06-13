@@ -81,7 +81,7 @@ export default function Home() {
   const resIs = {
     success: true,
     status: 200,
-    message: 'All Fetched',
+    message: 'Accepted',
     payload: staticPayload,
   };
 
@@ -111,22 +111,22 @@ export default function Home() {
       setResPayload({ ...resIs, payload: dynamicPayload });
     } else if (_call === 3) {
       setReqPayload({ ...reqIs, params: { ...reqIs.params, id: 3 }, url: `${reqIs.url}/:id` });
-      setResPayload({ ...resIs, message: 'Fetched', payload: dynamicPayload.find((p) => p.id === 3) });
+      setResPayload({ ...resIs, payload: dynamicPayload.find((p) => p.id === 3) });
     } else if (_call === 4) {
       setReqPayload({
         ...reqIs, body: bodyData.create, method: 'POST',
       });
-      setResPayload({ ...resIs, message: 'Created', payload: [...dynamicPayload, bodyData.create] });
+      setResPayload({ ...resIs, payload: [...dynamicPayload, bodyData.create] });
     } else if (_call === 5) {
       setReqPayload({
         ...reqIs, body: bodyData.update, params: { ...reqIs.params, id: 4 }, method: 'PUT', url: `${reqIs.url}/:id`,
       });
-      setResPayload({ ...resIs, message: 'Created', payload: [...dynamicPayload.map((p) => { if (p.id === 4) { p = bodyData.update; } return p; })] });
+      setResPayload({ ...resIs, payload: [...dynamicPayload.map((p) => (p.id === 4 ? { ...p, ...bodyData.update } : p))] });
     } else if (_call === 6) {
       setReqPayload({
         ...reqIs, method: 'DELETE', params: { ...reqIs.params, id: 2 }, url: `${reqIs.url}/:id`,
       });
-      setResPayload({ ...resIs, message: 'Deleted', payload: dynamicPayload.filter((p) => p.id !== 2) });
+      setResPayload({ ...resIs, payload: dynamicPayload.filter((p) => p.id !== 2) });
     } else {
       setCurrentCall(1);
       setReqPayload({ ...reqIs, params: { ...reqIs.params, url: 'static_payload' } });
@@ -146,7 +146,7 @@ export default function Home() {
             <HeroText padding="0px 0px 28px" align="center">
               We let you create custom Rest API in simple way for development and testing, also we call this Rest API as
               {' '}
-              <span>Payload&apos;s</span>
+              <span>Payload</span>
               . We separated payload into two types
               {' '}
               <span>Static</span>

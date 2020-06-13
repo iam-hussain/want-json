@@ -149,7 +149,7 @@ export default function NavBar() {
             <Link href="/explore">
               <MenuItem active={router.pathname === '/explore'}>
                 <FontAwesomeIcon icon={faLaptopCode} />
-                <span>Payload&apos;s</span>
+                <span>Payload</span>
               </MenuItem>
             </Link>
           </MenuLI>
@@ -157,7 +157,7 @@ export default function NavBar() {
             <Link href="/dashboard/payload">
               <MenuItem active={router.pathname.match('/dashboard/payload')}>
                 <FontAwesomeIcon icon={faStore} />
-                <span>Custom Payload&apos;s</span>
+                <span>Custom Payload</span>
               </MenuItem>
             </Link>
           </MenuLI>

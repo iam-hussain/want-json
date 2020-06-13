@@ -197,10 +197,10 @@ const isPayloadData = body('data').custom(async (value, { req }) => {
     throw new Error('Data must be provided');
   }
   if (req.body.type === 'dynamic' && !Array.isArray(value)) {
-    throw new Error('Provide a valid Aarry formate !');
+    throw new Error('Provide a valid Aarry format !');
   }
   if (req.body.type === 'static' && !(value instanceof Object)) {
-    throw new Error('Provide a valid JSON formate !');
+    throw new Error('Provide a valid JSON format !');
   }
   if (!(value instanceof Object)) {
     throw new Error('Provide a valid JSON!');

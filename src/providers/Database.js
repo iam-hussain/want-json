@@ -16,13 +16,13 @@ export class Database {
   }
 
   init() {
-    this.models.sequelize
+    return this.models.sequelize
       .sync()
       .then(() => {
         Log.info('Connected to DB server successfully');
       })
       .catch((error) => {
-        Log.info(`Failed to connect to the DB server!! (${error})`);
+        Log.info(`Failed to connect the DB server!! (${error})`);
         throw error;
       });
   }

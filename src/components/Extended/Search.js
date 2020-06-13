@@ -17,6 +17,7 @@ export const Showing = styled.div`
     text-align: center;
     font-size: 14px;
     user-select: none;
+    color: ${(props) => props.theme.text2};
     span{
         color: ${(props) => props.theme.primary};
         padding: 0px 2px;

@@ -70,6 +70,7 @@ export default function APIForm({ data, editMode }) {
     await triggerValidation('description');
     await triggerValidation('type');
     await triggerValidation('visibility');
+    await triggerValidation('hasAuth');
     await triggerValidation('keywords');
   };
 

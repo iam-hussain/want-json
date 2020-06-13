@@ -4,8 +4,10 @@
   "description": "wantJSON is a free online REST API that you can use whenever you need some fake data.",
   "main": "./src/index.js",
   "scripts": {
+    "bootstrap": "node -r @babel/register ./bootstrap.js",
     "client": "next",
-    "dev": "nodemon --watch src -r @babel/register ./src",
+    "dev": "node -r @babel/register ./src",
+    "watch": "nodemon --watch src -r @babel/register ./src",
     "build": "next build",
     "start": "node -r @babel/register ./src",
     "lint": "eslint ./src",

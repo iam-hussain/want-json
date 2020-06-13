@@ -24,9 +24,7 @@ class Locals {
     const name = process.env.APP_NAME || 'wantJSON';
     const description = process.env.APP_DESCRIPTION
       || 'wantJSON is a free online REST API that you can use whenever you need some fake data.';
-    const isCORSEnabled = !(
-      !process.env.CORS_ENABLED || process.env.CORS_ENABLED === 'false'
-    );
+    const isCORSEnabled = process.env.CORS_ENABLED === 'true';
 
     const db = {
       username: process.env.DB_USERNAME || 'root',
@@ -36,7 +34,7 @@ class Locals {
       dialect: process.env.DB_DIALECT || 'mysql',
 
       // eslint-disable-next-line no-console
-      logging: !process.env.DB_LOGGING || process.env.DB_LOGGING === 'false' ? false : console.log,
+      logging: process.env.DB_LOGGING === 'false' || console.log,
     };
 
     const mailSender = process.env.MAIL_SENDER || 'wantJSON.com <support@wantjson.com>';

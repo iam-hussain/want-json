@@ -13,11 +13,8 @@ import payloadController from '../controllers/Web/Payload';
 import exploreController from '../controllers/Web/Explore';
 import profileController from '../controllers/Web/Profile';
 import webCommonController from '../controllers/Web/Common';
-import homeController from '../controllers/Home/Home';
 
 const router = Router();
-
-router.get('/test', [homeController.index]);
 
 //  Auth API
 router.post('/signup', [shouldNotLoggedIn, registerRules, validateRequest, authController.signUp]);

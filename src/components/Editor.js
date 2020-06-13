@@ -20,17 +20,17 @@ export default function CodeEditor({
         setCode(JSONCode);
         setCodeError({ status: false, msg: '' });
       } else if (type === 'dynamic' && !Array.isArray(JSONCode)) {
-        setCodeError({ status: true, msg: 'Provide a valid Aarry formate!' });
+        setCodeError({ status: true, msg: 'Provide a valid Aarry format!' });
       } else if (type === 'static' && !(JSONCode instanceof Object)) {
-        setCodeError({ status: true, msg: 'Provide a valid JSON formate!' });
+        setCodeError({ status: true, msg: 'Provide a valid JSON format!' });
       } else if (typeof JSONCode !== 'object' && !type) {
-        setCodeError({ status: true, msg: 'Provide a valid JSON formate!' });
+        setCodeError({ status: true, msg: 'Provide a valid JSON format!' });
       } else {
         setCode(JSONCode);
         setCodeError({ status: false, msg: '' });
       }
     } catch (err) {
-      setCodeError({ status: true, msg: 'Provide a valid JSON formate!' });
+      setCodeError({ status: true, msg: 'Provide a valid JSON format!' });
     }
   };
 

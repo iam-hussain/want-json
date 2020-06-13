@@ -111,7 +111,7 @@ export default function DashSideBar({ show, setMenuToggle }) {
           <Item>How it works</Item>
           <Item>What is token</Item>
           <Item>Basic API Call</Item>
-          <Item>Explore Payload&apos;s</Item>
+          <Item>Explore Payload</Item>
         </Group>
         <Header>Static Payload</Header>
         <Group>
