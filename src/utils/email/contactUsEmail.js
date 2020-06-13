@@ -278,7 +278,7 @@ const emailIs = `
                     <tr>
                       <td class="em_blue em_font_22" align="center" valign="top" style="
                             font-family: 'Rajdhani', sans-serif;
-                            font-size: 30px;
+                            font-size: 20px;
                             line-height: 29px;
                             color: #264780;
                             font-weight: bold;

@@ -5,23 +5,24 @@ import userModule from './src/helper/user';
 import hashingUtil from './src/utils/hashing';
 import commonUtil from './src/utils/common';
 import Locals from './src/providers/Locals';
-import otpEmail from './src/utils/email/otpEmail';
+import passwordEmail from './src/utils/email/passwordEmail';
 
 async function firstUser() {
   const checkIsAdminExist = await userModule.existCheck({
     displayName: Locals.name,
   });
   if (!checkIsAdminExist) {
-    const authData = await userModule.createAuthData('email_verify', {});
+    const passWord = commonUtil.randomGenerator(10);
     const hashed = await hashingUtil.createPasswordHash(commonUtil.randomGenerator(10));
-    await otpEmail(authData.email_verify.otp, Locals.contactEmail);
+    await passwordEmail(passWord, Locals.contactEmail);
     await DB.models.User.create({
       email: Locals.contactEmail,
       displayName: Locals.name,
       password: hashed.password,
+      emailVerified: true,
       salt: hashed.salt,
       joinedIP: 'localhost',
-      authData,
+      authData: {},
     });
     Log.info('First user created successfully');
   }
