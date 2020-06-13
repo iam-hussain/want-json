@@ -11,6 +11,7 @@ import Log from '../middlewares/Log';
 import Locals from './Locals';
 import Routes from './Routes';
 import { errorResponce } from '../utils/exchange';
+import init from '../utils/onStart';
 
 export default function erverInit() {
   const { port } = Locals;
@@ -35,6 +36,7 @@ export default function erverInit() {
       Log.error(err.stack);
       return errorResponce(req, res, 'Unexpected error from server', 500, 'server');
     });
+    init();
     if (Locals.env !== 'production') {
       expressApp.listen(port, (_error) => {
         if (_error) {

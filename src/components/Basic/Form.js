@@ -25,9 +25,6 @@ export const URLShow = styled(Label)`
     padding: 0 6px;
     font-size: .75rem;
     word-break: break-all;
-    @media ${device.xs_sm}{
-        top: -35px;
-    }
 `;
 
 

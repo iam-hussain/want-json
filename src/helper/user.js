@@ -45,7 +45,6 @@ export default class UserModule {
     const hashed = await hashingUtil.createPasswordHash(payLoad.password);
     const returnData = await DB.models.User.create({
       email: payLoad.email,
-      userName: payLoad.userName,
       password: hashed.password,
       salt: hashed.salt,
       joinedIP: requestIp.clientIp,

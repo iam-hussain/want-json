@@ -184,7 +184,7 @@ export default function Home() {
             <Text margin="0px" maxWidth="600px">
               What if we create two types of
               {' '}
-              <span>Payload&apos;s</span>
+              <span>Payload</span>
               {' '}
               with the name of
               {' '}

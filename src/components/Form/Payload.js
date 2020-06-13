@@ -49,7 +49,7 @@ export default function APIForm({ data, editMode }) {
   useEffect(() => {
     if (titleWatch) {
       const urlConvert = titleWatch.toLowerCase().replace(/[^a-z0-9]+/gi, '_');
-      setURL(`URL : ${process.env.PAYLOAD_URL}${urlConvert}`);
+      setURL(`URL : ${urlConvert}`);
     } else {
       setURL('');
     }

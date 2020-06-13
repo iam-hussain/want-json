@@ -5,33 +5,24 @@ import CodeView from '../components/Basic/Code';
 import {
   Article, Heading, SubHeading, ArticleContent, Content, Highlight,
 } from '../components/Extended/Docs';
-// import DocsData from '../assets/docs.json';
+
+export function ContentMaker({ data }) {
+  return (<Content>{data.content}</Content>);
+}
 
 export default function Docs() {
   return (
     <DocsLayout>
-      {/* {DocsData.map((D) => (
-        <Article>
-          <Heading>{D.content}</Heading>
-          {D.child.map((E) => {
-            if (E.type === 'content') {
-              return <Content>{E.content}</Content>;
-            } if (E.type === 'subheading') {
-              return (
-                <ArticleContent>
-                  <SubHeading>{E.content}</SubHeading>
-                </ArticleContent>
-              );
-            }
-            return <></>;
-          })}
-        </Article>
-      ))} */}
       <Article>
         <Heading>Introduction</Heading>
         <Content>
-          This document is meant to be an overview of all of the capabilities of Mailgun and how you can best leverage those capabilities. It is organized around the four major features that Mailgun provides:
-          At the heart of Mailgun is the API. Most of the Mailgun service can be accessed through the RESTful HTTP API without the need to install any libraries. However, we have written Libraries for many popular languages. Be sure to check out the additional capabilities provided by using our libraries.
+          wantJSON will let you create a custom Rest API in a simple way for development and testing. The Rest API is created by wantJSON we call by the name of Payload.
+        </Content>
+      </Article>
+      <Article>
+        <Heading>Why wantJSON ?</Heading>
+        <Content>
+          Assuming you are a front-end developer, You want to try some Rest API calls to manipulate data through the front end. Here wantJSON comes to help you to solve this problem with a free custom Rest API.
         </Content>
       </Article>
       <Article>
@@ -39,18 +30,18 @@ export default function Docs() {
         <ArticleContent>
           <SubHeading>How it works ?</SubHeading>
           <Content>
-            Each new Mailgun account is automatically provisioned with a sandbox domain sandbox @mailgun.org. This domain is to be used for testing only. It allows both sending and receiving messages; and also tracking can be enabled for it. But it only allows sending to a list of up to 5 authorized recipients. This limitation is also in effect for routes that are triggered by messages addressed to the sandbox domain and mailing lists created under that domain.
+            Create a Payload in wantJSON using the JSON or Array of JSON Objects it will generate the Rest API. With those Rest API you can do the CRUD ( Create, Read, Update and Delete ) Operation on your JSON or Array of JSON Objects.
           </Content>
+        </ArticleContent>
+        <ArticleContent>
+          <SubHeading>What is Payload ?</SubHeading>
           <Content>
-            To be able to use Mailgun in production a custom domain(s) has to be created and verified with Mailgun.
-          </Content>
-          <Content>
-            Verifying your domain is easy. Start by adding a domain or subdomain you own in the Domains tab of the Mailgun control panel. Next, add the two TXT DNS records found in the Domain Verification  DNS section of the domain settings page of the Mailgun control panel to your DNS provider:
+            All the Rest API which are created through the wantJSON are called as Payload. Types of Payload are Static Payload and Dynamic Payload.
           </Content>
         </ArticleContent>
       </Article>
       <Article>
-        <Heading>Static Payload</Heading>
+        <Heading>What is Payload ?</Heading>
         <Content>
           Role-based access control sets all current users to Admin-level users by default. To assign different roles to your account’s users, please visit the Account section of the control panel. There, you can choose the appropriate permissions level for each user. And when it’s time to add new users to your account, you’ll be able to easily select a role upon user creation.
         </Content>

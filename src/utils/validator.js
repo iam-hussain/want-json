@@ -4,6 +4,7 @@ import Sequelize from 'sequelize';
 import userModule from '../helper/user';
 import payloadModule from '../helper/payload';
 import payloadUtils from './payload';
+import { profaneCheck } from './profanity';
 
 const isFirstName = body('firstName')
   .isLength({
@@ -11,11 +12,25 @@ const isFirstName = body('firstName')
   })
   .withMessage('Provide a valid First Name with min 4 letters');
 
+const isFirstNameProfane = body('firstName').custom((value) => {
+  if (value && profaneCheck(value)) {
+    throw new Error('Profanity words and reserved words are not allowed');
+  }
+  return true;
+});
+
 const isLastName = body('lastName')
   .isLength({
     min: 4,
   })
   .withMessage('Provide a valid Last Name with min 4 letters');
+
+const isLastNameProfane = body('lastName').custom((value) => {
+  if (value && profaneCheck(value)) {
+    throw new Error('Profanity words and reserved words are not allowed');
+  }
+  return true;
+});
 
 const isURL = body('url')
   .notEmpty()
@@ -24,8 +39,6 @@ const isURL = body('url')
   .withMessage('Provide a valid URL');
 
 const isDisplayName = body('displayName')
-  .notEmpty()
-  .withMessage('LastName must be provided')
   .isLength({
     min: 4,
   })
@@ -40,6 +53,8 @@ const isDisplayNameTaken = body('displayName').custom(async (value, { req }) => 
       })
     ) {
       throw new Error('This display name is already taken please different name');
+    } else if (profaneCheck(value)) {
+      throw new Error('Profanity words and reserved words are not allowed');
     }
   }
   return true;
@@ -99,6 +114,8 @@ const isTitleTakenByAny = body('title').custom(async (value) => {
     const url = await payloadUtils.urlMaker(value);
     if (await payloadModule.existCheck({ url })) {
       throw new Error('This title is already taken please different title');
+    } else if (profaneCheck(value)) {
+      throw new Error('Profanity words and reserved words are not allowed');
     }
   }
   return true;
@@ -125,12 +142,34 @@ const isDescription = body('description')
   })
   .withMessage('Provide a valid Description with min 10 letters');
 
+const isDescriptionProfane = body('description').custom((value) => {
+  if (value && profaneCheck(value)) {
+    throw new Error('Profanity words and reserved words are not allowed');
+  }
+  return true;
+});
+
+
 const isKeywords = body('keywords')
   .isArray({
     min: 1,
     max: 6,
   })
   .withMessage('Provide a valid keywords with min 1 and max 6 words');
+
+
+const isKeywordsProfane = body('keywords').custom((value) => {
+  if (value && value.length > 0) {
+    value.map((v) => {
+      if (profaneCheck(v)) {
+        throw new Error('Profanity words and reserved words are not allowed');
+      }
+      return v;
+    });
+    return true;
+  }
+  return true;
+});
 
 const isType = body('type')
   .isIn(['static', 'dynamic'])
@@ -256,8 +295,8 @@ const isMailMessage = body('message')
   })
   .withMessage('Provide a valid message with min 100 letters and max 1000 letters');
 
-export const profileUpdateRules = [isFirstName, isLastName,
-  isDisplayName, isDisplayNameTaken, isURL];
+export const profileUpdateRules = [isFirstName, isLastName, isFirstNameProfane,
+  isLastNameProfane, isDisplayName, isDisplayNameTaken, isURL];
 
 // Export Validator
 export const registerRules = [isEmail, isPassword, isEmailTaken];
@@ -272,7 +311,9 @@ export const getOnePayloadRules = [isUUID, isValidPayloadAndOwner];
 export const createPayloadRules = [
   isTitle,
   isDescription,
+  isDescriptionProfane,
   isKeywords,
+  isKeywordsProfane,
   isType,
   isHasAuth,
   isValidHasAuth,
@@ -283,7 +324,9 @@ export const createPayloadRules = [
 export const updatePayloadRules = [
   isTitle,
   isDescription,
+  isDescriptionProfane,
   isKeywords,
+  isKeywordsProfane,
   isType,
   isHasAuth,
   isValidHasAuth,

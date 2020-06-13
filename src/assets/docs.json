@@ -1,56 +1,41 @@
 [{
-        "id": "h_001",
-        "content": "Introduction",
+        "title": "Introduction",
         "type": "heading",
-        "child": [{
-            "id": "c_001",
-            "type": "content",
+        "content": [{
+            "type": "text",
             "content": "wantJSON will let you create a custom Rest API in a simple way for development and testing. The Rest API is created by wantJSON we call by the name of Payload."
-        }]
+        }],
+        "sub": []
     },
     {
-        "id": "h_002",
-        "content": "Why wantJSON ?",
+        "title": "Why wantJSON ?",
         "type": "heading",
-        "child": [{
-            "id": "c_001",
-            "type": "content",
+        "content": [{
+            "type": "text",
             "content": "Assuming you are a front-end developer, You want to try some Rest API calls to manipulate data through the front end. Here wantJSON comes to help you to solve this problem with free custom Rest API."
-        }]
+        }],
+        "sub": []
     },
     {
-        "id": "h_003",
-        "content": "Why wantJSON ?",
+        "title": "Getting Started",
         "type": "heading",
-        "child": [{
-            "id": "title_003",
-            "type": "subheading",
-            "content": "How it works ?",
-            "child": [{
-                "id": "content_002",
-                "type": "content",
-                "content": "Each new Mailgun account is automatically provisioned with a sandbox domain sandbox @mailgun.org. This domain is to be used for testing only. It allows both sending and receiving messages; and also tracking can be enabled for it. But it only allows sending to a list of up to 5 authorized recipients. This limitation is also in effect for routes that are triggered by messages addressed to the sandbox domain and mailing lists created under that domain."
+        "content": [],
+        "sub": [{
+                "title": "What is Payload ?",
+                "type": "subheading",
+                "content": [{
+                    "type": "text",
+                    "content": "All the Rest API which are created through the wantJSON are called as Payload. Types of Payload are <Highlight>Static Payload</Highlight> and Dynamic Payload"
+                }]
             },
             {
-                "id": "content_003",
-                "type": "content",
-                "content": "To be able to use Mailgun in production a custom domain(s) has to be created and verified with Mailgun."
-            },
-            {
-                "id": "content_004",
-                "type": "content",
-                "content": "Verifying your domain is easy. Start by adding a domain or subdomain you own in the Domains tab of the Mailgun control panel. Next, add the two TXT DNS records found in the Domain Verification  DNS section of the domain settings page of the Mailgun control panel to your DNS provider"
-            }]
-        }]
-    },
-    {
-        "id": "title_003",
-        "content": "Static Payload",
-        "type": "heading",
-        "child": [{
-            "id": "content_005",
-            "type": "content",
-            "content": "Role-based access control sets all current users to Admin-level users by default. To assign different roles to your account’s users, please visit the Account section of the control panel. There, you can choose the appropriate permissions level for each user. And when it’s time to add new users to your account, you’ll be able to easily select a role upon user creation."
-        }]
+                "title": "How it works ?",
+                "type": "subheading",
+                "content": [{
+                    "type": "text",
+                    "content": "Create a Payload in wantJSON using the JSON or Array of JSON Objects it will generate the Rest API. With those Rest API you can do the CRUD ( Create, Read, Update and Delete ) Operation on your JSON or Array of JSON Objects."
+                }]
+            }
+        ]
     }
 ]

@@ -19,7 +19,7 @@ class Locals {
 
     const apiBaseURL = process.env.API_BASE_URL || 'http://localhost:3000/web/';
     const payloadURL = process.env.PAYLOAD_URL || 'http://localhost:3000/api/';
-    const contactEmail = process.env.CONTACT_EMAIL || 'support@wantjson.com';
+    const contactEmail = process.env.CONTACT_EMAIL || 'admin@wantjson.com';
 
     const name = process.env.APP_NAME || 'wantJSON';
     const description = process.env.APP_DESCRIPTION

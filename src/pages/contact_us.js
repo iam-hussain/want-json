@@ -19,7 +19,7 @@ function ContactUs() {
         <CopyToClipboard text={process.env.CONTACT_EMAIL} onCopy={() => alert.info('Email ID copied to Clipboard')}>
           <Contribute margin="0px 0px 28px" size="2rem">
             <FontAwesomeIcon icon={faEnvelope} />
-            <P>{process.env.CONTACT_EMAIL}</P>
+            <P>Email us</P>
           </Contribute>
         </CopyToClipboard>
         <Contribute size="2rem" href="https://github.com/ZaHuPro/wantJSON" target="_blank">
