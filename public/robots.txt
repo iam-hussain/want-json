@@ -1,2 +1,3 @@
 user-agent: *
-sitemap: https://wantjson.com/static/sitemap.xml
+sitemap: https://wantjson.com/sitemap/page_sitemap.xml
+sitemap: https://wantjson.com/sitemap/payload_sitemap.xml
