@@ -113,7 +113,7 @@ function Explore({ payloadData, pages, searchData }) {
       {payload.length !== 0 && (
       <List>
         {payload.map((p) => (
-          <Link key={p.id} href={`/view/${p.id}`}>
+          <Link key={p.id} href={`/view/${p.url}`}>
             <SearchListItem key={p.id}>
               <FrontIcon active={p.owner.displayName === process.env.APP_NAME}>
                 <FontAwesomeIcon icon={faCertificate} />

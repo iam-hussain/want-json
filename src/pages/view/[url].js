@@ -1,20 +1,20 @@
 import React from 'react';
 import Router from 'next/router';
-import Page from '../../components/Layout/Page';
+import { PageFromStart } from '../../components/Layout/Page';
 import { getMethod } from '../../utils/Integration';
 import ViewPayload from '../../components/Payload';
 
 function Edit({ payload }) {
   return (
-    <Page>
-      <ViewPayload payload={payload} />
-    </Page>
+    <PageFromStart>
+      <ViewPayload payload={payload} onlyPublic />
+    </PageFromStart>
   );
 }
 
 Edit.getInitialProps = async (ctx) => {
-  const { id } = ctx.query;
-  const myPayload = await getMethod(`explore/${id}`);
+  const { url } = ctx.query;
+  const myPayload = await getMethod(`explore/${url}`);
 
   if (!myPayload.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/explore' });

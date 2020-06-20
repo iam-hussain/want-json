@@ -19,19 +19,10 @@ export default class PayloadModule {
     });
   }
 
-  static async getPayload(where, condition = {}) {
+  static async get(where, params = {}) {
     const returnData = await DB.models.Payload.findOne({
       where,
-      ...condition,
-      attributes: ['data'],
-    }).then((payLoad) => payLoad || {});
-    return returnData;
-  }
-
-  static async get(where, condition = {}) {
-    const returnData = await DB.models.Payload.findOne({
-      where,
-      ...condition,
+      ...params,
       attributes: {
         exclude: ['user_id'],
       },
@@ -40,24 +31,24 @@ export default class PayloadModule {
     return returnData;
   }
 
-  static async getFullData(where, condition = {}) {
+  static async getFullData(where, params = {}) {
     const returnData = await DB.models.Payload.findOne({
       where,
-      ...condition,
+      ...params,
     }).then((payLoad) => (payLoad || {}));
     return returnData;
   }
 
-  static async getAll(where, condition = {}) {
-    const returnData = await DB.models.Payload.findAll({
+  static async getAll(where, params = {}) {
+    const attributes = params.attributes || {
+      exclude: ['user_id'],
+    };
+    return DB.models.Payload.findAll({
       where,
-      ...condition,
-      attributes: {
-        exclude: ['user_id'],
-      },
+      ...params,
+      attributes,
       include: [{ model: DB.models.User, as: 'owner', attributes: ['displayName'] }],
-    }).then((payLoad) => (payLoad || []));
-    return returnData;
+    });
   }
 
   static async create(body, userID, data) {

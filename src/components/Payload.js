@@ -82,6 +82,11 @@ export const Table = styled.table`
 `;
 
 
+export const TR = styled.tr`
+    color: ${(props) => (props.alert ? props.theme.error : props.theme.text1)};
+`;
+
+
 export const APITable = styled.table`
     word-break: break-all;
     flex: 1;
@@ -168,8 +173,11 @@ export const TokenView = styled.div`
 `;
 
 
-export default function View({ payload }) {
+export default function View({ payload, onlyPublic }) {
   const alert = useAlert();
+  const canShowToken = onlyPublic ? payload.status === 'active' && payload.visibility === 'public' : true;
+  const canShowPayload = onlyPublic ? payload.visibility === 'public' : true;
+
   return (
     <Container padding="0px" column>
       <RowWrapper>
@@ -188,39 +196,39 @@ export default function View({ payload }) {
         <ColWrapper padding="28px 0px" className="col-md-4">
           <Table>
             <tbody>
-              <tr>
+              <TR alert={payload.visibility === 'private'}>
                 <td>Visibility</td>
                 <td>{payload.visibility}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR>
                 <td>Type</td>
                 <td>{payload.type}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR alert={payload.status !== 'active'}>
                 <td>Status</td>
                 <td>{payload.status}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR>
                 <td>Creator</td>
                 <td>{payload.owner.displayName !== '' ? payload.owner.displayName : 'Nameless'}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR>
                 <td>View Count</td>
                 <td>{payload.viewCount}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR>
                 <td>API Hit Count</td>
                 <td>{payload.hitCount}</td>
-              </tr>
-              <tr>
+              </TR>
+              <TR alert={payload.hasAuth}>
                 <td>Authentication</td>
                 <td>{payload.hasAuth ? 'Yes' : 'No'}</td>
-              </tr>
+              </TR>
             </tbody>
           </Table>
         </ColWrapper>
       </RowWrapper>
-      {payload.hasAuth
+      {payload.hasAuth && canShowToken
       && (
       <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
         <TokenView>
@@ -292,7 +300,7 @@ export default function View({ payload }) {
           </APITable>
         </ColWrapper>
       </RowWrapper>
-      <CodeView code={payload.data} />
+      {canShowPayload && <CodeView code={payload.data} />}
     </Container>
   );
 }

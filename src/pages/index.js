@@ -139,7 +139,7 @@ export default function Home() {
       <HomeContainer>
         <HeroRowWrapper>
           <HeroColWrapper className="col-lg-5">
-            <HeroImg src="/images/illustrations/undraw_code_review_l1q9.svg" alt="Hero" />
+            <HeroImg src="/images/illustrations/hero.svg" alt="Hero" />
           </HeroColWrapper>
           <HeroColWrapper className="col-lg-6">
             <HeroTitle>What we do ?</HeroTitle>

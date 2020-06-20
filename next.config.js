@@ -4,7 +4,11 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = withFonts(withCSS({
   enableSvg: true,
-  webpack(config) {
+  webpack(config, { isServer }) {
+    if (isServer) {
+      // eslint-disable-next-line global-require
+      require('./scripts/generate-sitemap');
+    }
     config.plugins.push(new Dotenv({ silent: true }));
     return config;
   },

@@ -4,7 +4,8 @@
   "description": "wantJSON is a free online REST API that you can use whenever you need some fake data.",
   "main": "./src/index.js",
   "scripts": {
-    "bootstrap": "node -r @babel/register ./bootstrap.js",
+    "bootstrap": "node -r @babel/register ./scripts/bootstrap.js",
+    "sitemap": "node -r @babel/register ./scripts/generate-sitemap.js",
     "client": "next",
     "dev": "node -r @babel/register ./src",
     "watch": "nodemon --watch src -r @babel/register ./src",
@@ -97,6 +98,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "prettier": "2.0.5"
+    "globby": "^11.0.1",
+    "prettier": "^2.0.5"
   }
 }

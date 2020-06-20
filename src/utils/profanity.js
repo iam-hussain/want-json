@@ -1,7 +1,7 @@
 import Profanease from 'profanease';
 import Locals from '../providers/Locals';
 
-const list = [...new Set(['admin', 'support', 'wantjson', 'json', 'js', 'java', 'google', 'facebood', Locals.name])];
+const list = [...new Set(['admin', 'support', 'wantjson', Locals.name])];
 
 const isProfane = new Profanease({ lang: 'all', list });
 

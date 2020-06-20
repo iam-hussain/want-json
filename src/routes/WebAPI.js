@@ -40,7 +40,7 @@ router.delete('/payload_restore/:id', [shouldBeLoggedIn, restorePayloadRules, va
 
 // Search API
 router.post('/explore', [exploreRules, validateRequest, exploreController.readAll]);
-router.get('/explore/:id', [exploreOneRules, validateRequest, exploreController.read]);
+router.get('/explore/:url', [exploreOneRules, validateRequest, exploreController.read]);
 
 // Profile API
 router.get('/profile', [shouldBeLoggedIn, profileController.get]);

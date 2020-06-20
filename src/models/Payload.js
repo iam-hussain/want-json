@@ -67,7 +67,6 @@ module.exports = function payloadModel(sequelize, DataTypes) {
         values: ['public', 'private'],
         defaultValue: 'public',
       },
-
       status: {
         type: DataTypes.ENUM,
         values: ['active', 'inactive'],

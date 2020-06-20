@@ -74,9 +74,7 @@ export default class Explore {
   static async read(req, res, next) {
     try {
       const payloadData = await payloadModule.get({
-        id: req.params.id,
-        status: 'active',
-        visibility: 'public',
+        url: req.params.url,
       });
       await payloadData.update({ viewCount: bigInt(payloadData.viewCount).next() });
       return successResponce(

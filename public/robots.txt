@@ -1,4 +1,2 @@
-sitemap: https://wantjson.com/static/sitemap.xml
-
 user-agent: *
-disallow: /downloads/
+sitemap: https://wantjson.com/static/sitemap.xml

@@ -225,7 +225,6 @@ const isValidPayloadAndOwner = param('id').custom(async (value, { req }) => {
     if (payloadIs.status !== 'active') {
       throw new Error('This payload is deleted, please try to restore');
     }
-
     if (payloadIs.user_id !== req.userID) {
       throw new Error("You don't have access to edit this payload!");
     }
@@ -252,19 +251,13 @@ const isDeletedPayloadAndOwner = param('id').custom(async (value, { req }) => {
   return true;
 });
 
-const isValidPublicPayload = param('id').custom(async (value) => {
-  if (validator.isUUID(value)) {
+const isValidURL = param('url').custom(async (value) => {
+  if (value) {
     const payloadIs = await payloadModule.getFullData({
-      id: value,
+      url: value,
     });
     if (!payloadIs.id) {
-      throw new Error('No payload found in this ID!');
-    }
-    if (payloadIs.status !== 'active') {
-      throw new Error('This payload has been deleted by creator!');
-    }
-    if (payloadIs.visibility !== 'public') {
-      throw new Error('This is not a pubic payload!');
+      throw new Error('No payload found in this URL!');
     }
   }
   return true;
@@ -339,5 +332,5 @@ export const updatePayloadRules = [
 export const deletePayloadRules = [isUUID, isValidPayloadAndOwner];
 export const restorePayloadRules = [isUUID, isDeletedPayloadAndOwner];
 export const exploreRules = [isSortBy, isOrderBy];
-export const exploreOneRules = [isUUID, isValidPublicPayload];
+export const exploreOneRules = [isValidURL];
 export const contactUSRules = [isEmail, isMailMessage, isMailSubject];

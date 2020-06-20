@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import DB from './src/providers/Database';
-import Log from './src/middlewares/Log';
-import userModule from './src/helper/user';
-import hashingUtil from './src/utils/hashing';
-import commonUtil from './src/utils/common';
-import Locals from './src/providers/Locals';
-import passwordEmail from './src/utils/email/passwordEmail';
+import DB from '../src/providers/Database';
+import Log from '../src/middlewares/Log';
+import userModule from '../src/helper/user';
+import hashingUtil from '../src/utils/hashing';
+import commonUtil from '../src/utils/common';
+import Locals from '../src/providers/Locals';
+import passwordEmail from '../src/utils/email/passwordEmail';
 
 async function firstUser() {
   const checkIsAdminExist = await userModule.existCheck({
