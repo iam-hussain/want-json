@@ -35,7 +35,7 @@ import Locals from '../src/providers/Locals';
       return `
       <url>
         <loc>${Locals.url}/${route}</loc>
-        <lastmod>${new Date()}</lastmod>
+        <lastmod>${new Date().toISOString()}</lastmod>
       </url>
       `;
     })

@@ -24,7 +24,7 @@ export default class Payload {
     ${data.map((payload) => (`
             <url>
               <loc>${Locals.url}/view/${payload.url}</loc>
-              <lastmod>${payload.updatedAt}</lastmod>
+              <lastmod>${new Date(payload.updatedAt).toISOString()}</lastmod>
             </url>
             `))
     .join('')}
