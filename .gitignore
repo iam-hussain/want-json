@@ -103,3 +103,5 @@ dist
 
 # TernJS port file
 .tern-port
+public/static/page_sitemap.xml
+public/static/payload_sitemap.xml
