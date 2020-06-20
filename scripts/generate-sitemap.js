@@ -44,6 +44,6 @@ import Locals from '../src/providers/Locals';
   </urlset>
     `;
 
-  fs.writeFileSync(path.resolve('./public/static/page_sitemap.xml'), sitemap);
+  fs.writeFileSync(path.resolve('./public/sitemap/page_sitemap.xml'), sitemap);
   Log.info('Page Sitemap generated...');
 })();

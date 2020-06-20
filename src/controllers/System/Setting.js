@@ -32,7 +32,7 @@ export default class Payload {
         </urlset>
           `;
 
-        fs.writeFileSync(path.resolve('./public/static/payload_sitemap.xml'), sitemap);
+        fs.writeFileSync(path.resolve('./public/sitemap/payload_sitemap.xml'), sitemap);
         Log.info('Payload Sitemap generated...');
       });
 
