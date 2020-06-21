@@ -29,12 +29,12 @@ import Locals from '../src/providers/Locals';
         .replace('src/', '')
         .replace('pages/', '')
         .replace('.js', '')
-        .replace('.mdx', '');
-      const route = pagePath === '/index' ? '' : pagePath;
-
+        .replace('.mdx', '')
+        .replace('/index', '')
+        .replace('index', '');
       return `
       <url>
-        <loc>${Locals.url}/${route}</loc>
+        <loc>${Locals.url}/${pagePath}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
       </url>
       `;
