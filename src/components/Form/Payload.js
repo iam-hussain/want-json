@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { RowWrapper, ColWrapper } from '../Basic/Wrapper';
 import {
   Item, Label, Input, ErrorBlock, Form, RadioGroup,
   GroupName, TagGroup, TagItem, TagInputGroup, InputButton, URLShow,
@@ -16,7 +17,8 @@ import {
 import { PrimaryBtn } from '../Basic/Button/Button';
 import {
   requiredInputMsg,
-  passwordMinLengthMsg,
+  payloadTitleMinLengthMsg,
+  payloadDescriptionMinLengthMsg,
 } from '../../utils/Message';
 import CodeEditor from '../Editor';
 import { postMethod, putMethod } from '../../utils/Integration';
@@ -148,7 +150,7 @@ export default function APIForm({ data, editMode }) {
             required: requiredInputMsg,
             minLength: {
               value: 4,
-              message: passwordMinLengthMsg,
+              message: payloadTitleMinLengthMsg,
             },
           })}
           name="title"
@@ -168,18 +170,18 @@ export default function APIForm({ data, editMode }) {
             required: requiredInputMsg,
             minLength: {
               value: 10,
-              message: passwordMinLengthMsg,
+              message: payloadDescriptionMinLengthMsg,
             },
           })}
           name="description"
           required
         />
-        <Label>Short description</Label>
+        <Label>Description</Label>
         <ErrorBlock>
           <ErrorMessage errors={errors} name="description" />
         </ErrorBlock>
       </Item>
-      <Item>
+      <Item mbMD>
         <TagInputGroup hasError={errors.keywords}>
           <Input
             hasError={errors.keywords}
@@ -205,71 +207,76 @@ export default function APIForm({ data, editMode }) {
             </ErrorBlock>
           </TagGroup>
         </TagInputGroup>
-
       </Item>
-      <RadioGroup hasError={errors.type}>
-        <GroupName>Payload Type</GroupName>
-        <Item>
-          <Input
-            type="radio"
-            value="dynamic"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="type"
-            required
-          />
-          <Label>Dynamic</Label>
-        </Item>
-        <Item>
-          <Input
-            type="radio"
-            value="static"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="type"
-            required
-          />
-          <Label>Static</Label>
-        </Item>
-        <ErrorBlock>
-          <ErrorMessage errors={errors} name="type" />
-        </ErrorBlock>
-      </RadioGroup>
-      <RadioGroup hasError={errors.visibility}>
-        <GroupName>Visibility</GroupName>
-        <Item>
-          <Input
-            type="radio"
-            value="public"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="visibility"
-            required
-          />
-          <Label>Public</Label>
-        </Item>
-        <Item>
-          <Input
-            type="radio"
-            value="private"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="visibility"
-            required
-          />
-          <Label>Private</Label>
-        </Item>
-        <ErrorBlock>
-          <ErrorMessage errors={errors} name="visibility" />
-        </ErrorBlock>
-      </RadioGroup>
+      <RowWrapper>
+        <ColWrapper className="col-md-6">
+          <RadioGroup hasError={errors.type} mbMD>
+            <GroupName>Payload Type</GroupName>
+            <Item>
+              <Input
+                type="radio"
+                value="dynamic"
+                ref={register({
+                  required: requiredInputMsg,
+                })}
+                name="type"
+                required
+              />
+              <Label>Dynamic</Label>
+            </Item>
+            <Item>
+              <Input
+                type="radio"
+                value="static"
+                ref={register({
+                  required: requiredInputMsg,
+                })}
+                name="type"
+                required
+              />
+              <Label>Static</Label>
+            </Item>
+            <ErrorBlock>
+              <ErrorMessage errors={errors} name="type" />
+            </ErrorBlock>
+          </RadioGroup>
+        </ColWrapper>
+        <ColWrapper className="col-md-6">
+          <RadioGroup hasError={errors.visibility} mbMD>
+            <GroupName>Visibility</GroupName>
+            <Item>
+              <Input
+                type="radio"
+                value="public"
+                ref={register({
+                  required: requiredInputMsg,
+                })}
+                name="visibility"
+                required
+              />
+              <Label>Public</Label>
+            </Item>
+            <Item>
+              <Input
+                type="radio"
+                value="private"
+                ref={register({
+                  required: requiredInputMsg,
+                })}
+                name="visibility"
+                required
+              />
+              <Label>Private</Label>
+            </Item>
+            <ErrorBlock>
+              <ErrorMessage errors={errors} name="visibility" />
+            </ErrorBlock>
+          </RadioGroup>
+        </ColWrapper>
+      </RowWrapper>
       <RadioGroup hasError={errors.hasAuth}>
         <GroupName>Header Authentication</GroupName>
-        <Item>
+        <Item mbMD>
           <Input
             type="radio"
             value="yes"
@@ -316,7 +323,7 @@ export default function APIForm({ data, editMode }) {
             || componentLoading || codeError.status
           }
         >
-          {`${editMode ? 'Edit Your' : 'Create new'} Payload!`}
+          Done
         </PrimaryBtn>
       </Item>
     </Form>

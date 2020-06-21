@@ -131,7 +131,7 @@ export const Form = styled.form`
 export const Item = styled.div`
     position: relative;
     text-align: center;
-    margin: 28px 0;
+    margin: ${(props) => (props.mbMD ? '28px 0 0 0' : '28px 0')};
 `;
 
 export const TagGroup = styled.div`
@@ -248,7 +248,7 @@ export const RadioGroup = styled.div`
     align-items: center;
     border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
     background-color: ${(props) => props.theme.tertiary};
-    margin: 28px 0;
+    margin: ${(props) => (props.mbMD ? '28px 0 0 0' : '28px 0')};
 
     ${GroupName}{
         color: ${(props) => (props.hasError ? props.theme.error : props.theme.text2)};
@@ -315,17 +315,20 @@ export const RadioGroup = styled.div`
 `;
 
 export const CodeItem = styled(Item)`
-    margin-top: 28px;
+    padding: 28px 0px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: ${(props) => (props.hasError ? props.theme.error : props.theme.paper)};
+    background-color: ${(props) => props.theme.tertiary};
+
     ${ErrorBlock}{
         top: auto;
         bottom: -18px;
     }
 
     ${Label}{
-        font-size: 0.75rem;
-        top: -15px;
-        right: 7px;
-        left: auto;
+        font-size: 1rem;
+        top: 6px;
     }
 `;
 

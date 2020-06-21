@@ -11,10 +11,10 @@ function Login() {
   return (
     <Landing>
       <CustomFormBox>
-        <H3 align="center" padding="14px 0px">Account Login</H3>
+        <H3 align="center" padding="14px 0px">Alread a member?</H3>
         <LoginForm />
         <BottomSeparator>
-          <Link href="/reset_password"><Button padding="2px" size="0.75rem">Forgot Password</Button></Link>
+          <Link href="/reset_password"><Button padding="2px" size="0.9rem">Forgotten Password</Button></Link>
         </BottomSeparator>
       </CustomFormBox>
     </Landing>

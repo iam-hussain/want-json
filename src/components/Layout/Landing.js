@@ -19,10 +19,19 @@ export default function Login({ children }) {
             <Box>
               <H3 transform="uppercase" align="center">Welcome to</H3>
               <Link href="/"><InfoTitle align="center">wantJSON</InfoTitle></Link>
-              <InfoText align="center">
-                Join with us to create some free online custom REST API for development
-                , testing and more in a simplest way with CRUD operations.
-              </InfoText>
+              {router.pathname === '/reset_password' && <InfoText align="center">It Happens. Nothing to worry, we are here for you. Just one step verification of your identity and you’re all set again.</InfoText>}
+              {router.pathname === '/login' && (
+              <>
+                <InfoText align="center">WE MISSED YOU, GLAD TO HAVE YOU BACK…</InfoText>
+                <InfoText align="center">Explore many free online custom REST APIs for development, testing and more in the simplest way.</InfoText>
+              </>
+              )}
+              {router.pathname !== '/login' && router.pathname !== '/reset_password' && (
+              <>
+                <InfoText align="center">YOUR ONE STOP SOLUTION TO ALL API NEEDS</InfoText>
+                <InfoText align="center">Join us to create one and many free online custom REST APIs for development, testing and more in the simplest way.</InfoText>
+              </>
+              )}
               <TabSwitch>
                 <Link href="/login">
                   <TabSwitchButton active={router.pathname === '/login'} btlr="5px" bblr="5px">Login</TabSwitchButton>

@@ -1,0 +1,102 @@
+[{
+        "title": "Introduction",
+        "url": "/documentation/introduction",
+        "sub": [{
+            "title": "Why wantJSON?",
+            "hash": "#why_wantjson",
+            "url": "/documentation/introduction#why_wantjson"
+        }]
+    },
+    {
+        "title": "Getting Started",
+        "url": "/documentation/getting_started",
+        "sub": [{
+                "title": "How it works",
+                "hash": "#how_it_works",
+                "url": "/documentation/getting_started#how_it_works"
+            },
+            {
+                "title": "What is token",
+                "hash": "#what_is_token",
+                "url": "/documentation/getting_started#what_is_token"
+            },
+            {
+                "title": "Basic API Call",
+                "hash": "#basic_api_call",
+                "url": "/documentation/getting_started#basic_api_call"
+            },
+            {
+                "title": "Explore Payload",
+                "hash": "#explore_payload",
+                "url": "/documentation/getting_started#explore_payload"
+            }
+        ]
+    },
+    {
+        "title": "Static Payload",
+        "url": "/documentation/static_payload",
+        "sub": [{
+                "title": "What is static payload",
+                "hash": "#what_is_static_payload",
+                "url": "/documentation/static_payload#what_is_static_payload"
+            },
+            {
+                "title": "How to works",
+                "hash": "#how_to_works",
+                "url": "/documentation/static_payload#how_to_works"
+            },
+            {
+                "title": "Why static payload",
+                "hash": "#why_static_payload",
+                "url": "/documentation/static_payload#why_static_payload"
+            }
+        ]
+    },
+    {
+        "title": "Dynamic Payload",
+        "url": "/documentation/dynamic_payload",
+        "sub": [{
+                "title": "What is dynamic payload",
+                "hash": "#what_is_dynamic_payload",
+                "url": "/documentation/dynamic_payload#what_is_dynamic_payload"
+            },
+            {
+                "title": "How to works",
+                "hash": "#how_to_works",
+                "url": "/documentation/dynamic_payload#how_to_works"
+            },
+            {
+                "title": "Why static payload",
+                "hash": "#why_dynamic_payload",
+                "url": "/documentation/dynamic_payload#why_dynamic_payload"
+            }
+        ]
+    },
+    {
+        "title": "How to create a payload",
+        "url": "/documentation/how_to_create_a_payload",
+        "sub": [{
+                "title": "Static payload",
+                "hash": "#static_payload",
+                "url": "/documentation/how_to_create_a_payload#static_payload"
+            },
+            {
+                "title": "Dynamic payload",
+                "hash": "#dynamic_payload",
+                "url": "/documentation/how_to_create_a_payload#dynamic_payload"
+            }
+        ]
+    }, {
+        "title": "Support",
+        "url": "/documentation/support",
+        "sub": [{
+            "title": "Did we miss something?",
+            "url": "/documentation/support#did_we_miss_something",
+            "hash": "#did_we_miss_something"
+        }, {
+            "title": "Partner with us?",
+            "url": "/documentation/support#partner_with_us",
+            "hash": "#partner_with_us"
+        }]
+    }
+]

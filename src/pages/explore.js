@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCertificate, faSearch,
+  faCheckCircle, faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { PageFromStart } from '../components/Layout/Page';
 import { postMethod } from '../utils/Integration';
@@ -116,7 +116,7 @@ function Explore({ payloadData, pages, searchData }) {
           <Link key={p.id} href={`/view/${p.url}`}>
             <SearchListItem key={p.id}>
               <FrontIcon active={p.owner.displayName === process.env.APP_NAME}>
-                <FontAwesomeIcon icon={faCertificate} />
+                <FontAwesomeIcon icon={faCheckCircle} />
               </FrontIcon>
               <ListContent>
                 <ListTitle>{p.title}</ListTitle>

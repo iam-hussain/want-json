@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { PageWithOutContainer } from '../components/Layout/Page';
 import {
-  HeroImg, HeroTitle, HeroText, HeroButtonGroup, HeroColWrapper,
+  HeroImg, HeroTitle, HeroText, HeroButtonGroup, HeroColWrapper, TryYourselfButton,
   HeroRowWrapper, HomeContainer, Text, BoxRow, Methods, MethodTable, MethodButton,
 } from '../components/Extended/Home';
-import { PrimaryBtn } from '../components/Basic/Button/Button';
+import { PrimaryBtn, SecondaryBtn } from '../components/Basic/Button/Button';
 import { H3, H5 } from '../components/Basic/Text';
 import CodeView from '../components/Basic/Code';
 
@@ -144,17 +144,13 @@ export default function Home() {
           <HeroColWrapper className="col-lg-6">
             <HeroTitle>What we do ?</HeroTitle>
             <HeroText padding="0px 0px 28px" align="center">
-              We let you create custom Rest API in simple way for development and testing, also we call this Rest API as
+              We provide you the service to create Rest APIs on the go for all practical and impractical purposes.
+              We address our APIs as
               {' '}
               <span>Payload</span>
-              . We separated payload into two types
               {' '}
-              <span>Static</span>
               {' '}
-              and
-              {' '}
-              <span>Dynamic</span>
-              .
+              since you can load it with as much data as you need!
             </HeroText>
             <HeroButtonGroup>
               <Link href="/explore">
@@ -181,19 +177,9 @@ export default function Home() {
         <BoxRow margin="0px 0px 28px">
           <HeroColWrapper className="col-md">
             <H3 font="Rajdhani" align="center" margin="0px 0px 10px">Let&rsquo;s see some practical examples</H3>
-            <Text margin="0px" maxWidth="600px">
-              What if we create two types of
-              {' '}
-              <span>Payload</span>
-              {' '}
-              with the name of
-              {' '}
-              <span>static_payload</span>
-              {' '}
-              and
-              {' '}
-              <span>dynamic_payload</span>
-              . Check how it work&apos;s in below by clicking on the
+            <Text margin="0px" maxWidth="660px">
+              We have distinguished our Payload as static payload and dynamic payload.
+              See for yourself on how the Static Payload and Dynamic Payload work by clicking on the
               {' '}
               <span>Buttons</span>
               .
@@ -210,7 +196,7 @@ export default function Home() {
                   <td>Static</td>
                   <td>
                     <Methods>
-                      <MethodButton onClick={() => handleMethod(1)} active={currentCall === 1}>Fetch</MethodButton>
+                      <MethodButton onClick={() => handleMethod(1)} active={currentCall === 1}>Read</MethodButton>
                     </Methods>
                   </td>
                 </tr>
@@ -219,9 +205,9 @@ export default function Home() {
                   <td>Dynamic</td>
                   <td>
                     <Methods>
-                      <MethodButton onClick={() => handleMethod(2)} active={currentCall === 2}>Fetch All</MethodButton>
-                      <MethodButton onClick={() => handleMethod(3)} active={currentCall === 3}>Fetch One</MethodButton>
-                      <MethodButton onClick={() => handleMethod(4)} active={currentCall === 4}>Add</MethodButton>
+                      <MethodButton onClick={() => handleMethod(2)} active={currentCall === 2}>Read</MethodButton>
+                      <MethodButton onClick={() => handleMethod(3)} active={currentCall === 3}>Read One</MethodButton>
+                      <MethodButton onClick={() => handleMethod(4)} active={currentCall === 4}>Create</MethodButton>
                       <MethodButton onClick={() => handleMethod(5)} active={currentCall === 5}>Update</MethodButton>
                       <MethodButton onClick={() => handleMethod(6)} active={currentCall === 6}>Delete</MethodButton>
                     </Methods>
@@ -242,6 +228,12 @@ export default function Home() {
             <CodeView margin="0px" code={resPayload} />
           </HeroColWrapper>
         </BoxRow>
+
+        <TryYourselfButton>
+          <Link href="/dashboard/payload/create">
+            <SecondaryBtn margin="5px">Try it yourself</SecondaryBtn>
+          </Link>
+        </TryYourselfButton>
       </HomeContainer>
     </PageWithOutContainer>
   );

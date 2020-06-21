@@ -120,6 +120,12 @@ export const APITable = styled.table`
           width: 200px;
       }
 
+      p{
+        cursor: pointer;
+        margin: auto;
+        width: fit-content;
+      }
+
     }
     
       
@@ -251,8 +257,12 @@ export default function View({ payload, onlyPublic }) {
               <tr>
                 <td>GET</td>
                 <td>
-                  {process.env.PAYLOAD_URL}
-                  {payload.url}
+                  <CopyToClipboard text={`${process.env.PAYLOAD_URL}${payload.url}`} onCopy={() => alert.info('Copied to Clipboard')}>
+                    <p>
+                      {process.env.PAYLOAD_URL}
+                      {payload.url}
+                    </p>
+                  </CopyToClipboard>
                 </td>
                 <td>Fetch Complete Object</td>
               </tr>
@@ -262,35 +272,51 @@ export default function View({ payload, onlyPublic }) {
                 <tr>
                   <td>GET</td>
                   <td>
-                    {process.env.PAYLOAD_URL}
-                    {payload.url}
-                    /:id
+                    <CopyToClipboard text={`${process.env.PAYLOAD_URL}${payload.url}/:id`} onCopy={() => alert.info('Copied to Clipboard')}>
+                      <p>
+                        {process.env.PAYLOAD_URL}
+                        {payload.url}
+                        /:id
+                      </p>
+                    </CopyToClipboard>
                   </td>
                   <td>Fetch Object by ID</td>
                 </tr>
                 <tr>
                   <td>POST</td>
                   <td>
-                    {process.env.PAYLOAD_URL}
-                    {payload.url}
+                    <CopyToClipboard text={`${process.env.PAYLOAD_URL}${payload.url}`} onCopy={() => alert.info('Copied to Clipboard')}>
+                      <p>
+                        {process.env.PAYLOAD_URL}
+                        {payload.url}
+                      </p>
+                    </CopyToClipboard>
                   </td>
                   <td>Add New Object</td>
                 </tr>
                 <tr>
                   <td>PUT</td>
                   <td>
-                    {process.env.PAYLOAD_URL}
-                    {payload.url}
-                    /:id
+                    <CopyToClipboard text={`${process.env.PAYLOAD_URL}${payload.url}/:id`} onCopy={() => alert.info('Copied to Clipboard')}>
+                      <p>
+                        {process.env.PAYLOAD_URL}
+                        {payload.url}
+                        /:id
+                      </p>
+                    </CopyToClipboard>
                   </td>
                   <td>Update Object by ID</td>
                 </tr>
                 <tr>
                   <td>DELETE</td>
                   <td>
-                    {process.env.PAYLOAD_URL}
-                    {payload.url}
-                    /:id
+                    <CopyToClipboard text={`${process.env.PAYLOAD_URL}${payload.url}/:id`} onCopy={() => alert.info('Copied to Clipboard')}>
+                      <p>
+                        {process.env.PAYLOAD_URL}
+                        {payload.url}
+                        /:id
+                      </p>
+                    </CopyToClipboard>
                   </td>
                   <td>Delete Object by ID</td>
                 </tr>

@@ -51,7 +51,7 @@ export const HeroTitle = styled(H1)`
 export const HeroText = styled(P)`
     padding: 0px 0px 28px;
     text-align: center;
-    max-width: 460px;
+    max-width: 500px;
     margin: auto;
 
     span{
@@ -81,6 +81,19 @@ export const HeroButtonGroup = styled.div`
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+
+    @media ${device.xs_sm}{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+export const TryYourselfButton = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0px 0px 28px;
 
     @media ${device.xs_sm}{
         justify-content: center;

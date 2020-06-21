@@ -41,7 +41,7 @@ export default function CodeEditor({
   }, [type]);
 
   return (
-    <CodeItem>
+    <CodeItem hasError={codeError.msg !== ''}>
       <Label hasError={codeError.msg !== ''}>JSON Code</Label>
       <CodeWrapper hasError={codeError.msg !== ''}>
         <Editor

@@ -43,7 +43,7 @@ function ResetPassword() {
   return (
     <Landing>
       <CustomFormBox>
-        <H3 align="center" padding="14px 0px">Reset Account Password</H3>
+        <H3 align="center" padding="14px 0px">Forgotten Password</H3>
         <PasswordResetForm
           setEmail={setEmailInput}
           responseError={responseError}
@@ -51,8 +51,8 @@ function ResetPassword() {
         />
         <BottomSeparator>
           {mailSent
-            ? <Button padding="2px" size="0.75rem" onClick={() => handleChangeEmail()}>Change Email ID</Button>
-            : <Button padding="2px" size="0.75rem" onClick={() => handleSendOTP()}>Resend OTP</Button> }
+            ? <Button padding="2px" size="0.9rem" onClick={() => handleChangeEmail()}>Change Email ID</Button>
+            : <Button padding="2px" size="0.9rem" onClick={() => handleSendOTP()}>Resend OTP</Button> }
         </BottomSeparator>
       </CustomFormBox>
     </Landing>

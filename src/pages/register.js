@@ -10,17 +10,18 @@ function Register() {
   return (
     <Landing>
       <CustomFormBox>
-        <H3 align="center" padding="14px 0px">Create your Account!</H3>
+        <H3 align="center" padding="14px 0px">Register with us!</H3>
         <RegisterForm />
         <BottomSeparator>
           <P align="center" padding="2px" size="0.75rem" font="Rajdhani">
             You&apos;ll receive a verification email in your inbox with a OTP.
             {' '}
-            <Link href="/email_verify"><ASpan size="0.75rem" font="Rajdhani">Click here to Email Verify.</ASpan></Link>
+            <Link href="/email_verify"><ASpan size="0.9rem" font="Rajdhani">Click here to Email Verify.</ASpan></Link>
             {' '}
             If you have any problems,
             {' '}
-            <Link href="/contact_us"><ASpan size="0.75rem" font="Rajdhani">contact us !</ASpan></Link>
+            <Link href="/contact_us"><ASpan size="0.9rem" font="Rajdhani">Contact us!</ASpan></Link>
+            .
           </P>
         </BottomSeparator>
       </CustomFormBox>
