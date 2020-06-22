@@ -99,6 +99,23 @@ export default class Payload {
     }
   }
 
+  static async clone(req, res, next) {
+    try {
+      const data = await payloadUtils.validIt(req.body.data, req.body.type);
+      const createData = await payloadModule.create(req.body, req.userID, data);
+      return successResponce(req, res, 'Payload cloned successfully', 202, {
+        id: createData.id,
+        title: createData.title,
+        url: createData.url,
+        data: createData.data,
+        hasAuth: createData.hasAuth,
+        parentId: req.params.id,
+      });
+    } catch (_error) {
+      return next(_error);
+    }
+  }
+
   static async update(req, res, next) {
     try {
       const payloadOriginal = await payloadModule.get({ id: req.params.id });

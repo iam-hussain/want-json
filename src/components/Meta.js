@@ -53,7 +53,24 @@ const pathMetaData = {
     title: 'Contact Us | wantJSON',
   },
   documentation: {
-    title: 'Documentation | wantJSON',
+    introduction: {
+      title: 'Introduction | Documentation | wantJSON',
+    },
+    getting_started: {
+      title: 'Getting started | Documentation | wantJSON',
+    },
+    static_payload: {
+      title: 'Static payload | Documentation | wantJSON',
+    },
+    dynamic_payload: {
+      title: 'Dynamic payload | Documentation | wantJSON',
+    },
+    how_to_create_a_payload: {
+      title: 'How to create a payload | Documentation | wantJSON',
+    },
+    support: {
+      title: 'Support | Documentation | wantJSON',
+    },
   },
   email_verify: {
     title: 'Verify your Email | wantJSON',
@@ -98,8 +115,18 @@ export default function Meta() {
       setMetaData({ ...stdMeta, ...pathMetaData.email_verify });
     } else if (router.pathname === '/contact_us') {
       setMetaData({ ...stdMeta, ...pathMetaData.contact_us });
-    } else if (router.pathname === '/documentation') {
-      setMetaData({ ...stdMeta, ...pathMetaData.documentation });
+    } else if (router.pathname === '/documentation/introduction') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.introduction });
+    } else if (router.pathname === '/documentation/getting_started') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.getting_started });
+    } else if (router.pathname === '/documentation/static_payload') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.static_payload });
+    } else if (router.pathname === '/documentation/dynamic_payload') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.dynamic_payload });
+    } else if (router.pathname === '/documentation/how_to_create_a_payload') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.how_to_create_a_payload });
+    } else if (router.pathname === '/documentation/support') {
+      setMetaData({ ...stdMeta, ...pathMetaData.documentation.support });
     } else if (router.pathname === '/explore') {
       setMetaData({ ...stdMeta, ...pathMetaData.explore });
     } else if (router.pathname === '/login') {

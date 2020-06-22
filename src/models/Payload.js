@@ -85,6 +85,12 @@ module.exports = function payloadModel(sequelize, DataTypes) {
       sourceKey: 'id',
       as: 'owner',
     });
+    db.Payload.hasMany(db.Payload, {
+      as: 'parentData',
+      foreignKey: 'parentId',
+      sourceKey: 'id',
+      useJunctionTable: false,
+    });
   };
   return Payload;
 };

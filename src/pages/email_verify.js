@@ -40,7 +40,7 @@ function EmailVerify() {
   return (
     <Landing>
       <CustomFormBox>
-        <H3 align="center" padding="14px 0px">Account Email Verification</H3>
+        <H3 align="center" padding="14px 0px">Verify Your Email</H3>
         <EmailVerifyForm setEmail={setEmailInput} responseError={responseError} />
         <BottomSeparator>
           <Button padding="2px" size="0.9rem" onClick={() => handleResend()} disabled={resendDisable}>Send OTP</Button>

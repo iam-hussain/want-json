@@ -214,6 +214,21 @@ const isUUID = param('id')
   .isUUID()
   .withMessage('This is not an valid ID!');
 
+const isValidClonePayloadId = param('id').custom(async (value) => {
+  if (validator.isUUID(value)) {
+    const payloadIs = await payloadModule.getFullData({
+      id: value,
+    });
+    if (!payloadIs.id) {
+      throw new Error('No payload found in this ID!');
+    }
+    if (payloadIs.visibility !== 'public') {
+      throw new Error("You don't have access to edit this payload!");
+    }
+  }
+  return true;
+});
+
 const isValidPayloadAndOwner = param('id').custom(async (value, { req }) => {
   if (validator.isUUID(value)) {
     const payloadIs = await payloadModule.getFullData({
@@ -314,6 +329,22 @@ export const createPayloadRules = [
   isPayloadData,
   isTitleTakenByAny,
 ];
+
+export const clonePayloadRules = [
+  isTitle,
+  isDescription,
+  isDescriptionProfane,
+  isKeywords,
+  isKeywordsProfane,
+  isType,
+  isHasAuth,
+  isValidHasAuth,
+  isVisibility,
+  isPayloadData,
+  isTitleTakenByAny,
+  isValidClonePayloadId,
+];
+
 export const updatePayloadRules = [
   isTitle,
   isDescription,

@@ -5,7 +5,7 @@ import {
   profileUpdateRules, registerRules, loginRules, sendOTPRules, emailVerifyRules,
   resetPasswordRules, changePasswordRules, createPayloadRules, updatePayloadRules,
   deletePayloadRules, getOnePayloadRules, restorePayloadRules, exploreOneRules,
-  exploreRules, contactUSRules,
+  exploreRules, contactUSRules, clonePayloadRules,
 } from '../utils/validator';
 import { shouldBeLoggedIn, shouldNotLoggedIn } from '../utils/auth/WebAuth';
 import authController from '../controllers/Auth/Auth';
@@ -34,6 +34,8 @@ router.get('/payload/:id', [shouldBeLoggedIn, getOnePayloadRules, validateReques
 router.post('/payload', [shouldBeLoggedIn, createPayloadRules, validateRequest, payloadController.create]);
 router.put('/payload/:id', [shouldBeLoggedIn, updatePayloadRules, validateRequest, payloadController.update]);
 router.delete('/payload/:id', [shouldBeLoggedIn, deletePayloadRules, validateRequest, payloadController.delete]);
+
+router.put('/clone/:id', [shouldBeLoggedIn, clonePayloadRules, validateRequest, payloadController.clone]);
 
 router.get('/payload_deleted', [shouldBeLoggedIn, payloadController.readAllDeleted]);
 router.delete('/payload_restore/:id', [shouldBeLoggedIn, restorePayloadRules, validateRequest, payloadController.restore]);
