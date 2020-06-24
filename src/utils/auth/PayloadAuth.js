@@ -6,8 +6,7 @@ export default async function payloadAuthorization(req, res, next) {
   try {
     const urlData = await payloadModule.getFullData({ url: req.params.url })
       .then((data) => (data ? data.get({ plain: true }) : {}));
-    console.log('==urlData.visibility===', urlData.visibility, '==req.method==', req.method);
-    if (!urlData.visibility !== 'public' && req.method !== 'get') {
+    if (!urlData.visibility !== 'public' && req.method !== 'GET') {
       const { authorization } = req.headers;
       if (!authorization) {
         return errorResponce(req, res, 'No authorization is found in header', 401, 'token');

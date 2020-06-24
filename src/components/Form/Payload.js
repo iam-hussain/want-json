@@ -24,7 +24,7 @@ import CodeEditor from '../Editor';
 import { postMethod, putMethod } from '../../utils/Integration';
 import { logEvent } from '../../utils/Analytics';
 
-export default function APIForm({ data, editMode }) {
+export default function APIForm({ data, editMode, cloneMode, cloanURL }) {
   const [componentLoading, setComponentLoading] = useState(true);
   const [keyWords, setKeyWords] = useState([]);
   const router = useRouter();
@@ -65,19 +65,17 @@ export default function APIForm({ data, editMode }) {
       { description: data.description },
       { type: data.type },
       { visibility: data.visibility },
-      { hasAuth: data.hasAuth ? 'yes' : 'no' },
     ]);
     await setKeyWords(data.keywords);
     await triggerValidation('title');
     await triggerValidation('description');
     await triggerValidation('type');
     await triggerValidation('visibility');
-    await triggerValidation('hasAuth');
     await triggerValidation('keywords');
   };
 
   useEffect(() => {
-    if (editMode) {
+    if (editMode || cloneMode) {
       setValues();
     }
     setComponentLoading(false);
@@ -106,12 +104,18 @@ export default function APIForm({ data, editMode }) {
     const token = cookie.get('token');
     if (editMode) {
       const updatedData = await putMethod(`payload/${data.id}`, {
-        ..._payloadData, keywords: keyWords, data: code, hasAuth: _payloadData.hasAuth === 'yes',
+        ..._payloadData, keywords: keyWords, data: code,
       }, token);
       return updatedData;
     }
+    if (cloneMode) {
+      const cloanData = await postMethod('payload', {
+        ..._payloadData, keywords: keyWords, data: code, cloneUrl: cloanURL,
+      }, token);
+      return cloanData;
+    }
     const createdData = await postMethod('payload', {
-      ..._payloadData, keywords: keyWords, data: code, hasAuth: _payloadData.hasAuth === 'yes',
+      ..._payloadData, keywords: keyWords, data: code,
     }, token);
     return createdData;
   };
@@ -119,7 +123,7 @@ export default function APIForm({ data, editMode }) {
   const onSubmit = async (payloadData) => {
     const responseData = await apiCall(payloadData);
     if (responseData.success) {
-      if (!editMode) {
+      if (!editMode || cloneMode) {
         setKeyWords([]);
         setCodeString('');
         reset();
@@ -274,36 +278,6 @@ export default function APIForm({ data, editMode }) {
           </RadioGroup>
         </ColWrapper>
       </RowWrapper>
-      <RadioGroup hasError={errors.hasAuth}>
-        <GroupName>Header Authentication</GroupName>
-        <Item mbMD>
-          <Input
-            type="radio"
-            value="yes"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="hasAuth"
-            required
-          />
-          <Label>Yes</Label>
-        </Item>
-        <Item>
-          <Input
-            type="radio"
-            value="no"
-            ref={register({
-              required: requiredInputMsg,
-            })}
-            name="hasAuth"
-            required
-          />
-          <Label>No</Label>
-        </Item>
-        <ErrorBlock>
-          <ErrorMessage errors={errors} name="hasAuth" />
-        </ErrorBlock>
-      </RadioGroup>
       <CodeEditor
         setCode={setCode}
         setCodeError={setCodeError}

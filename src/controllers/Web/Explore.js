@@ -73,10 +73,14 @@ export default class Explore {
 
   static async read(req, res, next) {
     try {
-      const payloadData = await payloadModule.get({
+      let payloadData = await payloadModule.get({
         url: req.params.url,
       });
       await payloadData.update({ viewCount: bigInt(payloadData.viewCount).next() });
+      if (payloadData.visibility !== 'public') {
+        payloadData = payloadData.get({ plain: true });
+        payloadData = { ...payloadData, hash: '', data: {} };
+      }
       return successResponce(
         req,
         res,

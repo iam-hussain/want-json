@@ -54,18 +54,22 @@ export default class PayloadModule {
   static async create(body, userID, data) {
     const hash = await hashingUtil.payloadHashGenerator(body.title);
     const url = await payloadUtils.urlMaker(body.title);
-    const returnData = await DB.models.Payload.create({
+    const createData = {
       url,
       title: body.title,
       description: body.description,
       keywords: body.keywords,
       data,
-      hasAuth: body.hasAuth,
+      hasAuth: true,
       hash,
       type: body.type,
       visibility: body.visibility,
       user_id: userID,
-    });
+    };
+    if (body.cloneUrl) {
+      createData.parentId = body.cloanID;
+    }
+    const returnData = await DB.models.Payload.create(createData);
     return returnData;
   }
 
@@ -78,7 +82,7 @@ export default class PayloadModule {
         description: body.description,
         keywords: body.keywords,
         data,
-        hasAuth: body.hasAuth,
+        hasAuth: true,
         hash: body.hash,
         type: body.type,
         visibility: body.visibility,

@@ -1,5 +1,6 @@
 import { successResponce } from '../../utils/exchange';
 import hashingUtil from '../../utils/hashing';
+import commonUtil from '../../utils/common';
 import payloadModule from '../../helper/payload';
 import payloadUtils from '../../utils/payload';
 import pageCalculation from '../../utils/page';
@@ -92,7 +93,6 @@ export default class Payload {
         title: createData.title,
         url: createData.url,
         data: createData.data,
-        hasAuth: createData.hasAuth,
       });
     } catch (_error) {
       return next(_error);
@@ -101,14 +101,25 @@ export default class Payload {
 
   static async clone(req, res, next) {
     try {
-      const data = await payloadUtils.validIt(req.body.data, req.body.type);
-      const createData = await payloadModule.create(req.body, req.userID, data);
+      const {
+        title, description, keywords, data, type, visibility,
+      } = await payloadModule.get({
+        id: req.params.id,
+      }).then((p) => p.get({ plain: true }));
+      const cloneData = {
+        title: `${title}_clone_${commonUtil.randomGenerator(8)}`,
+        description,
+        keywords,
+        data,
+        type,
+        visibility,
+      };
+      const createData = await payloadModule.create(cloneData, req.userID, data);
       return successResponce(req, res, 'Payload cloned successfully', 202, {
         id: createData.id,
         title: createData.title,
         url: createData.url,
         data: createData.data,
-        hasAuth: createData.hasAuth,
         parentId: req.params.id,
       });
     } catch (_error) {
@@ -120,7 +131,6 @@ export default class Payload {
     try {
       const payloadOriginal = await payloadModule.get({ id: req.params.id });
       req.body.hash = payloadOriginal.visibility !== req.body.visibility
-      && req.body.hasAuth === true
         ? await hashingUtil.payloadHashGenerator(req.body.title)
         : payloadOriginal.hash;
       const data = await payloadUtils.validIt(req.body.data, req.body.type);

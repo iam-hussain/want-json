@@ -5,10 +5,12 @@ import React from 'react';
 import { useAlert } from 'react-alert';
 import styled from 'styled-components';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Link from 'next/link';
 import {
   H2, P,
 } from './Basic/Text';
 import { Container, RowWrapper, ColWrapper } from './Basic/Wrapper';
+import { SecondaryBtn } from './Basic/Button/Button';
 import CodeView from './Basic/Code';
 import { device } from '../style';
 
@@ -181,8 +183,7 @@ export const TokenView = styled.div`
 
 export default function View({ payload, onlyPublic }) {
   const alert = useAlert();
-  const canShowToken = onlyPublic ? payload.status === 'active' && payload.visibility === 'public' : true;
-  const canShowPayload = onlyPublic ? payload.visibility === 'public' : true;
+  const isPublic = onlyPublic ? payload.visibility === 'public' : true;
 
   return (
     <Container padding="0px" column>
@@ -226,23 +227,28 @@ export default function View({ payload, onlyPublic }) {
                 <td>API Hit Count</td>
                 <td>{payload.hitCount}</td>
               </TR>
-              <TR alert={payload.hasAuth}>
-                <td>Authentication</td>
-                <td>{payload.hasAuth ? 'Yes' : 'No'}</td>
+              <TR alert={payload.parentId}>
+                <td>Cloned</td>
+                <td>{payload.parentId ? 'Yes' : 'No'}</td>
               </TR>
             </tbody>
           </Table>
         </ColWrapper>
       </RowWrapper>
-      {payload.hasAuth && canShowToken
-      && (
-      <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
-        <TokenView>
-          <span>Token</span>
-          <span>{payload.hash}</span>
-        </TokenView>
-      </CopyToClipboard>
-      )}
+      {onlyPublic
+        ? (
+          <Link href={`/cloan/${payload.url}`}>
+            <SecondaryBtn margin="0px 0px 28px">Cloan</SecondaryBtn>
+          </Link>
+        )
+        : (
+          <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
+            <TokenView>
+              <span>Token</span>
+              <span>{payload.hash}</span>
+            </TokenView>
+          </CopyToClipboard>
+        )}
       <RowWrapper>
         <ColWrapper shadow overflow="auto" margin="0px 10px" className="col-md-10">
           <APITable>
@@ -326,7 +332,7 @@ export default function View({ payload, onlyPublic }) {
           </APITable>
         </ColWrapper>
       </RowWrapper>
-      {canShowPayload && <CodeView code={payload.data} />}
+      {isPublic && <CodeView code={payload.data} />}
     </Container>
   );
 }

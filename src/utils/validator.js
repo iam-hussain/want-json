@@ -149,7 +149,6 @@ const isDescriptionProfane = body('description').custom((value) => {
   return true;
 });
 
-
 const isKeywords = body('keywords')
   .isArray({
     min: 1,
@@ -178,10 +177,6 @@ const isType = body('type')
 const isVisibility = body('visibility')
   .isIn(['public', 'private'])
   .withMessage('Provide a valid visibility type');
-
-const isHasAuth = body('hasAuth')
-  .isBoolean()
-  .withMessage('Provide a valid authentication requirement');
 
 const isValidHasAuth = body('hasAuth').custom(async (value, { req }) => {
   if ((value === true || value === false) && req.body.visibility) {
@@ -225,6 +220,27 @@ const isValidClonePayloadId = param('id').custom(async (value) => {
     if (payloadIs.visibility !== 'public') {
       throw new Error("You don't have access to edit this payload!");
     }
+  }
+  return true;
+});
+
+const isURLOptional = body('cloneUrl')
+  .optional()
+  .isString()
+  .withMessage('Provide a valid string for cloneUrl');
+
+const isValidCloneURL = body('cloneUrl').custom(async (value, { req }) => {
+  if (value) {
+    const payloadIs = await payloadModule.getFullData({
+      url: value,
+    }).then((p) => p.get({ plain: true }));
+    if (!payloadIs.id) {
+      throw new Error('No payload found in this URL!');
+    }
+    if (payloadIs.visibility !== 'public') {
+      throw new Error("You don't have access to edit this payload!");
+    }
+    req.body.cloanID = payloadIs.id;
   }
   return true;
 });
@@ -323,25 +339,15 @@ export const createPayloadRules = [
   isKeywords,
   isKeywordsProfane,
   isType,
-  isHasAuth,
   isValidHasAuth,
   isVisibility,
   isPayloadData,
   isTitleTakenByAny,
+  isURLOptional,
+  isValidCloneURL,
 ];
 
 export const clonePayloadRules = [
-  isTitle,
-  isDescription,
-  isDescriptionProfane,
-  isKeywords,
-  isKeywordsProfane,
-  isType,
-  isHasAuth,
-  isValidHasAuth,
-  isVisibility,
-  isPayloadData,
-  isTitleTakenByAny,
   isValidClonePayloadId,
 ];
 
@@ -352,7 +358,6 @@ export const updatePayloadRules = [
   isKeywords,
   isKeywordsProfane,
   isType,
-  isHasAuth,
   isValidHasAuth,
   isVisibility,
   isPayloadData,
@@ -365,3 +370,4 @@ export const restorePayloadRules = [isUUID, isDeletedPayloadAndOwner];
 export const exploreRules = [isSortBy, isOrderBy];
 export const exploreOneRules = [isValidURL];
 export const contactUSRules = [isEmail, isMailMessage, isMailSubject];
+
