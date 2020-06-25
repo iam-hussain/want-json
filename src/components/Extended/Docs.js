@@ -42,6 +42,19 @@ export const Highlight = styled.span`
 `;
 
 
+export const BlockQuote = styled.blockquote`
+    color: ${(props) => props.theme.info};
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.tertiary};
+    box-shadow: 0px 5px 15px -1px rgba(2, 83, 115, .2);
+    width: 80%;
+    padding: 0px 20px;
+    line-height: 30px;
+    font-size: 13px;
+    // border: 1px solid;
+    // border-color: ${(props) => props.theme.primary};
+`;
+
 export const Showing = styled.div`
     position: absolute;
     top: 78px;

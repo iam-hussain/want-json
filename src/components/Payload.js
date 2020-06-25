@@ -235,20 +235,17 @@ export default function View({ payload, onlyPublic }) {
           </Table>
         </ColWrapper>
       </RowWrapper>
-      {onlyPublic
-        ? (
-          <Link href={`/cloan/${payload.url}`}>
-            <SecondaryBtn margin="0px 0px 28px">Cloan</SecondaryBtn>
-          </Link>
-        )
-        : (
-          <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
-            <TokenView>
-              <span>Token</span>
-              <span>{payload.hash}</span>
-            </TokenView>
-          </CopyToClipboard>
-        )}
+      <Link href={`/cloan/${payload.url}`}>
+        <SecondaryBtn margin="0px 0px 28px">Cloan</SecondaryBtn>
+      </Link>
+      {!onlyPublic && (
+      <CopyToClipboard text={payload.hash} onCopy={() => alert.info('Copied to Clipboard')}>
+        <TokenView>
+          <span>Token</span>
+          <span>{payload.hash}</span>
+        </TokenView>
+      </CopyToClipboard>
+      )}
       <RowWrapper>
         <ColWrapper shadow overflow="auto" margin="0px 10px" className="col-md-10">
           <APITable>

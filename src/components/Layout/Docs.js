@@ -49,7 +49,7 @@ export default function Dash({ children }) {
         <FontAwesomeIcon icon={faBars} />
       </MobileMenu>
       <DashSideBar show={menuToggle} setMenuToggle={setMenuToggle} />
-      <DocsContainer>
+      <DocsContainer id="doc_container">
         {children}
       </DocsContainer>
     </PageWithOutContainer>
