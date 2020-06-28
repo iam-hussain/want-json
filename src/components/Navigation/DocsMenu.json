@@ -33,6 +33,21 @@
         ]
     },
     {
+        "title": "How to create a payload",
+        "url": "/documentation/how_to_create_a_payload",
+        "sub": [{
+                "title": "Static payload",
+                "hash": "#static_payload",
+                "url": "/documentation/how_to_create_a_payload#static_payload"
+            },
+            {
+                "title": "Dynamic payload",
+                "hash": "#dynamic_payload",
+                "url": "/documentation/how_to_create_a_payload#dynamic_payload"
+            }
+        ]
+    },
+    {
         "title": "Static Payload",
         "url": "/documentation/static_payload",
         "sub": [{
@@ -41,14 +56,9 @@
                 "url": "/documentation/static_payload#what_is_static_payload"
             },
             {
-                "title": "How to works",
-                "hash": "#how_to_works",
-                "url": "/documentation/static_payload#how_to_works"
-            },
-            {
-                "title": "Why static payload",
-                "hash": "#why_static_payload",
-                "url": "/documentation/static_payload#why_static_payload"
+                "title": "API call example",
+                "hash": "#api_call_example_static",
+                "url": "/documentation/static_payload#api_call_example_static"
             }
         ]
     },
@@ -61,29 +71,9 @@
                 "url": "/documentation/dynamic_payload#what_is_dynamic_payload"
             },
             {
-                "title": "How to works",
-                "hash": "#how_to_works",
-                "url": "/documentation/dynamic_payload#how_to_works"
-            },
-            {
-                "title": "Why static payload",
-                "hash": "#why_dynamic_payload",
-                "url": "/documentation/dynamic_payload#why_dynamic_payload"
-            }
-        ]
-    },
-    {
-        "title": "How to create a payload",
-        "url": "/documentation/how_to_create_a_payload",
-        "sub": [{
-                "title": "Static payload",
-                "hash": "#static_payload",
-                "url": "/documentation/how_to_create_a_payload#static_payload"
-            },
-            {
-                "title": "Dynamic payload",
-                "hash": "#dynamic_payload",
-                "url": "/documentation/how_to_create_a_payload#dynamic_payload"
+                "title": "API call example",
+                "hash": "#what_is_dynamic_payload",
+                "url": "/documentation/dynamic_payload#what_is_dynamic_payload"
             }
         ]
     }, {

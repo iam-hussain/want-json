@@ -72,7 +72,7 @@ export default function Footer() {
           <Link href="/"><div><FontAwesomeIcon icon={faHome} /></div></Link>
           <Link href="/explore"><div><FontAwesomeIcon icon={faLaptopCode} /></div></Link>
           <Link href="/documentation"><div><FontAwesomeIcon icon={faBook} /></div></Link>
-          <Anchor href="https://github.com/ZaHuPro/wantJSON" target="_blank" size="14px"><FontAwesomeIcon icon={faGithub} /></Anchor>
+          <Anchor href="https://github.com/ZaHuPro" target="_blank" size="14px"><FontAwesomeIcon icon={faGithub} /></Anchor>
           <Link href="/contact_us"><div><FontAwesomeIcon icon={faAddressCard} /></div></Link>
         </Left>
         <Right href="https://github.com/ZaHuPro" target="_blank">

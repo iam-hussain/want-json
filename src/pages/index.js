@@ -70,7 +70,7 @@ export default function Home() {
     method: 'GET',
     url: `${process.env.PAYLOAD_URL}:url`,
     header: {
-      Authorization: 'Bearer <token>',
+      Authorization: 'Bearer <PAYLOAD_TOKEN_HERE>',
     },
     params: {
       url: 'dynamic_payload',

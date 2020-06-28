@@ -90,7 +90,7 @@ export const theme = {
   secondary: '#2989B3',
   tertiary: '#fff',
   bg: '#FBFBFB',
-  paper: '#DEE7F3',
+  paper: '#f3f9fd',
   text1: '#0D212C',
   text2: '#5E5C7F',
   text3: '#8f919e',

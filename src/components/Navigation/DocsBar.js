@@ -88,27 +88,31 @@ export const Header = styled.h5`
   margin: 5px 0px;
   padding-right: 20px;
   font-family: "Rajdhani";
-  text-decoration: ${(props) => (props.active ? 'underline' : 'unset')};
-  color: ${(props) => (props.active ? props.theme.primary : props.theme.text2)};
+  border-right: 5px solid;
+  border-color: ${(props) => (props.active ? props.theme.secondary : props.theme.bg)};
+  color: ${(props) => (props.active ? props.theme.secondary : props.theme.text2)};
 
   @media ${device.web}{
     &:hover{
-        color: ${(props) => props.theme.secondary};
+        color: ${(props) => props.theme.primary};
         cursor: pointer;
     }
   }
 `;
 
 export const SubHeader = styled.h6`
+  position: relative;
   font-size: 1rem;
   margin: 5px 0px;
   padding-right: 20px;
   font-family: "Rajdhani";
+  border-right: 3px solid;
+  border-color: ${(props) => (props.active ? props.theme.secondary : props.theme.bg)};
   color : ${(props) => (props.active ? props.theme.text1 : props.theme.text3)};
 
   @media ${device.web}{
     &:hover{
-        color: ${(props) => props.theme.secondary};
+        color: ${(props) => props.theme.primary};
         cursor: pointer;
     }
   }
@@ -125,8 +129,8 @@ export default function DashSideBar({ show, setMenuToggle }) {
   const handleRouteChange = () => {
     if (process.browser && window.location.hash) {
       setURLHash(window.location.hash);
-      setMenuToggle(false);
     }
+    setMenuToggle(false);
   };
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useAlert } from 'react-alert';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+// import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Page from '../components/Layout/Page';
 import { ColWrapper } from '../components/Basic/Wrapper';
@@ -22,10 +22,10 @@ function ContactUs() {
             <P>Email us</P>
           </Contribute>
         </CopyToClipboard>
-        <Contribute size="2rem" href="https://github.com/ZaHuPro/wantJSON" target="_blank">
+        {/* <Contribute size="2rem" href="https://github.com/ZaHuPro/wantJSON" target="_blank">
           <FontAwesomeIcon icon={faGithubSquare} />
           <P>Contribute with us</P>
-        </Contribute>
+        </Contribute> */}
       </ColWrapper>
       <ColWrapper className="col-md-8">
         <SubHeadingComp margin="0px" back="" title="Contact Us" />
