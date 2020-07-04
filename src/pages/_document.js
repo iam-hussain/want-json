@@ -62,6 +62,7 @@ export default class MyDocument extends Document {
           <link rel="icon" href="/static/favicon.ico" />
           <link rel="apple-touch-icon" href="/static/favicon.ico" />
           {/* {this.props.styleTags} */}
+          <script data-ad-client="ca-pub-1459468439674520" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         </Head>
         <body>
           <Main />
