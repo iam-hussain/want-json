@@ -31,6 +31,7 @@ export class Database {
     try {
       await this.models.sequelize.drop();
       await this.models.sequelize.sync({ force: true });
+      process.exit();
     } catch (error) {
       Log.info(`Failed to reSync DB!! (${error})`);
       throw error;
