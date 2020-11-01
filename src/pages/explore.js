@@ -26,6 +26,16 @@ function Explore({ payloadData, pages, searchData }) {
   const [searchInput, setSearchInput] = useState('');
   const [loader, setLoader] = useState(true);
 
+  // if (searchData && searchData.queryBy) {
+  //   setSearch(searchData.queryBy);
+  // }
+  useEffect(() => {
+    if (searchData && searchData.queryBy) {
+      setSearchInput(searchData.queryBy);
+      Router.push(`/explore?keyword=${searchData.queryBy}`, '/explore', { shallow: true });
+    }
+  }, []);
+
   useEffect(() => {
     if (payload.length === 0 || page.total <= 1) {
       setLoader(false);
@@ -150,8 +160,7 @@ function Explore({ payloadData, pages, searchData }) {
 }
 
 Explore.getInitialProps = async (ctx) => {
-  const payloadData = await postMethod('explore');
-
+  const payloadData = await postMethod('explore', ctx.query && ctx.query.keyword ? { search: ctx.query.keyword } : {});
   if (!payloadData.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
     ctx.res.end();
