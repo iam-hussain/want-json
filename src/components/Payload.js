@@ -45,7 +45,7 @@ export const Keywords = styled.div`
         justify-content: center;
     }
 
-    span{
+    a{
         border-radius: 5px;
         text-align: center;
         padding: 0px 12px;
@@ -57,6 +57,13 @@ export const Keywords = styled.div`
         @media ${device.xs_sm}{
             font-size: .8rem;
             text-align: center;
+        }
+        
+        @media ${device.web}{          
+          &:hover, span{      
+              background-color: ${(props) => props.theme.primary};
+              text-decoration: none;
+              cursor: pointer;
         }
     }
 `;
@@ -192,10 +199,10 @@ export default function View({ payload, onlyPublic }) {
           <Title>{payload.title}</Title>
           <Description>{payload.description}</Description>
           <Keywords>
-            {payload.keywords.map((k, i) => (
-              <span key={i}>
-                {k}
-              </span>
+            {payload.keywords.map((keyword, index) => (
+              <Link key={index} href={{ pathname: '/explore', query: { keyword } }}>
+                {keyword}
+              </Link>
             ))}
           </Keywords>
         </ColWrapper>

@@ -27,6 +27,13 @@ function Explore({ payloadData, pages, searchData }) {
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
+    if (searchData && searchData.queryBy) {
+      setSearchInput(searchData.queryBy);
+      Router.push(`/explore?keyword=${searchData.queryBy}`, '/explore', { shallow: true });
+    }
+  }, []);
+
+  useEffect(() => {
     if (payload.length === 0 || page.total <= 1) {
       setLoader(false);
     } else {
@@ -150,7 +157,7 @@ function Explore({ payloadData, pages, searchData }) {
 }
 
 Explore.getInitialProps = async (ctx) => {
-  const payloadData = await postMethod('explore');
+  const payloadData = await postMethod('explore', ctx.query && ctx.query.keyword ? { search: ctx.query.keyword } : {});
 
   if (!payloadData.success && ctx.res) {
     ctx.res.writeHead(302, { Location: '/' });
