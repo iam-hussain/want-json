@@ -37,6 +37,13 @@ function Explore({ payloadData, pages, searchData }) {
   }, []);
 
   useEffect(() => {
+    if (searchData && searchData.queryBy) {
+      setSearchInput(searchData.queryBy);
+      Router.push(`/explore?keyword=${searchData.queryBy}`, '/explore', { shallow: true });
+    }
+  }, []);
+
+  useEffect(() => {
     if (payload.length === 0 || page.total <= 1) {
       setLoader(false);
     } else {
