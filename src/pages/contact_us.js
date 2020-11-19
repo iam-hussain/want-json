@@ -4,10 +4,10 @@ import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+// import { Contribute } from '../components/Extended/Text';
 import Page from '../components/Layout/Page';
 import { ColWrapper } from '../components/Basic/Wrapper';
 import { SubHeadingComp } from '../components/Basic/Text';
-// import { Contribute } from '../components/Extended/Text';
 import ContactUsForm from '../components/Form/ContactUs';
 
 function ContactUs() {
