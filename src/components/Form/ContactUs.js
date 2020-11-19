@@ -75,7 +75,7 @@ export default function ContactUsForm() {
               message: 'Provide a valid subject with min 10 letters',
             },
             maxLength: {
-              value: 10,
+              value: 100,
               message: 'Provide a valid subject with max 100 letters',
             },
           })}
