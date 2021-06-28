@@ -67,7 +67,7 @@
     "nodemon": "^2.0.4",
     "nprogress": "^0.2.0",
     "pg": "^8.2.1",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.24.0",
     "profanease": "^1.1.2",
     "react": "^16.13.1",
     "react-alert": "^7.0.1",
